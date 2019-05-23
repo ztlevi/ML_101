@@ -615,5 +615,19 @@ The constraints used for soft parameter sharing in deep neural networks have bee
 #### YOLO loss
 
 - the classification loss.
+
+  ![img](https://cdn-images-1.medium.com/max/800/1*lF6SCAVj5jMwLxs39SCogw.png)
+
 - the localization loss (errors between the predicted boundary box and the ground truth).
+
+  ![img](https://cdn-images-1.medium.com/max/800/1*BwhGMvffFfqtND9413oiwA.png)
+
 - the confidence loss (the objectness of the box).
+
+  ![img](https://cdn-images-1.medium.com/max/800/1*QT7mwEbyLJYIxTYtOWClFQ.png)
+
+  If an object is not detected in the box, the confidence loss is:
+
+  ![img](https://cdn-images-1.medium.com/max/800/1*Yc_OJIXOoV2WaGQ6PqhTXA.png)
+
+  Most boxes do not contain any objects. This causes a class imbalance problem, i.e. we train the model to detect background more frequently than detecting objects. To remedy this, we weight this loss down by a factor $\lambda noobj$ (default: 0.5).
