@@ -279,6 +279,8 @@ Here is a visual explanation of PCA
 
 ## Non maximal supression
 
+[IOU](./NMS/IOU.py)
+
 [NMS](./NMS/nms.py)
 
 [NMS_Slow](./NMS/nms_slow.py)
