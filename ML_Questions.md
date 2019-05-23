@@ -117,6 +117,8 @@ $
 1. Pooling layers control the number of features the CNN model is learning and it avoids over fitting.
 2. There are 2 different types of pooling layers - MAX pooling layer and AVG pooling layer. As the names suggest the MAX pooling layer picks maximum values from the convoluted feature maps and AVG pooling layer takes the average value of the features from the feature maps.
 
+TODO: Why average pooling performs better than max pooling?
+
 ## How to Prevent Overfitting
 
 Detecting overfitting is useful, but it doesn’t solve the problem. Fortunately, you have several options to try.
