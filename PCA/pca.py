@@ -2,9 +2,8 @@
 #
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
-
 import plotly
+from sklearn.preprocessing import StandardScaler
 
 df = pd.read_csv(
     filepath_or_buffer="https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data",
@@ -70,3 +69,5 @@ cov_mat = (X_std - mean_vec).T.dot((X_std - mean_vec)) / (X_std.shape[0] - 1)
 print("Covariance matrix \n%s" % cov_mat)
 
 print("NumPy covariance matrix: \n%s" % np.cov(X_std.T))
+
+# TODO
