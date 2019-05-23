@@ -179,6 +179,22 @@ Oftentimes, the regularization method is a hyperparameter as well, which means i
 
 We have a more detailed discussion here on [algorithms and regularization methods](http://elitedatascience.com/machine-learning-algorithms).
 
+#### L1 Regularization or Lasso or L1 norm
+
+$
+L(x,y) = \sum_{i=1}^n(y_i - h_{\theta}(x_i))^2 + \lambda \sum_{i=1}^n |\theta_i|
+$
+
+In L1 regularization we penalize the absolute value of the weights.
+
+#### L2 Regularization or Ridge Regularization
+
+$
+L(x,y) = \sum_{i=1}^n(y_i - h_{\theta}(x_i))^2 + \lambda \sum_{i=1}^n \theta_i^2
+$
+
+In L2 regularization, regularization term is the sum of square of all feature weights as shown above in the equation.
+
 #### DropOut (Regularization technique)
 
 To apply DropOut, we randomly select a subset of the units and clamp their output to zero, regardless of the input; this effectively removes those units from the model. A different subset of units is randomly selected every time we present a training example.
