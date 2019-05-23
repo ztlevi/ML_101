@@ -612,7 +612,11 @@ The constraints used for soft parameter sharing in deep neural networks have bee
 
 ### Yolo
 
-#### YOLO loss
+#### TODO Anchor Boxes
+
+#### TODO Multi-scale training
+
+#### Loss
 
 - the classification loss.
 
