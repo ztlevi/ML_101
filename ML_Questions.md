@@ -586,7 +586,7 @@ $
 D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + \cdot M \cdot N \cdot D_F \cdot D_F
 $
 
-# Two MTL methods for Deep Learning
+# Two (Multi Task Learning) MTL methods for Deep Learning
 
 So far, we have focused on theoretical motivations for MTL. To make the ideas of MTL more concrete, we will now look at the two most commonly used ways to perform multi-task learning in deep neural networks. In the context of Deep Learning, multi-task learning is typically done with either _hard_ or _soft parameter sharing_ of hidden layers.
 
