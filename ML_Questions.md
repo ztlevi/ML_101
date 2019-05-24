@@ -234,13 +234,13 @@ To solve the vanishing gradient($0.9^{k}$) and gradient explosion($1.1^{k}$), ba
 1. Compute mini-batch mean: $
 {\mu}_{\beta} \gets \frac{1}{m}\sum_{i=1}^M x_{i}
 $
-2. Compute mini-batch variance $
+2. Compute mini-batch variance: $
 {{\sigma}_{\beta}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\beta})^{2}
 $
-3. normalize features $
+3. normalize features: $
 \hat{x_{i}} \gets \frac{x_{i} - \mu_{\beta}}{\sqrt{{{\sigma}_{\beta} + \epsilon}^{2}}}
 $
-4. Put batch mean and variance $
+4. Put batch mean and variance: $
 y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})
 $
 5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
