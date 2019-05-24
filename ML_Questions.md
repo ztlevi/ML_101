@@ -317,10 +317,13 @@ Here is a visual explanation of PCA
 
 ## Blur image
 
+TODO: finish introduction
+
 # Supervised Learning
 
 ## KNN
 
+- Keywords: Non-parametric Method, Time consuming
 - Given a data point, we compute the K nearest data points (neighbors) using certain distance metric (e.g., Euclidean metric). For classification, we take the majority label of neighbors; for regression, we take the mean of the label values.
 - Note for KNN we don't train a model; we simply compute during inference time. This can be computationally expensive since each of the test example need to be compared with every training example to see how close they are.
 - There are approximation methods can have faster inference time by partitioning the training data into regions (e.g., [annoy](https://github.com/spotify/annoy))
@@ -329,6 +332,8 @@ Here is a visual explanation of PCA
 ![KNN](assets/knn.png)
 
 ## SVM
+
+Try to find a **optimal hyperplane** to separate two classes of data.
 
 Cost function: $
 min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] + \frac{1}{2}\sum_{j=1}^n\theta_j^2
@@ -534,7 +539,7 @@ The authors propose default values of 0.9 for $\beta_1$, 0.999 for $\beta_2$, an
 
 ### CNN
 
-The Conv layer is the building block of a Convolutional Network. The Conv layer consists of a set of learnable filters (such as 5 _ 5 _ 3, width _ height _ depth). During the forward pass, we slide (or more precisely, convolve) the filter across the input and compute the dot product. Learning happens when the network back propagate the error layer by layer.
+The Conv layer is the building block of a Convolutional Network. The Conv layer consists of a set of learnable filters (such as 5 x 5 x 3, width x height x depth). During the forward pass, we slide (or more precisely, convolve) the filter across the input and compute the dot product. Learning happens when the network back propagate the error layer by layer.
 
 Initial layers capture low-level features such as angle and edges, while later layers learn a combination of the low-level features and in the previous layers and can therefore represent higher level feature, such as shape and object parts.
 
@@ -591,6 +596,8 @@ The authors argues that stacking layers shouldn’t degrade the network performa
 
 ### Mobilenet v1
 
+#### Depthwise Separable Convolution.
+
 Standard convolutions have the computational cost of :
 
 $
@@ -614,6 +621,27 @@ $
 D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + \cdot M \cdot N \cdot D_F \cdot D_F
 $
 
+- $D_{F}$ is the spatial width and height of a square input feature map1
+- $M$ is the number of input channels (input depth)
+- $D_{G}$ is the spatial width and height of a square output feature map
+- $N$ is the number of output channel (output depth).
+
+#### Width Multiplier: Thinner Models
+
+For a given layer, and width multiplier $α$, the number of input channels $M$ becomes $αM$ and the number of output channels $N$ becomes $αN$
+
+### Mobilenet v2
+
+#### Inverted residuals
+
+The bottleneck blocks appear similar to residual block where each block contains an input followed by several bottlenecks then followed by expansion. ![inverted residuals in mobilenet v2](/Users/zhangdi/Documents/Machine_Learning_Questions/assets/IR.png)
+
+- Use shortcuts directly between the bottlenecks.
+
+- The ratio between the size of the input bottleneck and the inner size as the **expansion ratio**.
+
+![mobilenet v2 structure](./assets/mobilenetv2.png)
+
 # Two (Multi Task Learning) MTL methods for Deep Learning
 
 So far, we have focused on theoretical motivations for MTL. To make the ideas of MTL more concrete, we will now look at the two most commonly used ways to perform multi-task learning in deep neural networks. In the context of Deep Learning, multi-task learning is typically done with either _hard_ or _soft parameter sharing_ of hidden layers.
@@ -633,16 +661,43 @@ Hard parameter sharing greatly reduces the risk of overfitting. In fact, <sup cl
 In soft parameter sharing on the other hand, each task has its own model with its own parameters. The distance between the parameters of the model is then regularized in order to encourage the parameters to be similar. <sup class="footnote-ref">[[8]](http://ruder.io/multi-task/index.html#fn8)</sup> for instance use the ℓ2<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>ℓ</mi><mn>2</mn></msub></math> norm for regularization, while <sup class="footnote-ref">[[9]](http://ruder.io/multi-task/index.html#fn9)</sup> use the trace norm.
 
 <figure>![](http://ruder.io/content/images/2017/05/mtl_images-002-1.png "Soft parameter sharing")
-
 <figcaption>Figure 2: Soft parameter sharing for multi-task learning in deep neural networks</figcaption></figure>
 
 The constraints used for soft parameter sharing in deep neural networks have been greatly inspired by regularization techniques for MTL that have been developed for other models, which we will soon discuss.
 
-### Yolo
+### Yolo v1
 
-#### TODO Anchor Boxes
+![yolo v1 structure](/Users/zhangdi/Documents/Machine_Learning_Questions/assets/yolov1.png)
 
-#### TODO Multi-scale training
+- The YOLO design enables end-to-end training and real-time speeds while maintaining high average precision
+
+- Divides the input image into a S × S grid. If the center of an object falls into a grid cell, that grid cell is responsible for detecting that object.
+
+- Each bounding box consists of 5 predictions: $x, y, w, h$, and confidence. The $(x, y)$ coordinates represent the center of the box relative to the bounds of the grid cell. The width and height are predicted relative to the whole image. The confidence prediction represents the IOU between the predicted box and any ground truth box.
+
+- Each grid cell also predicts C conditional class probabilities
+
+- Models detection as a regression problem. It divides the image into an even grid and simultaneously predicts bounding boxes, confidence in those boxes, and class probabilities. These predictions are encoded as an $S × S × (B ∗ 5 + C)$ tensor.
+
+### Yolo 9000
+
+- **An odd number of locations in feature map** so there is a single center cell. For Objects, especially large objects, tend to occupy the center of the image so it’s good to have a single location right at the center to predict these objects instead of four locations that are all nearby.
+
+- **Convolutional With Anchor Boxes.** Using different **w h ratio** in every grid so that different object can be detected separately in one grid. Using k-mean for training dataset to get prior anchor box
+
+- The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, $t_{x}, t_{y}, t_{w}, t_{h}$, and to. If the cell is offset from the top left corner of the image by $(cx, cy)$ and the bounding box prior has width and height $p_{w}, p_{h}$, then the predictions correspond to:
+
+  ![output formula](/Users/zhangdi/Documents/Machine_Learning_Questions/assets/yolo_formula1.png)
+
+- **Fine-Grained Features** It reshapes the 26 × 26 × 512 layer to 13 × 13 × 2048. Then it concatenates with the original 13 × 13 ×1024 output layer. Now we apply convolution filters on the new 13 × 13 × 3072 layer to make predictions.
+
+- **Multi-Scale Training** Instead of fixing the input image size we change the network every few iterations. Every 10 batches our networkrandomly chooses a new image dimension size.
+
+### Yolo v3
+
+- **Objectness Prediction** predicts an objectness score for each bounding box using **logistic regression**. This should be 1 if the bounding box prior overlaps a ground truth object by more than any other bounding box prior. If a bounding box prior is not assigned to a ground truth object it incurs no loss for coordinate or class predictions, only objectness.
+- **Class Prediction** simply use independent logistic classifiers. During training we use binary cross entropy loss for the class predictions.
+- **Feature Pyramid** YOLOv3 predicts boxes at **3 different scales**. Take the feature map from 2 layers previous and **upsample it by 2** and then add a few more convolutional layers to process this combined feature map, and eventually predict a similar tensor, although now **twice the size**.chose 9 clusters and 3 scales arbitrarily and then divide up the clusters **evenly across scales**.
 
 #### Loss
 
@@ -663,3 +718,7 @@ The constraints used for soft parameter sharing in deep neural networks have bee
   ![img](https://cdn-images-1.medium.com/max/800/1*Yc_OJIXOoV2WaGQ6PqhTXA.png)
 
   Most boxes do not contain any objects. This causes a class imbalance problem, i.e. we train the model to detect background more frequently than detecting objects. To remedy this, we weight this loss down by a factor $\lambda noobj$ (default: 0.5).
+
+## Reference
+
+[1][standford cs231 notes](http://cs231n.github.io/) [2][mobilenet v1](https://arxiv.org/pdf/1704.04861.pdf) [3][mobilenet v2](https://arxiv.org/pdf/1801.04381.pdf) [4][yolo v1](https://arxiv.org/pdf/1506.02640.pdf) [5][yolo 9000](https://arxiv.org/pdf/1612.08242.pdf) [6][yolo v3](https://pjreddie.com/media/files/papers/YOLOv3.pdf) [7][real-time-object-detection-with-yolo-yolov2-](https://medium.com/@jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088)
