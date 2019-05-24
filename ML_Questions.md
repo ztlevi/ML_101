@@ -86,9 +86,16 @@ the activation function is usually an abstraction representing the rate of actio
 
 For neural networks
 
-- Non-linearity: ReLU is often used. Use Leaky ReLU (a small positive gradient for negative input, say, `y = 0.01x` when x < 0) to address dead ReLU issue
+- Non-linearity: ReLU is often used. Use Leaky ReLU (a small positive gradient for negative input, say, `y = 0.01x` when x < 0) to reduce death during training
+
 - Multi-class: softmax
+
+  $
+  p_{o,c} = e^{y_{k}}/\sum_{c=1}^M e^{y_{c}}
+  $
+
 - Binary: sigmoid
+
 - Regression: linear
 
 ## Cost function
@@ -117,7 +124,8 @@ $
 1. Pooling layers control the number of features the CNN model is learning and it avoids over fitting.
 2. There are 2 different types of pooling layers - MAX pooling layer and AVG pooling layer. As the names suggest the MAX pooling layer picks maximum values from the convoluted feature maps and AVG pooling layer takes the average value of the features from the feature maps.
 
-TODO: Why average pooling performs better than max pooling?
+- MAX pooling focus on edge ,work better in practice
+- Progressively reduce the spatial size of the representation to reduce the amount of parameters and computation in the network, and hence to also control overfitting.
 
 ## How to Prevent Overfitting
 
@@ -216,6 +224,26 @@ DropConnect works similarly, except that we disable individual weights (i.e., se
 These methods both work because they effectively let you train several models at the same time, then average across them for testing. For example, the yellow layer has four nodes, and thus 16 possible DropOut states (all enabled, #1 disabled, #1 and #2 disabled, etc).
 
 DropConnect is a generalization of DropOut because it produces even more possible models, since there are almost always more connections than units. However, you can get similar outcomes on an individual trial. For example, the DropConnect network on the right has effectively dropped Unit #2 since all of the incoming connections have been removed.
+
+### Batch Normalization
+
+When data flow through a deep network, the weights and parameters adjust those values, some times make the data too big or too small, known as **internal covariate shift**.
+
+To solve the vanishing gradient($0.9^{k}$) and gradient explosion($1.1^{k}$), batch normalization is introduced.
+
+1. Compute mini-batch mean: $
+{\mu}_{\beta} \gets \frac{1}{m}\sum_{i=1}^M x_{i}
+$
+2. Compute mini-batch variance $
+{{\sigma}_{\beta}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\beta})^{2}
+$
+3. normalize features $
+\hat{x_{i}} \gets \frac{x_{i} - \mu_{\beta}}{\sqrt{{{\sigma}_{\beta} + \epsilon}^{2}}}
+$
+4. Put batch mean and variance $
+y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})
+$
+5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
 
 ### Ensembling
 
@@ -470,7 +498,7 @@ m_t = \gamma m_{t-1}+\eta\nabla_{\theta}J(\theta)$
 $\theta=\theta - m_t
 $
 
-Essentially, when using momentum, we push a ball down a hill. The ballaccumulates momentum as it rolls downhill, becoming faster and faster onthe way (until it reaches its terminal velocity if there is air resistance, i.e. $\gamma<1​$). The same thing happens to our parameter updates: The momentumterm increases for dimensions whose gradients point in the same directionsand reduces updates for dimensions whose gradients change directions. Asa result, we gain faster convergence and reduced oscillation.
+Essentially, when using momentum, we push a ball down a hill. The ballaccumulates momentum as it rolls downhill, becoming faster and faster onthe way (until it reaches its terminal velocity if there is air resistance, i.e. $\gamma<1$). The same thing happens to our parameter updates: The momentumterm increases for dimensions whose gradients point in the same directionsand reduces updates for dimensions whose gradients change directions. Asa result, we gain faster convergence and reduced oscillation.
 
 ### ADAM
 
