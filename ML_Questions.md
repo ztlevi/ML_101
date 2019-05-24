@@ -640,9 +640,91 @@ The constraints used for soft parameter sharing in deep neural networks have bee
 
 ### Yolo
 
-#### TODO Anchor Boxes
+#### Anchor Boxes
+
+YOLO v3 uses K-means to estimate the ideal bounding boxes
+
+Previously: Each object in training image is assigned to grid cell that contains that object's midpoint. Grid: 3x3, Output: 3x3x(5+3) ($p_c, x, y, h, w, c1, c2, c3$)
+
+With two anchor boxes: Each object in training image is assigned to grid cell that contains object's midpoint and anchor box for the grid cell with highest IoU. Grid: 3x3, Output: 3x3x2x(5+3) ($p_c, b_x, b_y, b_h, b_w, c1, c2, c3$)
+
+As indicated in the [YOLO paper](https://arxiv.org/pdf/1506.02640.pdf), the early training is susceptible to unstable gradients. Initially, YOLO makes arbitrary guesses on the boundary boxes. These guesses may work well for some objects but badly for others resulting in steep gradient changes. In early training, predictions are fighting with each other on what shapes to specialize on.
+
+In the real-life domain, the boundary boxes are not arbitrary. Cars have very similar shapes and pedestrians have an approximate aspect ratio of 0.41.
+
+![](https://cdn-images-1.medium.com/max/1760/1*krGqonOLMzSE_PWqH_LvQA.jpeg)
+
+Since we only need one guess to be right, the initial training will be more stable if we start with diverse guesses that are common for real-life objects.
+
+For example, we can create 5 **anchor** boxes with the following shapes.
+
+![img](https://cdn-images-1.medium.com/max/1760/1*8Q8r9ixjTiKLi1mrF36xCw.jpeg)
+
+Instead of predicting 5 arbitrary boundary boxes, **we predict offsets to each of the anchor boxes above**. If we **constrain** the offset values, we can maintain the diversity of the predictions and have each prediction focuses on a specific shape. So the initial training will be more stable.
+
+![img](https://cdn-images-1.medium.com/max/1760/1*gyOSRA_FDz4Pf5njoUb4KQ.jpeg)
+
+YOLO predicts 5 parameters (tx, ty, tw, th, and to) and applies the sigma function to constraint its possible offset range.
+
+![img](https://cdn-images-1.medium.com/max/1760/1*38-Tdx-wQA7c3TX5hdnwpw.jpeg)
+
+##### Kmeans implementation
+
+https://lars76.github.io/object-detection/k-means-anchor-boxes/
+
+According to [1] the standard Euclidean distance causes larger boxes to generate more errors than smaller boxes. By using the Intersection over Union metric (Jaccard index) this problem can be avoided.
+
+The Jaccard index can be defined for two boxes $b_1 = (w_1 , h_1) , b_2 = (w_2 , h_2)$ as follows
+
+![img](./yolo_Jaccard_index.jpg)
+
+The k-means clustering algorithm does not really change a lot when applied to anchor boxes. At initialization we can choose $k$ random boxes as our initial means $a_i$ . Then we can assign each bounding box $b_p$ to a cluster $C_i$ :
+
+![img](./yolo_clustering.jpg)
+
+```python
+def iou(box, clusters):
+    x = np.minimum(clusters[:, 0], box[0])
+    y = np.minimum(clusters[:, 1], box[1])
+
+    intersection = x * y
+    box_area = box[0] * box[1]
+    cluster_area = clusters[:, 0] * clusters[:, 1]
+
+    iou_ = intersection / (box_area + cluster_area - intersection)
+
+    return iou_
+
+def kmeans(boxes, k, dist=np.median):
+    rows = boxes.shape[0]
+
+    distances = np.empty((rows, k))
+    last_clusters = np.zeros((rows,))
+
+    np.random.seed()
+
+    clusters = boxes[np.random.choice(rows, k, replace=False)]
+
+    while True:
+        for row in range(rows):
+            distances[row] = 1 - iou(boxes[row], clusters)
+
+        nearest_clusters = np.argmin(distances, axis=1)
+
+        if (last_clusters == nearest_clusters).all():
+            break
+
+        for cluster in range(k):
+            clusters[cluster] = dist(boxes[nearest_clusters == cluster], axis=0)
+
+        last_clusters = nearest_clusters
+
+    return clusters
+```
 
 #### TODO Multi-scale training
+
+Change the input image size from 448 × 448 to 416 × 416. This creates an odd number spatial dimension (7×7 v.s. 8×8 grid cell). The center of a picture is often occupied by a large object. With an odd number grid cell, it is more certain on where the object belongs.
 
 #### Loss
 
