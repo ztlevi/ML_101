@@ -634,7 +634,9 @@ For a given layer, and width multiplier $α$, the number of input channels $M$ b
 
 #### Inverted residuals
 
-The bottleneck blocks appear similar to residual block where each block contains an input followed by several bottlenecks then followed by expansion. ![inverted residuals in mobilenet v2](/Users/zhangdi/Documents/Machine_Learning_Questions/assets/IR.png)
+The bottleneck blocks appear similar to residual block where each block contains an input followed by several bottlenecks then followed by expansion. detail code [here](https://github.com/keras-team/keras-applications/blob/master/keras_applications/mobilenet_v2.py#L425).
+
+![inverted residuals in mobilenet v2](./assets/IR.png)
 
 - Use shortcuts directly between the bottlenecks.
 
