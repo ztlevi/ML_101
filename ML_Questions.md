@@ -545,6 +545,10 @@ Initial layers capture low-level features such as angle and edges, while later l
 
 ![CNN](assets/cnn.jpg)
 
+### Bottleneck layer
+
+The bottleneck in a neural network is just a layer (e.g. convolution layer) with less neurons then the layer below or above it. Having such a layer encourages the network to compress feature representations to best fit in the available space, in order to get the best loss during training.
+
 ### RNN and LSTM
 
 https://colah.github.io/posts/2015-08-Understanding-LSTMs/
