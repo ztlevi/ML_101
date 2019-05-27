@@ -94,6 +94,12 @@ Given a data science / machine learning project, what steps should we follow? He
 
 ![](assets/workflow.png)
 
+## Weight Initialization
+
+`W = 0.01 * np.random.randn(D,H)`, where randn samples from a zero mean, unit standard deviation gaussian. One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that we can normalize the variance of each neuron’s output to 1 by scaling its weight vector by the square root of its fan-in (i.e. its number of inputs). `w = np.random.randn(n) / sqrt(n)`, where n is the number of its inputs.
+
+In practice, the current recommendation is to use ReLU units and use the `w = np.random.randn(n) * sqrt(2.0/n)`.
+
 ## Normalization
 
 Normalization： refers to normalizing the data dimensions so that they are of approximately the same scale. One is to divide each dimension by its standard deviation, once it has been zero-centered: `(X /= np.std(X, axis = 0))`. Another form of this preprocessing normalizes each dimension so that the min and max along the dimension is -1 and 1 respectively.
@@ -103,6 +109,34 @@ Normalization： refers to normalizing the data dimensions so that they are of a
 2*(x - x.min()) / (x.max() - x.min()) - 1 # values from -1 to 1
 (x - x.mean()) / x.std() # values from ? to ?, but mean at 0
 ```
+
+### Batch Normalization
+
+When data flow through a deep network, the weights and parameters adjust those values, some times make the data too big or too small, known as **internal covariate shift**.
+
+To solve the vanishing gradient($0.9^{k}$) and gradient explosion($1.1^{k}$), batch normalization is introduced.
+
+1. Compute mini-batch mean: $
+{\mu}_{\beta} \gets \frac{1}{m}\sum_{i=1}^M x_{i}
+$
+2. Compute mini-batch variance: $
+{{\sigma}_{\beta}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\beta})^{2}
+$
+3. normalize features: $
+\hat{x_{i}} \gets \frac{x_{i} - \mu_{\beta}}{\sqrt{{{\sigma}_{\beta} + \epsilon}^{2}}}
+$
+4. Put batch mean and variance: $
+y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})
+$
+5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
+
+- Benefits:
+  - Networks train faster
+  - Allows higher learning rates
+  - Makes weights easier to initialize
+  - Makes more activation functions viable
+  - Provides a bit of regularlization
+  - Simplifies the creation of deeper networks
 
 ### Common pitfall
 
@@ -255,25 +289,7 @@ These methods both work because they effectively let you train several models at
 
 DropConnect is a generalization of DropOut because it produces even more possible models, since there are almost always more connections than units. However, you can get similar outcomes on an individual trial. For example, the DropConnect network on the right has effectively dropped Unit #2 since all of the incoming connections have been removed.
 
-### Batch Normalization
-
-When data flow through a deep network, the weights and parameters adjust those values, some times make the data too big or too small, known as **internal covariate shift**.
-
-To solve the vanishing gradient($0.9^{k}$) and gradient explosion($1.1^{k}$), batch normalization is introduced.
-
-1. Compute mini-batch mean: $
-{\mu}_{\beta} \gets \frac{1}{m}\sum_{i=1}^M x_{i}
-$
-2. Compute mini-batch variance: $
-{{\sigma}_{\beta}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\beta})^{2}
-$
-3. normalize features: $
-\hat{x_{i}} \gets \frac{x_{i} - \mu_{\beta}}{\sqrt{{{\sigma}_{\beta} + \epsilon}^{2}}}
-$
-4. Put batch mean and variance: $
-y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})
-$
-5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
+### [Batch Norm](#Batch Normalization)
 
 ### Ensembling
 
@@ -524,7 +540,7 @@ for i in range(nb_epochs):
 Momentum is a mehod that helps accelerate SGD in the relevant direction and dampends oscillations seen in the image below.
 
 <figure style="width:100%;display:block;margin-left:auto;margin-right:auto;">
-<img src="https://raw.githubusercontent.com/ztlevi/picee_images/master/common/image.s3kghjrlof.png" alt=""/>
+<img src="./assets/sgd_momentum.png" alt=""/>
 <figcaption></figcaption>
 </figure>
 $
@@ -641,7 +657,7 @@ $
 where the computational cost depends multiplicatively onthe number of input channels M, the number of output channe is N, the kernel size $D_K \cdot D_K$ and the feature map size $D_F \cdot D_F$.
 
 <figure style="width:50%;  display: block; margin-left: auto; margin-right: auto;">
-<img src="https://raw.githubusercontent.com/ztlevi/picee_images/master/common/image.w1oy7a5qkr.png" alt=""/>
+<img src="./assets/depth-wise-conv.png" alt=""/>
 <figcaption></figcaption>
 </figure>
 
@@ -670,13 +686,19 @@ For a given layer, and width multiplier $α$, the number of input channels $M$ b
 
 The bottleneck blocks appear similar to residual block where each block contains an input followed by several bottlenecks then followed by expansion. detail code [here](https://github.com/keras-team/keras-applications/blob/master/keras_applications/mobilenet_v2.py#L425).
 
-![inverted residuals in mobilenet v2](./assets/IR.png)
+<figure style="width:70%;display:block;margin-left:auto;margin-right:auto;">
+<img src="./assets/IR.png" alt="inverted residuals in mobilenet v2"/>
+<figcaption></figcaption>
+</figure>
 
 - Use shortcuts directly between the bottlenecks.
 
 - The ratio between the size of the input bottleneck and the inner size as the **expansion ratio**.
 
-![mobilenet v2 structure](./assets/mobilenetv2.png)
+<figure style="width:70%;display:block;margin-left:auto;margin-right:auto;">
+<img src="./assets/mobilenetv2.png" alt="mobilenet v2 structure"/>
+<figcaption></figcaption>
+</figure>
 
 # Two (Multi Task Learning) MTL methods for Deep Learning
 
