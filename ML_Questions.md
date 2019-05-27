@@ -94,6 +94,20 @@ Given a data science / machine learning project, what steps should we follow? He
 
 ![](assets/workflow.png)
 
+## Confusion matrix
+
+- Accuracy:
+
+  ![img](./assets/cm_accuracy.png)
+
+- Precision:
+
+  ![img](./assets/cm_precision.png)
+
+- Recall:
+
+  ![img](./assets/cm_recall.png)
+
 ## Weight Initialization
 
 `W = 0.01 * np.random.randn(D,H)`, where randn samples from a zero mean, unit standard deviation gaussian. One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that we can normalize the variance of each neuron’s output to 1 by scaling its weight vector by the square root of its fan-in (i.e. its number of inputs). `w = np.random.randn(n) / sqrt(n)`, where n is the number of its inputs.
