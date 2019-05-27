@@ -4,6 +4,8 @@
 
 - [General](#general)
   - [Project Workflow](#project-workflow)
+  - [Normalization](#normalization)
+    - [Common pitfall](#common-pitfall)
   - [Activation Function](#activation-function)
   - [Cost function](#cost-function)
     - [L1, L2](#l1-l2)
@@ -15,9 +17,12 @@
     - [Remove features](#remove-features)
     - [Early stopping](#early-stopping)
     - [Regularization](#regularization)
+      - [L1 Regularization or Lasso or L1 norm](#l1-regularization-or-lasso-or-l1-norm)
+      - [L2 Regularization or Ridge Regularization](#l2-regularization-or-ridge-regularization)
       - [DropOut (Regularization technique)](#dropout-regularization-technique)
       - [DropConnect](#dropconnect)
       - [Comparison](#comparison)
+    - [Batch Normalization](#batch-normalization)
     - [Ensembling](#ensembling)
   - [Clustering - K-means](#clustering---k-means)
   - [Principal Component Analysis](#principal-component-analysis)
@@ -44,14 +49,25 @@
     - [ADAM](#adam)
   - [Models](#models)
     - [CNN](#cnn)
+    - [Bottleneck layer](#bottleneck-layer)
     - [RNN and LSTM](#rnn-and-lstm)
     - [Resnet](#resnet)
     - [Mobilenet v1](#mobilenet-v1)
-- [Two MTL methods for Deep Learning](#two-mtl-methods-for-deep-learning)
+      - [Depthwise Separable Convolution.](#depthwise-separable-convolution)
+      - [Width Multiplier: Thinner Models](#width-multiplier-thinner-models)
+    - [Mobilenet v2](#mobilenet-v2)
+      - [Inverted residuals](#inverted-residuals)
+- [Two (Multi Task Learning) MTL methods for Deep Learning](#two-multi-task-learning-mtl-methods-for-deep-learning)
   - [Hard parameter sharing](#hard-parameter-sharing)
   - [Soft parameter sharing](#soft-parameter-sharing)
-    - [Yolo](#yolo)
-      - [YOLO loss](#yolo-loss)
+    - [Yolo v1](#yolo-v1)
+    - [Yolo 9000](#yolo-9000)
+    - [Yolo v3](#yolo-v3)
+      - [Anchor Boxes](#anchor-boxes)
+        - [Kmeans implementation](#kmeans-implementation)
+      - [Multi-scale training](#multi-scale-training)
+      - [Loss](#loss)
+  - [Reference](#reference)
 
 <!-- markdown-toc end -->
 
@@ -77,6 +93,20 @@ Given a data science / machine learning project, what steps should we follow? He
 - **Iterate.** Iterate the previous steps. Data science tends to be an iterative process, with new and improved models being developed over time.
 
 ![](assets/workflow.png)
+
+## Normalization
+
+Normalization： refers to normalizing the data dimensions so that they are of approximately the same scale. One is to divide each dimension by its standard deviation, once it has been zero-centered: `(X /= np.std(X, axis = 0))`. Another form of this preprocessing normalizes each dimension so that the min and max along the dimension is -1 and 1 respectively.
+
+```python
+(x - x.min()) / (x.max() - x.min()) # values from 0 to 1
+2*(x - x.min()) / (x.max() - x.min()) - 1 # values from -1 to 1
+(x - x.mean()) / x.std() # values from ? to ?, but mean at 0
+```
+
+### Common pitfall
+
+An important point to make about the preprocessing is that any preprocessing statistics (e.g. the data mean) must only be computed on the training data, and then applied to the validation / test data. E.g. computing the mean and subtracting it from every image across the entire dataset and then splitting the data into train/val/test splits would be a mistake. **Instead, the mean must be computed only over the training data and then subtracted equally from all splits (train/val/test).**
 
 ## Activation Function
 
