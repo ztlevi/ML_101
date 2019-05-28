@@ -20,7 +20,7 @@ def non_max_suppression_slow(boxes, overlapThresh):
     # compute the area of the bounding boxes and sort the bounding
     # boxes by the bottom-right y-coordinate of the bounding box
     area = (x2 - x1 + 1) * (y2 - y1 + 1)
-    idxs = np.argsort(y2)
+    idxs = np.argsort(y2)  # Sort by score if score is available
 
     # keep looping while some indexes still remain in the indexes
     # list
