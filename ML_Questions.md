@@ -391,6 +391,16 @@ TODO: finish introduction
 
 ![KNN](assets/knn.png)
 
+### Naive Bayes
+
+#### TODO explain formula
+
+- Naive Bayes (NB) is a supervised learning algorithm based on applying [Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem)
+- It is called naive because it builds the naive assumption that each feature are independent of each other
+- NB can make different assumptions (i.e., data distributions, such as Gaussian, Multinomial, Bernoulli)
+- Despite the over-simplified assumptions, NB classifier works quite well in real-world applications, especially for text classification (e.g., spam filtering)
+- NB can be extremely fast compared to more sophisticated methods
+
 ## SVM
 
 Try to find a **optimal hyperplane** to separate two classes of data.
@@ -399,7 +409,7 @@ Cost function: $
 min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] + \frac{1}{2}\sum_{j=1}^n\theta_j^2
 $
 
-- Can perform linear, nonlinear, or outlier detection (unsupervised)
+- Can perform linear, nonlinear, or outlier detection (unsupervised) depending on the kernel funciton
 - Large margin classifier: using SVM we not only have a decision boundary, but want the boundary to be as far from the closest training point as possible
 
 - (Optional): Why Large margin classifier? Let's say a linear svm. If you take a look at the cost function, in order to minimize the cost, the inner product of $\theta^Tx$ need to be greater than 1 or less than -1. In this case, if $\theta$ is not the perfect decision boundary, it will have larger cost.
