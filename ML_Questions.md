@@ -811,11 +811,11 @@ According to [1] the standard Euclidean distance causes larger boxes to generate
 
 The Jaccard index can be defined for two boxes $b_1 = (w_1 , h_1) , b_2 = (w_2 , h_2)$ as follows
 
-![img](./yolo_Jaccard_index.jpg)
+![img](./assets/yolo_Jaccard_index.jpg)
 
 The k-means clustering algorithm does not really change a lot when applied to anchor boxes. At initialization we can choose $k$ random boxes as our initial means $a_i$ . Then we can assign each bounding box $b_p$ to a cluster $C_i$ :
 
-![img](./yolo_clustering.jpg)
+![img](./assets/yolo_clustering.jpg)
 
 ```python
 def iou(box, clusters):
@@ -859,7 +859,7 @@ def kmeans(boxes, k, dist=np.median):
 
 #### Multi-scale training
 
-![img](./yolov3.png)
+![img](./assets/yolov3.png)
 
 Change the input image size from 448 × 448 to 416 × 416. This creates an odd number spatial dimension (7×7 v.s. 8×8 grid cell). The center of a picture is often occupied by a large object. With an odd number grid cell, it is more certain on where the object belongs.
 
