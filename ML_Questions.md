@@ -749,7 +749,7 @@ The constraints used for soft parameter sharing in deep neural networks have bee
 
 ### Yolo v1
 
-![yolo v1 structure](/Users/zhangdi/Documents/Machine_Learning_Questions/assets/yolov1.png)
+![yolo v1 structure](assets/yolov1.png)
 
 - The YOLO design enables end-to-end training and real-time speeds while maintaining high average precision
 
@@ -767,19 +767,25 @@ The constraints used for soft parameter sharing in deep neural networks have bee
 
 - The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, $t_{x}, t_{y}, t_{w}, t_{h}$, and to. If the cell is offset from the top left corner of the image by $(cx, cy)$ and the bounding box prior has width and height $p_{w}, p_{h}$, then the predictions correspond to:
 
-  ![output formula](/Users/zhangdi/Documents/Machine_Learning_Questions/assets/yolo_formula1.png)
+  ![output formula](assets/yolo_formula1.png)
 
 - **Fine-Grained Features**: It reshapes the 26 × 26 × 512 layer to 13 × 13 × 2048. Then it concatenates with the original 13 × 13 ×1024 output layer. Now we apply convolution filters on the new 13 × 13 × 3072 layer to make predictions.
 
 ### Yolo v3
 
+#### Predictions
+
 - **Objectness Prediction**: predicts an objectness score for each bounding box using **logistic regression**. This should be 1 if the bounding box prior overlaps a ground truth object by more than any other bounding box prior. If a bounding box prior is not assigned to a ground truth object it incurs no loss for coordinate or class predictions, only objectness.
 
 - **Class Prediction**: simply use independent logistic classifiers. During training we use binary cross entropy loss for the class predictions.
 
-- **Feature Pyramid**: YOLOv3 predicts boxes at **3 different scales**. Take the feature map from 2 layers previous and **upsample it by 2** and then add a few more convolutional layers to process this combined feature map, and eventually predict a similar tensor, although now **twice the size**.chose 9 clusters and 3 scales arbitrarily and then divide up the clusters **evenly across scales**.
+#### Feature Pyramid Networks (FPN)
 
-- **Better at detecting smaller objects**: Detections at different layers helps address the issue of detecting small objects, a frequent complaint with YOLO v2. The upsampled layers concatenated with the previous layers help preserve the fine grained features which help in detecting small objects. The 13 x 13 layer is responsible for detecting large objects, whereas the 52 x 52 layer detects the smaller objects, with the 26 x 26 layer detecting medium objects. Here is a comparative analysis of different objects picked in the same object by different layers.
+FPN composes of a **bottom-up** and a **top-down** pathway. The bottom-up pathway is the usual convolutional network for feature extraction. As we go up, the spatial resolution decreases. With more high-level structures detected, the **semantic** value for each layer increases.
+
+- YOLOv3 predicts boxes at **3 different scales**. Take the feature map from 2 layers previous and **upsample it by 2** and then add a few more convolutional layers to process this combined feature map, and eventually predict a similar tensor, although now **twice the size**.chose 9 clusters and 3 scales arbitrarily and then divide up the clusters **evenly across scales**.
+
+- Detections at different layers helps address the issue of detecting small objects, a frequent complaint with YOLO v2. The upsampled layers concatenated with the previous layers help preserve the fine grained features which help in detecting small objects. The 13 x 13 layer is responsible for detecting large objects, whereas the 52 x 52 layer detects the smaller objects, with the 26 x 26 layer detecting medium objects. Here is a comparative analysis of different objects picked in the same object by different layers.
 
 #### Anchor Boxes
 
@@ -893,6 +899,45 @@ A similar procedure is followed again, where the feature map from layer 91 is su
 
   Most boxes do not contain any objects. This causes a class imbalance problem, i.e. we train the model to detect background more frequently than detecting objects. To remedy this, we weight this loss down by a factor $\lambda noobj$ (default: 0.5).
 
+### Single Shot MultiBox Detector(SSD)
+
+- **Single Shot**: this means that the tasks of object localization and classification are done in a single forward pass of the network
+- **MultiBox**: this is the name of a technique for bounding box regression developed by Szegedy et al. (we will briefly cover it shortly)
+- **Detector**: The network is an object detector that also classifies those detected objects
+
+#### Architecture
+
+![Architecture](assets/ssd.png)
+
+#### Loss Function
+
+MultiBox’s loss function also combined two critical components that made their way into SSD:
+
+- **Confidence Loss**: this measures how confident the network is of the objectness of the computed bounding box. Categorical cross-entropy is used to compute this loss.
+- **Location Loss**: this measures how far away the network’s predicted bounding boxes are from the ground truth ones from the training set. L1-Norm is used here.
+
+$multibox_loss = confidence_loss + alpha * location_loss$
+
+Where the alpha term helps us in balancing the contribution of the location loss.
+
+#### Hard Negative Mining
+
+During training, as most of the bounding boxes will have low IoU and therefore be interpreted as negative training examples, we may end up with a disproportionate amount of negative examples in our training set. Therefore, instead of using all negative predictions, it is advised to **keep a ratio of negative to positive examples of around 3:1**. The reason why you need to keep negative samples is because the network also needs to learn and be explicitly told what constitutes an incorrect detection.
+
+![Example of hard negative mining](assets/hard_negative_mining.png)
+
+#### Data Augmentation
+
+- Generated additional training examples with patches of the original image at different IoU ratios (e.g. 0.1, 0.3, 0.5, etc.) and random patches as well.
+
+- Each image is also randomly horizontally flipped with a probability of 0.5.
+
 ## Reference
 
-[1][standford cs231 notes](http://cs231n.github.io/) [2][mobilenet v1](https://arxiv.org/pdf/1704.04861.pdf) [3][mobilenet v2](https://arxiv.org/pdf/1801.04381.pdf) [4][yolo v1](https://arxiv.org/pdf/1506.02640.pdf) [5][yolo 9000](https://arxiv.org/pdf/1612.08242.pdf) [6][yolo v3](https://pjreddie.com/media/files/papers/YOLOv3.pdf) [7][real-time-object-detection-with-yolo-yolov2-](https://medium.com/@jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088)
+1. [standford cs231 notes](http://cs231n.github.io/)
+2. [mobilenet v1](https://arxiv.org/pdf/1704.04861.pdf)
+3. [mobilenet v2](https://arxiv.org/pdf/1801.04381.pdf)
+4. [yolo v1](https://arxiv.org/pdf/1506.02640.pdf)
+5. [yolo 9000](https://arxiv.org/pdf/1612.08242.pdf)
+6. [yolo v3](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
+7. [real-time-object-detection-with-yolo-yolov2-](https://medium.com/@jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088)
