@@ -3,12 +3,19 @@
 ## Start to contribute
 
 ```
+git clone https://github.com/ztlevi/Machine_Learning_Questions.git
+
+cd Machine_Learning_Questions
+
+# Pre-commit plugins
 pip install pre-commit
-
-# do the following command after clone inside the project folder
 pre-commit install
+
+# Install Nodejs first
+# Gitbook
+npm install -g gitbook-cli
+
+# Then build and serve the book
+gitbook build
+gitbook serve
 ```
-
-## Recommend using [Typora](https://typora.io/) with latex support enabled
-
-![img](https://raw.githubusercontent.com/ztlevi/picee_images/master/common/image.ensus3x8gzf.png)

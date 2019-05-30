@@ -87,7 +87,7 @@ Given a data science / machine learning project, what steps should we follow? He
 - **Preprocess.** This would include data integration, cleaning, transformation, reduction, discretization and more.
 - **Engineer features.** Coming up with features is difficult, time-consuming, requires expert knowledge. Applied machine learning is basically feature engineering. This step usually involves feature selection and creation, using domain knowledge. Can be minimal for deep learning projects.
 - **Develop models.** Choose which algorithm to use, what hyperparameters to tune, which architecture to use etc.
-- **Ensemble.** Ensemble can usually boost performance, depending on the correlations of the models/features. So it’s always a good idea to try out. But be open-minded about making tradeoff - some ensemble are too complex/slow to put into production.
+- **Ensemble.** Ensemble can usually boost performance, depending on the correlations of the models/features. So it's always a good idea to try out. But be open-minded about making tradeoff - some ensemble are too complex/slow to put into production.
 - **Deploy model.** Deploy models into production for inference.
 - **Monitor model.** Monitor model performance, and collect feedbacks.
 - **Iterate.** Iterate the previous steps. Data science tends to be an iterative process, with new and improved models being developed over time.
@@ -110,13 +110,13 @@ Given a data science / machine learning project, what steps should we follow? He
 
 ## Weight Initialization
 
-`W = 0.01 * np.random.randn(D,H)`, where randn samples from a zero mean, unit standard deviation gaussian. One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that we can normalize the variance of each neuron’s output to 1 by scaling its weight vector by the square root of its fan-in (i.e. its number of inputs). `w = np.random.randn(n) / sqrt(n)`, where n is the number of its inputs.
+`W = 0.01 * np.random.randn(D,H)`, where randn samples from a zero mean, unit standard deviation gaussian. One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that we can normalize the variance of each neuron's output to 1 by scaling its weight vector by the square root of its fan-in (i.e. its number of inputs). `w = np.random.randn(n) / sqrt(n)`, where n is the number of its inputs.
 
 In practice, the current recommendation is to use ReLU units and use the `w = np.random.randn(n) * sqrt(2.0/n)`.
 
 ## Normalization
 
-Normalization： refers to normalizing the data dimensions so that they are of approximately the same scale. One is to divide each dimension by its standard deviation, once it has been zero-centered: `(X /= np.std(X, axis = 0))`. Another form of this preprocessing normalizes each dimension so that the min and max along the dimension is -1 and 1 respectively.
+Normalization: refers to normalizing the data dimensions so that they are of approximately the same scale. One is to divide each dimension by its standard deviation, once it has been zero-centered: `(X /= np.std(X, axis = 0))`. Another form of this preprocessing normalizes each dimension so that the min and max along the dimension is -1 and 1 respectively.
 
 ```python
 (x - x.min()) / (x.max() - x.min()) # values from 0 to 1
@@ -128,12 +128,13 @@ Normalization： refers to normalizing the data dimensions so that they are of a
 
 When data flow through a deep network, the weights and parameters adjust those values, some times make the data too big or too small, known as **internal covariate shift**.
 
-To solve the vanishing gradient($0.9^{k}$) and gradient explosion($1.1^{k}$), batch normalization is introduced.
+To solve the vanishing gradient($$0.9^{k}$$) and gradient explosion($$1.1^{k}$$), batch normalization is introduced.
 
-1. Compute mini-batch mean: ${\mu}_{\beta} \gets \frac{1}{m}\sum_{i=1}^M x_{i}$
-2. Compute mini-batch variance: ${{\sigma}_{\beta}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\beta})^{2}$
-3. normalize features: $\hat{x_{i}} \gets \frac{x_{i} - \mu_{\beta}}{\sqrt{{{\sigma}_{\beta} + \epsilon}^{2}}}$
-4. Put batch mean and variance: $y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$
+1. Compute mini-batch mean: $${\mu}_{\beta} \gets \frac{1}{m}\sum_{i=1}^M x_{i}$$
+2. Compute mini-batch variance: $${\sigma}_{\beta}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\beta})^{2}$$
+3. normalize features: $$\hat{x_i} \gets \frac{x_{i} - \mu_{\beta} }{\sqrt{ { {\sigma}_{\beta} +
+   \epsilon}^{2} } }$$
+4. Put batch mean and variance: $$y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$$
 5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
 
 - Benefits:
@@ -150,7 +151,7 @@ An important point to make about the preprocessing is that any preprocessing sta
 
 ## Activation Function
 
-the activation function is usually an abstraction representing the rate of action potential firing in the cell. In its simplest form, this function is binary—that is, either the neuron is firing or not.
+the activation function is usually an abstraction representing the rate of action potential firing in the cell. In its simplest form, this function is binary-that is, either the neuron is firing or not.
 
 **Important**: The most important meaning add activation function is by adding the activation funciton, we are adding non-linearity to the model.
 
@@ -160,9 +161,9 @@ For neural networks
 
 - Multi-class: softmax
 
-  $
+  $$
   p_{o,c} = e^{y_{k}}/\sum_{c=1}^M e^{y_{c}}
-  $
+  $$
 
 - Binary: sigmoid
 
@@ -170,7 +171,7 @@ For neural networks
 
 ## Cost function
 
-A Loss Functions tells us “how good” our model is at making predictions for a given set of parameters. The cost function has its own curve and its own gradients. The slope of this curve tells us how to update our parameters to make the model more accurate.
+A Loss Functions tells us "how good" our model is at making predictions for a given set of parameters. The cost function has its own curve and its own gradients. The slope of this curve tells us how to update our parameters to make the model more accurate.
 
 ### L1, L2
 
@@ -178,9 +179,9 @@ A Loss Functions tells us “how good” our model is at making predictions for 
 
 If M>2 (i.e. multiclass classification), we calculate a separate loss for each class label per observation and sum the result. Usually an activation function (Sigmoid / Softmax) is applied to the scores before the CE Loss computation.
 
-$
+$$
 -\sum_{c=1}^M y_{o,c}log(p_{o,c})
-$
+$$
 
 > Note:
 >
@@ -199,7 +200,7 @@ $
 
 ## How to Prevent Overfitting
 
-Detecting overfitting is useful, but it doesn’t solve the problem. Fortunately, you have several options to try.
+Detecting overfitting is useful, but it doesn't solve the problem. Fortunately, you have several options to try.
 
 Here are a few of the most popular solutions for overfitting:
 
@@ -209,7 +210,7 @@ Cross-validation is a powerful preventative measure against overfitting.
 
 The idea is clever: Use your initial training data to generate multiple mini train-test splits. Use these splits to tune your model.
 
-In standard k-fold cross-validation, we partition the data into k subsets, called folds. Then, we iteratively train the algorithm on k-1 folds while using the remaining fold as the test set (called the “holdout fold”).
+In standard k-fold cross-validation, we partition the data into k subsets, called folds. Then, we iteratively train the algorithm on k-1 folds while using the remaining fold as the test set (called the "holdout fold").
 
 ![K-Fold Cross-Validation](https://elitedatascience.com/wp-content/uploads/2017/06/Cross-Validation-Diagram.jpg)
 
@@ -221,27 +222,27 @@ We have another article with a [more detailed breakdown of cross-validation](htt
 
 ### Train with more data
 
-It won’t work every time, but training with more data can help algorithms detect the signal better. In the earlier example of modeling height vs. age in children, it’s clear how sampling more schools will help your model.
+It won't work every time, but training with more data can help algorithms detect the signal better. In the earlier example of modeling height vs. age in children, it's clear how sampling more schools will help your model.
 
-Of course, that’s not always the case. If we just add more noisy data, this technique won’t help. That’s why you should always ensure your data is clean and relevant.
+Of course, that's not always the case. If we just add more noisy data, this technique won't help. That's why you should always ensure your data is clean and relevant.
 
 ### Remove features
 
 Some algorithms have built-in feature selection.
 
-For those that don’t, you can manually improve their generalizability by removing irrelevant input features.
+For those that don't, you can manually improve their generalizability by removing irrelevant input features.
 
-An interesting way to do so is to tell a story about how each feature fits into the model. This is like the data scientist's spin on software engineer’s [rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging) technique, where they debug their code by explaining it, line-by-line, to a rubber duck.
+An interesting way to do so is to tell a story about how each feature fits into the model. This is like the data scientist's spin on software engineer's [rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging) technique, where they debug their code by explaining it, line-by-line, to a rubber duck.
 
-If anything doesn't make sense, or if it’s hard to justify certain features, this is a good way to identify them.
+If anything doesn't make sense, or if it's hard to justify certain features, this is a good way to identify them.
 
 In addition, there are several [feature selection heuristics](https://elitedatascience.com/dimensionality-reduction-algorithms#feature-selection) you can use for a good starting point.
 
 ### Early stopping
 
-When you’re [training a learning algorithm iteratively](https://elitedatascience.com/machine-learning-iteration#model), you can measure how well each iteration of the model performs.
+When you're [training a learning algorithm iteratively](https://elitedatascience.com/machine-learning-iteration#model), you can measure how well each iteration of the model performs.
 
-Up until a certain number of iterations, new iterations improve the model. After that point, however, the model’s ability to generalize can weaken as it begins to overfit the training data.
+Up until a certain number of iterations, new iterations improve the model. After that point, however, the model's ability to generalize can weaken as it begins to overfit the training data.
 
 Early stopping refers stopping the training process before the learner passes that point.
 
@@ -253,7 +254,7 @@ Today, this technique is mostly used in deep learning while other techniques (e.
 
 Regularization refers to a broad range of techniques for artificially forcing your model to be simpler.
 
-The method will depend on the type of learner you’re using. For example, you could prune a decision tree, use dropout on a neural network, or add a penalty parameter to the cost function in regression.
+The method will depend on the type of learner you're using. For example, you could prune a decision tree, use dropout on a neural network, or add a penalty parameter to the cost function in regression.
 
 Oftentimes, the regularization method is a hyperparameter as well, which means it can be tuned through cross-validation.
 
@@ -261,17 +262,17 @@ We have a more detailed discussion here on [algorithms and regularization method
 
 #### L1 Regularization or Lasso or L1 norm
 
-$
+$$
 L(x,y) = \sum_{i=1}^n(y_i - h_{\theta}(x_i))^2 + \lambda \sum_{i=1}^n |\theta_i|
-$
+$$
 
 In L1 regularization we penalize the absolute value of the weights.
 
 #### L2 Regularization or Ridge Regularization
 
-$
+$$
 L(x,y) = \sum_{i=1}^n(y_i - h_{\theta}(x_i))^2 + \lambda \sum_{i=1}^n \theta_i^2
-$
+$$
 
 In L2 regularization, regularization term is the sum of square of all feature weights as shown above in the equation.
 
@@ -330,17 +331,17 @@ Bagging uses complex base models and tries to "smooth out" their predictions, wh
 K-means algorithm:
 
 - Input:
-  - $K$ (number of clusters)
-  - Training set ${x^1,x^2,...,x^m}$ ($x^i \in \mathbb{R}^n$)
+  - $$K$$ (number of clusters)
+  - Training set $${x^1,x^2,...,x^m}$$ ($$x^i \in \mathbb{R}^n$$)
 - Algorithm:
 
-  1. Randomly initialized $K$ cluster centroids $\mu_1,\mu_2,...,\mu_K \in \mathbb{R}^n$
+  1. Randomly initialized $$K$$ cluster centroids $$\mu_1,\mu_2,...,\mu_K \in \mathbb{R}^n$$
   2. Repeat {
 
-     - for i = 1 to $m$
-       - $c^i$ := index (from 1 to K) of cluster centroid closest to $x^i$
-     - for k = 1 to $K$
-       - $\mu_k$ := average (mean) of points assigned to Cluster k
+     - for i = 1 to $$m$$
+       - $$c^i$$ := index (from 1 to K) of cluster centroid closest to $$x^i$$
+     - for k = 1 to $$K$$
+       - $$\mu_k$$ := average (mean) of points assigned to Cluster k
 
      }
 
@@ -397,14 +398,12 @@ TODO: finish introduction
 
 Try to find a **optimal hyperplane** to separate two classes of data.
 
-Cost function: $
-min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] + \frac{1}{2}\sum_{j=1}^n\theta_j^2
-$
+Cost function: $$ min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] + \frac{1}{2}\sum_{j=1}^n\theta_j^2 $$
 
 - Can perform linear, nonlinear, or outlier detection (unsupervised) depending on the kernel funciton
 - Large margin classifier: using SVM we not only have a decision boundary, but want the boundary to be as far from the closest training point as possible
 
-- (Optional): Why Large margin classifier? Let's say a linear svm. If you take a look at the cost function, in order to minimize the cost, the inner product of $\theta^Tx$ need to be greater than 1 or less than -1. In this case, if $\theta$ is not the perfect decision boundary, it will have larger cost.
+- (Optional): Why Large margin classifier? Let's say a linear svm. If you take a look at the cost function, in order to minimize the cost, the inner product of $$\theta^Tx$$ need to be greater than 1 or less than -1. In this case, if $$\theta$$ is not the perfect decision boundary, it will have larger cost.
 - The closest training examples are called support vectors, since they are the points based on which the decision boundary is drawn
 - SVMs are sensitive to feature scaling
 - If C is very large, SVM is very sensitive to outliers.But if C is reasonably small, or a not too large, then you stick with the decision boundary more robust with outliers.
@@ -434,11 +433,11 @@ $
 
 **Getting faster/smaller networks is important for running these deep learning networks on mobile devices.**
 
-The ranking can be done according to the L1/L2 mean of neuron weights, their mean activations, the number of times a neuron wasn’t zero on some validation set, and other creative methods . After the pruning, the accuracy will drop (hopefully not too much if the ranking clever), and the network is usually trained more to recover.
+The ranking can be done according to the L1/L2 mean of neuron weights, their mean activations, the number of times a neuron wasn't zero on some validation set, and other creative methods . After the pruning, the accuracy will drop (hopefully not too much if the ranking clever), and the network is usually trained more to recover.
 
-If we prune too much at once, the network might be damaged so much it won’t be able to recover.
+If we prune too much at once, the network might be damaged so much it won't be able to recover.
 
-So in practice this is an iterative process - often called ‘Iterative Pruning’: Prune / Train / Repeat.
+So in practice this is an iterative process - often called 'Iterative Pruning': Prune / Train / Repeat.
 
 ![Pruning steps](http://jacobgil.github.io/assets/pruning_steps.png)
 
@@ -446,25 +445,25 @@ So in practice this is an iterative process - often called ‘Iterative Pruning�
 
 ### Gradient Descent
 
-Let's say your hypothesis function contains multiple parameters, defined as $\theta_1$, $\theta_2$, $\theta_3$.
+Let's say your hypothesis function contains multiple parameters, defined as $$\theta_1$$, $$\theta_2$$, $$\theta_3$$.
 
 Your cost function takes both your model output and your ground truth, e.g.:
 
-$
+$$
 J(\theta_0, \theta_1,...,\theta_n) = \frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^i) - y^i)^2
-$
+$$
 
-Then we need to calculate the partial deriative of the cost function with respect to the each $\theta$, from 0 to n.
+Then we need to calculate the partial deriative of the cost function with respect to the each $$\theta$$, from 0 to n.
 
-Then we can simultaneously update the $\theta_j = \theta_j - \alpha\frac{}{\theta_j}J(\theta_0, \theta_1,...,\theta_n)$
+Then we can simultaneously update the $$\theta_j = \theta_j - \alpha\frac{}{\theta_j}J(\theta_0, \theta_1,...,\theta_n)$$
 
 #### derivative of a matrix-matrix product
 
-$
+$$
 D = W \cdot X
 dW = dD \cdot X^T
 dX = W^T \cdot dD
-$
+$$
 
 ### Backpropagation
 
@@ -476,46 +475,45 @@ A neural network propagates the signal of the input data forward through its par
 
 As seen above, foward propagation can be viewed as a long series of nested equations. If you think of feed forward this way, then backpropagation is merely an application the Chain rule to find the Derivatives of cost with respect to any variable in the nested equation. Given a forward propagation function:
 
-$
+$$
 f(x) = A(B(C(x)))
-$
+$$
 
-A, B, and C are activation functions at different layers. Using the chain rule we easily calculate the derivative of $f(x)$ with respect to $x$:
+A, B, and C are activation functions at different layers. Using the chain rule we easily calculate the derivative of $$f(x)$$ with respect to $$x$$:
 
-$
+$$
 f'(x) = f'(A) \cdot A'(B) \cdot B'(C) \cdot C'(x)
-$
+$$
 
-How about the derivative with respect to B? To find the derivative with respect to B you can pretend $B(C(x))$ is a constant, replace it with a placeholder variable B, and proceed to find the derivative normally with respect to B.
+How about the derivative with respect to B? To find the derivative with respect to B you can pretend $$B(C(x))$$ is a constant, replace it with a placeholder variable B, and proceed to find the derivative normally with respect to B.
 
-$
+$$
 f'(B) = f'(A) \cdot A'(B)
-$
+$$
 
 This simple technique extends to any variable within a function and allows us to precisely pinpoint the exact impact each variable has on the total output.
 
 #### Applying the chain rule
 
-Let’s use the chain rule to calculate the derivative of cost with respect to any weight in the network. The chain rule will help us identify how much each weight contributes to our overall error and the direction to update each weight to reduce our error. Here are the equations we need to make a prediction and calculate total error, or cost:
+Let's use the chain rule to calculate the derivative of cost with respect to any weight in the network. The chain rule will help us identify how much each weight contributes to our overall error and the direction to update each weight to reduce our error. Here are the equations we need to make a prediction and calculate total error, or cost:
 
 ![_images/backprop_ff_equations.png](https://ml-cheatsheet.readthedocs.io/en/latest/_images/backprop_ff_equations.png)
 
 Given a network consisting of a single neuron, total cost could be calculated as:
 
-$
+$$
 Cost = C(R(Z(XW)))
-$
+$$
 
 Using the chain rule we can easily find the derivative of Cost with respect to weight W.
 
-$
-C'(W) = C'(R) \cdot R'(Z) \cdot Z'(W)
-= (\hat{y} - y) \cdot R'(Z) \cdot X
-$
+$$
+C'(W) = C'(R) \cdot R'(Z) \cdot Z'(W) = (\hat{y} - y) \cdot R'(Z) \cdot X
+$$
 
 ### Batch gradient descent
 
-Vanilla gradient descent, aka batch gradient descent, computes the gradient of the cost function to the parameters $\theta$ for the entire training dataset.
+Vanilla gradient descent, aka batch gradient descent, computes the gradient of the cost function to the parameters $$\theta$$ for the entire training dataset.
 
 ```python
 for i in range(nb_epochs):
@@ -525,7 +523,7 @@ for i in range(nb_epochs):
 
 ### Stochastic gradient descent
 
-Stochastic gradient descent (SGD) in contrast performs a parameter update for each training example $x^i$ and label $y^i$. Note that we shuffle the training data at every epoch.
+Stochastic gradient descent (SGD) in contrast performs a parameter update for each training example $$x^i$$ and label $$y^i$$. Note that we shuffle the training data at every epoch.
 
 SGD performs frequent updates with a high variance that cause the objective function to fluctuate heavily as in Image 1.
 
@@ -559,43 +557,46 @@ Momentum is a mehod that helps accelerate SGD in the relevant direction and damp
 <img src="./assets/sgd_momentum.png" alt=""/>
 <figcaption></figcaption>
 </figure>
-$
-m_t = \gamma m_{t-1}+\eta\nabla_{\theta}J(\theta)$
 
-$\theta=\theta - m_t
-$
+$$
+m_t = \gamma m_{t-1}+\eta\nabla_{\theta}J(\theta)
+$$
 
-Essentially, when using momentum, we push a ball down a hill. The ballaccumulates momentum as it rolls downhill, becoming faster and faster onthe way (until it reaches its terminal velocity if there is air resistance, i.e. $\gamma<1$). The same thing happens to our parameter updates: The momentumterm increases for dimensions whose gradients point in the same directionsand reduces updates for dimensions whose gradients change directions. Asa result, we gain faster convergence and reduced oscillation.
+$$
+\theta=\theta - m_t
+$$
+
+Essentially, when using momentum, we push a ball down a hill. The ballaccumulates momentum as it rolls downhill, becoming faster and faster onthe way (until it reaches its terminal velocity if there is air resistance, i.e. $$\gamma<1$$). The same thing happens to our parameter updates: The momentumterm increases for dimensions whose gradients point in the same directionsand reduces updates for dimensions whose gradients change directions. Asa result, we gain faster convergence and reduced oscillation.
 
 ### ADAM
 
-Adaptive Moment Estimation (ADAM) is a method that computes adaptive learning rate for each parameter. In addition to storing an exponentially decaying averagae of past squared gradients \$v_t like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients $m_t$, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
+Adaptive Moment Estimation (ADAM) is a method that computes adaptive learning rate for each parameter. In addition to storing an exponentially decaying averagae of past squared gradients $$v_t$$ like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients $$m_t$$, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
 
-$m_t$ and $v_t$ are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively.
+$$m_t$$ and $$v_t$$ are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively.
 
-$
+$$
 m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t
-$
+$$
 
-$
+$$
 v_t = \beta_2 v_{t-1} + (1-\beta_2) v_t^2
-$
+$$
 
 Compute bias-corrected first moment estimate and bias-corrected second raw moment estimate.
 
-$
+$$
 \hat{m_t} = \frac{m_t}{1-\beta_1^t}
-$
+$$
 
-$
+$$
 \hat{v_t} = \frac{v_t}{1-\beta_2^t}
-$
+$$
 
-$
+$$
 \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v_t}} + \epsilon } \hat{m_t}
-$
+$$
 
-The authors propose default values of 0.9 for $\beta_1$, 0.999 for $\beta_2$, and $10^{-8}$ for $\epsilon$.
+The authors propose default values of 0.9 for $$\beta_1$$, 0.999 for $$\beta_2$$, and $$10^{-8}$$ for $$\epsilon$$.
 
 ## Models
 
@@ -636,7 +637,7 @@ The math behind LSTM can be pretty complicated, but intuitively LSTM introduce
 - forget gate
 - memory cell (internal state)
 
-The cell state is kind of like a conveyor belt. It runs straight down the entire chain, with only some minor linear interactions. It’s very easy for information to just flow along it unchanged.
+The cell state is kind of like a conveyor belt. It runs straight down the entire chain, with only some minor linear interactions. It's very easy for information to just flow along it unchanged.
 
 LSTM resembles human memory: it forgets old stuff (old internal state _ forget gate) and learns from new input (input node _ input gate)
 
@@ -648,17 +649,17 @@ LSTMs also have this chain like structure, but the repeating module has a differ
 
 ### Resnet
 
-Increasing network depth does not work by simply stacking layers together. Deep networks are hard to train because of the notorious vanishing gradient problem — as the gradient is back-propagated to earlier layers, repeated multiplication may make the gradient infinitively small. As a result, as the network goes deeper, its performance gets saturated or even starts degrading rapidly.
+Increasing network depth does not work by simply stacking layers together. Deep networks are hard to train because of the notorious vanishing gradient problem-as the gradient is back-propagated to earlier layers, repeated multiplication may make the gradient infinitively small. As a result, as the network goes deeper, its performance gets saturated or even starts degrading rapidly.
 
 The core idea of ResNet is introducing a so-called shortcut.
 
-- When the input and output are of the same dimensions, we use “identity shortcut connection” that skips one or more layers, as shown in the following figure:
+- When the input and output are of the same dimensions, we use "identity shortcut connection" that skips one or more layers, as shown in the following figure:
 
   ![img](https://cdn-images-1.medium.com/max/1500/1*ByrVJspW-TefwlH7OLxNkg.png)
 
 - When the dimensions increase, we consider two options: (A) THe shortcut still performs identity mapping, with extra zero entries padded for increasing dimensions. (B) The projection shortcut is used to match dimensions.
 
-The authors argues that stacking layers shouldn’t degrade the network performance, because we could simply stack identity mappings (layer that doesn’t do anything) upon the current network, and the resulting architecture would perform the same. This indicates that the deeper model should not produce a training error higher than its shallower counterparts.
+The authors argues that stacking layers shouldn't degrade the network performance, because we could simply stack identity mappings (layer that doesn't do anything) upon the current network, and the resulting architecture would perform the same. This indicates that the deeper model should not produce a training error higher than its shallower counterparts.
 
 ### Mobilenet v1
 
@@ -666,35 +667,35 @@ The authors argues that stacking layers shouldn’t degrade the network performa
 
 Standard convolutions have the computational cost of :
 
-$
+$$
 D_K \cdot D_K \cdot M \cdot N \cdot D_F \cdot D_F
-$
+$$
 
-where the computational cost depends multiplicatively onthe number of input channels M, the number of output channe is N, the kernel size $D_K \cdot D_K$ and the feature map size $D_F \cdot D_F$.
+where the computational cost depends multiplicatively onthe number of input channels M, the number of output channe is N, the kernel size $$D_K \cdot D_K$$ and the feature map size $$D_F \cdot D_F$$.
 
 <figure style="width:50%;  display: block; margin-left: auto; margin-right: auto;">
 <img src="./assets/depth-wise-conv.png" alt=""/>
 <figcaption></figcaption>
 </figure>
 
-Depthwise convolution is extremely efficient relative to standard convolution. However it only filters input channels, it does not combine them to create new features. So an additional layer that computes a linear combination ofthe output of depthwise convolution via $1 \times 1$ convolutionis needed in order to generate these new features.
+Depthwise convolution is extremely efficient relative to standard convolution. However it only filters input channels, it does not combine them to create new features. So an additional layer that computes a linear combination ofthe output of depthwise convolution via $$1 \times 1$$ convolutionis needed in order to generate these new features.
 
-The combination of depthwise convolution and $1 \times 1$ (pointwise) convolution is called depthwise separable con-volution.
+The combination of depthwise convolution and $$1 \times 1$$ (pointwise) convolution is called depthwise separable con-volution.
 
 Depthwise separable convolutions cost:
 
-$
+$$
 D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + \cdot M \cdot N \cdot D_F \cdot D_F
-$
+$$
 
-- $D_{F}$ is the spatial width and height of a square input feature map1
-- $M$ is the number of input channels (input depth)
-- $D_{G}$ is the spatial width and height of a square output feature map
-- $N$ is the number of output channel (output depth).
+- $$D_{F}$$ is the spatial width and height of a square input feature map1
+- $$M$$ is the number of input channels (input depth)
+- $$D_{G}$$ is the spatial width and height of a square output feature map
+- $$N$$ is the number of output channel (output depth).
 
 #### Width Multiplier: Thinner Models
 
-For a given layer, and width multiplier $α$, the number of input channels $M$ becomes $αM$ and the number of output channels $N$ becomes $αN$
+For a given layer, and width multiplier $$\alpha$$, the number of input channels $$M$$ becomes $$\alpha M$$ and the number of output channels $$N$$ becomes $$\alpha N$$
 
 ### Mobilenet v2
 
@@ -747,17 +748,17 @@ The constraints used for soft parameter sharing in deep neural networks have bee
 
 - Divides the input image into a S × S grid. If the center of an object falls into a grid cell, that grid cell is responsible for detecting that object.
 
-- Each bounding box consists of 5 predictions: $x, y, w, h$, and confidence. The $(x, y)$ coordinates represent the center of the box relative to the bounds of the grid cell. The width and height are predicted relative to the whole image. The confidence prediction represents the IOU between the predicted box and any ground truth box.
+- Each bounding box consists of 5 predictions: $$x, y, w, h$$, and confidence. The $$(x, y)$$ coordinates represent the center of the box relative to the bounds of the grid cell. The width and height are predicted relative to the whole image. The confidence prediction represents the IOU between the predicted box and any ground truth box.
 
 - Each grid cell also predicts C conditional class probabilities
 
-- Models detection as a regression problem. It divides the image into an even grid and simultaneously predicts bounding boxes, confidence in those boxes, and class probabilities. These predictions are encoded as an $S × S × (B ∗ 5 + C)$ tensor.
+- Models detection as a regression problem. It divides the image into an even grid and simultaneously predicts bounding boxes, confidence in those boxes, and class probabilities. These predictions are encoded as an $$S × S × (B ∗ 5 + C)$$ tensor.
 
 ### Yolo 9000
 
-- **An odd number of locations in feature map**: so there is a single center cell. For Objects, especially large objects, tend to occupy the center of the image so it’s good to have a single location right at the center to predict these objects instead of four locations that are all nearby.
+- **An odd number of locations in feature map**: so there is a single center cell. For Objects, especially large objects, tend to occupy the center of the image so it's good to have a single location right at the center to predict these objects instead of four locations that are all nearby.
 
-- The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, $t_{x}, t_{y}, t_{w}, t_{h}$, and to. If the cell is offset from the top left corner of the image by $(cx, cy)$ and the bounding box prior has width and height $p_{w}, p_{h}$, then the predictions correspond to:
+- The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, $$t_{x}, t_{y}, t_{w}, t_{h}$$, and to. If the cell is offset from the top left corner of the image by $$(cx, cy)$$ and the bounding box prior has width and height $$p_{w}, p_{h}$$, then the predictions correspond to:
 
   ![output formula](assets/yolo_formula1.png)
 
@@ -783,9 +784,9 @@ FPN composes of a **bottom-up** and a **top-down** pathway. The bottom-up pathwa
 
 YOLO v3 uses K-means to estimate the ideal bounding boxes
 
-Previously: Each object in training image is assigned to grid cell that contains that object's midpoint. Grid: 3x3, Output: 3x3x(5+3) ($p_c, x, y, h, w, c1, c2, c3$)
+Previously: Each object in training image is assigned to grid cell that contains that object's midpoint. Grid: 3x3, Output: 3x3x(5+3) ($$p_c, x, y, h, w, c1, c2, c3$$)
 
-With two anchor boxes: Each object in training image is assigned to grid cell that contains object's midpoint and anchor box for the grid cell with highest IoU. Grid: 3x3, Output: 3x3x2x(5+3) ($p_c, b_x, b_y, b_h, b_w, c1, c2, c3$)
+With two anchor boxes: Each object in training image is assigned to grid cell that contains object's midpoint and anchor box for the grid cell with highest IoU. Grid: 3x3, Output: 3x3x2x(5+3) ($$p_c, b_x, b_y, b_h, b_w, c1, c2, c3$$)
 
 As indicated in the [YOLO paper](https://arxiv.org/pdf/1506.02640.pdf), the early training is susceptible to unstable gradients. Initially, YOLO makes arbitrary guesses on the boundary boxes. These guesses may work well for some objects but badly for others resulting in steep gradient changes. In early training, predictions are fighting with each other on what shapes to specialize on.
 
@@ -809,11 +810,11 @@ https://lars76.github.io/object-detection/k-means-anchor-boxes/
 
 According to [1] the standard Euclidean distance causes larger boxes to generate more errors than smaller boxes. By using the Intersection over Union metric (Jaccard index) this problem can be avoided.
 
-The Jaccard index can be defined for two boxes $b_1 = (w_1 , h_1) , b_2 = (w_2 , h_2)$ as follows
+The Jaccard index can be defined for two boxes $$b_1 = (w_1 , h_1) , b_2 = (w_2 , h_2)$$ as follows
 
 ![img](./assets/yolo_Jaccard_index.jpg)
 
-The k-means clustering algorithm does not really change a lot when applied to anchor boxes. At initialization we can choose $k$ random boxes as our initial means $a_i$ . Then we can assign each bounding box $b_p$ to a cluster $C_i$ :
+The k-means clustering algorithm does not really change a lot when applied to anchor boxes. At initialization we can choose $$k$$ random boxes as our initial means $$a_i$$ . Then we can assign each bounding box $$b_p$$ to a cluster $$C_i$$ :
 
 ![img](./assets/yolo_clustering.jpg)
 
@@ -889,7 +890,7 @@ A similar procedure is followed again, where the feature map from layer 91 is su
 
   ![img](https://cdn-images-1.medium.com/max/800/1*Yc_OJIXOoV2WaGQ6PqhTXA.png)
 
-  Most boxes do not contain any objects. This causes a class imbalance problem, i.e. we train the model to detect background more frequently than detecting objects. To remedy this, we weight this loss down by a factor $\lambda noobj$ (default: 0.5).
+  Most boxes do not contain any objects. This causes a class imbalance problem, i.e. we train the model to detect background more frequently than detecting objects. To remedy this, we weight this loss down by a factor $$\lambda noobj$$ (default: 0.5).
 
 ### Single Shot MultiBox Detector(SSD)
 
@@ -903,12 +904,12 @@ A similar procedure is followed again, where the feature map from layer 91 is su
 
 #### Loss Function
 
-MultiBox’s loss function also combined two critical components that made their way into SSD:
+MultiBox's loss function also combined two critical components that made their way into SSD:
 
 - **Confidence Loss**: this measures how confident the network is of the objectness of the computed bounding box. Categorical cross-entropy is used to compute this loss.
-- **Location Loss**: this measures how far away the network’s predicted bounding boxes are from the ground truth ones from the training set. L1-Norm is used here.
+- **Location Loss**: this measures how far away the network's predicted bounding boxes are from the ground truth ones from the training set. L1-Norm is used here.
 
-$multibox_loss = confidence_loss + alpha * location_loss$
+$$multibox_loss = confidence_loss + alpha * location_loss$$
 
 Where the alpha term helps us in balancing the contribution of the location loss.
 
