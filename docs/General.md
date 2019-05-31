@@ -6,6 +6,7 @@
   - [Project Workflow](#project-workflow)
   - [Confusion matrix](#confusion-matrix)
   - [Weight Initialization](#weight-initialization)
+  - [[Optimization](Neural_Networks/Optimization.html)](#optimizationneuralnetworksoptimizationhtml)
   - [Normalization](#normalization)
     - [Batch Normalization](#batch-normalization)
     - [Common pitfall](#common-pitfall)
@@ -13,8 +14,11 @@
     - [L1, L2](#l1-l2)
     - [cross-entropy](#cross-entropy)
   - [Clustering - K-means](#clustering---k-means)
+    - [K-means algorithm:](#k-means-algorithm)
+    - [[kmeans python code](../codes/kmeans/kmeans.py)](#kmeans-python-codecodeskmeanskmeanspy)
   - [Principal Component Analysis](#principal-component-analysis)
   - [Non maximal supression](#non-maximal-supression)
+    - [Codes](#codes)
   - [Blur image](#blur-image)
 
 <!-- markdown-toc end -->
@@ -61,6 +65,8 @@ Given a data science / machine learning project, what steps should we follow? He
 `W = 0.01 * np.random.randn(D,H)`, where randn samples from a zero mean, unit standard deviation gaussian. One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that we can normalize the variance of each neuron's output to 1 by scaling its weight vector by the square root of its fan-in (i.e. its number of inputs). `w = np.random.randn(n) / sqrt(n)`, where n is the number of its inputs.
 
 In practice, the current recommendation is to use ReLU units and use the `w = np.random.randn(n) * sqrt(2.0/n)`.
+
+## [Optimization](Neural_Networks/Optimization.html)
 
 ## Normalization
 
