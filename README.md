@@ -1,8 +1,8 @@
-# Machine Learning Questions
+# [Machine Learning Questions](https://git.io/fj0yP)
 
 ## Start to contribute
 
-```
+```sh
 git clone https://github.com/ztlevi/Machine_Learning_Questions.git
 
 cd Machine_Learning_Questions
@@ -12,10 +12,13 @@ pip install pre-commit
 pre-commit install
 
 # Install Nodejs first
-# Gitbook
-npm install -g gitbook-cli
+# Install dependencies
+npm install
+npm run docs:prepare
 
-# Then build and serve the book
-gitbook build
-gitbook serve
+# Start to watch the book
+npm run docs:watch
+
+# Deploy the book
+npm run docs:publish
 ```
