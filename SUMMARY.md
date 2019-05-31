@@ -8,3 +8,4 @@
   - [Mobilenet](docs/Neural_Networks/Mobilenet.md)
   - [YOLO](docs/Neural_Networks/YOLO.md)
   - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)
+  - [Focal Loss](docs/Neural_Networks/FocalLoss.md)
