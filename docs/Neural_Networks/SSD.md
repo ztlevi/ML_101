@@ -20,6 +20,27 @@
 
 ![Architecture](../../assets/ssd.png)
 
+## Choosing default boundary boxes
+
+Default boundary boxes are chosen manually. SSD defines a scale value for each feature map layer. Starting from the left, Conv4_3 detects objects at the smallest scale 0.2 (or 0.1 sometimes) and then increases linearly to the rightmost layer at a scale of 0.9. Combining the scale value with the target aspect ratios, we compute the width and the height of the default boxes. For layers making 6 predictions, SSD starts with 5 target aspect ratios: 1, 2, 3, 1/2 and 1/3. Then the width and the height of the default boxes are calculated as:
+
+![](../../assets/ssd_wh.png)
+
+and aspect ratio = 1.
+
+> YOLO uses k-means clustering on the training dataset to determine those default boundary boxes.
+
+## Try to verify the number of default boxes in SSD300 (the one implemented)
+
+1.  Conv4_3: $$38 \cdot 38 \cdot 4 = 5776$$
+2.  Conv7: $$19 \cdot 19 \cdot 6 = 2166$$
+3.  Conv8_2: $$10 \cdot 10 \cdot 6 = 600$$
+4.  Conv9_2: $$5 \cdot 5 \cdot 6 = 150$$
+5.  Conv10_2: $$3 \cdot 3 \cdot 4 = 36$$
+6.  Conv11_2: $$4$$
+
+Total: $$5776+ 2166 + 600 + 150 + 36 + 4 = 8732$$
+
 ## Loss Function
 
 MultiBox's loss function also combined two critical components that made their way into SSD:
