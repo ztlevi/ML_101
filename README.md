@@ -17,7 +17,7 @@ npm install
 npm run docs:prepare
 
 # Start to watch the book
-npm run docs:watch
+npm start # or npm run docs:watch
 
 # Deploy the book
 npm run docs:publish

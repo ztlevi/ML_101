@@ -5,7 +5,8 @@
   "scripts": {
     "docs:prepare": "gitbook install",
     "docs:build": "rm -rf _book && gitbook build",
-    "docs:watch": "gitbook serve",
+    "start": "gitbook build && gitbook serve",
+    "docs:watch": "gitbook build && gitbook serve",
     "docs:publish": "cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push https://github.com/ztlevi/Gitbook_Machine_Learning_Questions.git gh-pages --force"
   },
   "dependencies": {
