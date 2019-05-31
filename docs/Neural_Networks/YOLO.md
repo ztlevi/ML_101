@@ -85,15 +85,21 @@ Instead of predicting 5 arbitrary boundary boxes, **we predict offsets to each o
 
 https://lars76.github.io/object-detection/k-means-anchor-boxes/
 
-According to [1] the standard Euclidean distance causes larger boxes to generate more errors than smaller boxes. By using the Intersection over Union metric (Jaccard index) this problem can be avoided.
+The standard Euclidean distance causes larger boxes to generate more errors than smaller boxes. By using the Intersection over Union metric (Jaccard index) this problem can be avoided. In this case, the distance metric used in Kmeans is $$1-IOU$$.
 
 The Jaccard index can be defined for two boxes $$b_1 = (w_1 , h_1) , b_2 = (w_2 , h_2)$$ as follows
 
-![img](../../assets/yolo_Jaccard_index.jpg)
+<figure style="width:50%;display:block;margin-left:auto;margin-right:auto;">
+<img src="../../assets/yolo_Jaccard_index.jpg" alt=""/>
+<figcaption></figcaption>
+</figure>
 
 The k-means clustering algorithm does not really change a lot when applied to anchor boxes. At initialization we can choose $$k$$ random boxes as our initial means $$a_i$$ . Then we can assign each bounding box $$b_p$$ to a cluster $$C_i$$ :
 
-![img](../../assets/yolo_clustering.jpg)
+<figure style="width:50%;display:block;margin-left:auto;margin-right:auto;">
+<img src="../../assets/yolo_clustering.jpg" alt=""/>
+<figcaption></figcaption>
+</figure>
 
 ```python
 def iou(box, clusters):
