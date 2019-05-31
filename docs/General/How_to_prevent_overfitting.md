@@ -1,3 +1,23 @@
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+
+**Table of Contents**
+
+- [How to Prevent Overfitting](#how-to-prevent-overfitting)
+  - [Cross-validation](#cross-validation)
+  - [Train with more data](#train-with-more-data)
+  - [Remove features](#remove-features)
+  - [Early stopping](#early-stopping)
+  - [Regularization](#regularization)
+    - [L1 Regularization or Lasso or L1 norm](#l1-regularization-or-lasso-or-l1-norm)
+    - [L2 Regularization or Ridge Regularization](#l2-regularization-or-ridge-regularization)
+    - [DropOut (Regularization technique)](#dropout-regularization-technique)
+    - [DropConnect](#dropconnect)
+    - [Comparison](#comparison)
+  - [[Batch Norm](../General.html#batch-normalization)](#batch-normgeneralhtmlbatch-normalization)
+  - [Ensembling](#ensembling)
+
+<!-- markdown-toc end -->
+
 # How to Prevent Overfitting
 
 Detecting overfitting is useful, but it doesn't solve the problem. Fortunately, you have several options to try.
@@ -96,7 +116,7 @@ These methods both work because they effectively let you train several models at
 
 DropConnect is a generalization of DropOut because it produces even more possible models, since there are almost always more connections than units. However, you can get similar outcomes on an individual trial. For example, the DropConnect network on the right has effectively dropped Unit #2 since all of the incoming connections have been removed.
 
-## [Batch Norm](./General/#Batch Normalization)
+## [Batch Norm](../General.html#batch-normalization)
 
 ## Ensembling
 
