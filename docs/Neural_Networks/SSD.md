@@ -28,6 +28,8 @@ SSD defines a scale value for each feature map layer. Starting from the left, Co
 
 ![wh](../../assets/ssd_wh.png)
 
+The center of each default box to $$(\frac{i+0.5}{|f_{k}|}, \frac{j+0.5}{|f_{k}|})$$, where $$|f_{k}|$$ is the size of the k-th square feature map, $$i, j \in [0, |f_{k}|]$$.
+
 Default boundary boxes are chosen manually. The criterion for matching a prior and a ground-truth box is IoU (Intersection Over Union), which is also called **Jaccard index**. The more overlap, the better match. The process of matching looks like follows:
 
 ```python
