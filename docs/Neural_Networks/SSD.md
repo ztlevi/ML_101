@@ -22,15 +22,30 @@
 
 ## Choosing default boundary boxes
 
-Default boundary boxes are chosen manually. SSD defines a scale value for each feature map layer. Starting from the left, Conv4_3 detects objects at the smallest scale 0.2 (or 0.1 sometimes) and then increases linearly to the rightmost layer at a scale of 0.9. Combining the scale value with the target aspect ratios, we compute the width and the height of the default boxes. For layers making 6 predictions, SSD starts with 5 target aspect ratios: 1, 2, 3, 1/2 and 1/3. Then the width and the height of the default boxes are calculated as:
+SSD defines a scale value for each feature map layer. Starting from the left, Conv4_3 detects objects at the smallest scale 0.2 (or 0.1 sometimes) and then increases linearly to the rightmost layer at a scale of 0.9.
 
-![](../../assets/ssd_wh.png)
+![scale_ssd](../../assets/scale_ssd.png) the scale value with the target aspect ratios, we compute the width and the height of the default boxes. For layers making 6 predictions, SSD starts with 5 target aspect ratios: 1, 2, 3, 1/2 and 1/3. Then the width and the height of the default boxes are calculated as:
 
-and aspect ratio = 1.
+![wh](../../assets/ssd_wh.png)
+
+Default boundary boxes are chosen manually. The criterion for matching a prior and a ground-truth box is IoU (Intersection Over Union), which is also called **Jaccard index**. The more overlap, the better match. The process of matching looks like follows:
+
+```python
+for every ground-truth box:
+    match the ground-truth box with prior having the biggest the IoU
+for every prior:
+    ious = IoU(prior, ground_truth_boxes)
+    max_iou = max(ious)
+    if max_iou > threshold:
+        i = argmax(ious)
+        match the prior with ground_truth_boxes[i]
+```
 
 > YOLO uses k-means clustering on the training dataset to determine those default boundary boxes.
 
 ## Try to verify the number of default boxes in SSD300 (the one implemented)
+
+For conv4_3, conv10_2 and conv11_2, we only associate 4 default boxes at each feature map location - omitting aspect ratios of $$\frac{1}{3}$$and 3.
 
 1.  Conv4_3: $$38 \cdot 38 \cdot 4 = 5776$$
 2.  Conv7: $$19 \cdot 19 \cdot 6 = 2166$$
@@ -46,9 +61,12 @@ Total: $$5776+ 2166 + 600 + 150 + 36 + 4 = 8732$$
 MultiBox's loss function also combined two critical components that made their way into SSD:
 
 - **Confidence Loss**: this measures how confident the network is of the objectness of the computed bounding box. Categorical cross-entropy is used to compute this loss.
-- **Location Loss**: this measures how far away the network's predicted bounding boxes are from the ground truth ones from the training set. L1-Norm is used here.
 
-$$multibox_loss = confidence_loss + alpha * location_loss$$
+- **Location Loss**: this measures how far away the network's predicted bounding boxes are from the ground truth ones from the training set. L1-smooth Norm is used here.
+
+![img](https://cdn-images-1.medium.com/max/1600/1*7h3MObIuV1d0mbSzjvvYjA.png)
+
+$$multiboxLoss = confidenceLoss + \alpha * locationLoss$$
 
 Where the alpha term helps us in balancing the contribution of the location loss.
 
