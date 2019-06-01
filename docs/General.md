@@ -19,6 +19,8 @@
   - [Principal Component Analysis](#principal-component-analysis)
   - [Non maximal supression](#non-maximal-supression)
     - [Codes](#codes)
+  - [Image interpolation](#image-interpolation)
+    - [Examples](#examples)
   - [Blur image](#blur-image)
 
 <!-- markdown-toc end -->
@@ -173,6 +175,20 @@ Here is a visual explanation of PCA
 - [NMS](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/NMS/nms.py)
 - [NMS_Slow](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/NMS/nms_slow.py)
 - [NMS_Fast](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/NMS/nms_fast.py) uses numpy
+
+## Image interpolation
+
+- Nearest Neighbour
+- Bilinear
+- Bicubic
+
+![img](../assets/image_interpolation.jpg)
+
+![img](../assets/bicubic.jpg)
+
+### Examples
+
+![img](../assets/image_interpolation_2.jpg)
 
 ## Blur image
 
