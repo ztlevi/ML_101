@@ -15,7 +15,7 @@
     - [cross-entropy](#cross-entropy)
   - [Clustering - K-means](#clustering---k-means)
     - [K-means algorithm:](#k-means-algorithm)
-    - [[kmeans python code](../codes/kmeans/kmeans.py)](#kmeans-python-codecodeskmeanskmeanspy)
+    - [[kmeans python code](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/kmeans/kmeans.py)](#kmeans-python-codehttpsgithubcomztlevimachinelearningquestionsblobmastercodeskmeanskmeanspy)
   - [Principal Component Analysis](#principal-component-analysis)
   - [Non maximal supression](#non-maximal-supression)
     - [Codes](#codes)
@@ -150,7 +150,7 @@ $$
 
      }
 
-### [kmeans python code](../codes/kmeans/kmeans.py)
+### [kmeans python code](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/kmeans/kmeans.py)
 
 ![clustering](../assets/clustering.png)
 
@@ -169,10 +169,10 @@ Here is a visual explanation of PCA
 
 ### Codes
 
-- [IOU](../codes/NMS/IOU.py)
-- [NMS](../codes/NMS/nms.py)
-- [NMS_Slow](../codes/NMS/nms_slow.py)
-- [NMS_Fast](../codes/NMS/nms_fast.py) uses numpy
+- [IOU](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/NMS/IOU.py)
+- [NMS](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/NMS/nms.py)
+- [NMS_Slow](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/NMS/nms_slow.py)
+- [NMS_Fast](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/NMS/nms_fast.py) uses numpy
 
 ## Blur image
 
