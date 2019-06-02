@@ -167,6 +167,20 @@ Here is a visual explanation of PCA
 
 ![pca](../assets/pca.gif)
 
+## Different ways to update parameters:
+- Vanilla update	x += - learning_rate * dx
+- Momentum update	v = mu * v - learning_rate * dx # integrate velocity
+x += v # integrate position	
+Nesterov Momentum	x_ahead = x + mu * v 
+v = mu * v - learning_rate * dx_ahead
+x += v	
+Adagrad 
+cache += dx**2
+x += - learning_rate * dx / (np.sqrt(cache) + eps)	
+Adam	m = beta1*m + (1-beta1)dx
+v = beta2*v + (1-beta2)(dx**2)
+x += - learning_rate * m / (np.sqrt(v) + eps)
+
 ## Non maximal supression
 
 ### Codes
