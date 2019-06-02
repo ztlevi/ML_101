@@ -31,7 +31,7 @@ When summed over **a large number of easy examples**, these small loss values ca
 1. When an example is misclassified and $$p_{t}$$ is small, the modulating factor is near 1 and the loss is unaffected. **As $$p_{t} \rightarrow 1$$, the factor goes to 0 and the loss for well-classified examples is down-weighted**.
 2. The focusing parameter $$\gamma$$ **smoothly adjusts the rate** at which easy examples are down-weighted. When $$\gamma = 0$$, FL is equivalent to CE. When *γ*is increased, the effect of the modulating factor is likewise increased. ($$\gamma = 2$$ works best in experiment.)
 
-## $$\alpha$$-Balanced Variant of FL
+## alpha-Balanced Variant of FL
 
 ![img](../../assets/1*Wa6UX2I9AEtBrj5focAETA.png)
 
