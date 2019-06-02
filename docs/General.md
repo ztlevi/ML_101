@@ -6,7 +6,7 @@
   - [Project Workflow](#project-workflow)
   - [Confusion matrix](#confusion-matrix)
   - [Weight Initialization](#weight-initialization)
-  - [[Optimization](Neural_Networks/Optimization.html)](#optimizationneuralnetworksoptimizationhtml)
+  - [[Optimization](General/Optimization.html)](#optimizationgeneraloptimizationhtml)
   - [Normalization](#normalization)
     - [Batch Normalization](#batch-normalization)
     - [Common pitfall](#common-pitfall)
@@ -68,7 +68,7 @@ Given a data science / machine learning project, what steps should we follow? He
 
 In practice, the current recommendation is to use ReLU units and use the `w = np.random.randn(n) * sqrt(2.0/n)`.
 
-## [Optimization](Neural_Networks/Optimization.html)
+## [Optimization](General/Optimization.html)
 
 ## Normalization
 
@@ -166,24 +166,6 @@ $$
 Here is a visual explanation of PCA
 
 ![pca](../assets/pca.gif)
-
-## Different ways to update parameters:
-- Vanilla update	
-x += - learning_rate * dx
-- Momentum update	
-v = mu * v - learning_rate * dx # integrate velocity
-x += v # integrate position	
-- Nesterov Momentum	
-x_ahead = x + mu * v 
-v = mu * v - learning_rate * dx_ahead
-x += v	
-- Adagrad 
-cache += dx**2
-x += - learning_rate * dx / (np.sqrt(cache) + eps)	
-- Adam	
-m = beta1*m + (1-beta1)dx
-v = beta2*v + (1-beta2)(dx**2)
-x += - learning_rate * m / (np.sqrt(v) + eps)
 
 ## Non maximal supression
 

@@ -2,7 +2,7 @@
 
 - [Introduction](README.md)
 - [General](docs/General.md)
-  - [Optimization](docs/Neural_Networks/Optimization.md)
+  - [Optimization](docs/General/Optimization.md)
   - [How to prevent overfitting](docs/General/How_to_prevent_overfitting.md)
 - [Classical Machine Learning](docs/Classical_Machine_learning.md)
 - [Neural Networks](docs/Neural_Networks.md)
