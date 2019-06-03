@@ -72,7 +72,10 @@ This simple technique extends to any variable within a function and allows us to
 
 Let's use the chain rule to calculate the derivative of cost with respect to any weight in the network. The chain rule will help us identify how much each weight contributes to our overall error and the direction to update each weight to reduce our error. Here are the equations we need to make a prediction and calculate total error, or cost:
 
-![_images/backprop_ff_equations.png](https://ml-cheatsheet.readthedocs.io/en/latest/_images/backprop_ff_equations.png)
+<figure style="width: 50%;display:block;margin-left:auto;margin-right:auto;">
+<img src="https://ml-cheatsheet.readthedocs.io/en/latest/_images/backprop_ff_equations.png" alt="_images/backprop_ff_equations.png"/>
+</figure>
+<figcaption style="text-align:center"></figcaption>
 
 Given a network consisting of a single neuron, total cost could be calculated as:
 
