@@ -77,9 +77,10 @@ So far, we have focused on theoretical motivations for MTL. To make the ideas of
 
 Hard parameter sharing is the most commonly used approach to MTL in neural networks and goes back to <sup class="footnote-ref">[[6]](http://ruder.io/multi-task/index.html#fn6)</sup>. It is generally applied by sharing the hidden layers between all tasks, while keeping several task-specific output layers.
 
-<figure>![](http://ruder.io/content/images/2017/05/mtl_images-001-2.png "Hard parameter sharing")
-
-<figcaption>Figure 1: Hard parameter sharing for multi-task learning in deep neural networks</figcaption></figure>
+<figure style="width:50%;display:block;margin-left:auto;margin-right:auto;">
+<img src="../assets/hard_parameter_sharing.png" alt=""/>
+</figure>
+<figcaption style="text-align:center">Figure 1: Hard parameter sharing for multi-task learning in deep neural networks </figcaption>
 
 Hard parameter sharing greatly reduces the risk of overfitting. In fact, <sup class="footnote-ref">[[7]](http://ruder.io/multi-task/index.html#fn7)</sup> showed that the risk of overfitting the shared parameters is an order N -- where N is the number of tasks -- smaller than overfitting the task-specific parameters, i.e. the output layers. This makes sense intuitively: The more tasks we are learning simultaneously, the more our model has to find a representation that captures all of the tasks and the less is our chance of overfitting on our original task.
 
@@ -87,8 +88,10 @@ Hard parameter sharing greatly reduces the risk of overfitting. In fact, <sup cl
 
 In soft parameter sharing on the other hand, each task has its own model with its own parameters. The distance between the parameters of the model is then regularized in order to encourage the parameters to be similar. <sup class="footnote-ref">[[8]](http://ruder.io/multi-task/index.html#fn8)</sup> for instance use the ℓ2<math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>ℓ</mi><mn>2</mn></msub></math> norm for regularization, while <sup class="footnote-ref">[[9]](http://ruder.io/multi-task/index.html#fn9)</sup> use the trace norm.
 
-<figure>![](http://ruder.io/content/images/2017/05/mtl_images-002-1.png "Soft parameter sharing")
-<figcaption>Figure 2: Soft parameter sharing for multi-task learning in deep neural networks</figcaption></figure>
+<figure style="width:70%;display:block;margin-left:auto;margin-right:auto;">
+<img src="../assets/soft_parameter_sharing.png" alt=""/>
+</figure>
+<figcaption style="text-align:center">Figure 2: Soft parameter sharing for multi-task learning in deep neural networks </figcaption>
 
 The constraints used for soft parameter sharing in deep neural networks have been greatly inspired by regularization techniques for MTL that have been developed for other models, which we will soon discuss.
 
