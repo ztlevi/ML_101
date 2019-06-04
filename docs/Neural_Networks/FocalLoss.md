@@ -19,7 +19,7 @@ When summed over **a large number of easy examples**, these small loss values ca
 
 ![img](../../assets/1*AR6jsJX5ihtNni78p5kr9A.png)
 
-- To address the class imbalance, one method is to add a weighting factor $\alpha$ for class 1 and $1 - \alpha$ for class -1. $\alpha$ may be set by inverse class frequency or treated as a hyperparameter to set by cross validation.
+- To address the class imbalance, one method is to add a weighting factor $$\alpha$$ for class 1 and $$1 - \alpha$$ for class -1. $$\alpha$$ may be set by inverse class frequency or treated as a hyperparameter to set by cross validation.
 
 ## Focal Loss
 
