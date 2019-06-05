@@ -4,7 +4,7 @@
 
 - [Mobilenet v1](#mobilenet-v1)
   - [Depthwise Separable Convolution.](#depthwise-separable-convolution)
-  - [Width Multiplier: Thinner Models](#width-multiplier-thinner-models)
+  - [Depth Multiplier: Thinner Models](#depth-multiplier-thinner-models)
 - [Mobilenet v2](#mobilenet-v2)
   - [Inverted residuals](#inverted-residuals)
 
@@ -42,9 +42,9 @@ $$
 - $$D_{G}$$ is the spatial width and height of a square output feature map
 - $$N$$ is the number of output channel (output depth).
 
-## Width Multiplier: Thinner Models
+## Depth Multiplier: Thinner Models
 
-For a given layer, and width multiplier $$\alpha$$, the number of input channels $$M$$ becomes $$\alpha M$$ and the number of output channels $$N$$ becomes $$\alpha N$$
+For a given layer, and depth multiplier $$\alpha$$, the number of input channels $$M$$ becomes $$\alpha M$$ and the number of output channels $$N$$ becomes $$\alpha N$$
 
 # Mobilenet v2
 
