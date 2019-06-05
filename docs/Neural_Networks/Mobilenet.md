@@ -22,8 +22,8 @@ $$
 
 where the computational cost depends multiplicatively onthe number of input channels M, the number of output channe is N, the kernel size $$D_K \cdot D_K$$ and the feature map size $$D_F \cdot D_F$$.
 
-<figure style="width:50%;  display: block; margin-left: auto; margin-right: auto;">
-<img src="../../assets/depth-wise-conv.png" alt=""/>
+<figure>
+<img style="width:50%;  display: block; margin-left: auto; margin-right: auto;" src="../../assets/depth-wise-conv.png" alt=""/>
 <figcaption></figcaption>
 </figure>
 
@@ -52,8 +52,8 @@ For a given layer, and width multiplier $$\alpha$$, the number of input channels
 
 The bottleneck blocks appear similar to residual block where each block contains an input followed by several bottlenecks then followed by expansion. detail code [here](https://github.com/keras-team/keras-applications/blob/master/keras_applications/mobilenet_v2.py#L425).
 
-<figure style="width:70%;display:block;margin-left:auto;margin-right:auto;">
-<img src="../../assets/IR.png" alt="inverted residuals in mobilenet v2"/>
+<figure>
+<img style="width:70%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/IR.png" alt="inverted residuals in mobilenet v2"/>
 <figcaption></figcaption>
 </figure>
 
@@ -61,7 +61,7 @@ The bottleneck blocks appear similar to residual block where each block contains
 
 - The ratio between the size of the input bottleneck and the inner size as the **expansion ratio**.
 
-<figure style="width:70%;display:block;margin-left:auto;margin-right:auto;">
-<img src="../../assets/mobilenetv2.png" alt="mobilenet v2 structure"/>
+<figure>
+<img style="width:70%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/mobilenetv2.png" alt="mobilenet v2 structure"/>
 <figcaption></figcaption>
 </figure>

@@ -34,8 +34,8 @@
 
 - The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, $$t_{x}, t_{y}, t_{w}, t_{h}$$, and to. If the cell is offset from the top left corner of the image by $$(cx, cy)$$ and the bounding box prior has width and height $$p_{w}, p_{h}$$, then the predictions correspond to:
 
-<figure style="width:50%;display:block;margin-left:auto;margin-right:auto;">
-<img src="../../assets/yolo_formula1.png" alt="output formula"/>
+<figure>
+<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/yolo_formula1.png" alt="output formula"/>
 <figcaption></figcaption>
 </figure>
 
@@ -89,15 +89,15 @@ The standard Euclidean distance causes larger boxes to generate more errors than
 
 The Jaccard index can be defined for two boxes $$b_1 = (w_1 , h_1) , b_2 = (w_2 , h_2)$$ as follows
 
-<figure style="width:50%;display:block;margin-left:auto;margin-right:auto;">
-<img src="../../assets/yolo_Jaccard_index.jpg" alt=""/>
+<figure>
+<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/yolo_Jaccard_index.jpg" alt=""/>
 <figcaption></figcaption>
 </figure>
 
 The k-means clustering algorithm does not really change a lot when applied to anchor boxes. At initialization we can choose $$k$$ random boxes as our initial means $$a_i$$ . Then we can assign each bounding box $$b_p$$ to a cluster $$C_i$$ :
 
-<figure style="width:50%;display:block;margin-left:auto;margin-right:auto;">
-<img src="../../assets/yolo_clustering.jpg" alt=""/>
+<figure>
+<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/yolo_clustering.jpg" alt=""/>
 <figcaption></figcaption>
 </figure>
 

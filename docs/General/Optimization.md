@@ -72,10 +72,10 @@ This simple technique extends to any variable within a function and allows us to
 
 Let's use the chain rule to calculate the derivative of cost with respect to any weight in the network. The chain rule will help us identify how much each weight contributes to our overall error and the direction to update each weight to reduce our error. Here are the equations we need to make a prediction and calculate total error, or cost:
 
-<figure style="width: 50%;display:block;margin-left:auto;margin-right:auto;">
-<img src="https://ml-cheatsheet.readthedocs.io/en/latest/_images/backprop_ff_equations.png" alt="_images/backprop_ff_equations.png"/>
-</figure>
+<figure >
+<img style="width: 50%;display:block;margin-left:auto;margin-right:auto;" src="https://ml-cheatsheet.readthedocs.io/en/latest/_images/backprop_ff_equations.png" alt="_images/backprop_ff_equations.png"/>
 <figcaption style="text-align:center"></figcaption>
+</figure>
 
 Given a network consisting of a single neuron, total cost could be calculated as:
 
@@ -131,8 +131,8 @@ for i in range(nb_epochs):
 
 Momentum is a mehod that helps accelerate SGD in the relevant direction and dampends oscillations seen in the image below.
 
-<figure style="width:100%;display:block;margin-left:auto;margin-right:auto;">
-<img src="../../assets/sgd_momentum.png" alt=""/>
+<figure>
+<img style="width:100%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/sgd_momentum.png" alt=""/>
 <figcaption></figcaption>
 </figure>
 
