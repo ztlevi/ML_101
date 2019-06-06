@@ -10,3 +10,4 @@
   - [YOLO](docs/Neural_Networks/YOLO.md)
   - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)
   - [Focal Loss](docs/Neural_Networks/FocalLoss.md)
+  - [CORAL Loss](docs/Neural_Networks/CORAL_Loss.md)
