@@ -14,8 +14,8 @@
   - [Deep Learning](#deep-learning)
     - [CNN](#cnn)
     - [Bottleneck layer](#bottleneck-layer)
-    - [RNN and LSTM](#rnn-and-lstm)
     - [Resnet](#resnet)
+    - [[RNN and LSTM](Neural_Networks/RNN_LSTM.md)](#rnn-and-lstmneuralnetworksrnnlstmmd)
     - [[Mobilenet](docs/Neural_Network/Mobilenet.md)](#mobilenetdocsneuralnetworkmobilenetmd)
     - [[YOLO](docs/Neural_Networks/YOLO.md)](#yolodocsneuralnetworksyolomd)
     - [[Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)](#single-shot-multibox-detectorssddocsneuralnetworksssdmd)
@@ -109,41 +109,6 @@ Initial layers capture low-level features such as angle and edges, while later l
 
 The bottleneck in a neural network is just a layer (e.g. convolution layer) with less neurons then the layer below or above it. Having such a layer encourages the network to compress feature representations to best fit in the available space, in order to get the best loss during training.
 
-### RNN and LSTM
-
-https://colah.github.io/posts/2015-08-Understanding-LSTMs/
-
-RNN is another paradigm of neural network where we have difference layers of cells, and each cell not only takes the cell from the previous layer as input, but also the previous cell within the same layer. This gives RNN the power to model sequence.
-
-![RNN](../assets/rnn.jpeg)
-
-A recurrent neural network can be thought of as multiple copies of the same network, each passing a message to a successor. Consider what happens if we unroll the loop:
-
-![An unrolled recurrent neural network.](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-unrolled.png)
-
-All recurrent neural networks have the form of a chain of repeating modules of neural network. In standard RNNs, this repeating module will have a very simple structure, such as a single tanh layer.
-
-![](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-SimpleRNN.png)
-
-This seems great, but in practice RNN barely works due to exploding/vanishing gradient, which is cause by a series of multiplication of the same matrix. To solve this, we can use a variation of RNN, called long short-term memory (LSTM), which is capable of learning long-term dependencies.
-
-The math behind LSTM can be pretty complicated, but intuitively LSTM introduce
-
-- input gate
-- output gate
-- forget gate
-- memory cell (internal state)
-
-The cell state is kind of like a conveyor belt. It runs straight down the entire chain, with only some minor linear interactions. It's very easy for information to just flow along it unchanged.
-
-LSTM resembles human memory: it forgets old stuff (old internal state _ forget gate) and learns from new input (input node _ input gate)
-
-![lstm](../assets/lstm.png)
-
-LSTMs also have this chain like structure, but the repeating module has a different structure. Instead of having a single neural network layer, there are four, interacting in a very special way.
-
-![A LSTM neural network.](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
-
 ### Resnet
 
 Increasing network depth does not work by simply stacking layers together. Deep networks are hard to train because of the notorious vanishing gradient problem-as the gradient is back-propagated to earlier layers, repeated multiplication may make the gradient infinitively small. As a result, as the network goes deeper, its performance gets saturated or even starts degrading rapidly.
@@ -157,6 +122,8 @@ The core idea of ResNet is introducing a so-called shortcut.
 - When the dimensions increase, we consider two options: (A) THe shortcut still performs identity mapping, with extra zero entries padded for increasing dimensions. (B) The projection shortcut is used to match dimensions.
 
 The authors argues that stacking layers shouldn't degrade the network performance, because we could simply stack identity mappings (layer that doesn't do anything) upon the current network, and the resulting architecture would perform the same. This indicates that the deeper model should not produce a training error higher than its shallower counterparts.
+
+### [RNN and LSTM](Neural_Networks/RNN_LSTM.md)
 
 ### [Mobilenet](docs/Neural_Network/Mobilenet.md)
 
