@@ -86,20 +86,22 @@ When data flow through a deep network, the weights and parameters adjust those v
 
 To solve the vanishing gradient($$0.9^{k}$$) and gradient explosion($$1.1^{k}$$), batch normalization is introduced.
 
-1. Compute mini-batch mean: $${\mu}_{\beta} \gets \frac{1}{m}\sum_{i=1}^M x_{i}$$
-2. Compute mini-batch variance: $${\sigma}_{\beta}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\beta})^{2}$$
-3. normalize features: $$\hat{x_i} \gets \frac{x_{i} - \mu_{\beta} }{\sqrt{ { {\sigma}_{\beta} +
-   \epsilon}^{2} } }$$
-4. Put batch mean and variance: $$y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$$
-5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
-
+- Input: Values of $$x$$ over a mini-batch: $$B={x_{1...m}}$$; Parameters to be learned: $$\gamma , \beta$$
+- Output: $${y_i = BN_{\gamma , \beta} (x_i)}$$
+- Steps:
+  1. Compute mini-batch mean: $${\mu}_{\beta} \gets \frac{1}{m}\sum_{i=1}^M x_{i}$$
+  2. Compute mini-batch variance: $${\sigma}_{\beta}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\beta})^{2}$$
+  3. normalize features: $$\hat{x_i} \gets \frac{x_{i} - \mu_{\beta} }{\sqrt{ { {\sigma}_{\beta} +
+    \epsilon}^{2} } }$$
+  4. Scale and shift: $$y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$$
+  5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
 - Benefits:
-  - Networks train faster
-  - Allows higher learning rates
-  - Makes weights easier to initialize
-  - Makes more activation functions viable
-  - Provides a bit of regularlization
-  - Simplifies the creation of deeper networks
+  1. Networks train faster
+  2. Allows higher learning rates
+  3. Makes weights easier to initialize
+  4. Makes more activation functions viable
+  5. Provides a bit of regularlization
+  6. Simplifies the creation of deeper networks
 
 ### Common pitfall
 
