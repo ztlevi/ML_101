@@ -19,7 +19,7 @@ $$
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
-This would be the pipeline for each one of the $$C$$ clases. We set $$C$$ independent binary classification problems ($$C'=2$$). Then we sum up the loss over the different binary problems: We sum up the gradients of every binary problem to backpropagate, and the losses to monitor the global loss. $$s_1$$ and $$t_1$$ are the score and the gorundtruth label for the class $$C1$$, which is also the class $$C_i$$ in $$C$$. $$s_2=1−s_1$$ and $$t_2=1−t_1$$ are the score and the groundtruth label of the class $$C_2$$, which is not a "class" in our original problem with $$C$$ classes, but a class we create to set up the binary problem with $$C_1=C_i$$. We can understand it as a background class.
+This would be the pipeline for each one of the $$C$$ clases. We set $$C$$ independent binary classification problems ($$C'=2$$). Then we sum up the loss over the different binary problems: We sum up the gradients of every binary problem to backpropagate, and the losses to monitor the global loss. $$s_1$$ and $$t_1$$ are the score and the gorundtruth label for the class $$C1$$, which is also the class $$C_i$$ in $$C$$. $$s_2=1−s_1$$ and $$t_2=1−t_1$$ are the score and the ground truth label of the class $$C_2$$, which is not a "class" in our original problem with $$C$$ classes, but a class we create to set up the binary problem with $$C_1=C_i$$. We can understand it as a background class.
 
 The loss can be expressed as:
 

@@ -16,7 +16,7 @@ $$
 CE = -\sum_{i}^{C}t_{i} log (s_{i})
 $$
 
-Where $$t_i$$ and $$s_i$$ are the groundtruth and the CNN score for each $$class_i$$ in $$C$$. As **usually an activation function (Sigmoid / Softmax) is applied to the scores before the CE Loss computation**, we write $$f(si)$$ to refer to the activations.
+Where $$t_i$$ and $$s_i$$ are the ground truth and the CNN score for each $$class_i$$ in $$C$$. As **usually an activation function (Sigmoid / Softmax) is applied to the scores before the CE Loss computation**, we write $$f(si)$$ to refer to the activations.
 
 In a **binary classification problem**, where $$C'=2$$, the Cross Entropy Loss can be defined also as [[discussion]](https://datascience.stackexchange.com/questions/9302/the-cross-entropy-error-function-in-neural-networks):
 
@@ -24,7 +24,7 @@ $$
 CE = -\sum_{i=1}^{C'=2}t_{i} log (s_{i}) = -t_{1} log(s_{1}) - (1 - t_{1}) log(1 - s_{1})
 $$
 
-Where it’s assumed that there are two classes: $$C_1$$ and $$C_2$$. $$t_1$$ [0,1] and $$s_1$$ are the groundtruth and the score for $$C_1$$, and $$t_2=1−t_1$$ and $$s_2=1−s_1$$ are the groundtruth and the score for $$C_2$$. That is the case when we split a Multi-Label classification problem in $$C$$ binary classification problems. See next Binary Cross-Entropy Loss section for more details.
+Where it’s assumed that there are two classes: $$C_1$$ and $$C_2$$. $$t_1$$ [0,1] and $$s_1$$ are the ground truth and the score for $$C_1$$, and $$t_2=1−t_1$$ and $$s_2=1−s_1$$ are the ground truth and the score for $$C_2$$. That is the case when we split a Multi-Label classification problem in $$C$$ binary classification problems. See next Binary Cross-Entropy Loss section for more details.
 
 **Logistic Loss** and **Multinomial Logistic Loss** are other names for **Cross-Entropy loss**. [[Discussion]](https://stats.stackexchange.com/questions/166958/multinomial-logistic-loss-vs-cross-entropy-vs-square-error/172790)
 
