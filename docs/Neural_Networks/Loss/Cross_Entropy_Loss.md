@@ -1,3 +1,11 @@
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+
+**Table of Contents**
+
+- [Cross-Entropy loss](#cross-entropy-loss)
+
+<!-- markdown-toc end -->
+
 Refreence: https://gombru.github.io/2018/05/23/cross_entropy_loss/
 
 # Cross-Entropy loss

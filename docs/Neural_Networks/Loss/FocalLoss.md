@@ -1,3 +1,16 @@
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+
+**Table of Contents**
+
+- [Focal Loss For Imbalanced Data](#focal-loss-for-imbalanced-data)
+  - [Class Imbalance Problem of One-Stage Detector](#class-imbalance-problem-of-one-stage-detector)
+  - [Cross Entropy (CE) Loss](#cross-entropy-ce-loss)
+  - [alpha-Balanced CE Loss](#alpha-balanced-ce-loss)
+  - [Focal Loss](#focal-loss)
+  - [alpha-Balanced Variant of FL](#alpha-balanced-variant-of-fl)
+
+<!-- markdown-toc end -->
+
 # Focal Loss For Imbalanced Data
 
 ## Class Imbalance Problem of One-Stage Detector
