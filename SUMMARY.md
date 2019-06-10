@@ -10,7 +10,7 @@
     - [Cross-Entropy Loss](docs/Neural_Networks/Loss/Cross_Entropy_Loss.md)
     - [Binary Cross-Entropy Loss](docs/Neural_Networks/Loss/Binary_Cross_Entropy_Loss.md)
     - [Categorical Cross-Entropy Loss](docs/Neural_Networks/Loss/Categorical_Cross_Entropy_loss.md)
-    - [(Optional) Focal Loss](docs/Neural_Networks/Loss/FocalLoss.md)
+    - [(Optional) Focal Loss](docs/Neural_Networks/Loss/Focal_Loss.md)
     - [(Optional) CORAL Loss](docs/Neural_Networks/Loss/CORAL_Loss.md)
   - [Mobilenet](docs/Neural_Networks/Mobilenet.md)
   - [YOLO](docs/Neural_Networks/YOLO.md)
