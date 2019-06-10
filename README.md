@@ -1,8 +1,8 @@
 # [Machine Learning Questions](https://git.io/fj0yP)
 
-## Rendering Issue
+> **Note**: Rendering Issue
 
-Sometimes the mathjax tends to perform slowly, and it takes some time to fully render all math formula. In this case, you just need to refresh your browser.
+> Sometimes the mathjax tends to perform slowly, and it takes some time to fully render all math formula. In this case, you just need to refresh your browser.
 
 ## Start to contribute
 
