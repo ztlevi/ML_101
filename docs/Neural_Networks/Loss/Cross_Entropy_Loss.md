@@ -24,7 +24,7 @@ $$
 CE = -\sum_{i=1}^{C'=2}t_{i} log (s_{i}) = -t_{1} log(s_{1}) - (1 - t_{1}) log(1 - s_{1})
 $$
 
-Where it’s assumed that there are two classes: $$C_1$$ and $$C_2$$. $$t_1$$ [0,1] and $$s_1$$ are the ground truth and the score for $$C_1$$, and $$t_2=1−t_1$$ and $$s_2=1−s_1$$ are the ground truth and the score for $$C_2$$. That is the case when we split a Multi-Label classification problem in $$C$$ binary classification problems. See next Binary Cross-Entropy Loss section for more details.
+Where it’s assumed that there are two classes: $$C_1$$ and $$C_2$$. $$t_1$$ [0,1] and $$s_1$$ are the ground truth and the score for $$C_1$$, and $$t_2=1-t_1$$ and $$s_2=1-s_1$$ are the ground truth and the score for $$C_2$$. That is the case when we split a Multi-Label classification problem in $$C$$ binary classification problems. See next Binary Cross-Entropy Loss section for more details.
 
 **Logistic Loss** and **Multinomial Logistic Loss** are other names for **Cross-Entropy loss**. [[Discussion]](https://stats.stackexchange.com/questions/166958/multinomial-logistic-loss-vs-cross-entropy-vs-square-error/172790)
 

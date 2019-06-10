@@ -10,7 +10,7 @@
     "docs:publish": "gitbook build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push https://github.com/ztlevi/Gitbook_Machine_Learning_Questions.git gh-pages --force"
   },
   "dependencies": {
-    "gitbook-plugin-mathjax": "^1.1.2"
+    "gitbook-plugin-katex": "^1.1.4"
   },
   "devDependencies": {
     "gitbook-cli": "^2.3.2"

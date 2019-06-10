@@ -58,8 +58,10 @@ The logits for CORAL-loss looks like this $$[0.9, 0.8, 0.6, 0.4, 0.2, 0.1]^T$$, 
 During training, the loss for the current sample is calculated as
 
 $$
+\begin{aligned}
 L = -\sum_{k=1}^{K-1} [1,1,1,0,0,0]^T * log( [0.9,0.8,0.6,0.4,0.2,0.1]^T ) \\
 + (1 - [1,1,1,0,0,0]^T) * log ( [0.9 0.8 0.6 0.4 0.2 0.1]^T ) \\
 = - \sum_{k=1}^{K-1} [1,1,1,0,0,0]^T * log( [0.9,0.8,0.6,0.4,0.2,0.1]^T ) \\
 + [0,0,0,1,1,1]^T * log ( [0.9 0.8 0.6 0.4 0.2 0.1]^T ) \\
+\end{aligned}
 $$

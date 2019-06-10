@@ -20,13 +20,13 @@
 
 - The YOLO design enables end-to-end training and real-time speeds while maintaining high average precision
 
-- Divides the input image into a S × S grid. If the center of an object falls into a grid cell, that grid cell is responsible for detecting that object.
+- Divides the input image into a $$S \times S$$ grid. If the center of an object falls into a grid cell, that grid cell is responsible for detecting that object.
 
 - Each bounding box consists of 5 predictions: $$x, y, w, h$$, and confidence. The $$(x, y)$$ coordinates represent the center of the box relative to the bounds of the grid cell. The width and height are predicted relative to the whole image. The confidence prediction represents the IOU between the predicted box and any ground truth box.
 
 - Each grid cell also predicts C conditional class probabilities
 
-- Models detection as a regression problem. It divides the image into an even grid and simultaneously predicts bounding boxes, confidence in those boxes, and class probabilities. These predictions are encoded as an $$S × S × (B ∗ 5 + C)$$ tensor.
+- Models detection as a regression problem. It divides the image into an even grid and simultaneously predicts bounding boxes, confidence in those boxes, and class probabilities. These predictions are encoded as an $$S \times S \times (B \ast 5 + C)$$ tensor.
 
 # Yolo 9000
 
@@ -39,7 +39,8 @@
 <figcaption></figcaption>
 </figure>
 
-- **Fine-Grained Features**: It reshapes the 26 × 26 × 512 layer to 13 × 13 × 2048. Then it concatenates with the original 13 × 13 ×1024 output layer. Now we apply convolution filters on the new 13 × 13 × 3072 layer to make predictions.
+- **Fine-Grained Features**: It reshapes the $$26 \times 26 \times 512$$ layer to $$13 \times 13
+  \times 2048$$. Then it concatenates with the original $$13 \times 13 \times 1024$$ output layer. Now we apply convolution filters on the new $$13 \times 13 \times 3072$$ layer to make predictions.
 
 # Yolo v3
 
@@ -145,7 +146,7 @@ def kmeans(boxes, k, dist=np.median):
 
 ![img](../../assets/yolov3.png)
 
-Change the input image size from 448 × 448 to 416 × 416. This creates an odd number spatial dimension (7×7 v.s. 8×8 grid cell). The center of a picture is often occupied by a large object. With an odd number grid cell, it is more certain on where the object belongs.
+Change the input image size from $$448 \times 448 to 416 \times 416$$. This creates an odd number spatial dimension ($$7\times 7$$ v.s. $$8 \times 8$$ grid cell). The center of a picture is often occupied by a large object. With an odd number grid cell, it is more certain on where the object belongs.
 
 YOLO v3 makes prediction at three scales, which are precisely given by downsampling the dimensions of the input image by 32, 16 and 8 respectively.
 
