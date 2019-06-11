@@ -1,3 +1,12 @@
 {
-  "plugins": ["katex"]
+  "plugins": ["katex", "-search", "-lunr", "custom-js-css", "docsearch"],
+  "pluginsConfig": {
+    "docSearch": {
+      "apiKey": "9b2d0c53eb838616448e652b3caafb42",
+      "index": "ztlevi-machine-learning"
+    },
+    "custom-js-css": {
+      "css": ["css/docsearch.css"]
+    }
+  }
 }

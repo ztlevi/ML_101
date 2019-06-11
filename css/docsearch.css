@@ -1,0 +1,46 @@
+/* FIX for algolia search box getting cropped off */
+/* FIX-START*/
+
+.book.with-summary .book-summary {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: hidden;
+
+  /* reset */
+  position: relative;
+  left: auto;
+  top: auto;
+  bottom: auto;
+  z-index: auto;
+  width: inherit;
+  border: none;
+}
+
+.book-summary > a, /*logo*/
+#book-search-input,
+.book-summary > nav {
+  width: 300px;
+}
+
+@media (max-width: 600px) {
+  .book-summary > a, /*logo*/
+    #book-search-input,
+    .book-summary > nav {
+    width: auto;
+  }
+}
+
+.book.with-summary .book-body {
+  border-left: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+#book-search-input {
+  margin-bottom: 0;
+}
+
+.book-summary > nav {
+  overflow-y: auto;
+}
+
+/* FIX-END*/
