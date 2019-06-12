@@ -45,7 +45,7 @@ after_script:
   - git checkout -b gh-pages
   - git add .
   - git commit -am "Update GitBook By TravisCI With Build $TRAVIS_BUILD_NUMBER"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" gh-pages
+  - git push --force --quiet "https://${CI_TOKEN}@${GH_REF}" gh-pages
 
 # 环境变量
 env:
