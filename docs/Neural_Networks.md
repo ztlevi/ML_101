@@ -48,7 +48,7 @@ For neural networks
 - Multi-class: softmax
 
   $$
-  p_{o,c} = e^{y_{k}}/\sum_{c=1}^M e^{y_{c}}
+  p_{o,c} = \frac{e^{y_{k}}}{\sum_{c=1}^M e^{y_{c}}}
   $$
 
 - Binary: sigmoid
