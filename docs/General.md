@@ -21,6 +21,9 @@
     - [Codes](#codes)
   - [Image interpolation](#image-interpolation)
     - [Examples](#examples)
+  - [Types of Stratified Sampling](#types-of-stratified-sampling)
+    - [Proportionate Stratified Random Sampling](#proportionate-stratified-random-sampling)
+    - [Disproportionate Stratified Random Sampling](#disproportionate-stratified-random-sampling)
   - [Blur image](#blur-image)
 
 <!-- markdown-toc end -->
@@ -191,6 +194,32 @@ Here is a visual explanation of PCA
 ### Examples
 
 ![img](../assets/image_interpolation_2.jpg)
+
+## Types of Stratified Sampling
+
+### Proportionate Stratified Random Sampling
+
+The sample size of each stratum in this technique is proportionate to the population size of the stratum when viewed against the entire population. This means that the each stratum has the same sampling fraction.
+
+For example, you have 3 strata with 100, 200 and 300 population sizes respectively. And the researcher chose a sampling fraction of ½. Then, the researcher must randomly sample 50, 100 and 150 subjects from each stratum respectively.
+
+<!-- tableopen - /html/body/div/div[2]/div/div/div[2]/div[7]/div[1]/table -->
+
+| Stratum           | A   | B   | C   |
+| ----------------- | --- | --- | --- |
+| Population Size   | 100 | 200 | 300 |
+| Sampling Fraction | 1/2 | 1/2 | 1/2 |
+| Final Sample Size | 50  | 100 | 150 |
+
+<!-- tableclose - /html/body/div/div[2]/div/div/div[2]/div[7]/div[1]/table -->
+
+The important thing to remember in this technique is to use the same sampling fraction for each stratum regardless of the differences in population size of the strata. It is much like assembling a smaller population that is specific to the relative proportions of the subgroups within the population.
+
+### Disproportionate Stratified Random Sampling
+
+The only difference between proportionate and disproportionate stratified random sampling is their sampling fractions. With disproportionate sampling, the different strata have different sampling fractions.
+
+The precision of this design is highly dependent on the sampling fraction allocation of the researcher. If the researcher commits mistakes in allotting sampling fractions, a stratum may either be overrepresented or underrepresented which will result in skewed results.
 
 ## Blur image
 
