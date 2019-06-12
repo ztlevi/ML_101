@@ -51,4 +51,4 @@ after_script:
 env:
  global:
    # Github Pages
-   - GH_REF: github.com/ztlevi/Machine_Learning_Questions.git
+   - GH_REF: github.com/ztlevi/Gitbook_Machine_Learning_Questions.git
