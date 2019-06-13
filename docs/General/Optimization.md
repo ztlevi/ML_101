@@ -105,7 +105,7 @@ Stochastic gradient descent (SGD) in contrast performs a parameter update for ea
 
 SGD performs frequent updates with a high variance that cause the objective function to fluctuate heavily as in Image 1.
 
-![img](http://ruder.io/content/images/2016/09/sgd_fluctuation.png)
+![img](../../assets/sgd_fluctuation.png)
 
 ```python
 for i in range(nb_epochs):
