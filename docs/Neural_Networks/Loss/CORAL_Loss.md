@@ -65,3 +65,30 @@ L = -\sum_{k=1}^{K-1} [1,1,1,0,0,0]^T * log( [0.9,0.8,0.6,0.4,0.2,0.1]^T ) \\
 + [0,0,0,1,1,1]^T * log ( [0.9 0.8 0.6 0.4 0.2 0.1]^T ) \\
 \end{aligned}
 $$
+
+# Ordinal Regression
+
+## Network design
+
+Last fc layer outputs `(num_classes-1)*2` logits.
+
+```python
+self.fc = nn.Linear(2048 * block.expansion, (self.num_classes-1)*2)
+```
+
+Final output is similar to CORAL-loss:
+
+```python
+probas = F.softmax(logits, dim=2)[:, :, 1]
+predict_levels = probas > 0.5
+predicted_labels = torch.sum(predict_levels, dim=1)
+```
+
+## Loss function
+
+```python
+def cost_fn(logits, levels, imp):
+    val = (-torch.sum((F.log_softmax(logits, dim=2)[:, :, 1]*levels
+                      + F.log_softmax(logits, dim=2)[:, :, 0]*(1-levels))*imp, dim=1))
+    return torch.mean(val)
+```
