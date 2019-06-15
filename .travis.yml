@@ -10,12 +10,12 @@ cache:
     - node_modules
 
 # 邮件通知，这里配置不管成功或是失败都通知
-notifications:
-  email:
-    recipients:
-      - zhouting@umich.edu
-    on_success: always # default: change
-    on_failure: always # default: always
+# notifications:
+#   email:
+#     recipients:
+#       - zhouting@umich.edu
+#     on_success: always # default: change
+#     on_failure: always # default: always
 
 # 构建的分支
 branches:
@@ -49,6 +49,6 @@ after_script:
 
 # 环境变量
 env:
- global:
-   # Github Pages
-   - GH_REF: github.com/ztlevi/Gitbook_Machine_Learning_Questions.git
+  global:
+    # Github Pages
+    - GH_REF: github.com/ztlevi/Gitbook_Machine_Learning_Questions.git
