@@ -12,6 +12,7 @@
     - [Categorical Cross-Entropy Loss](docs/Neural_Networks/Loss/Categorical_Cross_Entropy_loss.md)
     - [(Optional) Focal Loss](docs/Neural_Networks/Loss/Focal_Loss.md)
     - [(Optional) CORAL Loss](docs/Neural_Networks/Loss/CORAL_Loss.md)
+  - [RNN & LSTM](docs/Neural_Networks/RNN_LSTM.md)
   - [Mobilenet](docs/Neural_Networks/Mobilenet.md)
   - [YOLO](docs/Neural_Networks/YOLO.md)
   - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)
