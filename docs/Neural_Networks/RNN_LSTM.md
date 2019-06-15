@@ -26,7 +26,7 @@ All recurrent neural networks have the form of a chain of repeating modules of n
 
 ![](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-SimpleRNN.png)
 
-- $h_{t} = f(h_{t-1}, x_{t}; \theta)$, where the current hidden state $h_{t}$ is a function $f$ of the previous hidden state and $h_{t - 1}$ the current input $x_{t}$. The are $\theta$ the parameters of the function $f$.
+- $$h_{t} = f(h_{t-1}, x_{t}; \theta)$$, where the current hidden state $$h_{t}$$ is a function $$f$$ of the previous hidden state and $$h_{t - 1}$$ the current input $$x_{t}$$. The are $$\theta$$ the parameters of the function $$f$$.
 
 ## LSTM
 
