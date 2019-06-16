@@ -34,12 +34,24 @@ This seems great, but in practice RNN barely works due to **exploding/vanishing 
 
 **sigmoid** - gate function [0, 1], **tanh** - regular information to [-1, 1]
 
+<figure>
+<img src="../../assets/LSTM3-gate.png" alt="" style="width:10%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+The sigmoid layer outputs numbers between zero and one, describing how much of each component should be let through. A value of zero means “let nothing through,” while a value of one means “let everything through!”
+
 The math behind LSTM can be pretty complicated, but intuitively LSTM introduce
 
 - input gate
 - output gate
 - forget gate
 - memory cell (internal state)
+
+<figure>
+<img src="../../assets/LSTM3-C-line.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
 
 The cell state is kind of like a conveyor belt. It runs straight down the entire chain, with only some minor linear interactions. It's very easy for information to just flow along it unchanged.
 
@@ -51,16 +63,38 @@ LSTMs also have this chain like structure, but the repeating module has a differ
 
 ![A LSTM neural network.](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 
+### Step-by-Step LSTM Walk Through
+
+  <figure>
+  <img src="../../assets/LSTM3-focus-f.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+  <figcaption style="text-align:center"></figcaption>
+  </figure>
+
 1. At first, we apply **Forget gate**: $$f_{t} = \sigma(W_f \cdot [h_{t-1}, x_{t}] + b_{f})$$, caculate what information we should forget for previous information
+
+  <figure>
+  <img src="../../assets/LSTM3-focus-i.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+  <figcaption style="text-align:center"></figcaption>
+  </figure>
 
 2. The next step is to decide what new information we’re going to store in the cell state.
 
    - **Input gate**: $$i_{t} = \sigma(W_i \cdot [h_{t-1}, x_{t}] + b_{i})$$, a sigmoid layer decides which values we’ll update.
    - A tanh layer creates a vector of new candidate values: $$\tilde{ C_{t} } = tanh(W_{c} \cdot [h_{t-1}, x_{t}] + b_{c})$$, that could be added to the state.
 
+  <figure>
+  <img src="../../assets/LSTM3-focus-C.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+  <figcaption style="text-align:center"></figcaption>
+  </figure>
+
 3. Then we update **Memory cell C**: $$C_{t} = f_{t} * C_{t - 1} + i_{t} * \tilde{ C_{t} }$$,
 
-   We multiply the old state by ft, forgetting the things we decided to forget earlier. Then we add it∗C̃ t. This is the new candidate values, scaled by how much we decided to update each state value.
+   We multiply the old state by $$f_t$$, forgetting the things we decided to forget earlier. Then we add $$i_t * \tilde{C_t}$$. This is the new candidate values, scaled by how much we decided to update each state value.
+
+  <figure>
+  <img src="../../assets/LSTM3-focus-o.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+  <figcaption style="text-align:center"></figcaption>
+  </figure>
 
 4. This output will be based on our cell state, but will be a **filtered version**.
 
