@@ -100,3 +100,94 @@ LSTMs also have this chain like structure, but the repeating module has a differ
 
    - First, we run a **Output gate**: $$o_{t} = \sigma(W_o \cdot [h_{t-1}, x_{t}] + b_{o})$$, which decides what parts of the cell state we’re going to output, .
    - Then, we put the cell state through tanhtanh (to push the values to be between $$[-1, 1]$$ ) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to: $$h_{t} = tanh(C_{t}) * o_{t}$$
+
+### (Optional) Implementation
+
+FIXME Remove redundant codes
+
+- Part of the codes demonstrating LSTM
+
+  > **Note**: activation='tanh', recurrent_activation='hard_sigmoid'
+
+  ```python
+    self.kernel = self.add_weight(
+        shape=(input_dim, self.units * 4),
+        name="kernel",
+        initializer=self.kernel_initializer,
+        regularizer=self.kernel_regularizer,
+        constraint=self.kernel_constraint,
+    )
+    self.recurrent_kernel = self.add_weight(
+        shape=(self.units, self.units * 4),
+        name="recurrent_kernel",
+        initializer=self.recurrent_initializer,
+        regularizer=self.recurrent_regularizer,
+        constraint=self.recurrent_constraint,
+    )
+
+    self.kernel_i = self.kernel[:, : self.units]
+    self.kernel_f = self.kernel[:, self.units : self.units * 2]
+    self.kernel_c = self.kernel[:, self.units * 2 : self.units * 3]
+    self.kernel_o = self.kernel[:, self.units * 3 :]
+
+    self.recurrent_kernel_i = self.recurrent_kernel[:, : self.units]
+    self.recurrent_kernel_f = self.recurrent_kernel[:, self.units : self.units * 2]
+    self.recurrent_kernel_c = self.recurrent_kernel[:, self.units * 2 : self.units * 3]
+    self.recurrent_kernel_o = self.recurrent_kernel[:, self.units * 3 :]
+
+    x_i = K.dot(inputs_i, self.kernel_i)
+    x_f = K.dot(inputs_f, self.kernel_f)
+    x_c = K.dot(inputs_c, self.kernel_c)
+    x_o = K.dot(inputs_o, self.kernel_o)
+
+    i = self.recurrent_activation(x_i + K.dot(h_tm1_i, self.recurrent_kernel_i))
+    f = self.recurrent_activation(x_f + K.dot(h_tm1_f, self.recurrent_kernel_f))
+    c = f * c_tm1 + i * self.activation(x_c + K.dot(h_tm1_c, self.recurrent_kernel_c))
+    o = self.recurrent_activation(x_o + K.dot(h_tm1_o, self.recurrent_kernel_o))
+  ```
+
+- Take an example here:
+
+  ```python
+  # LSTM for sequence classification in the IMDB dataset
+  import numpy
+
+  from keras.datasets import imdb
+  from keras.layers import LSTM, Dense
+  from keras.layers.embeddings import Embedding
+  from keras.models import Sequential
+  from keras.preprocessing import sequence
+
+  # fix random seed for reproducibility
+  numpy.random.seed(7)
+  # load the dataset but only keep the top n words, zero the rest
+  top_words = 5000
+  (X_train, y_train), (X_test, y_test) = imdb.load_data(num_words=top_words)
+  # truncate and pad input sequences
+  max_review_length = 500
+  X_train = sequence.pad_sequences(X_train, maxlen=max_review_length)
+  X_test = sequence.pad_sequences(X_test, maxlen=max_review_length)
+  # create the model
+  embedding_vecor_length = 32
+  model = Sequential()
+  model.add(Embedding(top_words, embedding_vecor_length, input_length=max_review_length))
+  model.add(LSTM(100))
+  model.add(Dense(1, activation="sigmoid"))
+  model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
+  print(model.summary())
+  model.fit(X_train, y_train, epochs=3, batch_size=64)
+  # Final evaluation of the model
+  scores = model.evaluate(X_test, y_test, verbose=0)
+  print("Accuracy: %.2f%%" % (scores[1] * 100))
+  ```
+
+  - Shapes
+    - The output shape of the Embedding layer is (?, 500, 32).
+    - $$C_t$$: (?, 100)
+    - $$h_t$$: (?, 100)
+
+  The calculation for forget gate $$f_{t} = \sigma(W_f \cdot [h_{t-1}, x_{t}] + b_{f})$$ is composed of:
+
+  $$
+  \sigma ( (?,32) \cdot (32,100) + (?, 100) \cdot (100, 100) + (1, 100))
+  $$
