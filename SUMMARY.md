@@ -19,3 +19,5 @@
   - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)
 - Visualization
   - [Saliency Maps](docs/Visualization/Saliency_Maps.md)
+  - [Fooling images](docs/Visualization/Fooling_Images.md)
+  - [Class Visualization](docs/Visualization/Class_Visualization.md)

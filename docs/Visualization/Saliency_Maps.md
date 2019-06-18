@@ -3,6 +3,7 @@
 **Table of Contents**
 
 - [Saliency Maps](#saliency-maps)
+  - [Usage](#usage)
   - [Implementation](#implementation)
   - [Example](#example)
 
