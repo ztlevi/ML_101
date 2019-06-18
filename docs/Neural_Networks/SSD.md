@@ -24,7 +24,12 @@
 
 SSD defines a scale value for each feature map layer. Starting from the left, Conv4_3 detects objects at the smallest scale 0.2 (or 0.1 sometimes) and then increases linearly to the rightmost layer at a scale of 0.9.
 
-![scale_ssd](../../assets/scale_ssd.png) the scale value with the target aspect ratios, we compute the width and the height of the default boxes. For layers making 6 predictions, SSD starts with 5 target aspect ratios: 1, 2, 3, 1/2 and 1/3. Then the width and the height of the default boxes are calculated as:
+<figure>
+<img src="../../assets/scale_ssd.png" alt="" style="width:50%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+the scale value with the target aspect ratios, we compute the width and the height of the default boxes. For layers making 6 predictions, SSD starts with 5 target aspect ratios: 1, 2, 3, 1/2 and 1/3. Then the width and the height of the default boxes are calculated as:
 
 ![wh](../../assets/ssd_wh.png)
 
