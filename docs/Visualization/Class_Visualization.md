@@ -8,14 +8,9 @@
 
 <!-- markdown-toc end -->
 
-References:
-
-[2]: https://arxiv.org/pdf/1312.6034.pdf "Karen Simonyan, Andrea Vedaldi, and Andrew Zisserman. 'Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps', ICLR Workshop 2014."
-[3]: https://arxiv.org/abs/1506.06579 "Yosinski et al, 'Understanding Neural Networks Through Deep Visualization', ICML 2015 Deep Learning Workshop"
-
 # Class Visualization
 
-By starting with a random noise image and performing gradient ascent on a target class, we can generate an image that the network will recognize as the target class. This idea was first presented in [2]; [3] extended this idea by suggesting several regularization techniques that can improve the quality of the generated image.
+By starting with a random noise image and performing gradient ascent on a target class, we can generate an image that the network will recognize as the target class. This idea was first presented in [[2][2]] ; [[3][3]] extended this idea by suggesting several regularization techniques that can improve the quality of the generated image.
 
 Concretely, let $$I$$ be an image and let $$y$$ be a target class. Let $$s_y(I)$$ be the score that a convolutional network assigns to the image $$I$$ for class $$y$$; note that these are raw unnormalized scores, not class probabilities. We wish to generate an image $$I^*$$ that achieves a high score for the class $$y$$ by solving the problem
 
@@ -29,7 +24,7 @@ $$
 R(I) = \lambda \parallel I \parallel _2^2
 $$
 
-and implicit regularization as suggested by [3] by periodically blurring the generated image. We can solve this problem using gradient ascent on the generated image.
+and implicit regularization as suggested by [[3][3]] by periodically blurring the generated image. We can solve this problem using gradient ascent on the generated image.
 
 In the cell below, complete the implementation of the `create_class_visualization` function.
 
@@ -142,3 +137,6 @@ out = create_class_visualization(target_y, model)
 | ----------------------------------------------- | ------------------------------------------------ | ----------------------------------------------- |
 | ![img](../../assets/class_vis_tarantula_1.png)  | ![img](../../assets/class_vis_tarantula_25.png)  | ![img](../../assets/class_vis_tarantula_50.png) |
 | ![img](../../assets/class_vis_tarantula_75.png) | ![img](../../assets/class_vis_tarantula_100.png) |                                                 |
+
+[2]: https://arxiv.org/pdf/1312.6034.pdf "Karen Simonyan, Andrea Vedaldi, and Andrew Zisserman. 'Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps', ICLR Workshop 2014."
+[3]: https://arxiv.org/abs/1506.06579 "Yosinski et al, 'Understanding Neural Networks Through Deep Visualization', ICML 2015 Deep Learning Workshop"
