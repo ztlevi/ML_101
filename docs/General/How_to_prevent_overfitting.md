@@ -10,6 +10,11 @@
 
 ## Trade-Off
 
+![img](../../assets/degree_of_polynomial_d.png)
+
+- if d is too small --> this probably corresponds to a high bias problem
+- if d is too large --> this probably corresponds to a high variance problem
+
 ![tradeoff](../../assets/bias-variance-total-error.jpg)
 
 Predictive models have a tradeoff between **bias** (how well the model fits the data) and **variance** (how much the model changes based on changes in the inputs).
@@ -110,6 +115,21 @@ In L2 regularization, regularization term is the sum of square of all feature we
   ![enter image description here](../../assets/Mkclz.png)
 
 From the figure, we can find out that for L1, the gradient is either 1 or -1, except for when $$w_{1}=0$$, however, for the same $$\lambda$$, it is possible that the weight for L2 norm will never reach zero for the gradient of the weight is also very small, which may result in a smaller penalty for the weight.
+
+### Choosing λ
+
+![img](../../assets/regularization_lambda.jpg)
+
+- Plot λ vs.
+  - $$J_{ train }$$
+    - When λ is small you get a small value (regularization basically goes to 0)
+    - When λ is large you get a large vale corresponding to high bias
+  - $$J_{ cv }$$
+    - When λ is small we see high variance
+      - Too small a value means we over fit the data
+    - When λ is large we end up underfitting, so this is bias
+      - So cross validation error is high
+- Such a plot can help show you you're picking a good value for λ
 
 ### DropOut (Regularization technique)
 
