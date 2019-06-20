@@ -89,6 +89,22 @@ $$
 C'(W) = C'(R) \cdot R'(Z) \cdot Z'(W) = (\hat{y} - y) \cdot R'(Z) \cdot X
 $$
 
+### Example
+
+![img](../../assets/simple_nn_diagram_zo_zh_defined.png)
+
+![img](../../assets/backprop_visually.png)
+
+> NOTE:
+>
+> $$
+> E_0 = \frac{\partial L }{\partial O}
+> $$
+>
+> $$
+> E_H = \frac{\partial L }{\partial H}
+> $$
+
 ## Batch gradient descent
 
 Vanilla gradient descent, aka batch gradient descent, computes the gradient of the cost function to the parameters $$\theta$$ for the entire training dataset.
