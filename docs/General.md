@@ -146,36 +146,9 @@ $$
 > 3.  y - binary indicator (0 or 1) if class label c is the correct classification for observation o
 > 4.  p - predicted probability observation o is of class c
 
-## Clustering - K-means
+## Clustering
 
-- Clustering is a unsupervised learning algorithm that groups data in such a way that data points in the same group are more similar to each other than to those from other groups
-- Similarity is usually defined using a distance measure (e.g, Euclidean, Cosine, Jaccard, etc.)
-- The goal is usually to discover the underlying structure within the data (usually high dimensional)
-- The most common clustering algorithm is K-means, where we define K (the number of clusters) and the algorithm iteratively finds the cluster each data point belongs to
-- How to choose K? **The elbow method**: The elbow method looks at the percentage of variance explained as a function of the number of clusters: One should choose a number of clusters so that adding another cluster doesn't give much better modeling of the data. **Percentage of variance explained** is the ratio of the between-group variance to the total variance, also known as an F-test
-
-[scikit-learn](http://scikit-learn.org/stable/modules/clustering.html) implements many clustering algorithms. Below is a comparison adopted from its page.
-
-### K-means algorithm:
-
-- Input:
-  - $$K$$ (number of clusters)
-  - Training set $${x^1,x^2,...,x^m}$$ ($$x^i \in \mathbb{R}^n$$)
-- Algorithm:
-
-  1. Randomly initialized $$K$$ cluster centroids $$\mu_1,\mu_2,...,\mu_K \in \mathbb{R}^n$$
-  2. Repeat {
-
-     - for i = 1 to $$m$$
-       - $$c^i$$ := index (from 1 to K) of cluster centroid closest to $$x^i$$
-     - for k = 1 to $$K$$
-       - $$\mu_k$$ := average (mean) of points assigned to Cluster k
-
-     }
-
-### [kmeans python code](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/kmeans/kmeans.py)
-
-![clustering](../assets/clustering.png)
+### [K-means](General/Kmeans.html)
 
 ## Principal Component Analysis
 
