@@ -142,6 +142,7 @@ $$
 - Similarity is usually defined using a distance measure (e.g, Euclidean, Cosine, Jaccard, etc.)
 - The goal is usually to discover the underlying structure within the data (usually high dimensional)
 - The most common clustering algorithm is K-means, where we define K (the number of clusters) and the algorithm iteratively finds the cluster each data point belongs to
+- How to choose K? **The elbow method**: The elbow method looks at the percentage of variance explained as a function of the number of clusters: One should choose a number of clusters so that adding another cluster doesn't give much better modeling of the data. **Percentage of variance explained** is the ratio of the between-group variance to the total variance, also known as an F-test
 
 [scikit-learn](http://scikit-learn.org/stable/modules/clustering.html) implements many clustering algorithms. Below is a comparison adopted from its page.
 

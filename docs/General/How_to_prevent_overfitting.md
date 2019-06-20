@@ -11,7 +11,7 @@
   - [Regularization](#regularization)
     - [L1 Regularization or Lasso or L1 norm](#l1-regularization-or-lasso-or-l1-norm)
     - [L2 Regularization or Ridge Regularization](#l2-regularization-or-ridge-regularization)
-    - [Comparision Between L1 AND L2 Regulariztion](#comparision-between-l1-and-l2 -Regulariztion)
+    - [Comparison Between L1 And L2 Regulariztion](#comparision-between-l1-and-l2%20-regulariztion)
     - [DropOut (Regularization technique)](#dropout-regularization-technique)
     - [DropConnect](#dropconnect)
     - [Comparison](#comparison)
@@ -106,7 +106,7 @@ $$
 
 In L2 regularization, regularization term is the sum of square of all feature weights as shown above in the equation.
 
-### Comparision Between L1 AND L2 Regulariztion
+### Comparison Between L1 And L2 Regulariztion
 
 - **Solution uniqueness**: L2 has unique solution while L2 has multiple solution
 
