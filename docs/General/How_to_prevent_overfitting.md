@@ -3,6 +3,7 @@
 **Table of Contents**
 
 - [How to Prevent Overfitting](#how-to-prevent-overfitting)
+  - [Bias Variance Trade-Off](#bias-variance-trade-off)
   - [Cross-validation](#cross-validation)
   - [Train with more data](#train-with-more-data)
   - [Remove features](#remove-features)
@@ -23,6 +24,18 @@
 Detecting overfitting is useful, but it doesn't solve the problem. Fortunately, you have several options to try.
 
 Here are a few of the most popular solutions for overfitting:
+
+## Bias Variance Trade-Off
+
+![tradeoff](../../assets/bias-variance-total-error.jpg)
+
+Predictive models have a tradeoff between **bias** (how well the model fits the data) and **variance** (how much the model changes based on changes in the inputs).
+
+_Simpler models_ are stable (low variance) but they don't get close to the truth (high bias).
+
+More _complex models_ are more prone to being overfit (high variance) but they are expressive enough to get close to the truth (low bias).
+
+The best model for a given problem usually lies somewhere in the middle.
 
 ## Cross-validation
 

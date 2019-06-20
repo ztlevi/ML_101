@@ -51,11 +51,25 @@ Cost function: $$ min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0
 
 ## Decision tree
 
+![Image result for Decision tree image](../assets/B03905_05_01-compressor.png)
+
 - Non-parametric, supervised learning algorithms
-- Given the training data, a decision tree algorithm divides the feature space into regions. For inference, we first see which region does the test data point fall in, and take the mean label values (regression) or the majority label value (classification).
+- Given the training data, a decision tree algorithm **divides the feature space into regions**. For inference, we first see which region does the test data point fall in, and take the mean label values (regression) or the majority label value (classification).
 - **Construction**: top-down, chooses a question to split the data such that the target variables within each region are as homogeneous as possible. Calculate the gini impurity and information gain, then pick the question with the most information gain.
-- Advantage: simply to understand & interpret, mirrors human decision making
+- Advantage:
+  - simply to understand & interpret, mirrors human decision making
 - Disadvantage:
+
   - can overfit easily (and generalize poorly) if we don't limit the depth of the tree
   - can be non-robust: A small change in the training data can lead to a totally different tree
   - instability: sensitive to training set rotation due to its orthogonal decision boundaries
+
+- How to choose depth:
+  - It depends on the possible questions you can have for certain problems.
+  - Also you need to use validation data to see which depth works best
+
+## Random forests
+
+![Image result for Random forest](../assets/Architecture-of-the-random-forest-model.png)
+
+An ensemble learning method for classification, regression and other tasks that operates by constructing a **multitude of decision trees** at training time and outputting the class that is the **mode** of the classes (classification) or **mean** prediction (regression) of the individual trees.
