@@ -1,16 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Classical Machine learning](#classical-machine-learning)
-  - [KNN](#knn)
-    - [Naive Bayes](#naive-bayes)
-      - [TODO explain formula](#todo-explain-formula)
-  - [SVM](#svm)
-  - [Decision tree](#decision-tree)
-
-<!-- markdown-toc end -->
-
 # Classical Machine learning
 
 ## KNN

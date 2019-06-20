@@ -1,15 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Single Shot MultiBox Detector(SSD)](#single-shot-multibox-detectorssd)
-  - [Architecture](#architecture)
-  - [Loss Function](#loss-function)
-  - [Hard Negative Mining](#hard-negative-mining)
-  - [Data Augmentation](#data-augmentation)
-
-<!-- markdown-toc end -->
-
 # Single Shot MultiBox Detector(SSD)
 
 - **Single Shot**: this means that the tasks of object localization and classification are done in a single forward pass of the network

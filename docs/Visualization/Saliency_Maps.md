@@ -1,14 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Saliency Maps](#saliency-maps)
-  - [Usage](#usage)
-  - [Implementation](#implementation)
-  - [Example](#example)
-
-<!-- markdown-toc end -->
-
 Reference:
 
 1. https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb

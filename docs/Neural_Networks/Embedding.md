@@ -1,11 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Embeddings](#embeddings)
-
-<!-- markdown-toc end -->
-
 Reference: https://www.tensorflow.org/guide/embedding
 
 # Embeddings

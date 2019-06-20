@@ -1,13 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [RNN and LSTM](#rnn-and-lstm)
-  - [RNN](#rnn)
-  - [LSTM](#lstm)
-
-<!-- markdown-toc end -->
-
 # RNN and LSTM
 
 ## RNN

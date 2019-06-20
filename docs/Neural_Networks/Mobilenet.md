@@ -1,15 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Mobilenet v1](#mobilenet-v1)
-  - [Depthwise Separable Convolution.](#depthwise-separable-convolution)
-  - [Depth Multiplier: Thinner Models](#depth-multiplier-thinner-models)
-- [Mobilenet v2](#mobilenet-v2)
-  - [Inverted residuals](#inverted-residuals)
-
-<!-- markdown-toc end -->
-
 # Mobilenet v1
 
 ## Depthwise Separable Convolution.

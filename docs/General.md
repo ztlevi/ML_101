@@ -1,33 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [General](#general)
-  - [Project Workflow](#project-workflow)
-  - [Confusion matrix](#confusion-matrix)
-  - [Weight Initialization](#weight-initialization)
-  - [[Optimization](General/Optimization.html)](#optimizationgeneraloptimizationhtml)
-  - [Normalization](#normalization)
-    - [Batch Normalization](#batch-normalization)
-    - [Common pitfall](#common-pitfall)
-  - [Cost function](#cost-function)
-    - [L1 Loss vs L2 Loss](#l1-loss-vs-l2-loss)
-    - [cross-entropy](#cross-entropy)
-  - [Clustering - K-means](#clustering---k-means)
-    - [K-means algorithm:](#k-means-algorithm)
-    - [[kmeans python code](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/kmeans/kmeans.py)](#kmeans-python-codehttpsgithubcomztlevimachinelearningquestionsblobmastercodeskmeanskmeanspy)
-  - [Principal Component Analysis](#principal-component-analysis)
-  - [Non maximal supression](#non-maximal-supression)
-    - [Codes](#codes)
-  - [Image interpolation](#image-interpolation)
-    - [Examples](#examples)
-  - [Types of Stratified Sampling](#types-of-stratified-sampling)
-    - [Proportionate Stratified Random Sampling](#proportionate-stratified-random-sampling)
-    - [Disproportionate Stratified Random Sampling](#disproportionate-stratified-random-sampling)
-  - [Blur image](#blur-image)
-
-<!-- markdown-toc end -->
-
 # General
 
 ## Project Workflow

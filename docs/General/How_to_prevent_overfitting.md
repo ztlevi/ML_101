@@ -1,25 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Bias Variance Trade-Off](#bias-variance-trade-off)
-- [How to Prevent Overfitting](#how-to-prevent-overfitting)
-  - [Cross-validation](#cross-validation)
-  - [Train with more data](#train-with-more-data)
-  - [Remove features](#remove-features)
-  - [Early stopping](#early-stopping)
-  - [Regularization](#regularization)
-    - [L1 Regularization or Lasso or L1 norm](#l1-regularization-or-lasso-or-l1-norm)
-    - [L2 Regularization or Ridge Regularization](#l2-regularization-or-ridge-regularization)
-    - [Comparison Between L1 And L2 Regulariztion](#comparision-between-l1-and-l2%20-regulariztion)
-    - [DropOut (Regularization technique)](#dropout-regularization-technique)
-    - [DropConnect](#dropconnect)
-    - [Comparison](#comparison)
-  - [[Batch Norm](../General.html#batch-normalization)](#batch-normgeneralhtmlbatch-normalization)
-  - [Ensembling](#ensembling)
-
-<!-- markdown-toc end -->
-
 # Bias Variance Trade-Off
 
 ![tradeoff](../../assets/bias-variance-total-error.jpg)

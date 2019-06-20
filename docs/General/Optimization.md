@@ -1,21 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Optimization](#optimization)
-  - [Gradient Descent](#gradient-descent)
-    - [derivative of a matrix-matrix product](#derivative-of-a-matrix-matrix-product)
-  - [Backpropagation](#backpropagation)
-    - [Chain Rule](#chain-rule)
-    - [Applying the chain rule](#applying-the-chain-rule)
-  - [Batch gradient descent](#batch-gradient-descent)
-  - [Stochastic gradient descent](#stochastic-gradient-descent)
-  - [Mini-batch gradient descent](#mini-batch-gradient-descent)
-  - [SGD momentum](#sgd-momentum)
-  - [ADAM](#adam)
-
-<!-- markdown-toc end -->
-
 # Optimization
 
 ## Gradient Descent

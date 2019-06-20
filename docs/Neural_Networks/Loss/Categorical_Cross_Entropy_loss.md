@@ -1,13 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Categorical Cross-Entropy loss](#categorical-cross-entropy-loss)
-  - [Forward pass: Loss computation](#forward-pass-loss-computation)
-  - [Backward pass: Gradients computation](#backward-pass-gradients-computation)
-
-<!-- markdown-toc end -->
-
 # Categorical Cross-Entropy loss
 
 Also called **Softmax Loss**. It is a **Softmax activation** plus a **Cross-Entropy loss**. If we use this loss, we will train a CNN to output a probability over the $$C$$ classes for each image. It is used for multi-class classification.

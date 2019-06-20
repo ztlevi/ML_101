@@ -1,19 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Yolo v1](#yolo-v1)
-- [Yolo 9000](#yolo-9000)
-- [Yolo v3](#yolo-v3)
-  - [Predictions](#predictions)
-  - [Feature Pyramid Networks (FPN)](#feature-pyramid-networks-fpn)
-  - [Anchor Boxes](#anchor-boxes)
-    - [Kmeans implementation](#kmeans-implementation)
-  - [Multi-scale training](#multi-scale-training)
-  - [Loss](#loss)
-
-<!-- markdown-toc end -->
-
 # Yolo v1
 
 ![yolo v1 structure](../../assets/yolov1.png)

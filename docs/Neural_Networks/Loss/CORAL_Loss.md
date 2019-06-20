@@ -1,14 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [[CORAL Loss](https://arxiv.org/pdf/1901.07884.pdf)](#coral-losshttpsarxivorgpdf190107884pdf)
-  - [Network design](#network-design)
-  - [Loss function](#loss-function)
-    - [Example](#example)
-
-<!-- markdown-toc end -->
-
 # [CORAL Loss](https://arxiv.org/pdf/1901.07884.pdf)
 
 Consistant Rank Ligist for Ordinal Regression

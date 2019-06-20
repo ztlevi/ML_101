@@ -1,28 +1,3 @@
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Neural Networks](#neural-networks)
-  - [GEMM](#gemm)
-  - [Pooling](#pooling)
-  - [Activation Function](#activation-function)
-  - [Model compression](#model-compression)
-    - [Weight Pruning](#weight-pruning)
-  - [Two (Multi Task Learning) MTL methods for Deep Learning](#two-multi-task-learning-mtl-methods-for-deep-learning)
-    - [Hard parameter sharing](#hard-parameter-sharing)
-    - [Soft parameter sharing](#soft-parameter-sharing)
-  - [Deep Learning](#deep-learning)
-    - [CNN](#cnn)
-    - [Bottleneck layer](#bottleneck-layer)
-    - [Resnet](#resnet)
-    - [[RNN and LSTM](Neural_Networks/RNN_LSTM.md)](#rnn-and-lstmneuralnetworksrnnlstmmd)
-    - [[Mobilenet](docs/Neural_Network/Mobilenet.md)](#mobilenetdocsneuralnetworkmobilenetmd)
-    - [[YOLO](docs/Neural_Networks/YOLO.md)](#yolodocsneuralnetworksyolomd)
-    - [[Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)](#single-shot-multibox-detectorssddocsneuralnetworksssdmd)
-  - [Reference](#reference)
-
-<!-- markdown-toc end -->
-
 # Neural Networks
 
 ## GEMM
