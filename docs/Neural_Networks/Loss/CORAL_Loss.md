@@ -15,7 +15,7 @@ Consistant Rank Ligist for Ordinal Regression
 
 ## Network design
 
-After the last fully-connected layer with num of classes as one, a 1D linear bais layer is introduced.
+After the last fully-connected layer with num of classes as one, a 1D linear bias layer is introduced.
 
 ```python
 self.fc = nn.Linear(4096, 1, bias=False)
@@ -24,7 +24,7 @@ self.linear_1_bias = nn.Parameter(torch.zeros(num_classes-1).float())
 
 ## Loss function
 
-Let $$W$$ denote the weight parameters of the neural network excluding the bais units of the final layer. The penultimate layer, whose output is denoted as $$g(x_i,W)$$, shares a single weight with all nodes in the final output layer. $$K-1$$ independent bias units are then added to $$g(x_i, W)$$ such that $${g(x_i, W)+b_k}_{k=1}^{K-1}$$ are the inputs to the crresponding binary classifiers in the final layer. Let $$s(z)=1/(1+exp(-z))$$ be the logistic sigmoid function. The predicted empirical probability for task k is defined as:
+Let $$W$$ denote the weight parameters of the neural network excluding the bias units of the final layer. The penultimate layer, whose output is denoted as $$g(x_i,W)$$, shares a single weight with all nodes in the final output layer. $$K-1$$ independent bias units are then added to $$g(x_i, W)$$ such that $${g(x_i, W)+b_k}_{k=1}^{K-1}$$ are the inputs to the crresponding binary classifiers in the final layer. Let $$s(z)=1/(1+exp(-z))$$ be the logistic sigmoid function. The predicted empirical probability for task k is defined as:
 
 $$
 \hat{P}(y_i^k=1) = s(g(x_i, W) +b_k)
