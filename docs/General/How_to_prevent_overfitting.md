@@ -108,9 +108,9 @@ In L2 regularization, regularization term is the sum of square of all feature we
 
 ### Comparison Between L1 And L2 Regulariztion
 
-- **Solution uniqueness**: L2 has unique solution while L2 has multiple solution
+- **Computational Efficiency**: (L2 > L1) L2 have analytical solution while L1 is computational inefficient on non-sparse cases
 
-- **Computational Efficiency**: L2 > L1 L2 have analytical solution while L1 is computational inefficient on non-sparse cases
+- **Sparsity**: (L1 > L2) refers to that only very few entries in a matrix (or vector) is non-zero. L1-norm has the property of producing many coefficients with zero values or very small values with few large coefficients.
 
 - **Built-in feature selection for L1**: L1-norm tends to produces sparse coefficients, so that L1 can penalize the coefficients toward 0.
 

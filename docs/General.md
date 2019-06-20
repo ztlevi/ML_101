@@ -11,7 +11,7 @@
     - [Batch Normalization](#batch-normalization)
     - [Common pitfall](#common-pitfall)
   - [Cost function](#cost-function)
-    - [L1, L2](#l1-l2)
+    - [L1 Loss vs L2 Loss](#l1-loss-vs-l2-loss)
     - [cross-entropy](#cross-entropy)
   - [Clustering - K-means](#clustering---k-means)
     - [K-means algorithm:](#k-means-algorithm)
@@ -119,7 +119,17 @@ An important point to make about the preprocessing is that any preprocessing sta
 
 A Loss Functions tells us "how good" our model is at making predictions for a given set of parameters. The cost function has its own curve and its own gradients. The slope of this curve tells us how to update our parameters to make the model more accurate.
 
-### L1, L2
+### L1 Loss vs L2 Loss
+
+- **Robustness**: L1 > L2
+
+  Intuitively speaking, since a L2-norm squares the error (increasing by a lot if error > 1), the model will see a much larger error than the L1-norm, so the model is much more sensitive to outliers.
+
+- **Stability**: L2 > L1
+
+  In the case of a more “outlier” point, both norms still have big change, but again the L1-norm has more changes in general.
+
+- **Solution uniqueness**: Minimizing the L2 loss corresponds to calculating **the arithmetic mean**, which is unambiguous, while minimizing the L1 loss corresponds to calculating **the median**, which is ambiguous if an even number of elements are included in the median calculation, So L2 has unique solution while L1 has multiple solution
 
 ### cross-entropy
 
