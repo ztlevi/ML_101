@@ -1,5 +1,5 @@
 {
-  "plugins": ["katex", "-search", "-lunr", "custom-js-css", "docsearch"],
+  "plugins": ["katex", "-search", "-lunr", "custom-js-css", "docsearch", "intopic-toc"],
   "pluginsConfig": {
     "docSearch": {
       "apiKey": "9b2d0c53eb838616448e652b3caafb42",
