@@ -73,3 +73,15 @@ Cost function: $$ min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0
 ![Image result for Random forest](../assets/Architecture-of-the-random-forest-model.png)
 
 An ensemble learning method for classification, regression and other tasks that operates by constructing a **multitude of decision trees** at training time and outputting the class that is the **mode** of the classes (classification) or **mean** prediction (regression) of the individual trees.
+
+- The number of tree? In general, the more trees you use the better get the results. However, the improvement decreases as the number of trees increases, at a certain point **the benefit in prediction performance from learning more trees will be lower than the cost in computation time for learning these additional trees**.
+
+### Bagging in Random Forest
+
+**1**. Suppose there are $$N$$ observations and M features in training data set. First, a sample from training data set is taken randomly with replacement. (**Bagging for Dataset**)
+
+**2**. A subset of $$M$$ features($$\sqrt{M}$$) are selected randomly and whichever feature gives the best split is used to split the node iteratively. (**Bagging for Feature**)
+
+**3**. The tree is grown to the largest.
+
+**4**. Above steps are repeated and prediction is given based on the aggregation of predictions from $$n$$ number of trees.

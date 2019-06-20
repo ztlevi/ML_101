@@ -2,8 +2,8 @@
 
 **Table of Contents**
 
+- [Bias Variance Trade-Off](#bias-variance-trade-off)
 - [How to Prevent Overfitting](#how-to-prevent-overfitting)
-  - [Bias Variance Trade-Off](#bias-variance-trade-off)
   - [Cross-validation](#cross-validation)
   - [Train with more data](#train-with-more-data)
   - [Remove features](#remove-features)
@@ -11,6 +11,7 @@
   - [Regularization](#regularization)
     - [L1 Regularization or Lasso or L1 norm](#l1-regularization-or-lasso-or-l1-norm)
     - [L2 Regularization or Ridge Regularization](#l2-regularization-or-ridge-regularization)
+    - [Comparision Between L1 AND L2 Regulariztion](#comparision-between-l1-and-l2 -Regulariztion)
     - [DropOut (Regularization technique)](#dropout-regularization-technique)
     - [DropConnect](#dropconnect)
     - [Comparison](#comparison)
@@ -19,13 +20,7 @@
 
 <!-- markdown-toc end -->
 
-# How to Prevent Overfitting
-
-Detecting overfitting is useful, but it doesn't solve the problem. Fortunately, you have several options to try.
-
-Here are a few of the most popular solutions for overfitting:
-
-## Bias Variance Trade-Off
+# Bias Variance Trade-Off
 
 ![tradeoff](../../assets/bias-variance-total-error.jpg)
 
@@ -36,6 +31,12 @@ _Simpler models_ are stable (low variance) but they don't get close to the truth
 More _complex models_ are more prone to being overfit (high variance) but they are expressive enough to get close to the truth (low bias).
 
 The best model for a given problem usually lies somewhere in the middle.
+
+# How to Prevent Overfitting
+
+Detecting overfitting is useful, but it doesn't solve the problem. Fortunately, you have several options to try.
+
+Here are a few of the most popular solutions for overfitting:
 
 ## Cross-validation
 
@@ -87,11 +88,7 @@ Today, this technique is mostly used in deep learning while other techniques (e.
 
 Regularization refers to a broad range of techniques for artificially forcing your model to be simpler.
 
-The method will depend on the type of learner you're using. For example, you could prune a decision tree, use dropout on a neural network, or add a penalty parameter to the cost function in regression.
-
-Oftentimes, the regularization method is a hyperparameter as well, which means it can be tuned through cross-validation.
-
-We have a more detailed discussion here on [algorithms and regularization methods](http://elitedatascience.com/machine-learning-algorithms).
+Shrinkage can be thought of as "a penalty of complexity." Why? If we set some parameters of the model to exactly zero, then the model is effectively shrunk to have lower-dimensionality and less complex. Analogously, if we use a shrinkage mechanism to **zero out some of the parameters** or **smooth the parameters** (the difference of parameters will not be very large), then we are decreasing complexity by reducing dimensions or making it more continuous.
 
 ### L1 Regularization or Lasso or L1 norm
 
@@ -108,6 +105,20 @@ L(x,y) = \sum_{i=1}^n(y_i - h_{\theta}(x_i))^2 + \lambda \sum_{i=1}^n \theta_i^2
 $$
 
 In L2 regularization, regularization term is the sum of square of all feature weights as shown above in the equation.
+
+### Comparision Between L1 AND L2 Regulariztion
+
+- **Solution uniqueness**: L2 has unique solution while L2 has multiple solution
+
+- **Computational Efficiency**: L2 > L1 L2 have analytical solution while L1 is computational inefficient on non-sparse cases
+
+- **Built-in feature selection for L1**: L1-norm tends to produces sparse coefficients, so that L1 can penalize the coefficients toward 0.
+
+  ![enter image description here](../../assets/cmWO0.png)
+
+  ![enter image description here](../../assets/Mkclz.png)
+
+From the figure, we can find out that for L1, the gradient is either 1 or -1, except for when $$w_{1}=0$$, however, for the same $$\lambda$$, it is possible that the weight for L2 norm will never reach zero for the gradient of the weight is also very small, which may result in a smaller penalty for the weight.
 
 ### DropOut (Regularization technique)
 
