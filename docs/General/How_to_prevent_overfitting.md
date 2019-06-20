@@ -1,5 +1,15 @@
 # Bias Variance Trade-Off
 
+## Bias and Variance
+
+![img](../../assets/1*xwtSpR_zg7j7zusa4IDHNQ.png)
+
+- Bias is the difference between the average prediction of our model and the correct value which we are trying to predict.
+
+- Variance is the variability of model prediction for a given data point or a value which tells us spread of our data. Model with high variance pays a lot of attention to training data and does not generalize on the data which it hasn’t seen before.
+
+## Trade-Off
+
 ![tradeoff](../../assets/bias-variance-total-error.jpg)
 
 Predictive models have a tradeoff between **bias** (how well the model fits the data) and **variance** (how much the model changes based on changes in the inputs).
@@ -9,6 +19,9 @@ _Simpler models_ are stable (low variance) but they don't get close to the truth
 More _complex models_ are more prone to being overfit (high variance) but they are expressive enough to get close to the truth (low bias).
 
 The best model for a given problem usually lies somewhere in the middle.
+
+- **underfitting** happens when a model unable to capture the underlying pattern of the data.
+- **overfitting** happens when our model captures the noise along with the underlying pattern in data.
 
 # How to Prevent Overfitting
 
