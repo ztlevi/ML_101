@@ -114,19 +114,7 @@ Initial layers capture low-level features such as angle and edges, while later l
 
 The bottleneck in a neural network is just a layer (e.g. convolution layer) with less neurons then the layer below or above it. Having such a layer encourages the network to compress feature representations to best fit in the available space, in order to get the best loss during training.
 
-### Resnet
-
-Increasing network depth does not work by simply stacking layers together. Deep networks are hard to train because of the notorious vanishing gradient problem-as the gradient is back-propagated to earlier layers, repeated multiplication may make the gradient infinitively small. As a result, as the network goes deeper, its performance gets saturated or even starts degrading rapidly.
-
-The core idea of ResNet is introducing a so-called shortcut.
-
-- When the input and output are of the same dimensions, we use "identity shortcut connection" that skips one or more layers, as shown in the following figure:
-
-  ![img](https://cdn-images-1.medium.com/max/1500/1*ByrVJspW-TefwlH7OLxNkg.png)
-
-- When the dimensions increase, we consider two options: (A) THe shortcut still performs identity mapping, with extra zero entries padded for increasing dimensions. (B) The projection shortcut is used to match dimensions.
-
-The authors argues that stacking layers shouldn't degrade the network performance, because we could simply stack identity mappings (layer that doesn't do anything) upon the current network, and the resulting architecture would perform the same. This indicates that the deeper model should not produce a training error higher than its shallower counterparts.
+### [Resnet](Neural_Networks/Resnet.md)
 
 ### [RNN and LSTM](Neural_Networks/RNN_LSTM.md)
 

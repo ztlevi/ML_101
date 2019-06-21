@@ -13,6 +13,7 @@
     - [Categorical Cross-Entropy Loss](docs/Neural_Networks/Loss/Categorical_Cross_Entropy_loss.md)
     - [(Optional) Focal Loss](docs/Neural_Networks/Loss/Focal_Loss.md)
     - [(Optional) CORAL Loss](docs/Neural_Networks/Loss/CORAL_Loss.md)
+  - [Resnet](docs/Neural_Networks/Resnet.md)
   - [Embedding](docs/Neural_Networks/Embedding.md)
   - [RNN & LSTM](docs/Neural_Networks/RNN_LSTM.md)
   - [Mobilenet](docs/Neural_Networks/Mobilenet.md)
