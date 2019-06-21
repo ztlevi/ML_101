@@ -116,6 +116,20 @@ $$
 > 3.  y - binary indicator (0 or 1) if class label c is the correct classification for observation o
 > 4.  p - predicted probability observation o is of class c
 
+### Why CE?
+
+- During back-propagation training, you want to drive output node values to either 1.0 or 0.0 depending on the target values.
+
+- If you use MSE, the weight adjustment factor (the gradient) contains a term of (output) _ (1 – output). As the computed output gets closer and closer to either 0.0 or 1.0 the value of (output) _ (1 – output) gets smaller and smaller.
+
+- For example, if output = 0.6 then (output) _ (1 – output) = 0.24 but if output is 0.95 then (output) _ (1 – output) = 0.0475.
+
+- As the adjustment factor gets smaller and smaller, the change in weights gets smaller and smaller and training can stall out, so to speak.
+
+- But if you use cross-entropy error, the (output) \* (1 – output) term goes away (the math is very cool). So, the weight changes don’t get smaller and smaller and so training isn’t s likely to stall out.
+
+from [this blog](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-use-cross-entropy-error-instead-of-classification-error-or-mean-squared-error-for-neural-network-classifier-training/)
+
 ## Clustering
 
 ### [K-means](General/Kmeans.html)

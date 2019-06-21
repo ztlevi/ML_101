@@ -1,5 +1,29 @@
 # Optimization
 
+## MLE and MAP
+
+Assume $$X = \{x_1, x_2,…,x_n\}$$ is a sample follow independent and identical distribution
+
+### Maximum Likelihood Estimation\*\*:
+
+$$\hat \theta_{MLE} = argmax logP(\theta | X) = argmin -logP(\theta | X) $$,
+
+- cross entropy loss is MLE
+
+### Maximum A Posteriori
+
+$$\hat \theta_{MAP} = argmax P(X |\theta)$$
+
+$$\hat \theta_{MAP}= argmin -logP(X |\theta)—logP(\theta)+logP(X)$$,
+
+For $$P(X)$$ is not related to $$\theta$$,
+
+$$\hat \theta_{MAP} =argmin -logP(X |\theta)—logP(\theta)$$
+
+- MAP usually used in Bayisan Machine Learning
+
+**The difference is the prior probability $$P(\theta)$$**
+
 ## Gradient Descent
 
 Let's say your hypothesis function contains multiple parameters, defined as $$\theta_1$$, $$\theta_2$$, $$\theta_3$$.
@@ -113,6 +137,9 @@ for i in range(nb_epochs):
     params = params - learning_rate * params_grad
 ```
 
+- Efficient when update gradient
+- Slow converge speed, need good learning rate
+
 ## Mini-batch gradient descent
 
 Mini-batch gradient descent finally takes the best of both worlds and performs an update for every mini-batch of n training examples. Common mini-batch sizes range between 50 and 256, but can vary for different applications.
@@ -142,13 +169,13 @@ $$
 \theta=\theta - m_t
 $$
 
-Essentially, when using momentum, we push a ball down a hill. The ballaccumulates momentum as it rolls downhill, becoming faster and faster onthe way (until it reaches its terminal velocity if there is air resistance, i.e. $$\gamma<1$$). The same thing happens to our parameter updates: The momentumterm increases for dimensions whose gradients point in the same directionsand reduces updates for dimensions whose gradients change directions. Asa result, we gain faster convergence and reduced oscillation.
+Essentially, when using momentum, we push a ball down a hill. The ballaccumulates momentum as it rolls downhill, becoming faster and faster onthe way (until it reaches its terminal velocity if there is air resistance, i.e. $$\gamma<1$$). The same thing happens to our parameter updates: The momentumterm increases for dimensions whose gradients point in the same directionsand reduces updates for dimensions whose gradients change directions. Asa result, we gain **faster convergence** and **reduced oscillation**.
 
 ## ADAM
 
-Adaptive Moment Estimation (ADAM) is a method that computes adaptive learning rate for each parameter. In addition to storing an exponentially decaying averagae of past squared gradients $$v_t$$ like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients $$m_t$$, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
+Adaptive Moment Estimation (ADAM) is a method that **computes adaptive learning rate** for each parameter. In addition to storing an exponentially decaying averagae of past squared gradients $$v_t$$ like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients $$m_t$$, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
 
-$$m_t$$ and $$v_t$$ are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively.
+1. $$m_t$$ and $$v_t$$ are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively.
 
 $$
 m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t
@@ -158,7 +185,7 @@ $$
 v_t = \beta_2 v_{t-1} + (1-\beta_2) v_t^2
 $$
 
-Compute bias-corrected first moment estimate and bias-corrected second raw moment estimate.
+2. Compute bias-corrected first moment estimate and bias-corrected second raw moment estimate.
 
 $$
 \hat{m_t} = \frac{m_t}{1-\beta_1^t}

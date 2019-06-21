@@ -1,5 +1,27 @@
 # Classical Machine learning
 
+## **Linear Regression**
+
+It attempts to model the relationship between two variables by fitting a linear equation to observed data. One variable is considered to be an **explanatory variable**, and the other is considered to be a **dependent variable**.
+
+- Hypothesis Funtion: $$h(x) = \theta^{T}x$$
+- Cost Function: $$J(\theta) = \frac{1}{2}\sum_{i = 1}^{m}(h(x^{(i)}) - y^{(i)})^2$$
+- $$\theta$$ - the weight
+- m - total number of samples
+- To simplify our notation, we introduce the convention of letting $$x_0 = 1$$
+
+### Close Form of Linear Regression
+
+$$\theta = (X^{T}X)^{-1}X^{T}y$$ , which assume $$(X^{T}X)$$ is invertible. Intuition see [cs299-notes1](<[http://cs229.stanford.edu/notes/cs229-notes1.pdf](http://cs229.stanford.edu/notes/cs229-notes1.pdf)>)
+
+## Logistic Regression
+
+- Hypothesis Funtion: $$h(x) = sigmoid(\theta^{T}x)$$
+- Cost Function: $$J(\theta) = \sum_{i = 1}^{m}y^{(i)}log(h(x^{(i)})) + \sum_{i = 1}^{m} (1- y^{(i)})log(1 -h(x^{(i)})) $$
+- $$\theta$$ - the weight
+- m - total number of samples
+- To simplify our notation, we introduce the convention of letting $$x_0 = 1$$
+
 ## KNN
 
 - Keywords: Non-parametric Method, Time consuming
