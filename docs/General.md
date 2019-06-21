@@ -130,11 +130,11 @@ $$
 
 from [this blog](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-use-cross-entropy-error-instead-of-classification-error-or-mean-squared-error-for-neural-network-classifier-training/)
 
-## Clustering
+## Unsupervised Learning
 
 ### [K-means](General/Kmeans.html)
 
-## Principal Component Analysis
+### Principal Component Analysis
 
 - Principal Component Analysis (PCA) is a dimension reduction technique that projects the data into a lower dimensional space
 - PCA uses Singular Value Decomposition (SVD), which is a matrix factorization method that decomposes a matrix into three smaller matrices (more details of SVD [here](https://en.wikipedia.org/wiki/Singular-value_decomposition))
