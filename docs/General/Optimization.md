@@ -2,7 +2,7 @@
 
 ## MLE and MAP
 
-Assume $$X = \{x_1, x_2,…,x_n\}$$ is a sample follow independent and identical distribution
+Assume $$X = \{x_1, x_2,...,x_n\}$$ is a sample follow independent and identical distribution
 
 ### Maximum Likelihood Estimation\*\*:
 
@@ -14,11 +14,11 @@ $$\hat \theta_{MLE} = argmax logP(\theta | X) = argmin -logP(\theta | X) $$,
 
 $$\hat \theta_{MAP} = argmax P(X |\theta)$$
 
-$$\hat \theta_{MAP}= argmin -logP(X |\theta)—logP(\theta)+logP(X)$$,
+$$\hat \theta_{MAP}= argmin -logP(X |\theta)-logP(\theta)+logP(X)$$,
 
 For $$P(X)$$ is not related to $$\theta$$,
 
-$$\hat \theta_{MAP} =argmin -logP(X |\theta)—logP(\theta)$$
+$$\hat \theta_{MAP} =argmin -logP(X |\theta)-logP(\theta)$$
 
 - MAP usually used in Bayisan Machine Learning
 
