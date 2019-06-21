@@ -42,7 +42,13 @@ Then we can simultaneously update the $$\theta_j = \theta_j - \alpha\frac{}{\the
 
 $$
 D = W \cdot X
+$$
+
+$$
 dW = dD \cdot X^T
+$$
+
+$$
 dX = W^T \cdot dD
 $$
 
