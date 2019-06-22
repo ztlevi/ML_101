@@ -46,14 +46,46 @@ $$\theta = (X^{T}X)^{-1}X^{T}y$$ , which assume $$(X^{T}X)$$ is invertible. Intu
 
 Try to find a **optimal hyperplane** to separate two classes of data.
 
-Cost function: $$ min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] + \frac{1}{2}\sum_{j=1}^n\theta_j^2 $$
+Cost function:
+
+$$ min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] + \frac{1}{2}\sum_{j=1}^n\theta_j^2 $$
+
+- Prime Problem:
+
+  $$minimize_{w, w_{0}} \frac{1}{2}w^{T}w$$
+
+  $$ s.t. \forall i: y_{i}(w^{T}x_{i} + w_{0}) >= 1$$
+
+  which is a quadratic program with $$d+1$$ variables to be optimized for and $$i$$ constraints.
+
+- Dual Problem:
+
+  $$maximize_{\alpha} \sum_{i = 1}^{n}\alpha_{i}-\frac{1}{2}\sum_{i = 1}^{n}\sum_{j = 1}^{n}y_{i}y_{j}\alpha_{i}\alpha_{j}x_{i}^{T}x_{j}$$
+
+  $$s.t. \forall i:\alpha_{i} >= 0 \wedge \sum_{i = 1}^{n}y_{i}\alpha_{i}=0 $$
+
+  which is a quadratic program with $$n+1$$ variables to be optimized for and $$n$$ inequality and $$n$$ equality constraints.
+
+- Why use dual problem?(answer from [here](https://stats.stackexchange.com/questions/19181/why-bother-with-the-dual-problem-when-fitting-svm))
+
+  1. Solving the primal problem, we obtain the optimal $$w$$, but **know nothing about the $$\alpha_{i}$$**. In order to classify a query point $$x$$ we need to explicitly compute the scalar product $$w^Tx$$, which may be **expensive** if $$d$$ is large.
+
+  2. Solving the dual problem, we obtain the $$\alpha_{i}$$ (where $$\alpha_{i} = 0$$ for all but a few points - the support vectors). In order to classify a query point $$x$$, we calculate:
+
+     $$w^{T}x + w^{0} = (\sum_{i = 1}^{n}\alpha_{i}y_{i}x_{i})^{T}x + w_{0}= \sum_{i = 1}^{n}\alpha_{i}y_{i}\langle\,x_{i},x\rangle + w_{0}$$
+
+     This term is very **efficiently calculated** if there are only few support vectors. Further, since we now have a scalar product only involving _data_ vectors, we may **apply the kernel trick**.
 
 - Can perform linear, nonlinear, or outlier detection (unsupervised) depending on the kernel funciton
+
 - Large margin classifier: using SVM we not only have a decision boundary, but want the boundary to be as far from the closest training point as possible
 
 - (Optional): Why Large margin classifier? Let's say a linear svm. If you take a look at the cost function, in order to minimize the cost, the inner product of $$\theta^Tx$$ need to be greater than 1 or less than -1. In this case, if $$\theta$$ is not the perfect decision boundary, it will have larger cost.
+
 - The closest training examples are called support vectors, since they are the points based on which the decision boundary is drawn
+
 - SVMs are sensitive to feature scaling
+
 - If C is very large, SVM is very sensitive to outliers.But if C is reasonably small, or a not too large, then you stick with the decision boundary more robust with outliers.
 
 ![svm](../assets/svm.png)
