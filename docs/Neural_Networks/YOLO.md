@@ -150,6 +150,8 @@ A similar procedure is followed again, where the feature map from layer 91 is su
 
   ![img](https://cdn-images-1.medium.com/max/800/1*BwhGMvffFfqtND9413oiwA.png)
 
+  (Why square root? Regression errors relative to their respective bounding box size should matter roughly equally. E.g. a 5px deviation on a 500px wide box should have less of an effect on the loss as a 5px deviation in a 20px wide box. The square root **downscales high values** while less affecting low values of width and height.)
+
 - the confidence loss (the objectness of the box).
 
   ![img](https://cdn-images-1.medium.com/max/800/1*QT7mwEbyLJYIxTYtOWClFQ.png)
