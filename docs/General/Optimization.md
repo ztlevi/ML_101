@@ -2,9 +2,11 @@
 
 ## MLE and MAP
 
+A good video [here](https://www.youtube.com/watch?v=yH_xwGnW-ig) explains the topic.
+
 Assume $$X = \{x_1, x_2,...,x_n\}$$ is a sample follow independent and identical distribution
 
-### Maximum Likelihood Estimation\*\*:
+### Maximum Likelihood Estimation:
 
 $$\hat \theta_{MLE} = argmax logP(\theta | X) = argmin -logP(\theta | X) $$,
 
