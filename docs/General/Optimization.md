@@ -8,13 +8,13 @@ Assume $$X = \{x_1, x_2,...,x_n\}$$ is a sample follow independent and identical
 
 ### Maximum Likelihood Estimation:
 
-$$\hat \theta_{MLE} = argmax logP(\theta | X) = argmin -logP(\theta | X) $$,
+$$\hat \theta_{MLE} = argmax logP(\theta ; X) = argmin -logP(\theta ; X) $$,
 
-- cross entropy loss is MLE
+- Deep Learning uses MLE for we do not know the **real distribution of the dataset**
 
 ### Maximum A Posteriori
 
-$$\hat \theta_{MAP} = argmax P(X |\theta)$$
+$$\hat \theta_{MAP} = argmax P(\theta| X)$$
 
 $$\hat \theta_{MAP}= argmin -logP(X |\theta)-logP(\theta)+logP(X)$$,
 
@@ -190,7 +190,7 @@ m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t
 $$
 
 $$
-v_t = \beta_2 v_{t-1} + (1-\beta_2) v_t^2
+v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2
 $$
 
 2. Compute bias-corrected first moment estimate and bias-corrected second raw moment estimate.
