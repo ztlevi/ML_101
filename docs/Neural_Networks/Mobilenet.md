@@ -49,7 +49,26 @@ The bottleneck blocks appear similar to residual block where each block contains
 
 - The ratio between the size of the input bottleneck and the inner size as the **expansion ratio**.
 
+  In which, when stride = 1
+
+  ```python
+  def bottleneck_block(x, expand=64, squeeze=16):
+      m = Conv2D(expand, (1,1))(x)
+      m = BatchNormalization()(m)
+      m = Activation('relu6')(m)
+      m = DepthwiseConv2D((3,3))(m)
+      m = BatchNormalization()(m)
+      m = Activation('relu6')(m)
+      m = Conv2D(squeeze, (1,1))(m)
+      m = BatchNormalization()(m)
+      return Add()([m, x])
+  ```
+
+  when stride = 2, no shortcut
+
 <figure>
 <img style="width:70%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/mobilenetv2.png" alt="mobilenet v2 structure"/>
 <figcaption></figcaption>
 </figure>
+
+![mv1v2](../../assets/mv1v2.png)
