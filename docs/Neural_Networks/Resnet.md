@@ -17,7 +17,7 @@ The core idea of ResNet is introducing a so-called shortcut.
 
 - When the dimensions increase, we consider two options: (A) The shortcut still performs identity mapping, with extra zero entries padded for increasing dimensions. (B) The projection shortcut is used to match dimensions.
 
-```
+```python
 # Residual block: Pytorch implementation
 class ResidualBlock(nn.Module):
     def __init__(self, in_channels, out_channels, stride=1, downsample=None):
