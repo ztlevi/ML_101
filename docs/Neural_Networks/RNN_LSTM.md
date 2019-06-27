@@ -91,6 +91,13 @@ LSTMs also have this chain like structure, but the repeating module has a differ
    - First, we run a **Output gate**: $$o_{t} = \sigma(W_o \cdot [h_{t-1}, x_{t}] + b_{o})$$, which decides what parts of the cell state we’re going to output, .
    - Then, we put the cell state through tanhtanh (to push the values to be between $$[-1, 1]$$ ) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to: $$h_{t} = tanh(C_{t}) * o_{t}$$
 
+#### Why solve vanishing gradient?
+
+Details from [here](https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gradients.html)
+
+- The additive update function for the cell state gives a derivative thats much more ‘well behaved’
+- The **gating functions allow the network to decide how much the gradient vanishes**, and can take on different values at each time step. The values that they take on are learned functions of the current input and hidden state.
+
 ### (Optional) Implementation
 
 FIXME Remove redundant codes
