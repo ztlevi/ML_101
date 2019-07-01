@@ -194,6 +194,38 @@ The only difference between proportionate and disproportionate stratified random
 
 The precision of this design is highly dependent on the sampling fraction allocation of the researcher. If the researcher commits mistakes in allotting sampling fractions, a stratum may either be overrepresented or underrepresented which will result in skewed results.
 
-## Blur image
+## Kalman Filter
 
-TODO: finish introduction
+- Kalman filter helps us to obtain more reliable estimates from a sequence of observed measurements.
+
+1. We make a prediction of a state, based on some previous values and model to get $$X_k'$$ and $$P_k$$
+
+2. We obtain the measurement of that state, from sensor.
+
+3. We update our prediction, based on our errors
+
+4. Repeat.
+
+   ![img](../assets/1_s2kA7oclIHoCAQsao2fXhw.jpeg)
+
+- process noise $$W_k \sim \mathcal{N} (0, Q_k)$$
+
+- process noise covariance matrix try to **keep the state convariance matrix from being too small**
+
+- We can also write the update formula as:
+
+  $$X_k = (1 - KH)X_k' + KY_k$$
+
+  $$P_k = (1 - KH)P_k'$$
+
+### Kalman Gain
+
+$$K = \frac{P_{k}'H_{k}^{T}}{HP_{k}'H_{k} + R}$$
+
+$$S = HP_{k}'H_{k} + R$$
+
+The Kalman gain tells you **how much** I want to change my estimate by given a measurement.
+
+- $$S$$ is the estimated covariance matrix of the measurements. this tells us the "variability" in our measurements, if $$S$$ is small, variability is low, our confidence in the measurement increases.
+
+- $$P_{k}'$$ is the estimated state covariance matrix. This tells us the "variability" of the state $$X_k'$$. If $$P_k'$$ is large, it means that the state is estimated to change a lot.
