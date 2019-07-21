@@ -71,4 +71,18 @@ The bottleneck blocks appear similar to residual block where each block contains
 <figcaption></figcaption>
 </figure>
 
+- Why using expansion ratio = 6 and use relu with expanded dimension and then use shortcuts directly between the bottlenecks?
+
+  - From the paper, the author summarized that:
+
+    1. If the manifold of interest remains non-zero volume after ReLU transformation, it corresponds to a linear transformation.
+    2. ReLU is capable of preserving complete information about the input manifold, but only if the input manifold lies in a low-dimensional subspace of the input space.
+
+    ![image-20190720172622388](../../assets/image-20190720172622388.png)
+
+  - if we have lots of channels, and there is a a structure in the activation manifold that **information might still be preserved in the other channels**.
+  - inspired by the intuition that **the bottlenecks actually contain all the necessary information**, while an expansion layer acts merely as an implementation detail that accompanies a non-linear transformation of the tensor, we use shortcuts directly between the bottlenecks.
+
+- Comparison of Mobilenet v1 and Mobilenet v2
+
 ![mv1v2](../../assets/mv1v2.png)
