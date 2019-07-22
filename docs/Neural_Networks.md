@@ -122,13 +122,13 @@ The bottleneck in a neural network is just a layer (e.g. convolution layer) with
 
 ### [RNN and LSTM](Neural_Networks/RNN_LSTM.md)
 
-### [Mobilenet](docs/Neural_Network/Mobilenet.md)
+### [Mobilenet](Neural_Network/Mobilenet.md)
 
-### [YOLO](docs/Neural_Networks/YOLO.md)
+### [YOLO](Neural_Networks/YOLO.md)
 
-### [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)
+### [Single Shot MultiBox Detector(SSD)](Neural_Networks/SSD.md)
 
-### [GAN](docs/Neural_Networks/GAN.md)
+### [GAN](Neural_Networks/GAN.md)
 
 ## Reference
 
