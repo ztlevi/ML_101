@@ -15,7 +15,7 @@
 
 ## The training process
 
-The training process consists of simultaneous SGD. On each step, two minibatches are sampled: a minibatch of $$x$$ values from the dataset and a minibatch of $$z$$ values drawn from the model’s prior over latent variables. Then two gradient steps are made simultaneously: one updating $$\theta^{(D)}$$ to reduce $$J ^{(D)}$$ and one updating $$θ^{(G)}$$ o reduce $$J^{(G)}$$.
+The training process consists of simultaneous SGD. On each step, two minibatches are sampled: a minibatch of $$x$$ values from the dataset and a minibatch of $$z$$ values drawn from the model’s prior over latent variables. Then two gradient steps are made simultaneously: one updating $$\theta^{(D)}$$ to reduce $$J ^{(D)}$$ and one updating $$\theta ^{(G)}$$ o reduce $$J^{(G)}$$.
 
 - Adam is most used in GAN
 
@@ -91,14 +91,14 @@ We might like to be able to do maximum likelihood learning with GANs, which woul
 
 - **Encoder-decoder Network**:In such a network, the input is passed through a series of layers that progressively downsample, until a bottleneck layer, at which point the process is reversed. Such a network requires that **all information flow pass through all the layers**, including the bottleneck.
 
-- To give the generator a means to **circumvent the bottleneck for information**, we add skip connections, following the general shape of a **U-Net**. Specifically, we add **skip connections** between each layer i and layer $$n − i$$, where n is the total number of layers. Each skip connection simply concatenates all channels at layer i with those at layer $$n − i$$.
+- To give the generator a means to **circumvent the bottleneck for information**, we add skip connections, following the general shape of a **U-Net**. Specifically, we add **skip connections** between each layer i and layer $$n - i$$, where n is the total number of layers. Each skip connection simply concatenates all channels at layer i with those at layer $$n - i$$.
 
 ### Patch GAN
 
 - Problems: GAN discriminator only model high-frequency structure, relying on an L1 term to force low-frequency correctness.
 - Solution: In order to model **high-frequencies**, it is sufficient to restrict our attention to the structure in **local image patches**.
 
-Patch GAN only penalizes structure at the scale of patches. This discriminator tries to classify if each $$N ×N$$ patch in an image is real or fake. We run this discriminator convolutionally across the image, averaging all responses to provide the ultimate output of D.
+Patch GAN only penalizes structure at the scale of patches. This discriminator tries to classify if each $$N \times N$$ patch in an image is real or fake. We run this discriminator convolutionally across the image, averaging all responses to provide the ultimate output of D.
 
 ### Evaluation metrics
 
