@@ -128,6 +128,8 @@ The bottleneck in a neural network is just a layer (e.g. convolution layer) with
 
 ### [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)
 
+### [GAN](docs/Neural_Networks/GAN.md)
+
 ## Reference
 
 1. [standford cs231 notes](http://cs231n.github.io/)
