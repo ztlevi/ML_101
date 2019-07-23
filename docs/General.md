@@ -136,6 +136,8 @@ from [this blog](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-
 
 ### Principal Component Analysis
 
+Statistical procedure that uses an **orthogonal transformation** to convert a set of observations of possibly **correlated variables** (entities each of which takes on various numerical values) into a set of values of **linearly uncorrelated variables** called **principal components**.
+
 - Principal Component Analysis (PCA) is a dimension reduction technique that projects the data into a lower dimensional space
 - PCA uses Singular Value Decomposition (SVD), which is a matrix factorization method that decomposes a matrix into three smaller matrices (more details of SVD [here](https://en.wikipedia.org/wiki/Singular-value_decomposition))
 - PCA finds top N principal components, which are dimensions along which the data vary (spread out) the most. Intuitively, the more spread out the data along a specific dimension, the more information is contained, thus the more important this dimension is for the pattern recognition of the dataset
