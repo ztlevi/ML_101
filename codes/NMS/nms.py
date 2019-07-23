@@ -9,18 +9,19 @@ def non_max_suppression_slow(boxes, overlapThresh):
         return []
 
     # initialize the list of picked indexes
-    pick = []
+    picks = []
 
     # grab the coordinates of the bounding boxes
     x1 = boxes[:, 0]
     y1 = boxes[:, 1]
     x2 = boxes[:, 2]
     y2 = boxes[:, 3]
+    confidences = boxes[:, 4]
 
     # compute the area of the bounding boxes and sort the bounding
     # boxes by the bottom-right y-coordinate of the bounding box
     area = (x2 - x1 + 1) * (y2 - y1 + 1)
-    idxs = np.argsort(y2)  # Sort by score if score is available
+    idxs = np.argsort(confidences)[::-1]
 
     # keep looping while some indexes still remain in the indexes
     # list
@@ -29,13 +30,12 @@ def non_max_suppression_slow(boxes, overlapThresh):
         # value to the list of picked indexes, then initialize
         # the suppression list (i.e. indexes that will be deleted)
         # using the last index
-        last = len(idxs) - 1
-        i = idxs[last]
-        pick.append(i)
-        suppress = [last]
+        i = idxs[0]
+        picks.append(i)
+        suppress = [i]
 
         # loop over all indexes in the indexes list
-        for pos in range(0, last):
+        for pos in range(1, len(idxs)):
             # grab the current index
             j = idxs[pos]
 
@@ -65,4 +65,4 @@ def non_max_suppression_slow(boxes, overlapThresh):
         idxs = np.delete(idxs, suppress)
 
     # return only the bounding boxes that were picked
-    return boxes[pick]
+    return boxes[picks]
