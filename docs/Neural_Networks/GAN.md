@@ -19,6 +19,16 @@ The training process consists of simultaneous SGD. On each step, two minibatches
 
 - Adam is most used in GAN
 
+## KL divergence
+
+In mathematical statistics, the Kullback–Leibler divergence (also called relative entropy) is a measure of how one probability distribution is different from a second, reference probability distribution.
+
+For discrete probability distributions $$P$$ and $$Q$$ defined on the same probability space, the Kullback–Leibler divergence between $$P$$ and $$Q$$ is defined to be
+
+$$
+D_{\text{KL}}(P\parallel Q)=-\sum _{x\in {\mathcal {X}}}P(x)\log \left({\frac {Q(x)}{P(x)}}\right)
+$$
+
 ## Cost functions
 
 ### The discriminator’s cost, $$J^{(D)}$$
