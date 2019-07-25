@@ -19,6 +19,11 @@ The training process consists of simultaneous SGD. On each step, two minibatches
 
 - Adam is most used in GAN
 
+<figure>
+<img src="../../assets/gan_training.jpg" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
 ## KL divergence
 
 In mathematical statistics, the Kullback–Leibler divergence (also called relative entropy) is a measure of how one probability distribution is different from a second, reference probability distribution.
