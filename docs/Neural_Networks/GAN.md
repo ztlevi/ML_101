@@ -36,35 +36,46 @@ $$
 
 ## Cost functions
 
-### The discriminator’s cost, $$J^{(D)}$$
+### Discriminator loss
 
-- standard cross-entropy cost that is minimized when training a standard binary classifier with a sigmoid output.
+This method quantifies how well the discriminator is able to distinguish real images from fakes. It compares the discriminator's predictions on real images to an array of 1s, and the discriminator's predictions on fake (generated) images to an array of 0s.
 
-![image-20190721163232901](../../assets/image-20190721163232901.png)
+Goal: Minimize $$ - log(D(x)) - log(1-D(G(z)))  $$
 
-## Minimax
+```python
+def discriminator_loss(real_output, fake_output):
+    real_loss = cross_entropy(tf.ones_like(real_output), real_output)
+    fake_loss = cross_entropy(tf.zeros_like(fake_output), fake_output)
+    total_loss = real_loss + fake_loss
+    return total_loss
+```
 
-- In zero-sum game, in which the sum of all player’s costs is always zero: $$J^{(D)} = - J^{(G)}$$
+Assume real samples' labels are always 1: $$ y_x = 1 $$, fake samples' labels are always 0: $$ y_z = 0 $$.
 
-- we can summarize the entire game with a value function specifying the discriminator’s payoff:
+$$
+Loss_{real} = -y_x log(D(x)) - (1-y_x) log(D(x)) = - log(D(x))
+$$
 
-  ![image-20190721163604599](../../assets/image-20190721163604599.png)
+$$
+Loss_{fake} = -y_z log(D(G(z))) - (1-y_z) log(1-D(G(z))) = - log(1-D(G(z)))
+$$
 
-- Zero-sum games are also called minimax games because their solution involves **minimization in an outer loop and maximization in an inner loop**:
+$$
+Loss = Loss_{real} + Loss_{fake} =- log(D(x)) - log(1-D(G(z)))
+$$
 
-  ![image-20190721163659849](../../assets/image-20190721163659849.png)
+### Generator loss
 
-- Not work very well in practice
+The generator's loss quantifies how well it was able to trick the discriminator. Intuitively, if the generator is performing well, the discriminator will classify the fake images as real (or 1). Here, we will compare the discriminators decisions on the generated images to an array of 1s. $$y_z = 1$$
 
-## Heuristic, non-saturating game
+```python
+def generator_loss(fake_output):
+    return cross_entropy(tf.ones_like(fake_output), fake_output)
+```
 
-- In the minimax game, the discriminator minimizes a cross-entropy, but the generator maximizes the same cross-entropy. This is unfortunate for the generator, because when the discriminator successfully rejects generator samples with high confidence, the generator’s gradient vanishes.
-
-- Instead of flipping the sign on the discriminator’s cost to obtain a cost for the generator, we flip the target used to construct the cross-entropy cost. The cost for the generator then becomes:
-
-  ![image-20190721164120905](../../assets/image-20190721164120905.png)
-
-- The sole motivation for this version of the game is to ensure that each player has a **strong gradient when that player is “losing” the game**
+$$
+Loss_{fake} = -y_z log(D(G(z))) - (1-y_z) log(1-D(G(z))) = - log(1-D(G(z))) = - log(D(G(z)))
+$$
 
 ## Maximum likelihood game
 
@@ -119,3 +130,6 @@ Patch GAN only penalizes structure at the scale of patches. This discriminator t
 
 - Run “real vs. fake” perceptual studies on Amazon Mechanical Turk (AMT);
 - Adopt the popular FCN-8s architecture for semantic segmentation;
+
+$$
+$$
