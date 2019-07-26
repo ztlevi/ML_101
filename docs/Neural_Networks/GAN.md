@@ -74,7 +74,7 @@ def generator_loss(fake_output):
 ```
 
 $$
-Loss_{fake} = -y_z log(D(G(z))) - (1-y_z) log(1-D(G(z))) = - log(1-D(G(z))) = - log(D(G(z)))
+Loss_{fake} = -y_z log(D(G(z))) - (1-y_z) log(1-D(G(z))) = - log(D(G(z)))
 $$
 
 ## Maximum likelihood game
