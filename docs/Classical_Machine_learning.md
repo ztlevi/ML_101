@@ -58,6 +58,24 @@ $$ min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] 
 
   which is a quadratic program with $$d+1$$ variables to be optimized for and $$i$$ constraints.
 
+- KKT condition:
+
+  Orignal Blog from: http://mypages.iit.edu/~jwang134/posts/KKT-SVs-SVM.html
+
+  - Applying the standard method of Lagrange multipliers, the Lagrangian function is:
+
+    $$J=\frac{1}{2}w^{T}w+C\sum_{i=1}^{n} \varepsilon_{i} + \sum_{i=1}^{n}\alpha_{i}(y_{i}(w^Tx + w_0)-1 + \varepsilon_{i}) - \sum_{i = 1}^{n}\beta_{i} \varepsilon_{i}$$
+
+  - Thus, the corresponding KKT conditions(Karush–Kuhn–Tucker_conditions) are as following:
+
+    - $$\frac{\partial J}{\partial w} = w - \sum_{i = 1}^n \alpha_i y_ix_i = 0 => w = \sum_{i = 1}^n \alpha_i y_ix_i$$
+
+      $$\frac{\partial J}{\partial b} = \sum_{i = 1}^n \alpha_i y_i = 0$$
+
+      if is the dataset is not sepratable:
+
+      $$\frac{\partial J}{\partial \varepsilon_{i}} = C - \alpha_i - \beta_i = 0$$
+
 - Dual Problem:
 
   $$maximize_{\alpha} \sum_{i = 1}^{n}\alpha_{i}-\frac{1}{2}\sum_{i = 1}^{n}\sum_{j = 1}^{n}y_{i}y_{j}\alpha_{i}\alpha_{j}x_{i}^{T}x_{j}$$
