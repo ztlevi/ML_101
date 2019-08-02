@@ -21,6 +21,7 @@
   - [YOLO](docs/Neural_Networks/YOLO.md)
   - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)
   - [Two Stage Object Detector](docs/Neural_Networks/TwoStageDetector.md)
+  - [FaceNet](docs/Neural_Networks/FaceNet.md)
 - Visualization
   - [Saliency Maps](docs/Visualization/Saliency_Maps.md)
   - [Fooling images](docs/Visualization/Fooling_Images.md)
