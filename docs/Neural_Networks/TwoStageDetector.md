@@ -31,7 +31,9 @@ Borrowed from [here](https://towardsdatascience.com/r-cnn-fast-r-cnn-faster-r-cn
 
 ## Fast R-CNN
 
-### ROI Pooling
+### ROI Pooling ( [Medium post](https://towardsdatascience.com/region-of-interest-pooling-f7c637f409af) )
+
+Why: The major hurdle for going from image classification to object detection is fixed size input requirement to the network because of existing fully connected layers. In object detection, each proposal will be of a different shape. So there is a need for converting all the proposals to fixed shape as required by fully connected layers. ROI Pooling is exactly doing this.
 
 The layer takes two inputs:
 
