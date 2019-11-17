@@ -38,9 +38,11 @@ for k in range(1, 21):
     final_accuracies[k] = prediction_accuracy(predicted_classes[k], y_test)
 
 plt.figure(figsize=(15, 6))
-plt.plot(final_accuracies.keys(), final_accuracies.values())
+plt.plot(list(final_accuracies.keys()), list(final_accuracies.values()))
 plt.xticks(list(final_accuracies.keys()))
 plt.xlabel("k")
 plt.ylabel("Accuracy")
-plt.title("Plot of the prediction accuracy of KNN Classifier as a function of k (Number of Neighbours)")
+plt.title(
+    "Plot of the prediction accuracy of KNN Classifier as a function of k (Number of Neighbours)"
+)
 plt.show()

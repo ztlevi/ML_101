@@ -24,9 +24,3 @@ npm start # or npm run docs:watch
 # Deploy the book
 npm run docs:publish
 ```
-
-$ \frac{\partial output}{\partial input } $
-
-$$
-\frac{\partial output}{\partial input }
-$$
