@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
-
 # https://github.com/eriklindernoren/PyTorch-YOLOv3/blob/master/utils/utils.py
 # https://towardsdatascience.com/implementation-of-mean-average-precision-map-with-non-maximum-suppression-f9311eb92522
+
+import matplotlib.pyplot as plt
 import numpy as np
 import tqdm
 
@@ -86,3 +86,9 @@ def ap_per_class(tp, conf, pred_cls, target_cls):
     f1 = 2 * p * r / (p + r + 1e-16)
 
     return p, r, ap, f1, unique_classes.astype("int32")
+
+
+if __name__ == "__main__":
+    recall = np.array([1 / 3, 1 / 3, 2 / 3])
+    precision = np.array([1, 0.5, 2 / 3])
+    compute_ap(recall, precision)
