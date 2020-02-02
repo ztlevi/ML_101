@@ -1,34 +1,5 @@
 This post is copied from [Kunlun Bai's post](https://towardsdatascience.com/a-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215).
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-
-**Table of Contents**
-
-- [Different Types of Convolution](#different-types-of-convolution)
-  - [**1. Convolution v.s. Cross-correlation**](#1-convolution-vs-cross-correlation)
-  - [2. Convolution in Deep Learning](#2-convolution-in-deep-learning)
-    - [2.1. Convolution: the single channel version](#21-convolution-the-single-channel-version)
-    - [2.2. Convolution: the multi-channel version](#22-convolution-the-multi-channel-version)
-  - [3. 3D Convolution](#3-3d-convolution)
-  - [4. 1 x 1 Convolution](#4-1-x-1-convolution)
-  - [5. Convolution Arithmetic](#5-convolution-arithmetic)
-  - [6. Transposed Convolution (Deconvolution)](#6-transposed-convolution-deconvolution)
-    - [6.1. Checkerboard artifacts.](#61-checkerboard-artifacts)
-  - [7. Dilated Convolution (Atrous Convolution)](#7-dilated-convolution-atrous-convolution)
-  - [8. Separable Convolutions](#8-separable-convolutions)
-    - [8.1. Spatially Separable Convolutions](#81-spatially-separable-convolutions)
-    - [8.2. Depthwise Separable Convolutions](#82-depthwise-separable-convolutions)
-  - [9. Flattened convolutions](#9-flattened-convolutions)
-  - [10. Grouped Convolution](#10-grouped-convolution)
-    - [10.1. Grouped convolution v.s. depthwise convolution](#101-grouped-convolution-vs-depthwise-convolution)
-  - [11. Shuffled Grouped Convolution](#11-shuffled-grouped-convolution)
-  - [12. Pointwise grouped convolution](#12-pointwise-grouped-convolution)
-  - [Reference](#reference)
-    - [Blogs & articles](#blogs--articles)
-    - [Papers](#papers)
-
-<!-- markdown-toc end -->
-
 # Different Types of Convolution
 
 If you’ve heard of different kinds of convolutions in Deep Learning (e.g. 2D / 3D / 1x1 / Transposed / Dilated (Atrous) / Spatially Separable / Depthwise Separable / Flattened / Grouped / Shuffled Grouped Convolution), and got confused what they actually mean, this article is written for you to understand how they actually work.
