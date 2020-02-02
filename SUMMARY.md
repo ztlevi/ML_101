@@ -8,6 +8,7 @@
   - [K means](docs/General/Kmeans.md)
 - [Classical Machine Learning](docs/Classical_Machine_learning.md)
 - [Neural Networks](docs/Neural_Networks.md)
+  - [Different Types of Convolution](docs/Neural_Networks/Different_types_of_Convolution.md)
   - Loss
     - [Cross-Entropy Loss](docs/Neural_Networks/Loss/Cross_Entropy_Loss.md)
     - [Binary Cross-Entropy Loss](docs/Neural_Networks/Loss/Binary_Cross_Entropy_Loss.md)
