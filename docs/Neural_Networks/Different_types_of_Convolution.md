@@ -24,9 +24,9 @@ It is defined as the integral of the product of the two functions after one is r
 <figcaption style="text-align:center">Convolution in signal processing. The filter g is reversed, and then slides along the horizontal axis. For every position, we calculate the area of the intersection between f and reversed g. The intersection area is the convolution value at that specific position. Image is adopted and edited from this <a href="http://fourier.eng.hmc.edu/e161/lectures/convolution/index.html">link</a>.</figcaption>
 </figure>
 
-Here, function g is the filter. It’s reversed, and then slides along the horizontal axis. For every position, we calculate the area of the intersection between _f_ and reversed _g_. That intersection area is the convolution value at that specific position.
+Here, function g is the filter. It’s reversed, and then slides along the horizontal axis. For every position, we calculate the area of the intersection between $$f$$ and reversed $$g$$. That intersection area is the convolution value at that specific position.
 
-On the other hand, cross-correlation is known as sliding dot product or sliding inner-product of two functions. The filter in cross-correlation is not reversed. It directly slides through the function f. The intersection area between _f_ and _g_ is the cross-correlation. The plot below demonstrates the difference between correlation and cross-correlation.
+On the other hand, cross-correlation is known as sliding dot product or sliding inner-product of two functions. The filter in cross-correlation is not reversed. It directly slides through the function f. The intersection area between $$f$$ and $$g$$ is the cross-correlation. The plot below demonstrates the difference between correlation and cross-correlation.
 
 <figure>
 <img src="../../assets/conv_3.jpeg" alt="" style="width:80%;display:block;margin-left:auto;margin-right:auto;"/>
@@ -48,7 +48,7 @@ There are a few advantages of doing convolution, such as weights sharing and tra
 <figcaption style="text-align:center">Convolution for a single channel. Image is adopted from this <a href="https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1">link</a>.</figcaption>
 </figure>
 
-In Deep Learning, convolution is the element-wise multiplication and addition. For an image with 1 channel, the convolution is demonstrated in the figure below. Here the filter is a 3 x 3 matrix with element [[0, 1, 2], [2, 2, 0], [0, 1, 2]]. The filter is sliding through the input. At each position, it’s doing element-wise multiplication and addition. Each sliding position ends up with one number. The final output is then a 3 x 3 matrix. (Notice that stride = 1 and padding = 0 in this example. These concepts will be described in the section of arithmetic below.
+In Deep Learning, convolution is the element-wise multiplication and addition. For an image with 1 channel, the convolution is demonstrated in the figure below. Here the filter is a $$3 \times 3$$ matrix with element $$[[0, 1, 2], [2, 2, 0], [0, 1, 2]]$$. The filter is sliding through the input. At each position, it’s doing element-wise multiplication and addition. Each sliding position ends up with one number. The final output is then a $$3 \times 3$$ matrix. (Notice that stride = 1 and padding = 0 in this example. These concepts will be described in the section of arithmetic below.
 
 ### 2.2. Convolution: the multi-channel version
 
@@ -59,7 +59,7 @@ In many applications, we are dealing with images with multiple channels. A typic
 <figcaption style="text-align:center">Different channels emphasize different aspects of the raw image. The image was taken at Yuanyang, Yunnan, China.</figcaption>
 </figure>
 
-Another example of multi-channel data is the layers in Convolutional Neural Network. A convolutional-net layer usually consists of multiple channels (typically hundreds of channels). Each channel describes different aspects of the previous layer. How do we make transition between layers with different depth? How do we transform a layer with depth _n_ to the following layer with depth _m_?
+Another example of multi-channel data is the layers in Convolutional Neural Network. A convolutional-net layer usually consists of multiple channels (typically hundreds of channels). Each channel describes different aspects of the previous layer. How do we make transition between layers with different depth? How do we transform a layer with depth $$n$$ to the following layer with depth $$m$$?
 
 Before describing the process, we would like to clarify a few terminologies: layers, channels, feature maps, filters, and kernels. From a hierarchical point of view, the concepts of layers and filters are at the same level, while channels and kernels are at one level below. Channels and feature maps are the same thing. A layer could have multiple channels (or feature maps): an input layer has 3 channels if the inputs are RGB images. “channel” is usually used to describe the structure of a “layer”. Similarly, “kernel” is used to describe the structure of a “filter”.
 
@@ -72,14 +72,14 @@ The difference between filter and kernel is a bit tricky. Sometimes, they are us
 
 With these concepts, the multi-channel convolution goes as the following. Each kernel is applied onto an input channel of the previous layer to generate one output channel. This is a kernel-wise process. We repeat such process for all kernels to generate multiple channels. Each of these channels are then summed together to form one single output channel. The following illustration should make the process clearer.
 
-Here the input layer is a 5 x 5 x 3 matrix, with 3 channels. The filter is a 3 x 3 x 3 matrix. First, each of the kernels in the filter are applied to three channels in the input layer, separately. Three convolutions are performed, which result in 3 channels with size 3 x 3.
+Here the input layer is a $$5 \times 5 \times 3$$ matrix, with 3 channels. The filter is a $$3 \times 3 \times 3$$ matrix. First, each of the kernels in the filter are applied to three channels in the input layer, separately. Three convolutions are performed, which result in 3 channels with size $$3 \times 3$$.
 
 <figure>
 <img src="../../assets/conv_7.gif" alt="" style="width:80%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center">The first step of 2D convolution for multi-channels: each of the kernels in the filter are applied to three channels in the input layer, separately. The image is adopted from this <a href="https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1">link</a>.</figcaption>
 </figure>
 
-Then these three channels are summed together (element-wise addition) to form one single channel (3 x 3 x 1). This channel is the result of convolution of the input layer (5 x 5 x 3 matrix) using a filter (3 x 3 x 3 matrix).
+Then these three channels are summed together (element-wise addition) to form one single channel ($$3 \times 3 \times 1$$). This channel is the result of convolution of the input layer ($$5 \times 5 \times 3$$ matrix) using a filter ($$3 \times 3 \times 3$$ matrix).
 
 <figure>
 <img src="../../assets/conv_8.gif" alt="" style="width:80%;display:block;margin-left:auto;margin-right:auto;"/>
@@ -93,11 +93,11 @@ Equivalently, we can think of this process as sliding a 3D filter matrix through
 <figcaption style="text-align:center">Another way to think about 2D convolution: thinking of the process as sliding a 3D filter matrix through the input layer. Notice that the input layer and the filter have the same depth (channel number = kernel number). The 3D filter moves only in 2-direction, height & width of the image (That’s why such operation is called as 2D convolution although a 3D filter is used to process 3D volumetric data). The output is a one-layer matrix.</figcaption>
 </figure>
 
-Now we can see how one can make transitions between layers with different depth. Let’s say the input layer has _Din_ channels, and we want the output layer has _Dout_ channels. What we need to do is to just apply _Dout_ filters to the input layer. Each filter has _Din_ kernels. Each filter provides one output channel. After applying _Dout_ filters, we have _Dout_ channels, which can then be stacked together to form the output layer.
+Now we can see how one can make transitions between layers with different depth. Let’s say the input layer has $$D_{in}$$ channels, and we want the output layer has $$D_{out}$$ channels. What we need to do is to just apply $$D_{out}$$ filters to the input layer. Each filter has $$D_{in}$$ kernels. Each filter provides one output channel. After applying $$D_{out}$$ filters, we have $$D_{out}$$ channels, which can then be stacked together to form the output layer.
 
 <figure>
 <img src="../../assets/conv_10.png" alt="" style="width:80%;display:block;margin-left:auto;margin-right:auto;"/>
-<figcaption style="text-align:center">Standard 2D convolution. Mapping one layer with depth _Din_ to another layer with depth _Dout, by using Dout filters_.</figcaption>
+<figcaption style="text-align:center">Standard 2D convolution. Mapping one layer with depth Din$$ to another layer with depth Dout, by using Dout filters.</figcaption>
 </figure>
 
 ## 3. 3D Convolution
@@ -115,11 +115,11 @@ Similar as 2D convolutions which encode spatial relationships of objects in a 2D
 
 ## 4. 1 x 1 Convolution
 
-Since we talked about depth-wise operation in the previous section of 3D convolution, let’s look at another interesting operation, 1 x 1 convolution.
+Since we talked about depth-wise operation in the previous section of 3D convolution, let’s look at another interesting operation, $$1 \times 1$$ convolution.
 
 You may wonder why this is helpful. Do we just multiply a number to every number in the input layer? Yes and No. The operation is trivial for layers with only one channel. There, we multiply every element by a number.
 
-Things become interesting if the input layer has multiple channels. The following picture illustrates how 1 x 1 convolution works for an input layer with dimension H x W x D. After 1 x 1 convolution with filter size 1 x 1 x D, the output channel is with dimension H x W x 1. If we apply N such 1 x 1 convolutions and then concatenate results together, we could have a output layer with dimension H x W x N.
+Things become interesting if the input layer has multiple channels. The following picture illustrates how $$1 \times 1$$ convolution works for an input layer with dimension $$H \times W \times D$$. After $$1 \times 1$$ convolution with filter size $$1 \times 1 \times D$$, the output channel is with dimension $$H \times W \times 1$$. If we apply N such $$1 \times 1$$ convolutions and then concatenate results together, we could have a output layer with dimension $$H \times W \times N$$.
 
 <figure>
 <img src="../../assets/conv_12.png" alt="" style="width:80%;display:block;margin-left:auto;margin-right:auto;"/>
@@ -132,7 +132,7 @@ Initially, 1 x 1 convolutions were proposed in the Network-in-network [paper](ht
 - Efficient low dimensional embedding, or feature pooling
 - Applying nonlinearity again after convolution
 
-The first two advantages can be observed in the image above. After 1 x 1 convolution, we significantly reduce the dimension depth-wise. Say if the original input has 200 channels, the 1 x 1 convolution will embed these channels (features) into a single channel. The third advantage comes in as after the 1 x 1 convolution, non-linear activation such as ReLU can be added. The non-linearity allows the network to learn more complex function.
+The first two advantages can be observed in the image above. After $$1 \times 1$$ convolution, we significantly reduce the dimension depth-wise. Say if the original input has 200 channels, the $$1 \times 1$$ convolution will embed these channels (features) into a single channel. The third advantage comes in as after the $$1 \times 1$$ convolution, non-linear activation such as ReLU can be added. The non-linearity allows the network to learn more complex function.
 
 These advantages were described in Google’s Inception [paper](https://arxiv.org/abs/1409.4842) as:
 
@@ -181,7 +181,7 @@ Traditionally, one could achieve up-sampling by applying interpolation schemes o
 
 The transposed convolution is also known as deconvolution, or fractionally strided convolution in the literature. However, it’s worth noting that the name “deconvolution” is less appropriate, since transposed convolution is not the real deconvolution as defined in signal / image processing. Technically speaking, deconvolution in signal processing reverses the convolution operation. That is not the case here. Because of that, some authors are strongly against calling transposed convolution as deconvolution. People call it deconvolution mainly because of simplicity. Later, we will see why calling such operation as transposed convolution is natural and more appropriate.
 
-It is always possible to implement a transposed convolution with a direct convolution. For an example in the image below, we apply transposed convolution with a 3 x 3 kernel over a 2 x 2 input padded with a 2 x 2 border of zeros using unit strides. The up-sampled output is with size 4 x 4.
+It is always possible to implement a transposed convolution with a direct convolution. For an example in the image below, we apply transposed convolution with a $$3 \times 3$$ kernel over a $$2 \times 2$$ input padded with a $$2 \times 2$$ border of zeros using unit strides. The up-sampled output is with size $$4 \times 4$$.
 
 <figure>
 <img src="../../assets/conv_16.gif" alt="" style="width:80%;display:block;margin-left:auto;margin-right:auto;"/>
@@ -197,7 +197,7 @@ Interestingly enough, one can map the same 2 x 2 input image to a different imag
 
 Viewing transposed convolution in the examples above could help us build up some intuitions. But to generalize its application, it is beneficial to look at how it is implemented through matrix multiplication in computer. From there, we can also see why “transposed convolution” is an appropriate name.
 
-In convolution, let us define _C_ as our kernel, _Large_ as the input image, _Small_ as the output image from convolution. After the convolution (matrix multiplication), we down-sample the large image into a small output image. The implementation of convolution in matrix multiplication follows as _C_ x _Large = Small_.
+In convolution, let us define _C_ as our kernel, _Large_ as the input image, _Small_ as the output image from convolution. After the convolution (matrix multiplication), we down-sample the large image into a small output image. The implementation of convolution in matrix multiplication follows as $$C_ x Large = Small$$.
 
 The following example shows how such operation works. It flattens the input to a 16 x 1 matrix, and transforms the kernel into a sparse matrix (4 x 16). The matrix multiplication is then applied between sparse matrix and the flattened input. After that, the resulting matrix (4 x 1) is then transformed back to a 2 x 2 output.
 
@@ -293,7 +293,7 @@ Intuitively, dilated convolutions “inflate” the kernel by inserting spaces b
 <figcaption style="text-align:center">Receptive field for the dilated convolution. We essentially observe a large receptive field without adding additional costs.</figcaption>
 </figure>
 
-In the image, the 3 x 3 red dots indicate that after the convolution, the output image is with 3 x 3 pixels. Although all three dilated convolutions provide the output with the same dimension, the receptive field observed by the model is dramatically different. The receptive filed is 3 x 3 for _l =1_**.** It is 7 x 7 for _l =2_. The receptive filed increases to 15 x 15 for _l = 3_. Interestingly, the numbers of parameters associated with these operations are essentially identical. _We “observe” a large receptive filed without adding additional costs._ Because of that, dilated convolution is used to cheaply increase the receptive field of output units without increasing the kernel size, which is especially effective when multiple dilated convolutions are stacked one after another.
+In the image, the 3 x 3 red dots indicate that after the convolution, the output image is with 3 x 3 pixels. Although all three dilated convolutions provide the output with the same dimension, the receptive field observed by the model is dramatically different. The receptive filed is 3 x 3 for _l =1_. It is 7 x 7 for _l =2_. The receptive filed increases to 15 x 15 for _l = 3_. Interestingly, the numbers of parameters associated with these operations are essentially identical. _We “observe” a large receptive filed without adding additional costs._ Because of that, dilated convolution is used to cheaply increase the receptive field of output units without increasing the kernel size, which is especially effective when multiple dilated convolutions are stacked one after another.
 
 The authors in the paper “Multi-scale context aggregation by dilated convolutions” build a network out of multiple layers of dilated convolutions, where the dilation rate _l_ increases exponentially at each layer. As a result, the effective receptive field grows exponentially while the number of parameters grows only linearly with layers!
 
@@ -328,7 +328,7 @@ On the other hand, for spatially separable convolution, we first apply a 3 x 1 f
 <figcaption style="text-align:center">Spatially separable convolution with 1 channel.</figcaption>
 </figure>
 
-Let’s generalize the above examples a little bit. Let’s say we now apply convolutions on a N x N image with a m x m kernel, with stride=1 and padding=0. Traditional convolution requires _(N-2) x (N-2) x m x m_ multiplications. Spatially separable convolution requires _N x (N-2) x m + (N-2) x (N-2) x m = (2N-2) x (N-2) x m_ multiplications. The ratio of computation costs between spatially separable convolution and the standard convolution is
+Let’s generalize the above examples a little bit. Let’s say we now apply convolutions on a N x N image with a m x m kernel, with stride=1 and padding=0. Traditional convolution requires $$(N-2) \times (N-2) \times m \times m$$ multiplications. Spatially separable convolution requires $$N \times (N-2) \times m + (N-2) \times (N-2) \times m = (2N-2) \times (N-2) \times m$$ multiplications. The ratio of computation costs between spatially separable convolution and the standard convolution is
 
 <figure>
 <img src="../.../assets/conv_31.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
@@ -391,17 +391,21 @@ The overall process of depthwise separable convolution is shown in the figure be
 
 So, what’s the advantage of doing depthwise separable convolutions? Efficiency! One needs much less operations for depthwise separable convolutions compared to 2D convolutions.
 
-Let’s recall the computation costs for our example of 2D convolutions. There are 128 3x3x3 kernels that move 5x5 times. That is 128 x 3 x 3 x 3 x 5 x 5 = 86,400 multiplications.
+Let’s recall the computation costs for our example of 2D convolutions. There are $$128 3 \times 3 \times 3$$ kernels that move $$5 \times 5$$ times. That is $$128 \times 3 \times 3 \times 3 \times 5 \times 5 = 86,400$$ multiplications.
 
-How about the separable convolution? In the first depthwise convolution step, there are 3 3x3x1 kernels that moves 5x5 times. That is 3x3x3x1x5x5 = 675 multiplications. In the second step of 1 x 1 convolution, there are 128 1x1x3 kernels that moves 5x5 times. That is 128 x 1 x 1 x 3 x 5 x 5 = 9,600 multiplications. Thus, overall, the depthwise separable convolution takes 675 + 9600 = 10,275 multiplications. This is only about 12% of the cost of the 2D convolution!
+How about the separable convolution? In the first depthwise convolution step, there are 3 3x3x1 kernels that moves $$5 \times 5$$ times. That is $$3 \times 3 \times 3 \times 1 \times 5 \times 5 = 675$$ multiplications. In the second step of 1 x 1 convolution, there are 128 1x1x3 kernels that moves $$5 \times 5$$ times. That is $$128 \times 1 \times 1 \times 3 \times 5 \times 5 = 9,600$$ multiplications. Thus, overall, the depthwise separable convolution takes $$675 + 9600 = 10,275$$ multiplications. This is only about 12% of the cost of the 2D convolution!
 
-So, for an image with arbitrary size, how much time can we save if we apply depthwise separable convolution. Let’s generalize the above examples a little bit. Now, for an input image of size H x W x D, we want to do 2D convolution (stride=1, padding=0) with Nc kernels of size h x h x D, where h is even. This transform the input layer (H x W x D) into the output layer (H-h+1 x W-h+1 x Nc). The overall multiplications needed is
+So, for an image with arbitrary size, how much time can we save if we apply depthwise separable convolution. Let’s generalize the above examples a little bit. Now, for an input image of size $$H \times W \times D$$, we want to do 2D convolution (stride=1, padding=0) with Nc kernels of size $$h \times h \times D$$, where h is even. This transform the input layer ($$H \times W \times D$$) into the output layer ($$H-h+1 \times W-h+1 \times Nc$$). The overall multiplications needed is
 
-Nc x h x h x D x (H-h+1) x (W-h+1)
+$$
+Nc \times h \times h \times D \times (H-h+1) \times (W-h+1)
+$$
 
 On the other hand, for the same transformation, the multiplication needed for depthwise separable convolution is
 
-D x h x h x 1 x (H-h+1) x (W-h+1) + Nc x 1 x 1 x D x (H-h+1) x (W-h+1) = (h x h + Nc) x D x (H-h+1) x (W-h+1)
+$$
+D \times h \times h \times 1 \times (H-h+1) \times (W-h+1) + Nc \times 1 \times 1 \times D \times (H-h+1) \times (W-h+1) = (h \times h + Nc) \times D \times (H-h+1) \times (W-h+1)
+$$
 
 The ratio of multiplications between depthwise separable convolution and 2D convolution is now:
 
@@ -436,7 +440,7 @@ Grouped convolution was introduced in the AlexNet paper ([link](https://papers.n
 <figcaption style="text-align:center">This image is adopted from the AlexNet [paper](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf).</figcaption>
 </figure>
 
-Here we describe how the grouped convolutions work. First of all, conventional 2D convolutions follow the steps showing below. In this example, the input layer of size (7 x 7 x 3) is transformed into the output layer of size (5 x 5 x 128) by applying 128 filters (each filter is of size 3 x 3 x 3). Or in general case, the input layer of size (Hin x Win x Din) is transformed into the output layer of size (Hout x Wout x Dout) by applying Dout kernels (each is of size h x w x Din).
+Here we describe how the grouped convolutions work. First of all, conventional 2D convolutions follow the steps showing below. In this example, the input layer of size (7 x 7 x 3) is transformed into the output layer of size (5 x 5 x 128) by applying 128 filters (each filter is of size 3 x 3 x 3). Or in general case, the input layer of size ($$H_{in} \times W_{in} \times D_{in}$$) is transformed into the output layer of size ($$H_{out} \times W_{out} \times D_{out}$$) by applying $$D_{out}$$ kernels (each is of size $$h \times w \times D_{in}$$).
 
 <figure>
 <img src="../../assets/conv_42.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
@@ -450,13 +454,13 @@ In grouped convolution, the filters are separated into different groups. Each gr
 <figcaption style="text-align:center">Grouped convolution with 2 filter groups.</figcaption>
 </figure>
 
-Above is the illustration of grouped convolution with 2 filter groups. In each filter group, the depth of each filter is only half of the that in the nominal 2D convolutions. They are of depth Din / 2. Each filter group contains Dout /2 filters. The first filter group (red) convolves with the first half of the input layer ([:, :, 0:Din/2]), while the second filter group (blue) convolves with the second half of the input layer ([:, :, Din/2:Din]). As a result, each filter group creates Dout/2 channels. Overall, two groups create 2 x Dout/2 = Dout channels. We then stack these channels in the output layer with Dout channels.
+Above is the illustration of grouped convolution with 2 filter groups. In each filter group, the depth of each filter is only half of the that in the nominal 2D convolutions. They are of depth $$D_{in} / 2$$. Each filter group contains $$D_{out} /2$$ filters. The first filter group (red) convolves with the first half of the input layer ($$[:, :, 0:D_{in}/2]$$), while the second filter group (blue) convolves with the second half of the input layer (\$$[:, :, D_{in$/2:D*{in}]$$). As a result, each filter group creates $$D*{out}/2$$ channels. Overall, two groups create $$2 \times D*{out}/2 = D*{out}$$ channels. We then stack these channels in the output layer with $$D\_{out}\$\$ channels.
 
 ### 10.1. Grouped convolution v.s. depthwise convolution
 
-You may already observe some linkage and difference between grouped convolution and the depthwise convolution used in the depthwise separable convolution. If the number of filter groups is the same as the input layer channel, each filter is of depth Din / Din = 1. This is the same filter depth as in depthwise convolution.
+You may already observe some linkage and difference between grouped convolution and the depthwise convolution used in the depthwise separable convolution. If the number of filter groups is the same as the input layer channel, each filter is of depth $$D_{in} / D_{in} = 1$$. This is the same filter depth as in depthwise convolution.
 
-On the other hand, each filter group now contains Dout / Din filters. Overall, the output layer is of depth Dout. This is different from that in depthwise convolution, which does not change the layer depth. The layer depth is extended later by 1x1 convolution in the depthwise separable convolution.
+On the other hand, each filter group now contains $$D_{out} / D_{in}$$ filters. Overall, the output layer is of depth $$D_{out}$$. This is different from that in depthwise convolution, which does not change the layer depth. The layer depth is extended later by 1x1 convolution in the depthwise separable convolution.
 
 There are a few advantages of doing grouped convolution.
 
@@ -469,7 +473,7 @@ The grouped convolutions become important for training very deep neural nets, as
 <figcaption style="text-align:center">The image is adopted from the ResNeXt [paper](https://arxiv.org/abs/1611.05431).</figcaption>
 </figure>
 
-**The second advantage** is the model is more efficient, i.e. the model parameters decrease as number of filter group increases. In the previous examples, filters have h x w x Din x Dout parameters in a nominal 2D convolution. Filters in a grouped convolution with 2 filter groups has (h x w x Din/2 x Dout/2) x 2 parameters. The number of parameters is reduced by half.
+**The second advantage** is the model is more efficient, i.e. the model parameters decrease as number of filter group increases. In the previous examples, filters have h x w x $$D_{in}$$ x $$D_{out}$$ parameters in a nominal 2D convolution. Filters in a grouped convolution with 2 filter groups has ($$h \times w \times D_{in}/2 \times D_{out}/2) \times 2$$ parameters. The number of parameters is reduced by half.
 
 **The third advantage** is a bit surprising. Grouped convolution may provide a better model than a nominal 2D convolution. This another fantastic blog ([link](https://blog.yani.io/filter-group-tutorial/)) explains it. Here is a brief summary.
 
