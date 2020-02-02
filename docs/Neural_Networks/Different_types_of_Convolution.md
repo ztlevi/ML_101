@@ -97,7 +97,7 @@ Now we can see how one can make transitions between layers with different depth.
 
 <figure>
 <img src="../../assets/conv_10.png" alt="" style="width:80%;display:block;margin-left:auto;margin-right:auto;"/>
-<figcaption style="text-align:center">Standard 2D convolution. Mapping one layer with depth Din$$ to another layer with depth Dout, by using Dout filters.</figcaption>
+<figcaption style="text-align:center">Standard 2D convolution. Mapping one layer with depth Din to another layer with depth Dout, by using Dout filters.</figcaption>
 </figure>
 
 ## 3. 3D Convolution
@@ -138,7 +138,7 @@ These advantages were described in Google’s Inception [paper](https://arxiv.or
 
 > “One big problem with the above modules, at least in this naïve form, is that even a modest number of 5x5 convolutions can be prohibitively expensive on top of a convolutional layer with a large number of filters.
 >
-> This leads to the second idea of the proposed architecture: judiciously applying dimension reductions and projections wherever the computational requirements would increase too much otherwise. This is based on the success of embeddings: even low dimensional embeddings might contain a lot of information about a relatively large image patch… That is, 1 x 1 convolutions are used to compute reductions before the expensive 3 x 3 and 5 x 5 convolutions. Besides being used as reductions, they also include the use of rectified linear activation which makes them dual-purpose.”
+> This leads to the second idea of the proposed architecture: judiciously applying dimension reductions and projections wherever the computational requirements would increase too much otherwise. This is based on the success of embeddings: even low dimensional embeddings might contain a lot of information about a relatively large image patch... That is, 1 x 1 convolutions are used to compute reductions before the expensive 3 x 3 and 5 x 5 convolutions. Besides being used as reductions, they also include the use of rectified linear activation which makes them dual-purpose.”
 
 One interesting perspective regarding 1 x 1 convolution comes from Yann LeCun “In Convolutional Nets, there is no such thing as “fully-connected layers”. There are only convolution layers with 1x1 convolution kernels and a full connection table.”
 
@@ -404,7 +404,11 @@ $$
 On the other hand, for the same transformation, the multiplication needed for depthwise separable convolution is
 
 $$
-D \times h \times h \times 1 \times (H-h+1) \times (W-h+1) + Nc \times 1 \times 1 \times D \times (H-h+1) \times (W-h+1) = (h \times h + Nc) \times D \times (H-h+1) \times (W-h+1)
+D \times h \times h \times 1 \times (H-h+1) \times (W-h+1) + Nc \times 1 \times 1 \times D \times (H-h+1) \times (W-h+1) =
+$$
+
+$$
+ (h \times h + Nc) \times D \times (H-h+1) \times (W-h+1)
 $$
 
 The ratio of multiplications between depthwise separable convolution and 2D convolution is now:
@@ -427,7 +431,7 @@ The flattened convolution was introduced in the [paper](https://arxiv.org/abs/14
 <figcaption style="text-align:center">The image is adopted from the [paper](https://arxiv.org/abs/1412.5474).</figcaption>
 </figure>
 
-One should notice that if the standard convolution filter is a rank-1 filter, such filter can always be separated into cross-products of three 1D filters. But this is a strong condition and the intrinsic rank of the standard filter is higher than one in practice. As pointed out in the [paper](https://arxiv.org/abs/1412.5474) “As the difficulty of classification problem increases, the more number of leading components is required to solve the problem… Learned filters in deep networks have distributed eigenvalues and applying the separation directly to the filters results in significant information loss.”
+One should notice that if the standard convolution filter is a rank-1 filter, such filter can always be separated into cross-products of three 1D filters. But this is a strong condition and the intrinsic rank of the standard filter is higher than one in practice. As pointed out in the [paper](https://arxiv.org/abs/1412.5474) “As the difficulty of classification problem increases, the more number of leading components is required to solve the problem... Learned filters in deep networks have distributed eigenvalues and applying the separation directly to the filters results in significant information loss.”
 
 To alleviate such problem, the [paper](https://arxiv.org/abs/1412.5474) restricts connections in receptive fields so that the model can learn 1D separated filters upon training. The paper claims that by training with flattened networks that consists of consecutive sequence of 1D filters across all directions in 3D space provides comparable performance as standard convolutional networks, with much less computation costs due to the significant reduction of learning parameters.
 
@@ -454,7 +458,7 @@ In grouped convolution, the filters are separated into different groups. Each gr
 <figcaption style="text-align:center">Grouped convolution with 2 filter groups.</figcaption>
 </figure>
 
-Above is the illustration of grouped convolution with 2 filter groups. In each filter group, the depth of each filter is only half of the that in the nominal 2D convolutions. They are of depth $$D_{in} / 2$$. Each filter group contains $$D_{out} /2$$ filters. The first filter group (red) convolves with the first half of the input layer ($$[:, :, 0:D_{in}/2]$$), while the second filter group (blue) convolves with the second half of the input layer (\$$[:, :, D_{in$/2:D*{in}]$$). As a result, each filter group creates $$D*{out}/2$$ channels. Overall, two groups create $$2 \times D*{out}/2 = D*{out}$$ channels. We then stack these channels in the output layer with $$D\_{out}\$\$ channels.
+Above is the illustration of grouped convolution with 2 filter groups. In each filter group, the depth of each filter is only half of the that in the nominal 2D convolutions. They are of depth $$D_{in} / 2$$. Each filter group contains $$D_{out} /2$$ filters. The first filter group (red) convolves with the first half of the input layer ($$[:, :, 0:D_{in}/2]$$), while the second filter group (blue) convolves with the second half of the input layer ($$[:, :, D_{in}/2:D_{in}]$$). As a result, each filter group creates $$D_{out}/2$$ channels. Overall, two groups create $$2 \times D_{out}/2 = D_{out}$$ channels. We then stack these channels in the output layer with $$D_{out}$$ channels.
 
 ### 10.1. Grouped convolution v.s. depthwise convolution
 
@@ -491,7 +495,7 @@ How about the correlation map for grouped convolution?
 <figcaption style="text-align:center">The correlations between filters of adjacent layers in a Network-in-Network model trained on CIFAR10, when trained with 1, 2, 4, 8 and 16 filter groups. The image is adopted from this [article](https://blog.yani.io/filter-group-tutorial/).</figcaption>
 </figure>
 
-The image above is the correlation across filters of adjacent layers, when the model is trained with 1, 2, 4, 8, and 16 filter groups. The article proposed one reasoning ([link](https://blog.yani.io/filter-group-tutorial/)): “The effect of filter groups is to learn with a block-diagonal structured sparsity on the channel dimension… the filters with high correlation are learned in a more structured way in the networks with filter groups. In effect, filter relationships that don’t have to be learned are on longer parameterized. In reducing the number of parameters in the network in this salient way, it is not as easy to over-fit, and hence a regularization-like effect allows the optimizer to learn more accurate, more efficient deep networks.”
+The image above is the correlation across filters of adjacent layers, when the model is trained with 1, 2, 4, 8, and 16 filter groups. The article proposed one reasoning ([link](https://blog.yani.io/filter-group-tutorial/)): “The effect of filter groups is to learn with a block-diagonal structured sparsity on the channel dimension... the filters with high correlation are learned in a more structured way in the networks with filter groups. In effect, filter relationships that don’t have to be learned are on longer parameterized. In reducing the number of parameters in the network in this salient way, it is not as easy to over-fit, and hence a regularization-like effect allows the optimizer to learn more accurate, more efficient deep networks.”
 
 <figure>
 <img src="../../assets/conv_47.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
