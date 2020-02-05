@@ -1,6 +1,6 @@
 # Yolo v1
 
-![yolo v1 structure](../../assets/yolov1.png)
+![yolo v1 structure](../../../assets/yolov1.png)
 
 - The YOLO design enables end-to-end training and real-time speeds while maintaining high average precision
 
@@ -19,7 +19,7 @@
 - The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, $$t_{x}, t_{y}, t_{w}, t_{h}$$, and to. If the cell is offset from the top left corner of the image by $$(cx, cy)$$ and the bounding box prior has width and height $$p_{w}, p_{h}$$, then the predictions correspond to:
 
 <figure>
-<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/yolo_formula1.png" alt="output formula"/>
+<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../../assets/yolo_formula1.png" alt="output formula"/>
 <figcaption></figcaption>
 </figure>
 
@@ -75,14 +75,14 @@ The standard Euclidean distance causes larger boxes to generate more errors than
 The Jaccard index can be defined for two boxes $$b_1 = (w_1 , h_1) , b_2 = (w_2 , h_2)$$ as follows
 
 <figure>
-<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/yolo_Jaccard_index.jpg" alt=""/>
+<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../../assets/yolo_Jaccard_index.jpg" alt=""/>
 <figcaption></figcaption>
 </figure>
 
 The k-means clustering algorithm does not really change a lot when applied to anchor boxes. At initialization we can choose $$k$$ random boxes as our initial means $$a_i$$ . Then we can assign each bounding box $$b_p$$ to a cluster $$C_i$$ :
 
 <figure>
-<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../assets/yolo_clustering.jpg" alt=""/>
+<img style="width:50%;display:block;margin-left:auto;margin-right:auto;" src="../../../assets/yolo_clustering.jpg" alt=""/>
 <figcaption></figcaption>
 </figure>
 
@@ -128,7 +128,7 @@ def kmeans(boxes, k, dist=np.median):
 
 ## Multi-scale training
 
-![img](../../assets/yolov3.png)
+![img](../../../assets/yolov3.png)
 
 Change the input image size from $$448 \times 448 to 416 \times 416$$. This creates an odd number spatial dimension ($$7\times 7$$ v.s. $$8 \times 8$$ grid cell). The center of a picture is often occupied by a large object. With an odd number grid cell, it is more certain on where the object belongs.
 

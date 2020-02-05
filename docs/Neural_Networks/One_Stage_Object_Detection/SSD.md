@@ -6,20 +6,20 @@
 
 ## Architecture
 
-![Architecture](../../assets/ssd.png)
+![Architecture](../../../assets/ssd.png)
 
 ## Choosing default boundary boxes
 
 SSD defines a scale value for each feature map layer. Starting from the left, Conv4_3 detects objects at the smallest scale 0.2 (or 0.1 sometimes) and then increases linearly to the rightmost layer at a scale of 0.9.
 
 <figure>
-<img src="../../assets/scale_ssd.png" alt="" style="width:50%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../../../assets/scale_ssd.png" alt="" style="width:50%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
 the scale value with the target aspect ratios, we compute the width and the height of the default boxes. For layers making 6 predictions, SSD starts with 5 target aspect ratios: 1, 2, 3, 1/2 and 1/3. Then the width and the height of the default boxes are calculated as:
 
-![wh](../../assets/ssd_wh.png)
+![wh](../../../assets/ssd_wh.png)
 
 The center of each default box to $$(\frac{i+0.5}{|f_{k}|}, \frac{j+0.5}{|f_{k}|})$$, where $$|f_{k}|$$ is the size of the k-th square feature map, $$i, j \in [0, |f_{k}|]$$.
 
@@ -69,7 +69,7 @@ Where the alpha term helps us in balancing the contribution of the location loss
 
 During training, as most of the bounding boxes will have low IoU and therefore be interpreted as negative training examples, we may end up with a disproportionate amount of negative examples in our training set. Therefore, instead of using all negative predictions, it is advised to **keep a ratio of negative to positive examples of around 3:1**. The reason why you need to keep negative samples is because the network also needs to learn and be explicitly told what constitutes an incorrect detection.
 
-![Example of hard negative mining](../../assets/hard_negative_mining.png)
+![Example of hard negative mining](../../../assets/hard_negative_mining.png)
 
 ## Data Augmentation
 

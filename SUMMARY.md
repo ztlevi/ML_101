@@ -20,9 +20,13 @@
   - [RNN & LSTM](docs/Neural_Networks/RNN_LSTM.md)
   - [GAN](docs/Neural_Networks/GAN.md)
   - [Mobilenet](docs/Neural_Networks/Mobilenet.md)
-  - [YOLO](docs/Neural_Networks/YOLO.md)
-  - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/SSD.md)
-  - [Two Stage Object Detector](docs/Neural_Networks/TwoStageDetector.md)
+  - [Two Stage Object Detection](docs/Neural_Networks/Two_Stage_Object_Detection/TwoStageDetector.md)
+    - [R-CNN](docs/Neural_Networks/Two_Stage_Object_Detection/R-CNN.md)
+    - [Fast RCNN](docs/Neural_Networks/Two_Stage_Object_Detection/Fast-RCNN.md)
+    - [Faster RCNN](docs/Neural_Networks/Two_Stage_Object_Detection/Faster-RCNN.md)
+  - One Stage Object Detection
+    - [YOLO](docs/Neural_Networks/One_Stage_Object_Detection/YOLO.md)
+    - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/One_Stage_Object_Detection/SSD.md)
   - [FaceNet](docs/Neural_Networks/FaceNet.md)
 - Visualization
   - [Saliency Maps](docs/Visualization/Saliency_Maps.md)
