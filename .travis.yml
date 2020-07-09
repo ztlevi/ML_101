@@ -28,7 +28,7 @@ branches:
 
 # 安装环境
 install:
-  - npm install -g gitbook-cli
+  - npm install
   - gitbook install
 
 # gitbook生成静态文件
