@@ -21,10 +21,10 @@
   - [GAN](docs/Neural_Networks/GAN.md)
   - [Mobilenet](docs/Neural_Networks/Mobilenet.md)
   - [Two Stage Object Detection](docs/Neural_Networks/Two_Stage_Object_Detection/TwoStageDetector.md)
+    - [Metrics](docs/Neural_Networks/Two_Stage_Object_Detection/Metrics.md)
     - [R-CNN](docs/Neural_Networks/Two_Stage_Object_Detection/R-CNN.md)
     - [Fast RCNN](docs/Neural_Networks/Two_Stage_Object_Detection/Fast-RCNN.md)
     - [Faster RCNN](docs/Neural_Networks/Two_Stage_Object_Detection/Faster-RCNN.md)
-    - [Metrics](docs/Neural_Networks/Two_Stage_Object_Detection/Metrics.md)
   - One Stage Object Detection
     - [YOLO](docs/Neural_Networks/One_Stage_Object_Detection/YOLO.md)
     - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/One_Stage_Object_Detection/SSD.md)
