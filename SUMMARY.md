@@ -28,6 +28,8 @@
   - One Stage Object Detection
     - [YOLO](docs/Neural_Networks/One_Stage_Object_Detection/YOLO.md)
     - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/One_Stage_Object_Detection/SSD.md)
+  - Segmentation
+    - [Panoptic Segmentation](docs/Neural_Networks/Segmentation/Panoptic.md)
   - [FaceNet](docs/Neural_Networks/FaceNet.md)
 - Visualization
   - [Saliency Maps](docs/Visualization/Saliency_Maps.md)
