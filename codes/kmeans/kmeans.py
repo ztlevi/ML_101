@@ -20,6 +20,10 @@ def dist(a, b, ax=1):
     return np.linalg.norm(a - b, axis=ax)
 
 
+def dist_1(a, b, ax=1):
+    return np.sqrt(np.sum(np.power(a - b, 2), axis=ax))
+
+
 # Number of clusters
 k = 3
 picks = np.random.choice(np.arange(len(X)), k)
@@ -41,7 +45,7 @@ error = dist(C, C_old, None)
 while error != 0:
     # Assigning each value to its closest cluster
     for i in range(len(X)):
-        distances = dist(X[i], C)
+        distances = dist_1(X[i], C)
         cluster = np.argmin(distances)
         clusters[i] = cluster
     # Storing the old centroid values

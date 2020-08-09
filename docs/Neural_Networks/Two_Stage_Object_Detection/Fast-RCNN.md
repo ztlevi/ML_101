@@ -1,17 +1,6 @@
 ## Fast R-CNN
 
-### ROI Pooling
-
-The layer takes two inputs:
-
-1. A fixed-size feature map obtained from a deep convolutional network with several convolutions and max pooling layers.
-2. An N x 5 matrix of representing a list of regions of interest, where N is a number of RoIs. The first column represents the image index and the remaining four are the coordinates of the top left and bottom right corners of the region.
-
-What does the RoI pooling actually do? For every region of interest from the input list, it takes a section of the input feature map that corresponds to it and scales it to some pre-defined size (e.g., 7×7). The scaling is done by:
-
-1. Dividing the region proposal into equal-sized sections (the number of which is the same as the dimension of the output)
-2. Finding the largest value in each section
-3. Copying these max values to the output buffer
+### [ROI Pooling](ROI.md)
 
 ### Network Architecture
 
