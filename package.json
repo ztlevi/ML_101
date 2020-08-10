@@ -12,7 +12,7 @@
   "dependencies": {
     "gitbook-plugin-custom-js-css": "0.0.1",
     "gitbook-plugin-docsearch": "^1.2.0",
-    "gitbook-plugin-intopic-toc": "^1.0.1",
+    "gitbook-plugin-intopic-toc": "^1.1.1",
     "gitbook-plugin-katex": "^1.1.4"
   },
   "devDependencies": {

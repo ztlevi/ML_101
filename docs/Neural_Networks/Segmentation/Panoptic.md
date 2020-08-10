@@ -12,13 +12,9 @@ Step 1 (matching): The predicted and ground truth segments are considered to be 
 
 Step 2 (calculation): Mathematically, for a ground truth segment `g`, and for predicted segment `p`, PQ is calculated as follows.
 
-$$
-% <![CDATA[
-\begin{align}
-\mathrm{PQ} &= \frac{\sum_{(p, g) \in T P} \operatorname{IoU}(p, g)}{|T P|+\frac{1}{2}|F P|+\frac{1}{2}|F N|}\\
-
-&= \underbrace{\frac{\sum_{(p, g) \in T P} \operatorname{loU}(p, g)}{|T P|}}_{\text {segmentation quality (SQ) }} \times \underbrace{\frac{|T P|}{|T P|+\frac{1}{2}|F P|+\frac{1}{2}|F N|}}_{\text {recognition quality (RQ) }}
-\end{align} %]]>
-$$
+<figure>
+<img src="../../../assets/pq_2.jpg" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
 
 Here, in the first equation, the numerator divided by `TP` is simply the average `IoU` of matched segments, and `FP` and `FN` are added to penalize the non-matched segments. As shown in the second equation, `PQ` can divided into segmentation quality (`SQ`), and recognition quality (`RQ`). `SQ`, here, is the average `IoU` of matched segments, and `RQ` is the `F1` score.
