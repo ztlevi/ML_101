@@ -404,11 +404,11 @@ $$
 On the other hand, for the same transformation, the multiplication needed for depthwise separable convolution is
 
 $$
-D \times h \times h \times 1 \times (H-h+1) \times (W-h+1) + Nc \times 1 \times 1 \times D \times (H-h+1) \times (W-h+1) =
+D \times h \times h \times 1 \times (H-h+1) \times (W-h+1) + Nc \times 1 \times 1 \times D \times (H-h+1) \times (W-h+1)
 $$
 
 $$
- (h \times h + Nc) \times D \times (H-h+1) \times (W-h+1)
+ = (h \times h + Nc) \times D \times (H-h+1) \times (W-h+1)
 $$
 
 The ratio of multiplications between depthwise separable convolution and 2D convolution is now:
