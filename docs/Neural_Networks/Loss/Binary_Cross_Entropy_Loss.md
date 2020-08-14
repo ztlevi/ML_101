@@ -35,6 +35,31 @@ $$
 \frac{\partial}{\partial s_{i}} \left ( CE(f(s_{i})\right) = \begin{Bmatrix} f(s_{i}) - 1 && if & t_{i} = 1\\ f(s_{i}) && if & t_{i} = 0 \end{Bmatrix}
 $$
 
+```python
+import numpy as np
+from sklearn.metrics import log_loss
+
+import tensorflow as tf
+
+
+def binary_cross_entropy(X, y):
+    m = y.shape[0]
+    y = y.reshape((m))
+    # apply sigmod 1/(1+e^-x)
+    fX = 1 / (1 + np.exp(-X))
+
+    # -Y * log(fX) - (1-Y) * (1-log(fX))
+    a = -Y * np.log(fX) - (1 - Y) * np.log(1 - fX)
+    ce = np.sum(-Y * np.log(fX) - (1 - Y) * np.log(1 - fX)) / m
+    return ce
+
+
+X = np.array([[9.7], [0]])  # (N, 1)
+Y = np.array([[0],[1]])  # (N, 1)
+
+print(binary_cross_entropy(X, Y))
+```
+
 > Refer [here](https://www.ics.uci.edu/~pjsadows/notes.pdf) for a detailed loss derivation.
 
 - Caffe: [Sigmoid Cross-Entropy Loss Layer](http://caffe.berkeleyvision.org/tutorial/layers/sigmoidcrossentropyloss.html)

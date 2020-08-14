@@ -20,6 +20,33 @@ Where it’s assumed that there are two classes: $$C_1$$ and $$C_2$$. $$t_1$$ [0
 
 **Logistic Loss** and **Multinomial Logistic Loss** are other names for **Cross-Entropy loss**. [[Discussion]](https://stats.stackexchange.com/questions/166958/multinomial-logistic-loss-vs-cross-entropy-vs-square-error/172790)
 
+```python
+def softmax(X):
+    exps = np.exp(X)
+    return exps / np.sum(exps)
+
+
+def cross_entropy(predictions, targets):
+    N = predictions.shape[0]
+    a = targets * np.log(predictions)
+    print(a.shape)
+    ce = -np.sum(targets * np.log(predictions)) / N
+    return ce
+
+
+predictions = np.array([[0.25, 0.25, 0.25, 0.25], [0.01, 0.01, 0.01, 0.97]]) # (N, num_classes)
+targets = np.array([[1, 0, 0, 0], [0, 0, 0, 1]]) # (N, num_classes)
+
+cross_entropy(predictions, targets)
+# 0.7083767843022996
+
+log_loss(targets, predictions)
+# 0.7083767843022996
+
+log_loss(targets, predictions) == cross_entropy(predictions, targets)
+# True
+```
+
 The layers of Caffe, Pytorch and Tensorflow than use a Cross-Entropy loss without an embedded activation function are:
 
 - Caffe: [Multinomial Logistic Loss Layer](http://caffe.berkeleyvision.org/tutorial/layers/multinomiallogisticloss.html). Is limited to multi-class classification (does not support multiple labels).
