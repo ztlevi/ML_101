@@ -4,35 +4,47 @@ The following 12 metrics are used for characterizing the performance of an objec
 
 ### Average Precision (AP):
 
-AP % AP at IoU=.50:.05:.95 (primary challenge metric)
+Compute average precision (AP) from prediction scores
 
-$$AP^{IoU=.50}$$ % AP at IoU=.50 (PASCAL VOC metric)
+AP summarizes a precision-recall curve as the weighted mean of precisions achieved at each threshold, with the increase in recall from the previous threshold used as the weight:
 
-$$AP^{IoU=.75}$$ % AP at IoU=.75 (strict metric)
+$$
+\text{AP} = \sum_n (R_n - R_{n-1}) P_n
+$$
+
+where $$P_n$$ and $$R_n$$ are the precision and recall at the nth threshold. This implementation is not interpolated and is different from computing the area under the precision-recall curve with the trapezoidal rule, which uses linear interpolation and can be too optimistic.
+
+Note: this implementation is restricted to the binary classification task or multilabel classification task.
+
+AP: AP at IoU=.50:.05:.95 (primary challenge metric)
+
+$$AP^{IoU=.50}$$: AP at IoU=.50 (PASCAL VOC metric)
+
+$$AP^{IoU=.75}$$: AP at IoU=.75 (strict metric)
 
 ### AP Across Scales:
 
-$$AP{small}$$ % AP for small objects: $$area < 32^2$$
+$$AP{small}$$: AP for small objects: $$area < 32^2$$
 
-$$AP{medium}$$ % AP for medium objects: $$32^2 < area < 96^2$$
+$$AP{medium}$$: AP for medium objects: $$32^2 < area < 96^2$$
 
-$$AP{large}$$ % AP for large objects: $$area > 96^2$$
+$$AP{large}$$: AP for large objects: $$area > 96^2$$
 
 ### Average Recall (AR):
 
-$$AR^{max=1}$$ % AR given 1 detection per image
+$$AR^{max=1}$$: AR given 1 detection per image
 
-$$AR^{max=10}$$ % AR given 10 detections per image
+$$AR^{max=10}$$: AR given 10 detections per image
 
-$$AR^{max=100}$$ % AR given 100 detections per image
+$$AR^{max=100}$$: AR given 100 detections per image
 
 ### AR Across Scales:
 
-$$AR^{small}$$ % AR for small objects: $$area < 32^2$$
+$$AR^{small}$$: AR for small objects: $$area < 32^2$$
 
-$$AR^{medium}$$ % AR for medium objects: $$32^2 < area < 96^2$$
+$$AR^{medium}$$: AR for medium objects: $$32^2 < area < 96^2$$
 
-$$AR^{large}$$ % AR for large objects: $$area > 96^2$$
+$$AR^{large}$$: AR for large objects: $$area > 96^2$$
 
 ## Description
 
