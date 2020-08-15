@@ -2,7 +2,7 @@
 
 The following 12 metrics are used for characterizing the performance of an object detector on COCO:
 
-### Average Precision (AP):
+### [Average Precision (AP)](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html):
 
 Compute average precision (AP) from prediction scores
 

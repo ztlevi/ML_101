@@ -26,6 +26,7 @@
     - [R-CNN](docs/Neural_Networks/Two_Stage_Object_Detection/R-CNN.md)
     - [Fast RCNN](docs/Neural_Networks/Two_Stage_Object_Detection/Fast-RCNN.md)
     - [Faster RCNN](docs/Neural_Networks/Two_Stage_Object_Detection/Faster-RCNN.md)
+    - [Mask RCNN](docs/Neural_Networks/Two_Stage_Object_Detection/Mask-RCNN.md)
   - One Stage Object Detection
     - [YOLO](docs/Neural_Networks/One_Stage_Object_Detection/YOLO.md)
     - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/One_Stage_Object_Detection/SSD.md)
