@@ -3,7 +3,7 @@ language: node_js
 # 指定sudo权限
 sudo: required
 # 指定node版本
-node_js: 12
+node_js: 10
 # 指定缓存模块，缓存可以加速编译
 cache:
   directories:
