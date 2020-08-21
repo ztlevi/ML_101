@@ -6,6 +6,7 @@
   - [How to prevent overfitting](docs/General/How_to_prevent_overfitting.md)
   - [Linear Algebra](docs/General/Linear_algebra.md)
   - [K means](docs/General/Kmeans.md)
+  - [Calculate Parameters in CNN](docs/General/Calculate_Parameters_In_CNN.md)
 - [Classical Machine Learning](docs/Classical_Machine_learning.md)
 - [Neural Networks](docs/Neural_Networks.md)
   - [Different Types of Convolution](docs/Neural_Networks/Different_types_of_Convolution.md)
