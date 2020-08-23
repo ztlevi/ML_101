@@ -105,6 +105,12 @@ A Loss Functions tells us "how good" our model is at making predictions for a gi
 
 - **Solution uniqueness**: Minimizing the L2 loss corresponds to calculating **the arithmetic mean**, which is unambiguous, while minimizing the L1 loss corresponds to calculating **the median**, which is ambiguous if an even number of elements are included in the median calculation, So L2 has unique solution while L1 has multiple solution
 
+- Smooth l1 loss
+
+![img](../assets/smooth_l1_loss.png)
+
+Smooth L1 loss that is less sensitive to outliers than the L2 loss used in R-CNN and SPPne.
+
 ### cross-entropy
 
 If M>2 (i.e. multiclass classification), we calculate a separate loss for each class label per observation and sum the result. Usually an activation function (Sigmoid / Softmax) is applied to the scores before the CE Loss computation.
