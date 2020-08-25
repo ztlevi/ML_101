@@ -8,6 +8,7 @@
   - [K means](docs/General/Kmeans.md)
   - [Calculate Parameters in CNN](docs/General/Calculate_Parameters_In_CNN.md)
   - [Weight norm and layer norm](docs/General/Weight_norm_and_layer_norm.md)
+  - [Imbalance problem in object detection]()
 - [Classical Machine Learning](docs/Classical_Machine_learning.md)
 - [Neural Networks](docs/Neural_Networks.md)
   - [Different Types of Convolution](docs/Neural_Networks/Different_types_of_Convolution.md)
@@ -35,6 +36,9 @@
   - Segmentation
     - [Panoptic Segmentation](docs/Neural_Networks/Segmentation/Panoptic.md)
   - [FaceNet](docs/Neural_Networks/FaceNet.md)
+- Anomaly Detection
+  - [DBSCAN](docs/Anomaly/dbscan.md)
+  - [Autoencoder](docs/Anomaly/autoencoder_anomaly.md)
 - Visualization
   - [Saliency Maps](docs/Visualization/Saliency_Maps.md)
   - [Fooling images](docs/Visualization/Fooling_Images.md)
