@@ -77,13 +77,15 @@ To solve the vanishing gradient($$0.9^{k}$$) and gradient explosion($$1.1^{k}$$)
     \epsilon} } }$$
   4. Scale and shift: $$y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$$
   5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
-- Benefits:
+- Pros:
   1. Networks train faster
   2. Allows higher learning rates
   3. Makes weights easier to initialize
   4. Makes more activation functions viable
   5. Provides a bit of regularlization
   6. Simplifies the creation of deeper networks
+- Cons
+  1. Slower predictions due to the extra computations at each layer
 
 ### Common pitfall
 

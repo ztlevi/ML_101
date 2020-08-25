@@ -139,6 +139,10 @@ Below are two possible network configurations. On the first presentation (left),
 
 [![DropOut examples](https://i.stack.imgur.com/CewjH.png)](https://i.stack.imgur.com/CewjH.png)
 
+Cons:
+
+- Dropout roughly doubles the number of iterations required to converge. However, training time for each epoch is less.
+
 ### DropConnect
 
 DropConnect works similarly, except that we disable individual weights (i.e., set them to zero), instead of nodes, so a node can remain partially active. Schematically, it looks like this:
