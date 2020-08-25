@@ -8,7 +8,7 @@
   - [K means](docs/General/Kmeans.md)
   - [Calculate Parameters in CNN](docs/General/Calculate_Parameters_In_CNN.md)
   - [Weight norm and layer norm](docs/General/Weight_norm_and_layer_norm.md)
-  - [Imbalance problem in object detection]()
+  - [Imbalance problem in object detection](docs/General/Imbalance_problem_in_object_detection.md)
 - [Classical Machine Learning](docs/Classical_Machine_learning.md)
 - [Neural Networks](docs/Neural_Networks.md)
   - [Different Types of Convolution](docs/Neural_Networks/Different_types_of_Convolution.md)
