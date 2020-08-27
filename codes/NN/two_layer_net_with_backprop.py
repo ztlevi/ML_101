@@ -12,28 +12,6 @@ def softmax(z):
     return sm
 
 
-def softmax_grad(s):
-    # Take the derivative of softmax element w.r.t the each logit which is usually Wi * X
-    # input s is softmax value of the original input x.
-    # s.shape = (1, n)
-    # i.e. s = np.array([0.3, 0.7]), x = np.array([0, 1])
-    # initialize the 2-D jacobian matrix.
-    jacobian_m = np.diag(s)
-    for i in range(len(jacobian_m)):
-        for j in range(len(jacobian_m)):
-            if i == j:
-                jacobian_m[i][j] = s[i] * (1 - s[i])
-            else:
-                jacobian_m[i][j] = -s[i] * s[j]
-    return jacobian_m
-
-
-def softmax_grad_vectorized(softmax):
-    # Reshape the 1-d softmax to 2-d so that np.dot will do the matrix multiplication
-    s = softmax.reshape(-1, 1)
-    return np.diagflat(s) - np.dot(s, s.T)
-
-
 class TwoLayerNet:
     """
   A two-layer fully-connected neural network. The net has an input dimension of
@@ -134,6 +112,7 @@ class TwoLayerNet:
         # and biases. Store the results in the grads dictionary. For example,       #
         # grads['W1'] should store the gradient on W1, and be a matrix of same size #
         # softmax derivative https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/
+        # softmax with ce loss backprop see https://www.youtube.com/watch?v=5-rVLSc2XdE
         #############################################################################
         softmax_matrix[np.arange(N), y] -= 1
         softmax_matrix /= N
@@ -145,8 +124,8 @@ class TwoLayerNet:
         db2 = softmax_matrix.sum(axis=0)
 
         # W1 gradient
-        dW1 = softmax_matrix.dot(W2.T)  # [NxC] * [CxH] = [NxH]
-        dfc1 = dW1 * (fc1 > 0)  # [NxH] . [NxH] = [NxH]
+        dX2 = softmax_matrix.dot(W2.T)  # [NxC] * [CxH] = [NxH]
+        dfc1 = dX2 * (fc1 > 0)  # [NxH] . [NxH] = [NxH]
         dW1 = X.T.dot(dfc1)  # [DxN] * [NxH] = [DxH]
 
         # b1 gradient
