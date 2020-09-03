@@ -40,6 +40,8 @@ FPN composes of a **bottom-up** and a **top-down** pathway. The bottom-up pathwa
 
 - YOLOv3 predicts boxes at **3 different scales**. Take the feature map from 2 layers previous and **upsample it by 2** and then add a few more convolutional layers to process this combined feature map, and eventually predict a similar tensor, although now **twice the size**.chose 9 clusters and 3 scales arbitrarily and then divide up the clusters **evenly across scales**.
 
+- Note in original FPN paper, upsampling is followed by feature maps addition, but in yolov3, it's concatenation and add a few more convolution layers.
+
 - Detections at different layers helps address the issue of detecting small objects, a frequent complaint with YOLO v2. The upsampled layers concatenated with the previous layers help preserve the fine grained features which help in detecting small objects. The 13 x 13 layer is responsible for detecting large objects, whereas the 52 x 52 layer detects the smaller objects, with the 26 x 26 layer detecting medium objects. Here is a comparative analysis of different objects picked in the same object by different layers.
 
 ## Anchor Boxes
