@@ -1,5 +1,7 @@
 import torch
 
+# https://github.com/pytorch/pytorch/wiki/Introducing-Quantized-Tensor
+
 # Quantization(x, scale, zero_point) = round(x/scale + zero_point)
 
 # 1. Get a quantized Tensor by quantizing unquantized float Tensors
