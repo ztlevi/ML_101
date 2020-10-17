@@ -9,6 +9,8 @@ verify_ssl = true
 torch = "*"
 torchvision = "*"
 numpy = "*"
+pandas = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.8"

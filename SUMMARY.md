@@ -5,7 +5,7 @@
   - [Optimization](docs/General/Optimization.md)
   - [How to prevent overfitting](docs/General/How_to_prevent_overfitting.md)
   - [Linear Algebra](docs/General/Linear_algebra.md)
-  - [K means](docs/General/Kmeans.md)
+  - [Clustering](docs/General/Clustering.md)
   - [Calculate Parameters in CNN](docs/General/Calculate_Parameters_In_CNN.md)
   - [Weight norm and layer norm](docs/General/Weight_norm_and_layer_norm.md)
   - [Imbalance problem in object detection](docs/General/Imbalance_problem_in_object_detection.md)

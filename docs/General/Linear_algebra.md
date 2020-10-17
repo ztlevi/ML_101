@@ -2,7 +2,7 @@
 
 ## The Rank of a Matrix
 
-You can think of an $$r times c$$ matrix as a set of $$r$$ row [vectors](https://stattrek.com/help/glossary.aspx?Target=Vectors), each having $$c$$ elements; or you can think of it as a set of $$c$$ column vectors, each having $$r$$ elements.
+You can think of an $$r \times c$$ matrix as a set of $$r$$ row [vectors](https://stattrek.com/help/glossary.aspx?Target=Vectors), each having $$c$$ elements; or you can think of it as a set of $$c$$ column vectors, each having $$r$$ elements.
 
 The **rank** of a matrix is defined as (a) the maximum number of [ linearly independent](https://stattrek.com/help/glossary.aspx?Target=Linear_dependence_of_vectors) _column_ vectors in the matrix or (b) the maximum number of linearly independent $$row$$ vectors in the matrix. Both definitions are equivalent.
 

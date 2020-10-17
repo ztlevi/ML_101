@@ -1,4 +1,6 @@
-# K means
+# Clustering
+
+## Kmeans
 
 ![clustering](../../assets/clustering.png)
 
@@ -9,7 +11,7 @@
 
 [scikit-learn](http://scikit-learn.org/stable/modules/clustering.html) implements many clustering algorithms. Below is a comparison adopted from its page.
 
-## Algorithm
+### Algorithm
 
 - Input:
   - $$K$$ (number of clusters)
@@ -28,7 +30,7 @@
 
 **[Python implementation](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/kmeans/kmeans.py)**
 
-## Random initialization
+### Random initialization
 
 - How we initialize K-means
 
@@ -65,9 +67,9 @@
   - If K is larger than 10, then multiple random initializations are less likely to be necessary
   - First solution is probably good enough (better granularity of clustering)
 
-## Determine optimal k
+### Determine optimal k
 
-### Elbow mothod
+#### Elbow mothod
 
 The technique to determine <u>K, the number of clusters</u>, is called <u>the elbow method</u>. With a bit of fantasy, you can see an elbow in the chart below.
 
@@ -122,7 +124,7 @@ plt.title('The Elbow Method showing the optimal k')
 plt.show()
 ```
 
-### Another method for choosing K
+#### Another method for choosing K
 
 - Using K-means for market segmentation
 - Running K-means for a later/downstream purpose
@@ -141,3 +143,19 @@ plt.show()
     - Could consider the cost of making extra sizes vs. how well distributed the products are
     - How important are those sizes though? (e.g. more sizes might make the customers happier)
     - So applied problem may help guide the number of clusters
+
+## DBSCAN: Density-Based Spatial Clustering of Applications with Noise
+
+DBSCAN is a density-based clustered algorithm similar to mean-shift, but with a couple of notable advantages. Check out another fancy graphic below and let’s get started!
+
+![img](https://miro.medium.com/max/1485/1*tc8UF-h0nQqUfLC8-0uInQ.gif)
+
+1.  DBSCAN begins with an arbitrary starting data point that has not been visited. The neighborhood of this point is extracted using a distance epsilon ε (All points which are within the ε distance are neighborhood points).
+2.  If there are a sufficient number of points (according to minPoints) within this neighborhood then the clustering process starts and the current data point becomes the first point in the new cluster. Otherwise, the point will be labeled as noise (later this noisy point might become the part of the cluster). In both cases that point is marked as “visited”.
+3.  For this first point in the new cluster, the points within its ε distance neighborhood also become part of the same cluster. This procedure of making all points in the ε neighborhood belong to the same cluster is then repeated for all of the new points that have been just added to the cluster group.
+4.  This process of steps 2 and 3 is repeated until all points in the cluster are determined i.e all points within the ε neighborhood of the cluster have been visited and labeled.
+5.  Once we’re done with the current cluster, a new unvisited point is retrieved and processed, leading to the discovery of a further cluster or noise. This process repeats until all points are marked as visited. Since at the end of this all points have been visited, each point will have been marked as either belonging to a cluster or being noise.
+
+DBSCAN poses some great advantages over other clustering algorithms. Firstly, it does not require a pe-set number of clusters at all. It also identifies outliers as noises, unlike mean-shift which simply throws them into a cluster even if the data point is very different. Additionally, it can find arbitrarily sized and arbitrarily shaped clusters quite well.
+
+The main drawback of DBSCAN is that it doesn’t perform as well as others when the clusters are of varying density. This is because the setting of the distance threshold ε and minPoints for identifying the neighborhood points will vary from cluster to cluster when the density varies. This drawback also occurs with very high-dimensional data since again the distance threshold ε becomes challenging to estimate.
