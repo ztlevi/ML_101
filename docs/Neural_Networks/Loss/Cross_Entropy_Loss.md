@@ -28,8 +28,6 @@ def softmax(X):
 
 def cross_entropy(predictions, targets):
     N = predictions.shape[0]
-    a = targets * np.log(predictions)
-    print(a.shape)
     ce = -np.sum(targets * np.log(predictions)) / N
     return ce
 
