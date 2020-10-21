@@ -69,45 +69,49 @@ As Caffe Softmax with Loss layer nor Multinomial Logistic Loss Layer accept mult
 
 ## Forward pass: Loss computation
 
+For full code, take a look at [here](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/softmax_loss/softmax_loss.py).
+
 ```python
-def forward(self, bottom, top):
-   labels = bottom[1].data
-   scores = bottom[0].data
-   # Normalizing to avoid instability
-   scores -= np.max(scores, axis=1, keepdims=True)
-   # Compute Softmax activations
-   exp_scores = np.exp(scores)
-   probs = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
-   logprobs = np.zeros([bottom[0].num,1])
-   # Compute cross-entropy loss
-   for r in range(bottom[0].num): # For each element in the batch
-       scale_factor = 1 / float(np.count_nonzero(labels[r, :]))
-       for c in range(len(labels[r,:])): # For each class
-           if labels[r,c] != 0:  # Positive classes
-               logprobs[r] += -np.log(probs[r,c]) * labels[r,c] * scale_factor # We sum the loss per class for each element of the batch
+    def forward(ctx, x, target):
+        """
+        forward propagation
+        """
+        assert x.dim() == 2, "dimension of input should be 2"
+        exp_x = torch.exp(x)
+        y = exp_x / exp_x.sum(1).unsqueeze(1).expand_as(exp_x)
 
-   data_loss = np.sum(logprobs) / bottom[0].num
+        # parameter "target" is a LongTensor and denotes the labels of classes, here we need to convert it into one hot vectors
+        t = torch.zeros(y.size()).type(y.type())
+        for n in range(t.size(0)):
+            t[n][target[n]] = 1
 
-   self.diff[...] = probs  # Store softmax activations
-   top[0].data[...] = data_loss # Store loss
+        output = (-t * torch.log(y)).sum() / y.size(0)
+
+        # output should be a tensor, but the output of sum() is float
+        output = torch.Tensor([output]).type(y.type())
+        ctx.save_for_backward(y, t)
+
+        return output
 ```
-
-We first compute Softmax activations for each class and store them in _probs_. Then we compute the loss for each image in the batch considering there might be more than one positive label. We use an _scale_factor_ ($$M$$) and we also multiply losses by the labels, which can be binary or real numbers, so they can be used for instance to introduce class balancing. The batch loss will be the mean loss of the elements in the batch. We then save the _data_loss_ to display it and the _probs_ to use them in the backward pass.
 
 ## Backward pass: Gradients computation
 
 ```python
-def backward(self, top, propagate_down, bottom):
-   delta = self.diff   # If the class label is 0, the gradient is equal to probs
-   labels = bottom[1].data
-   for r in range(bottom[0].num):  # For each element in the batch
-       scale_factor = 1 / float(np.count_nonzero(labels[r, :]))
-       for c in range(len(labels[r,:])):  # For each class
-           if labels[r, c] != 0:  # If positive class
-               delta[r, c] = scale_factor * (delta[r, c] - 1) + (1 - scale_factor) * delta[r, c]
-   bottom[0].diff[...] = delta / bottom[0].num
-```
+    @staticmethod
+    def backward(ctx, grad_output):
+        """
+        backward propagation
+        # softmax with ce loss backprop see https://www.youtube.com/watch?v=5-rVLSc2XdE
+        """
+        y, t = ctx.saved_tensors
 
-In the backward pass we need to compute the gradients of each element of the batch respect to each one of the classes scores $$s$$. As the gradient for all the classes $$C$$ except positive classes $$M$$ is equal to _probs_, we assign _probs_ values to _delta_. For the positive classes in $$M$$ we subtract 1 to the corresponding _probs_ value and use _scale_factor_ to match the gradient expression. We compute the mean gradients of all the batch to run the backpropagation.
+        # grads = []
+        # for i in range(y.size(0)):
+        #     grads.append(softmax_grad(y[i]))
+
+        grads = softmax_grad_vectorized(y)
+        grad_input = grad_output * (y - t) / y.size(0)
+        return grad_input, None
+```
 
 > The Caffe Python layer of this Softmax loss supporting a multi-label setup with real numbers labels is available [here](https://gist.github.com/gombru/53f02ae717cb1dd2525be090f2d41055)
