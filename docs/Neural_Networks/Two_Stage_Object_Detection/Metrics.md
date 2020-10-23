@@ -22,6 +22,64 @@ $$AP^{IoU=.50}$$: AP at IoU=.50 (PASCAL VOC metric)
 
 $$AP^{IoU=.75}$$: AP at IoU=.75 (strict metric)
 
+## **Interpolated AP**
+
+PASCAL VOC is a popular dataset for object detection. For the PASCAL VOC challenge, a prediction is positive if IoU ≥ 0.5. Also, if multiple detections of the same object are detected, it counts the first one as a positive while the rest as negatives.
+
+In Pascal VOC2008, an average for the 11-point interpolated AP is calculated.
+
+<figure>
+<img src="https://miro.medium.com/max/4400/1*naz02wO-XMywlwAdFzF-GA.jpeg" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+First, we divide the recall value from 0 to 1.0 into 11 points — 0, 0.1, 0.2, …, 0.9 and 1.0. Next, we compute the average of maximum precision value for these 11 recall values.
+
+<figure>
+<img src="https://miro.medium.com/max/3168/1*OIOis-n603z1Xngo_Ip6Dw.jpeg" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+In our example, AP = (5 × 1.0 + 4 × 0.57 + 2 × 0.5)/11
+
+Here are the more precise mathematical definitions.
+
+<figure>
+<img src="https://miro.medium.com/max/1566/1*5C4GaqxfPrq-9lFINMix8Q.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+When *AP*ᵣ turns extremely small, we can assume the remaining terms to be zero. i.e. we don’t necessarily make predictions until the recall reaches 100%. If the possible maximum precision levels drop to a negligible level, we can stop. For 20 different classes in PASCAL VOC, we compute an AP for every class and also provide an average for those 20 AP results.
+
+According to the original researcher, the intention of using 11 interpolated point in calculating AP is
+
+> The intention in interpolating the precision/recall curve in this way is to reduce the impact of the “wiggles” in the precision/recall curve, caused by small variations in the ranking of examples.
+
+However, this interpolated method is an approximation which suffers two issues. It is less precise. Second, it lost the capability in measuring the difference for methods with low AP. Therefore, a different AP calculation is adopted after 2008 for PASCAL VOC.
+
+## AP (Area under curve AUC)
+
+For later Pascal VOC competitions, VOC2010–2012 samples the curve at all unique recall values (_r₁, r₂, …_), whenever the maximum precision value drops. With this change, we are measuring the exact area under the precision-recall curve after the zigzags are removed.
+
+<figure>
+<img src="https://miro.medium.com/max/3520/1*TAuQ3UOA8xh_5wI5hwLHcg.jpeg" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+No approximation or interpolation is needed. Instead of sampling 11 points, we sample _p_(_rᵢ_) whenever it drops and computes AP as the sum of the rectangular blocks.
+
+<figure>
+<img src="https://miro.medium.com/max/3520/1*q6S0m6R6mQA1J6K30HZkvw.jpeg" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+This definition is called the Area Under Curve (AUC). As shown below, as the interpolated points do not cover where the precision drops, both methods will diverge.
+
+<figure>
+<img src="https://miro.medium.com/max/3520/1*dEfFSY6vFPSun96lRoxOEw.jpeg" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
 ### AP Across Scales:
 
 $$AP{small}$$: AP for small objects: $$area < 32^2$$
@@ -59,3 +117,7 @@ $$AR^{large}$$: AR for large objects: $$area > 96^2$$
 5.AR is the maximum recall given a fixed number of detections per image, averaged over categories and IoUs. AR is related to the metric of the same name used in proposal evaluation but is computed on a per-category basis.
 
 6.All metrics are computed allowing for at most 100 top-scoring detections per image (across all categories). The evaluation metrics for detection with bounding boxes and segmentation masks are identical in all respects except for the IoU computation (which is performed over boxes or masks, respectively).
+
+# Reference
+
+- [mAP (mean Average Precision) for Object Detection](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173)
