@@ -33,6 +33,7 @@
   - One Stage Object Detection
     - [YOLO](docs/Neural_Networks/One_Stage_Object_Detection/YOLO.md)
     - [Single Shot MultiBox Detector(SSD)](docs/Neural_Networks/One_Stage_Object_Detection/SSD.md)
+    - [FPN](docs/Neural_Networks/Two_Stage_Object_Detection/FPN.md)
   - Segmentation
     - [Panoptic Segmentation](docs/Neural_Networks/Segmentation/Panoptic.md)
   - [FaceNet](docs/Neural_Networks/FaceNet.md)
