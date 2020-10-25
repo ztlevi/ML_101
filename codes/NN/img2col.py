@@ -11,7 +11,7 @@ def init_layer(img):
     layer = None
     for i in range(c):
         temp = img[:, :, i].reshape(w * h, 1)
-        if layer is None: 
+        if layer is None:
             layer = temp
         else:
             layer = np.concatenate((layer, temp), axis=0)
@@ -128,8 +128,8 @@ def forward_convolution(
 
 
 img_shape = (5, 5, 3)
-h,w,c = img_shape
-img = np.arange(h*w*c).reshape(img_shape)
+h, w, c = img_shape
+img = np.arange(h * w * c).reshape(img_shape)
 data_im = init_layer(img)
 flattened_img = img2col_with_stride(data_im, 3, 5, 5, 3, 1, 1)
-assert flattened_img.shape == (5*5*3*3*3, 1)
+assert flattened_img.shape == (5 * 5 * 3 * 3 * 3, 1)

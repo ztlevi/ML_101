@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 pdbpp = "*"
+black = "*"
 
 [packages]
 torch = "*"
@@ -13,6 +14,10 @@ numpy = "*"
 pandas = "*"
 matplotlib = "*"
 jupyter = "*"
+tqdm = "*"
 
 [requires]
 python_version = "3.8"
+
+[pipenv]
+allow_prereleases = true
