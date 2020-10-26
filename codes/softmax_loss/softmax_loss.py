@@ -10,7 +10,7 @@ from torch.autograd import Function, Variable
 
 def softmax(z):
     z -= np.max(z)
-    sm = (np.exp(z).T / np.sum(np.exp(z), axis=0)).T
+    sm = np.exp(z) / np.expand_dims(np.sum(np.exp(z), axis=1), axis=1)
     return sm
 
 
@@ -107,9 +107,7 @@ def test_softmax_loss_backward():
     x_var = Variable(x, requires_grad=True)
 
     # testing labels
-    target = torch.LongTensor(
-        np.repeat(np.array(range(num_classes)), x_size // num_classes)
-    )
+    target = torch.LongTensor(np.repeat(np.array(range(num_classes)), x_size // num_classes))
     target_var = Variable(target)
 
     # compute outputs of softmax loss
