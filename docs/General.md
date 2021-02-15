@@ -144,7 +144,7 @@ from [this blog](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-
 
 ## Unsupervised Learning
 
-### [K-means](General/Kmeans.html)
+### [K-means](General/Clustering.html$Kmeans)
 
 ### Principal Component Analysis
 
@@ -158,6 +158,12 @@ Statistical procedure that uses an **orthogonal transformation** to convert a se
 Here is a visual explanation of PCA
 
 ![pca](../assets/pca.gif)
+
+## t-SNE
+
+t-Distributed Stochastic Neighbor Embedding (t-SNE) is a technique for dimensionality reduction that is particularly well suited for the visualization of high-dimensional datasets. The technique can be implemented via Barnes-Hut approximations, allowing it to be applied on large real-world datasets. We applied it on data sets with up to 30 million examples.
+
+https://github.com/ztlevi/t-sne-python/blob/master/tsne.py
 
 ## Non maximal supression
 

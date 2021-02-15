@@ -9,6 +9,8 @@ git clone https://github.com/ztlevi/Machine_Learning_Questions.git
 
 cd Machine_Learning_Questions
 
+pip install pipenv
+
 # Pre-commit plugins
 pip install pre-commit
 pre-commit install
