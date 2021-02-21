@@ -3,19 +3,18 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "docs:prepare": "gitbook install",
+    "docs:prepare": "./node_modules/.bin/gitbook install",
     "docs:build": "rm -rf _book && gitbook build",
-    "start": "gitbook build && gitbook --port 4003 serve",
-    "docs:watch": "gitbook build && gitbook serve --port 4003",
-    "docs:publish": "gitbook build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push https://github.com/ztlevi/Gitbook_Machine_Learning_Questions.git gh-pages --force"
+    "start": "./node_modules/.bin/gitbook build && gitbook --port 4003 serve",
+    "docs:watch": "./node_modules/.bin/gitbook build && gitbook serve --port 4003",
+    "docs:publish": "./node_modules/.bin/gitbook build && cd _book && git init && git commit --allow-empty -m 'Update docs' && git checkout -b gh-pages && git add . && git commit -am 'Update docs' && git push https://github.com/ztlevi/Gitbook_Machine_Learning_Questions.git gh-pages --force"
   },
   "dependencies": {
+    "gitbook-cli": "^2.3.2",
     "gitbook-plugin-custom-js-css": "0.0.1",
     "gitbook-plugin-docsearch": "^1.2.0",
     "gitbook-plugin-intopic-toc": "^1.1.1",
     "gitbook-plugin-katex": "^1.1.4"
   },
-  "devDependencies": {
-    "gitbook-cli": "^2.3.2"
-  }
+  "devDependencies": {}
 }
