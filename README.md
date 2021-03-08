@@ -1,6 +1,8 @@
 # [Machine Learning Questions](https://git.io/fj0yP) ![build](https://travis-ci.org/ztlevi/Machine_Learning_Questions.svg?branch=master)
 
-https://github.com/ztlevi/Machine_Learning_Questions
+Github repo: https://github.com/ztlevi/Machine_Learning_Questions
+
+Gitbook is deployed over [here](https://git.io/fj0yP).
 
 ## Start to contribute
 
