@@ -6,6 +6,10 @@ If you’ve heard of different kinds of convolutions in Deep Learning (e.g. 2D /
 
 Here in this article, I summarize several types of convolution commonly used in Deep Learning, and try to explain them in a way that is accessible for everyone. Besides this article, there are several good articles from others on this topic. Please check them out (listed in the Reference).
 
+## Output shape
+
+Use the formula $$[(W−K+2P)/S]+1$$.
+
 ## **1. Convolution v.s. Cross-correlation**
 
 Convolution is a widely used technique in signal processing, image processing, and other engineering / science fields. In Deep Learning, a kind of model architecture, Convolutional Neural Network (CNN), is named after this technique. However, convolution in deep learning is essentially the cross-correlation in signal / image processing. There is a subtle difference between these two operations.
