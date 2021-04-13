@@ -8,7 +8,7 @@ Here in this article, I summarize several types of convolution commonly used in 
 
 ## Output shape
 
-Use the formula $$[(W−K+2P)/S]+1$$.
+Use the formula $$[(W-K+2P)/S]+1$$.
 
 ## **1. Convolution v.s. Cross-correlation**
 
