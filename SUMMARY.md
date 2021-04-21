@@ -37,6 +37,11 @@
   - Segmentation
     - [Panoptic Segmentation](docs/Neural_Networks/Segmentation/Panoptic.md)
   - [FaceNet](docs/Neural_Networks/FaceNet.md)
+- Parallel Computeing
+  - [Communication](docs/Parallel_Computing/Communication.md)
+  - [MapReduce](docs/Parallel_Computing/sync_mapreduce.md)
+  - [Parameter Server](docs/Parallel_Computing/parameter_server.md)
+  - [Decentralized And Ring All Reduce](docs/Parallel_Computing/decentralized_and_ring_allreduce.md)
 - Anomaly Detection
   - [DBSCAN](docs/Anomaly/dbscan.md)
   - [Autoencoder](docs/Anomaly/autoencoder_anomaly.md)
