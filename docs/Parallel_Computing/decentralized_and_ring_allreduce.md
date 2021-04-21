@@ -48,6 +48,7 @@ The server gets the result of reduce (e.g., sum, mean, count.)
 <img src="../../assets/reduce_3.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center">Figure 2</figcaption>
 </figure>
+
 ## Ring All-Reduce
 
 ### Native Approach
