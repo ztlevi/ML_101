@@ -23,6 +23,8 @@ Given a data science / machine learning project, what steps should we follow? He
 
 ## [IID: independent and identically distributed](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/IID/IID.ipynb)
 
+[Youtube](https://www.youtube.com/watch?v=lhzndcgCXeo)
+
 ## Confusion matrix
 
 - Accuracy:
