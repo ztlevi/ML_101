@@ -21,6 +21,8 @@ Given a data science / machine learning project, what steps should we follow? He
 
 ![](../assets/workflow.png)
 
+## [IID: independent and identically distributed](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/IID/IID.ipynb)
+
 ## Confusion matrix
 
 - Accuracy:
