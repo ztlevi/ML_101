@@ -1,7 +1,7 @@
 # Table of contents
 
 - [Introduction](README.md)
-- [General](basics/README.md)
+- [Basics](basics/README.md)
   - [Optimization](basics/optimization.md)
   - [How to prevent overfitting](basics/how_to_prevent_overfitting.md)
   - [Linear Algebra](basics/linear_algebra.md)
