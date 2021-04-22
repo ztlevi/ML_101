@@ -1,12 +1,12 @@
-# [Machine Learning Questions](https://git.io/fj0yP) ![build](https://travis-ci.org/ztlevi/Machine_Learning_Questions.svg?branch=master)
+# Introduction
 
-Github repo: https://github.com/ztlevi/Machine_Learning_Questions
+Github repo: [https://github.com/ztlevi/Machine\_Learning\_Questions](https://github.com/ztlevi/Machine_Learning_Questions)
 
-Gitbook is deployed over [here](https://git.io/fj0yP).
+Gitbook is deployed over https://ztlevi.gitbook.io/ml-101 [here](https://git.io/fj0yP).
 
 ## Start to contribute
 
-```sh
+```bash
 git clone https://github.com/ztlevi/Machine_Learning_Questions.git
 
 cd Machine_Learning_Questions
@@ -33,8 +33,9 @@ npm run docs:publish
 
 ## Use the code
 
-```sh
+```bash
 pip3 install pipenv
 pipenv install
 pipenv shell
 ```
+
