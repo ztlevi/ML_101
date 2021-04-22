@@ -58,4 +58,3 @@ This means that layer normalization is not a simple reparameterization of the ne
 The independence between inputs means that each input has a different normalization operation, allowing arbitrary mini-batch sizes to be used.
 
 The experimental results show that layer normalization performs well for recurrent neural networks.
-

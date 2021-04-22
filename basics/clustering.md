@@ -4,26 +4,27 @@
 
 ![clustering](../.gitbook/assets/clustering.png)
 
-* Clustering is a unsupervised learning algorithm that groups data in such a way that data points in the same group are more similar to each other than to those from other groups
-* Similarity is usually defined using a distance measure \(e.g, Euclidean, Cosine, Jaccard, etc.\)
-* The goal is usually to discover the underlying structure within the data \(usually high dimensional\)
-* The most common clustering algorithm is K-means, where we define K \(the number of clusters\) and the algorithm iteratively finds the cluster each data point belongs to
+- Clustering is a unsupervised learning algorithm that groups data in such a way that data points in the same group are more similar to each other than to those from other groups
+- Similarity is usually defined using a distance measure \(e.g, Euclidean, Cosine, Jaccard, etc.\)
+- The goal is usually to discover the underlying structure within the data \(usually high dimensional\)
+- The most common clustering algorithm is K-means, where we define K \(the number of clusters\) and the algorithm iteratively finds the cluster each data point belongs to
 
 [scikit-learn](http://scikit-learn.org/stable/modules/clustering.html) implements many clustering algorithms. Below is a comparison adopted from its page.
 
 ### Algorithm
 
-* Input:
-  * $$K$$ \(number of clusters\)
-  * Training set $${x^1,x^2,...,x^m}$$ \($$x^i \in \mathbb{R}^n$$\)
-* Algorithm:
+- Input:
+  - $$K$$ \(number of clusters\)
+  - Training set $${x^1,x^2,...,x^m}$$ \($$x^i \in \mathbb{R}^n$$\)
+- Algorithm:
+
   1. Randomly initialized $$K$$ cluster centroids $$\mu_1,\mu_2,...,\mu_K \in \mathbb{R}^n$$
   2. Repeat {
 
-     * for i = 1 to $$m$$
-       * $$c^i$$ := index \(from 1 to K\) of cluster centroid closest to $$x^i$$
-     * for k = 1 to $$K$$
-       * $$\mu_k$$ := average \(mean\) of points assigned to Cluster k
+     - for i = 1 to $$m$$
+       - $$c^i$$ := index \(from 1 to K\) of cluster centroid closest to $$x^i$$
+     - for k = 1 to $$K$$
+       - $$\mu_k$$ := average \(mean\) of points assigned to Cluster k
 
      }
 
@@ -31,34 +32,34 @@
 
 ### Random initialization
 
-* How we initialize K-means
-  * And how avoid local optimum
-* Consider clustering algorithm
-  * Never spoke about how we initialize the centroids
-    * A few ways - one method is most recommended
-* Have number of centroids set to less than number of examples \(K &lt; m\) \(if K &gt; m we have a problem\)0
-  * Randomly pick K training examples
-  * Set μ1 up to μK to these example's values
-* K means can converge to different solutions depending on the initialization setup
-  * Risk of local optimum ![img](../.gitbook/assets/kmeans_local_optima.png)
-  * The local optimum are valid convergence, but local optimum not global ones
-* If this is a concern
-  * We can do multiple random initializations
-    * See if we get the same result - many same results are likely to indicate a global optimum
-* Algorithmically we can do this as follows;
+- How we initialize K-means
+  - And how avoid local optimum
+- Consider clustering algorithm
+  - Never spoke about how we initialize the centroids
+    - A few ways - one method is most recommended
+- Have number of centroids set to less than number of examples \(K &lt; m\) \(if K &gt; m we have a problem\)0
+  - Randomly pick K training examples
+  - Set μ1 up to μK to these example's values
+- K means can converge to different solutions depending on the initialization setup
+  - Risk of local optimum ![img](../.gitbook/assets/kmeans_local_optima.png)
+  - The local optimum are valid convergence, but local optimum not global ones
+- If this is a concern
+  - We can do multiple random initializations
+    - See if we get the same result - many same results are likely to indicate a global optimum
+- Algorithmically we can do this as follows;
 
   ![](../.gitbook/assets/kmeans_random_init.png)
 
-  * A typical number of times to initialize K-means is 50-1000
-  * Randomly initialize K-means
-    * For each 100 random initialization run K-means
-    * Then compute the distortion on the set of cluster assignments and centroids at convergent
-    * End with 100 ways of cluster the data
-    * Pick the clustering which gave the lowest distortion
+  - A typical number of times to initialize K-means is 50-1000
+  - Randomly initialize K-means
+    - For each 100 random initialization run K-means
+    - Then compute the distortion on the set of cluster assignments and centroids at convergent
+    - End with 100 ways of cluster the data
+    - Pick the clustering which gave the lowest distortion
 
-* If you're running K means with 2-10 clusters can help find better global optimum
-  * If K is larger than 10, then multiple random initializations are less likely to be necessary
-  * First solution is probably good enough \(better granularity of clustering\)
+- If you're running K means with 2-10 clusters can help find better global optimum
+  - If K is larger than 10, then multiple random initializations are less likely to be necessary
+  - First solution is probably good enough \(better granularity of clustering\)
 
 ### Determine optimal k
 
@@ -68,8 +69,8 @@ The technique to determine K, the number of clusters, is called the elbow method
 
 We’ll plot:
 
-* values for K on the horizontal axis
-* the distortion on the Y axis \(the values calculated with the cost function\). This results in:
+- values for K on the horizontal axis
+- the distortion on the Y axis \(the values calculated with the cost function\). This results in:
 
 ![img](../.gitbook/assets/elbow-method.png)
 
@@ -119,22 +120,23 @@ plt.show()
 
 #### Another method for choosing K
 
-* Using K-means for market segmentation
-* Running K-means for a later/downstream purpose
-  * See how well different number of clusters serve you later needs
-* e.g.
-  * T-shirt size example
-    * If you have three sizes \(S,M,L\)
-    * Or five sizes \(XS, S, M, L, XL\)
-    * Run K means where K = 3 and K = 5
-  * How does this look
+- Using K-means for market segmentation
+- Running K-means for a later/downstream purpose
+  - See how well different number of clusters serve you later needs
+- e.g.
+
+  - T-shirt size example
+    - If you have three sizes \(S,M,L\)
+    - Or five sizes \(XS, S, M, L, XL\)
+    - Run K means where K = 3 and K = 5
+  - How does this look
 
     ![img](../.gitbook/assets/kmeans_another_chosing_K.png)
 
-  * This gives a way to chose the number of clusters
-    * Could consider the cost of making extra sizes vs. how well distributed the products are
-    * How important are those sizes though? \(e.g. more sizes might make the customers happier\)
-    * So applied problem may help guide the number of clusters
+  - This gives a way to chose the number of clusters
+    - Could consider the cost of making extra sizes vs. how well distributed the products are
+    - How important are those sizes though? \(e.g. more sizes might make the customers happier\)
+    - So applied problem may help guide the number of clusters
 
 ## DBSCAN: Density-Based Spatial Clustering of Applications with Noise
 
@@ -151,4 +153,3 @@ DBSCAN is a density-based clustered algorithm similar to mean-shift, but with a 
 DBSCAN poses some great advantages over other clustering algorithms. Firstly, it does not require a pe-set number of clusters at all. It also identifies outliers as noises, unlike mean-shift which simply throws them into a cluster even if the data point is very different. Additionally, it can find arbitrarily sized and arbitrarily shaped clusters quite well.
 
 The main drawback of DBSCAN is that it doesn’t perform as well as others when the clusters are of varying density. This is because the setting of the distance threshold ε and minPoints for identifying the neighborhood points will vary from cluster to cluster when the density varies. This drawback also occurs with very high-dimensional data since again the distance threshold ε becomes challenging to estimate.
-

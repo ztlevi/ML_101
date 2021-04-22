@@ -6,15 +6,15 @@
 
 ![img](../.gitbook/assets/1*xwtSpR_zg7j7zusa4IDHNQ.png)
 
-* Bias is the difference between the average prediction of our model and the correct value which we are trying to predict.
-* Variance is the variability of model prediction for a given data point or a value which tells us spread of our data. Model with high variance pays a lot of attention to training data and does not generalize on the data which it hasn’t seen before.
+- Bias is the difference between the average prediction of our model and the correct value which we are trying to predict.
+- Variance is the variability of model prediction for a given data point or a value which tells us spread of our data. Model with high variance pays a lot of attention to training data and does not generalize on the data which it hasn’t seen before.
 
 ### Trade-Off
 
 ![img](../.gitbook/assets/degree_of_polynomial_d.png)
 
-* if d is too small --&gt; this probably corresponds to a high bias problem
-* if d is too large --&gt; this probably corresponds to a high variance problem
+- if d is too small --&gt; this probably corresponds to a high bias problem
+- if d is too large --&gt; this probably corresponds to a high variance problem
 
 ![tradeoff](../.gitbook/assets/bias-variance-total-error.jpg)
 
@@ -26,8 +26,8 @@ More _complex models_ are more prone to being overfit \(high variance\) but they
 
 The best model for a given problem usually lies somewhere in the middle.
 
-* **underfitting** happens when a model unable to capture the underlying pattern of the data.
-* **overfitting** happens when our model captures the noise along with the underlying pattern in data.
+- **underfitting** happens when a model unable to capture the underlying pattern of the data.
+- **overfitting** happens when our model captures the noise along with the underlying pattern in data.
 
 ## How to Prevent Overfitting
 
@@ -105,9 +105,9 @@ In L2 regularization, regularization term is the sum of square of all feature we
 
 #### Comparison Between L1 And L2 Regulariztion
 
-* **Computational Efficiency**: \(L2 &gt; L1\) L2 have analytical solution while L1 is computational inefficient on non-sparse cases
-* **Sparsity**: \(L1 &gt; L2\) refers to that only very few entries in a matrix \(or vector\) is non-zero. L1-norm has the property of producing many coefficients with zero values or very small values with few large coefficients.
-* **Built-in feature selection for L1**: L1-norm tends to produces sparse coefficients, so that L1 can penalize the coefficients toward 0.
+- **Computational Efficiency**: \(L2 &gt; L1\) L2 have analytical solution while L1 is computational inefficient on non-sparse cases
+- **Sparsity**: \(L1 &gt; L2\) refers to that only very few entries in a matrix \(or vector\) is non-zero. L1-norm has the property of producing many coefficients with zero values or very small values with few large coefficients.
+- **Built-in feature selection for L1**: L1-norm tends to produces sparse coefficients, so that L1 can penalize the coefficients toward 0.
 
   ![enter image description here](../.gitbook/assets/cmWO0.png)
 
@@ -119,16 +119,16 @@ From the figure, we can find out that for L1, the gradient is either 1 or -1, ex
 
 ![img](../.gitbook/assets/regularization_lambda.jpg)
 
-* Plot λ vs.
-  * $$J_{ train }$$
-    * When λ is small you get a small value \(regularization basically goes to 0\)
-    * When λ is large you get a large vale corresponding to high bias
-  * $$J_{ cv }$$
-    * When λ is small we see high variance
-      * Too small a value means we over fit the data
-    * When λ is large we end up underfitting, so this is bias
-      * So cross validation error is high
-* Such a plot can help show you you're picking a good value for λ
+- Plot λ vs.
+  - $$J_{ train }$$
+    - When λ is small you get a small value \(regularization basically goes to 0\)
+    - When λ is large you get a large vale corresponding to high bias
+  - $$J_{ cv }$$
+    - When λ is small we see high variance
+      - Too small a value means we over fit the data
+    - When λ is large we end up underfitting, so this is bias
+      - So cross validation error is high
+- Such a plot can help show you you're picking a good value for λ
 
 #### DropOut \(Regularization technique\)
 
@@ -140,7 +140,7 @@ Below are two possible network configurations. On the first presentation \(left\
 
 Cons:
 
-* Dropout roughly doubles the number of iterations required to converge. However, training time for each epoch is less.
+- Dropout roughly doubles the number of iterations required to converge. However, training time for each epoch is less.
 
 #### DropConnect
 
@@ -162,18 +162,17 @@ Ensembles are machine learning methods for combining predictions from multiple s
 
 _Bagging_ attempts to reduce the chance overfitting complex models.
 
-* It trains a large number of "strong" learners in parallel.
-* A strong learner is a model that's relatively unconstrained.
-* Bagging then combines all the strong learners together in order to "smooth out" their predictions.
+- It trains a large number of "strong" learners in parallel.
+- A strong learner is a model that's relatively unconstrained.
+- Bagging then combines all the strong learners together in order to "smooth out" their predictions.
 
 _Boosting_ attempts to improve the predictive flexibility of simple models.
 
-* It trains a large number of "weak" learners in sequence.
-* A weak learner is a constrained model \(i.e. you could limit the max depth of each decision tree\).
-* Each one in the sequence focuses on learning from the mistakes of the one before it.
-* Boosting then combines all the weak learners into a single strong learner.
+- It trains a large number of "weak" learners in sequence.
+- A weak learner is a constrained model \(i.e. you could limit the max depth of each decision tree\).
+- Each one in the sequence focuses on learning from the mistakes of the one before it.
+- Boosting then combines all the weak learners into a single strong learner.
 
 While bagging and boosting are both ensemble methods, they approach the problem from opposite directions.
 
 Bagging uses complex base models and tries to "smooth out" their predictions, while boosting uses simple base models and tries to "boost" their aggregate complexity.
-

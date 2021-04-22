@@ -10,7 +10,7 @@ Assume $$X = \{x_1, x_2,...,x_n\}$$ is a sample follow independent and identical
 
 $$\hat \theta_{MLE} = argmax logP(\theta ; X) = argmin -logP(\theta ; X)$$,
 
-* Deep Learning uses MLE for we do not know the **real distribution of the dataset**
+- Deep Learning uses MLE for we do not know the **real distribution of the dataset**
 
 ### Maximum A Posteriori
 
@@ -22,7 +22,7 @@ For $$P(X)$$ is not related to $$\theta$$,
 
 $$\hat \theta_{MAP} =argmin -logP(X |\theta)-logP(\theta)$$
 
-* MAP usually used in Bayisan Machine Learning
+- MAP usually used in Bayisan Machine Learning
 
 **The difference is the prior probability** $$P(\theta)$$
 
@@ -86,7 +86,7 @@ This simple technique extends to any variable within a function and allows us to
 
 Let's use the chain rule to calculate the derivative of cost with respect to any weight in the network. The chain rule will help us identify how much each weight contributes to our overall error and the direction to update each weight to reduce our error. Here are the equations we need to make a prediction and calculate total error, or cost:
 
-![\_images/backprop\_ff\_equations.png](https://ml-cheatsheet.readthedocs.io/en/latest/_images/backprop_ff_equations.png)
+![_images/backprop_ff_equations.png](https://ml-cheatsheet.readthedocs.io/en/latest/_images/backprop_ff_equations.png)
 
 Given a network consisting of a single neuron, total cost could be calculated as:
 
@@ -142,8 +142,8 @@ for i in range(nb_epochs):
     params = params - learning_rate * params_grad
 ```
 
-* Efficient when update gradient
-* Slow converge speed, need good learning rate
+- Efficient when update gradient
+- Slow converge speed, need good learning rate
 
 ## Mini-batch gradient descent
 
@@ -202,4 +202,3 @@ $$
 $$
 
 The authors propose default values of 0.9 for $$\beta_1$$, 0.999 for $$\beta_2$$, and $$10^{-8}$$ for $$\epsilon$$.
-
