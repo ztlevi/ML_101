@@ -1,8 +1,8 @@
 # Introduction
 
-Github repo: [https://github.com/ztlevi/Machine\_Learning\_Questions](https://github.com/ztlevi/Machine_Learning_Questions)
+Github repo: [https://github.com/ztlevi/Machine_Learning_Questions](https://github.com/ztlevi/Machine_Learning_Questions)
 
-Gitbook is deployed over https://ztlevi.gitbook.io/ml-101 [here](https://git.io/fj0yP).
+Gitbook is deployed over [here](https://ztlevi.gitbook.io/ml-101). Old link is [here](https://git.io/fj0yP).
 
 ## Start to contribute
 
@@ -38,4 +38,3 @@ pip3 install pipenv
 pipenv install
 pipenv shell
 ```
-
