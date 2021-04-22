@@ -15,4 +15,3 @@ Step 2 \(calculation\): Mathematically, for a ground truth segment `g`, and for 
 ![](../../.gitbook/assets/pq_2.jpg)
 
 Here, in the first equation, the numerator divided by `TP` is simply the average `IoU` of matched segments, and `FP` and `FN` are added to penalize the non-matched segments. As shown in the second equation, `PQ` can divided into segmentation quality \(`SQ`\), and recognition quality \(`RQ`\). `SQ`, here, is the average `IoU` of matched segments, and `RQ` is the `F1` score.
-

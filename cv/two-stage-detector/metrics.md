@@ -42,7 +42,7 @@ Here are the more precise mathematical definitions.
 
 ![](https://miro.medium.com/max/1566/1*5C4GaqxfPrq-9lFINMix8Q.png)
 
-When _AP_ᵣ turns extremely small, we can assume the remaining terms to be zero. i.e. we don’t necessarily make predictions until the recall reaches 100%. If the possible maximum precision levels drop to a negligible level, we can stop. For 20 different classes in PASCAL VOC, we compute an AP for every class and also provide an average for those 20 AP results.
+When *AP*ᵣ turns extremely small, we can assume the remaining terms to be zero. i.e. we don’t necessarily make predictions until the recall reaches 100%. If the possible maximum precision levels drop to a negligible level, we can stop. For 20 different classes in PASCAL VOC, we compute an AP for every class and also provide an average for those 20 AP results.
 
 According to the original researcher, the intention of using 11 interpolated point in calculating AP is
 
@@ -104,5 +104,4 @@ $$AR^{large}$$: AR for large objects: $$area > 96^2$$
 
 ## Reference
 
-* [mAP \(mean Average Precision\) for Object Detection](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173)
-
+- [mAP \(mean Average Precision\) for Object Detection](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173)

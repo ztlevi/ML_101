@@ -31,4 +31,3 @@ oranges:  (apples, 45.3°), (lemons, 48.3°), (mangoes, 50.4°)
 ```
 
 This would tell an application that apples and oranges are in some way more similar \(45.3° apart\) than lemons and oranges \(48.3° apart\).
-

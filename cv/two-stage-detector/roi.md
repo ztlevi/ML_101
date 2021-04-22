@@ -26,4 +26,3 @@ If you look at the first box \(top left\), you can notice that it covers six dif
 ## ROI Warp
 
 There is a third method of pooling data that was introduced in [_Instance-aware semantic segmentation via multi-task network cascades_](https://arxiv.org/pdf/1512.04412.pdf) and it’s called **RoIWarp**. The idea of RoIWarp is more or less the same as RoIAlign, the only difference is that **RoIWarp is quantizing RoI mapping onto a feature map**.
-

@@ -15,9 +15,9 @@
 
 ![fast rcnn](../../.gitbook/assets/faster%20rcnn.png)
 
-* Similar to Fast R-CNN, the image is provided as an input to a convolutional network which provides a convolutional feature map.
-* Instead of using selective search algorithm on the feature map to identify the region proposals, a separate network is used to predict the region proposals\(Region Proposal Network\).
-* The predicted region proposals are then reshaped using a RoI pooling layer which is then used to classify the image within the proposed region and predict the offset values for the bounding boxes.
+- Similar to Fast R-CNN, the image is provided as an input to a convolutional network which provides a convolutional feature map.
+- Instead of using selective search algorithm on the feature map to identify the region proposals, a separate network is used to predict the region proposals\(Region Proposal Network\).
+- The predicted region proposals are then reshaped using a RoI pooling layer which is then used to classify the image within the proposed region and predict the offset values for the bounding boxes.
 
 ## Bounding Box Regression
 
@@ -58,7 +58,7 @@ The regularization term is critical here and RCNN paper picked the best λ by cr
 Faster R-CNN is optimized for a multi-task loss function, similar to fast R-CNN.
 
 | **Symbol** | **Explanation** |
-| :--- | :--- |
+| :-- | :-- |
 | $$p_i$$ | Predicted probability of anchor i being an object. |
 | $$p^*_i$$ | Ground truth label \(binary\) of whether anchor i is an object. |
 | $$t_i$$ | Predicted four parameterized coordinates. |
@@ -82,4 +82,3 @@ where $$\mathcal{L}_\text{cls}$$ is the log loss function over two classes, as w
 $$
 \mathcal{L}_\text{cls} (p_i, p^*_i) = - p^*_i \log p_i - (1 - p^*_i) \log (1 - p_i)
 $$
-

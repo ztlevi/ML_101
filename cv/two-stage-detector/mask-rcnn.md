@@ -25,4 +25,3 @@ $$
 $$
 
 where $$y_{ij}$$ is the label of a cell \(i, j\) in the true mask for the region of size m x m; $$\hat{y}_{ij}^k$$ is the predicted value of the same cell in the mask learned for the ground-truth class k.
-
