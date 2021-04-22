@@ -49,4 +49,5 @@
   * [Saliency Maps](visualization/saliency_maps.md)
   * [Fooling images](visualization/fooling_images.md)
   * [Class Visualization](visualization/class_visualization.md)
+* [Computer Vision](computer-vision.md)
 
