@@ -10,7 +10,7 @@
   - [Weight norm and layer norm](general/weight_norm_and_layer_norm.md)
   - [Confidence Interval](general/Confidence_Interval.md)
   - [Quantization](general/Quantization.md)
-- [Classical Machine Learning](classical_machine_learning/README.md)
+- [Classical Machine Learning](classical_ml/README.md)
 - [Neural Networks](neural_networks/README.md)
   - [Different Types of Convolution](neural_networks/different_types_of_convolution.md)
   - [Loss](neural_networks/loss/README.md)
