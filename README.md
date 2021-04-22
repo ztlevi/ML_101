@@ -2,9 +2,11 @@
 
 Github repo: [https://github.com/ztlevi/Machine_Learning_Questions](https://github.com/ztlevi/Machine_Learning_Questions)
 
+My [Gitbook workspace](https://app.gitbook.com/@ztlevi).
+
 Gitbook is deployed over [here](https://ztlevi.gitbook.io/ml-101). Old link is [here](https://git.io/fj0yP).
 
-All codes are available over [here](https://github.com/ztlevi/Machine_Learning_Questions/tree/master/codes)
+All codes are available over [here](https://github.com/ztlevi/Machine_Learning_Questions/tree/master/codes).
 
 ## Start to contribute
 
