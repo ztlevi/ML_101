@@ -1,4 +1,4 @@
-# [Confidence interval](<https://www.simplypsychology.org/confidence-interval.html#:~:text=The%20confidence%20interval%20(CI)%20is,an%20upper%20and%20lower%20interval.>)
+[Reference](<https://www.simplypsychology.org/confidence-interval.html#:~:text=The%20confidence%20interval%20(CI)%20is,an%20upper%20and%20lower%20interval>)
 
 > The confidence interval (CI) is a range of values that’s likely to include a population value with a certain degree of confidence. It is often expressed a % whereby a population means lies between an upper and lower interval.
 

@@ -1,5 +1,3 @@
-# Categorical Cross-Entropy Loss
-
 Also called **Softmax Loss**. It is a **Softmax activation** plus a **Cross-Entropy loss**. If we use this loss, we will train a CNN to output a probability over the $$C$$ classes for each image. It is used for multi-class classification.
 
 ![](../../.gitbook/assets/softmax_CE_pipeline.png)
@@ -30,9 +28,9 @@ $$
 
 Where snsn is the score of any negative class in $$C$$ different from CpCp.
 
-* Caffe: [SoftmaxWithLoss Layer](http://caffe.berkeleyvision.org/tutorial/layers/softmaxwithloss.html). Is limited to multi-class classification.
-* Pytorch: [CrossEntropyLoss](https://pytorch.org/docs/master/nn.html#crossentropyloss). Is limited to multi-class classification.
-* TensorFlow: [softmax\_cross\_entropy](https://www.tensorflow.org/api_docs/python/tf/losses/softmax_cross_entropy). Is limited to multi-class classification.
+- Caffe: [SoftmaxWithLoss Layer](http://caffe.berkeleyvision.org/tutorial/layers/softmaxwithloss.html). Is limited to multi-class classification.
+- Pytorch: [CrossEntropyLoss](https://pytorch.org/docs/master/nn.html#crossentropyloss). Is limited to multi-class classification.
+- TensorFlow: [softmax_cross_entropy](https://www.tensorflow.org/api_docs/python/tf/losses/softmax_cross_entropy). Is limited to multi-class classification.
 
 > In [this Facebook work](https://research.fb.com/publications/exploring-the-limits-of-weakly-supervised-pretraining/) they claim that, despite being counter-intuitive, **Categorical Cross-Entropy loss**, or **Softmax loss** worked better than **Binary Cross-Entropy loss** in their multi-label classification problem.
 
@@ -112,4 +110,3 @@ For full code, take a look at [here](https://github.com/ztlevi/Machine_Learning_
 ```
 
 > The Caffe Python layer of this Softmax loss supporting a multi-label setup with real numbers labels is available [here](https://gist.github.com/gombru/53f02ae717cb1dd2525be090f2d41055)
-

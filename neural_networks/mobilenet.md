@@ -1,5 +1,3 @@
-# Mobilenet
-
 ## Mobilenet v1
 
 ### Depthwise Separable Convolution.
@@ -24,10 +22,10 @@ $$
 D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + \cdot M \cdot N \cdot D_F \cdot D_F
 $$
 
-* $$D_{F}$$ is the spatial width and height of a square input feature map1
-* $$M$$ is the number of input channels \(input depth\)
-* $$D_{G}$$ is the spatial width and height of a square output feature map
-* $$N$$ is the number of output channel \(output depth\).
+- $$D_{F}$$ is the spatial width and height of a square input feature map1
+- $$M$$ is the number of input channels \(input depth\)
+- $$D_{G}$$ is the spatial width and height of a square output feature map
+- $$N$$ is the number of output channel \(output depth\).
 
 ### Depth Multiplier: Thinner Models
 
@@ -41,8 +39,8 @@ The bottleneck blocks appear similar to residual block where each block contains
 
 ![inverted residuals in mobilenet v2](../.gitbook/assets/IR.png)
 
-* Use shortcuts directly between the bottlenecks.
-* The ratio between the size of the input bottleneck and the inner size as the **expansion ratio**.
+- Use shortcuts directly between the bottlenecks.
+- The ratio between the size of the input bottleneck and the inner size as the **expansion ratio**.
 
   In which, when stride = 1
 
@@ -63,17 +61,18 @@ The bottleneck blocks appear similar to residual block where each block contains
 
 ![mobilenet v2 structure](../.gitbook/assets/mobilenetv2.png)
 
-* Why using expansion ratio = 6 and use relu with expanded dimension and then use shortcuts directly between the bottlenecks?
-  * From the paper, the author summarized that:
+- Why using expansion ratio = 6 and use relu with expanded dimension and then use shortcuts directly between the bottlenecks?
+
+  - From the paper, the author summarized that:
 
     1. If the manifold of interest remains non-zero volume after ReLU transformation, it corresponds to a linear transformation.
     2. ReLU is capable of preserving complete information about the input manifold, but only if the input manifold lies in a low-dimensional subspace of the input space.
 
     ![image-20190720172622388](../.gitbook/assets/image-20190720172622388.png)
 
-  * if we have lots of channels, and there is a a structure in the activation manifold that **information might still be preserved in the other channels**.
-  * inspired by the intuition that **the bottlenecks actually contain all the necessary information**, while an expansion layer acts merely as an implementation detail that accompanies a non-linear transformation of the tensor, we use shortcuts directly between the bottlenecks.
-* Comparison of Mobilenet v1 and Mobilenet v2
+  - if we have lots of channels, and there is a a structure in the activation manifold that **information might still be preserved in the other channels**.
+  - inspired by the intuition that **the bottlenecks actually contain all the necessary information**, while an expansion layer acts merely as an implementation detail that accompanies a non-linear transformation of the tensor, we use shortcuts directly between the bottlenecks.
+
+- Comparison of Mobilenet v1 and Mobilenet v2
 
 ![mv1v2](../.gitbook/assets/mv1v2.png)
-

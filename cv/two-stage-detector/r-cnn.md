@@ -1,5 +1,3 @@
-# R-CNN
-
 ## Selective Search
 
 1. Generate initial sub-segmentation, we generate many candidate regions

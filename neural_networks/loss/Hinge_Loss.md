@@ -1,4 +1,4 @@
-# [Hinge loss in Support Vector Machines](https://en.wikipedia.org/wiki/Hinge_loss)
+## [Hinge loss in Support Vector Machines](https://en.wikipedia.org/wiki/Hinge_loss)
 
 From our SVM model, we know that hinge $$loss = [0, 1- y*f(x)]$$.
 

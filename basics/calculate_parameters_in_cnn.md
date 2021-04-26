@@ -1,5 +1,3 @@
-# Calculate Parameters in CNN
-
 ## Context
 
 Basically, the number of parameters in a given layer is the count of “learnable” \(assuming such a word exists\) elements for a filter aka parameters for the filter for that layer.

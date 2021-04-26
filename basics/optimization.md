@@ -1,5 +1,3 @@
-# Optimization
-
 ## MLE and MAP
 
 A good video [here](https://www.youtube.com/watch?v=yH_xwGnW-ig) explains the topic.

@@ -1,5 +1,3 @@
-# GAN
-
 ## Introduction
 
 - The **generator** creates samples that are intended to come from the same distribution as the training data; The **discriminator** examines samples to determine whether they are real or fake.

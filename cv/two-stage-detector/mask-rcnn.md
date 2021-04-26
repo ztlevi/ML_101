@@ -1,5 +1,3 @@
-# Mask RCNN
-
 ## Mask R-CNN
 
 Mask R-CNN \([He et al., 2017](https://arxiv.org/pdf/1703.06870.pdf)\) extends Faster R-CNN to pixel-level image segmentation. The key point is to decouple the classification and the pixel-level mask prediction tasks. Based on the framework of [Faster R-CNN](mask-rcnn.md#faster-r-cnn), it added a third branch for predicting an object mask in parallel with the existing branches for classification and localization. The mask branch is a small fully-connected network applied to each RoI, predicting a segmentation mask in a pixel-to-pixel manner.

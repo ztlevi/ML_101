@@ -1,5 +1,3 @@
-# Panoptic Segmentation
-
 In semantic segmentation, `IoU` and per-pixel accuracy is used as a evaluation criterion. In instance segmentation, average precision over different `IoU` thresholds is used for evaluation. For panoptic segmentation, a combination of `IoU` and `AP` can be used, but it causes asymmetry for classes with or without instance-level annotations. That is why, a new metric that treats all the categories equally, called **Panoptic Quality \(`PQ`\)**, is used.
 
 _Read more about_ [_evaluation metrics_](https://kharshit.github.io/blog/2019/09/20/evaluation-metrics-for-object-detection-and-segmentation)_._

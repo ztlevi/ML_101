@@ -1,5 +1,3 @@
-# Federated Learning
-
 [Slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/14_Parallel_4.pdf)
 
 [Youtube](https://www.youtube.com/watch?v=STxtRucv_zo)

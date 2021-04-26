@@ -1,5 +1,3 @@
-# How to prevent overfitting
-
 ## Bias Variance Trade-Off
 
 ### Bias and Variance

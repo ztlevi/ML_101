@@ -2,7 +2,7 @@ For Image scene semantic segmentation PSPNet performs better than other semantic
 
 In this article,we’ll discuss about PSPNet and implementation in Keras.
 
-# Pyramid Scene Parsing Network (PSPNet)
+## Pyramid Scene Parsing Network (PSPNet)
 
 <figure>
 <img src="https://miro.medium.com/max/2869/1*emYC4xYASMLb5bSHNLZHOg.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>

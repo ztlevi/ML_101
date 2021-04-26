@@ -1,5 +1,3 @@
-# Weight norm and layer norm
-
 ## Weight Normalization
 
 [Weight normalization](https://arxiv.org/pdf/1602.07868.pdf) is a method developed by Open AI that, instead of normalizing the mini-batch, **normalizes the weights of the layer**.

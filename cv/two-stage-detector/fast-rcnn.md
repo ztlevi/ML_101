@@ -1,5 +1,3 @@
-# Fast RCNN
-
 ## [ROI Pooling](roi.md)
 
 ## Network Architecture

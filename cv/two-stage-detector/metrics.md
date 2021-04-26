@@ -1,5 +1,3 @@
-# Metrics
-
 ## Metrics
 
 The following 12 metrics are used for characterizing the performance of an object detector on COCO:

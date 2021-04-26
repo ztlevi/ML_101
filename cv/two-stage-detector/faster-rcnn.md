@@ -1,5 +1,3 @@
-# Faster RCNN
-
 ## Region Proposal Network
 
 1. First, the picture goes through conv layers and feature maps are extracted.

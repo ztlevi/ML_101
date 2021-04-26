@@ -1,5 +1,3 @@
-# DBSCAN
-
 ## Outlier Detection for a 2D Feature Space in Python \(DBSCAN\)
 
 ### How to detect outliers using plotting and clustering techniques to analyze the dependency of two features
@@ -91,7 +89,7 @@ We might already see some clusters and outliers in our first visualization, but 
 
 “DBSCAN algorithm requires 2 parameters — **epsilon**, which specifies how close points should be to each other to be considered a part of a cluster; and **minPts**, which specifies how many neighbors a point should have to be included into a cluster.” — [alitouka](https://github.com/alitouka)
 
-With adjusting and tweaking the model’s parameters epsilon and minPts \(in Python: min\_samples\), we reveal some nice clusters in the feature space.
+With adjusting and tweaking the model’s parameters epsilon and minPts \(in Python: min_samples\), we reveal some nice clusters in the feature space.
 
 **Following code clusters the 2D feature space.**
 
@@ -155,4 +153,3 @@ This **step-by-step guide for outlier detection** was created during my thesis p
 \[2\] M. Ester, H.-P. Kriegel, J. Sander and X. Xu, [A density-based algorithm for discovering clusters a density-based algorithm for discovering clusters in large spatial databases with noise](https://dl-acm-org.proxy.lnu.se/citation.cfm?id=3001507) \(1996\), KDD’96 Proceedings of the Second International Conference on Knowledge Discovery and Data Mining
 
 \[3\] [https://towardsdatascience.com/outlier-detection-python-cd22e6a12098](https://towardsdatascience.com/outlier-detection-python-cd22e6a12098)
-

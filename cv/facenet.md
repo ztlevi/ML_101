@@ -1,5 +1,3 @@
-# FaceNet
-
 ## Model structure
 
 ![image-20190801163738683](../.gitbook/assets/image-20190801163738683.png)

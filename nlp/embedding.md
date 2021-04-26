@@ -1,6 +1,4 @@
-# Embedding
-
-Reference: [https://www.tensorflow.org/guide/embedding](https://www.tensorflow.org/guide/embedding)
+[Reference](https://www.tensorflow.org/guide/embedding)
 
 ## Embeddings
 

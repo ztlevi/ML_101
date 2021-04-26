@@ -1,5 +1,3 @@
-# General
-
 ## Project Workflow
 
 Given a data science / machine learning project, what steps should we follow? Here's how I would tackle it:

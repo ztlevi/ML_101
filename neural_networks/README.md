@@ -1,5 +1,3 @@
-# Neural Networks
-
 ## GEMM
 
 ## Pooling
@@ -17,44 +15,44 @@ the activation function is usually an abstraction representing the rate of actio
 
 For neural networks
 
-* **Sigmoid Function**: $$f(x) = \frac{1}{1 + e^{-x}}$$
+- **Sigmoid Function**: $$f(x) = \frac{1}{1 + e^{-x}}$$
 
   ![img](../.gitbook/assets/sigmoid.png)
 
-  * Sigmoid non-linearity squashes real numbers to range between \[0,1\]
-  * Sigmoids saturate\(when $$x$$ is small, gradient is large\) and kill gradients \(when $$x$$ is large, gradient is small\)
-  * Sigmoid outputs are not zero-centered.
+  - Sigmoid non-linearity squashes real numbers to range between \[0,1\]
+  - Sigmoids saturate\(when $$x$$ is small, gradient is large\) and kill gradients \(when $$x$$ is large, gradient is small\)
+  - Sigmoid outputs are not zero-centered.
 
-* **Tanh function**: $$f(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}$$
+- **Tanh function**: $$f(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}$$
 
   ![img](../.gitbook/assets/tanh.png)
 
-  * It squashes a real-valued number to the range \[-1, 1\]
-  * its activations saturate
-  * its output is zero-centered.
+  - It squashes a real-valued number to the range \[-1, 1\]
+  - its activations saturate
+  - its output is zero-centered.
 
-* **ReLU function**: $$f(x)=max(0,x)$$ or $$f(x)=min(6, max(0,x))$$ for ReLU6
+- **ReLU function**: $$f(x)=max(0,x)$$ or $$f(x)=min(6, max(0,x))$$ for ReLU6
 
   ![img](../.gitbook/assets/relu.png)
 
-  * It was found to greatly accelerate the convergence of stochastic gradient descent compared to the sigmoid/tanh functions.
-  * Compared to tanh/sigmoid neurons that involve expensive operations \(exponentials, etc.\), the ReLU can be implemented by simply thresholding a matrix of activations at zero.
-  * ReLU units can be fragile during training and can die.
+  - It was found to greatly accelerate the convergence of stochastic gradient descent compared to the sigmoid/tanh functions.
+  - Compared to tanh/sigmoid neurons that involve expensive operations \(exponentials, etc.\), the ReLU can be implemented by simply thresholding a matrix of activations at zero.
+  - ReLU units can be fragile during training and can die.
 
-* **Leaky ReLU function**:
+- **Leaky ReLU function**:
 
   if $$x >= 0$$ , $$f(x) = x$$; else, $$f(x) = ax$$
 
-  * Reduce death during training for ReLU
+  - Reduce death during training for ReLU
 
-* Multi-class: softmax, see [derivative](https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/)
+- Multi-class: softmax, see [derivative](https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/)
 
   $$
   p_{o,c} = \frac{e^{y_{k}}}{\sum_{c=1}^M e^{y_{c}}}
   $$
 
-* Binary: sigmoid
-* Regression: linear
+- Binary: sigmoid
+- Regression: linear
 
 ## Model compression
 
@@ -78,7 +76,7 @@ So far, we have focused on theoretical motivations for MTL. To make the ideas of
 
 Hard parameter sharing is the most commonly used approach to MTL in neural networks and goes back to [\[6\]](http://ruder.io/multi-task/index.html#fn6). It is generally applied by sharing the hidden layers between all tasks, while keeping several task-specific output layers.
 
- ![](../.gitbook/assets/hard_parameter_sharing.png)Figure 1: Hard parameter sharing for multi-task learning in deep neural networks
+![](../.gitbook/assets/hard_parameter_sharing.png)Figure 1: Hard parameter sharing for multi-task learning in deep neural networks
 
 Hard parameter sharing greatly reduces the risk of overfitting. In fact, [\[7\]](http://ruder.io/multi-task/index.html#fn7) showed that the risk of overfitting the shared parameters is an order N -- where N is the number of tasks -- smaller than overfitting the task-specific parameters, i.e. the output layers. This makes sense intuitively: The more tasks we are learning simultaneously, the more our model has to find a representation that captures all of the tasks and the less is our chance of overfitting on our original task.
 
@@ -86,7 +84,7 @@ Hard parameter sharing greatly reduces the risk of overfitting. In fact, [\[7\]]
 
 In soft parameter sharing on the other hand, each task has its own model with its own parameters. The distance between the parameters of the model is then regularized in order to encourage the parameters to be similar. [\[8\]](http://ruder.io/multi-task/index.html#fn8) for instance use the ℓ2ℓ2 norm for regularization, while [\[9\]](http://ruder.io/multi-task/index.html#fn9) use the trace norm.
 
- ![](../.gitbook/assets/soft_parameter_sharing.png)Figure 2: Soft parameter sharing for multi-task learning in deep neural networks
+![](../.gitbook/assets/soft_parameter_sharing.png)Figure 2: Soft parameter sharing for multi-task learning in deep neural networks
 
 The constraints used for soft parameter sharing in deep neural networks have been greatly inspired by regularization techniques for MTL that have been developed for other models, which we will soon discuss.
 
@@ -131,4 +129,3 @@ The bottleneck in a neural network is just a layer \(e.g. convolution layer\) wi
 5. [yolo 9000](https://arxiv.org/pdf/1612.08242.pdf)
 6. [yolo v3](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
 7. [real-time-object-detection-with-yolo-yolov2-](https://medium.com/@jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088)
-

@@ -1,5 +1,3 @@
-# FPN
-
 ![fpn](../../.gitbook/assets/fpn_1.png)
 
 - \(a\) Using an image pyramid to build a feature pyramid. Features are computed on each of the image scales independently, which is slow.
