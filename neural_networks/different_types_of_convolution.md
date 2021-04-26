@@ -244,7 +244,7 @@ On the other hand, for spatially separable convolution, we first apply a 3 x 1 f
 
 Let’s generalize the above examples a little bit. Let’s say we now apply convolutions on a N x N image with a m x m kernel, with stride=1 and padding=0. Traditional convolution requires $$(N-2) \times (N-2) \times m \times m$$ multiplications. Spatially separable convolution requires $$N \times (N-2) \times m + (N-2) \times (N-2) \times m = (2N-2) \times (N-2) \times m$$ multiplications. The ratio of computation costs between spatially separable convolution and the standard convolution is
 
-![](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/.../assets/conv_31.png)
+![](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/.../.gitbook/assets/conv_31.png)
 
 For layers where the image size N is larger than filter size \(N &gt;&gt; m\), this ratio becomes 2 / m. It means at this asymptotic situation \(N &gt;&gt; m\), computational cost of spatially separable convolution is 2/3 of the standard convolution for a 3 x 3 filter. It is 2 / 5 for a 5 x 5 filter, 2 / 7 for a 7 x 7 filter, and so on.
 

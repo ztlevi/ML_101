@@ -4,9 +4,9 @@
 
 ## Motivating Examples
 
-![federated_learning_1](../../assets/federated_learning_1.png)
+![federated_learning_1](../../.gitbook/assets/federated_learning_1.png)
 
-![federated_learning_2](../../assets/federated_learning_2.png)
+![federated_learning_2](../../.gitbook/assets/federated_learning_2.png)
 
 ## What is federated learning
 
@@ -22,21 +22,21 @@ How does federated learning differ from traditional distributed learning?
 
 ## Let us recall parallel gradient descent
 
-![federated_learning_3](../../assets/federated_learning_3.png)
+![federated_learning_3](../../.gitbook/assets/federated_learning_3.png)
 
-![federated_learning_4](../../assets/federated_learning_4.png)
+![federated_learning_4](../../.gitbook/assets/federated_learning_4.png)
 
 ## Federated Averaging Algorithm
 
-![federated_learning_5](../../assets/federated_learning_5.png)
+![federated_learning_5](../../.gitbook/assets/federated_learning_5.png)
 
-![federated_learning_6](../../assets/federated_learning_6.png)
+![federated_learning_6](../../.gitbook/assets/federated_learning_6.png)
 
 ## Computation vs. Communication
 
-![federated_learning_7](../../assets/federated_learning_7.png)
+![federated_learning_7](../../.gitbook/assets/federated_learning_7.png)
 
-![federated_learning_8](../../assets/federated_learning_8.png)
+![federated_learning_8](../../.gitbook/assets/federated_learning_8.png)
 
 ## References
 

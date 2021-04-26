@@ -121,5 +121,3 @@ Patch GAN only penalizes structure at the scale of patches. This discriminator t
 
 - Run “real vs. fake” perceptual studies on Amazon Mechanical Turk \(AMT\);
 - Adopt the popular FCN-8s architecture for semantic segmentation;
-
-$$ $$

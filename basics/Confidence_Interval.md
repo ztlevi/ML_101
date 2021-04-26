@@ -2,7 +2,7 @@
 
 > The confidence interval (CI) is a range of values that’s likely to include a population value with a certain degree of confidence. It is often expressed a % whereby a population means lies between an upper and lower interval.
 
-![img](../../assets/confidence-interval-1.jpg)
+![img](../../.gitbook/assets/confidence-interval-1.jpg)
 
 ## What does a 95% confidence interval mean?
 
@@ -11,7 +11,7 @@ As the sample size increases, the range of interval values will narrow, meaning 
 
 We can visualize this using a [normal distribution](https://www.simplypsychology.org/normal-distribution.html) (see the below graph).
 
-![standard normal distribution 1.96 ](../../assets/confidence-interval-2.jpg)
+![standard normal distribution 1.96 ](../../.gitbook/assets/confidence-interval-2.jpg)
 
 For example, the probability of the population mean value being between -1.96 and +1.96 standard deviations (z-scores) from the sample mean is 95%.
 
@@ -23,7 +23,7 @@ It is more or less impossible to study every single person in a population so [r
 
 This means that the researcher can only estimate the parameters (i.e. characteristics) of a population, the estimated range being calculated from a given set of sample data.
 
-![sampling from a population](../../assets/confidence-interval-3.jpg)
+![sampling from a population](../../.gitbook/assets/confidence-interval-3.jpg)
 
 <!-- <span id="ezoic-pub-ad-placeholder-852" class="ezoic-adpicker-ad" data-ezadpicker="852" data-ez-position-type="under_first_paragraph" data-ezadblocked='true'></span> -->
 <!-- placeholder 852 blocked.  Reason : no sizes -->
@@ -51,7 +51,7 @@ Remember, you must calculate an upper and low score for the confidence interval 
 
 > ## Confidence Interval Formula
 
-![confidence interval formula ](../../assets/confidence-interval-4.jpg)
+![confidence interval formula ](../../.gitbook/assets/confidence-interval-4.jpg)
 
 Where:
 
@@ -81,7 +81,7 @@ The narrower the interval (upper and lower values), the more precise is our esti
 
 As a general rule, as a sample size increases the confident interval should become more narrow.
 
-![confidence interval graphs](../../assets/confidence-interval-5.gif)
+![confidence interval graphs](../../.gitbook/assets/confidence-interval-5.gif)
 
 Therefore, with large samples, you can estimate the population mean with more precision than you can with smaller samples, so the confidence interval is quite narrow when computed from a large sample.
 
@@ -95,4 +95,4 @@ For example, one might report: 95% CI [5.62, 8.31].
 
 Confidence intervals can also be reported in a table
 
-![apa style table](../../assets/confidence-interval-6.jpg)
+![apa style table](../../.gitbook/assets/confidence-interval-6.jpg)
