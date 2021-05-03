@@ -11,9 +11,9 @@ All codes are available over [here](https://github.com/ztlevi/Machine_Learning_Q
 ## Start to contribute
 
 ```bash
-git clone https://github.com/ztlevi/Machine_Learning_Questions.git
+git clone https://github.com/ztlevi/ML_101.git
 
-cd Machine_Learning_Questions
+cd ML_101
 
 # Pre-commit plugins
 pip3 install pre-commit
