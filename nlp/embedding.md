@@ -1,6 +1,30 @@
-[Reference](https://www.tensorflow.org/guide/embedding)
+[Reference](https://www.tensorflow.org/guide/embedding) [Youtube](https://www.youtube.com/watch?v=NWcShtqr8kc&list=PLvOO0btloRnuTUGN4XqO85eKPeFSZsEqK) [Slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/9_RNN_1.pdf)
 
-## Embeddings
+## Map word to vector
+
+- First, represent words using one-hot vectors
+  - Suppose the dictionary contains $$v$$ unique words (vocabulary = $$v$$).
+  - Then the one-hot vectors $$e_1,e_2,e_3,...,e_v$$ are $$v$$-dimensional.
+
+![onehot-encoding](../.gitbook/assets/onehot-encoding-1.png)
+
+- Second, map the one-hot vectors to low dimensional vectors by
+
+<figure>
+<img src="../.gitbook/assets/word-embedding-1.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center">word-embedding</figcaption>
+</figure>
+
+- $$P$$ is parameter matrix which can be learned from training data.
+- $$e_i$$ is the one-hot vector of the i-th word in dictionary.
+
+## How to interpret the parameter matrix
+
+![word-embedding-2](../.gitbook/assets/word-embedding-2.png)
+
+![word-embedding-3](../.gitbook/assets/word-embedding-3.png)
+
+## Visualization
 
 This document introduces the concept of embeddings, gives a simple example of how to train an embedding in TensorFlow, and explains how to view embeddings with the TensorBoard Embedding Projector \([live example](http://projector.tensorflow.org/)\). The first two parts target newcomers to machine learning or TensorFlow, and the Embedding Projector how-to is for users at all levels.
 
