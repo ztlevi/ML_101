@@ -1,4 +1,8 @@
-[Reference](https://www.tensorflow.org/guide/embedding) [Youtube](https://www.youtube.com/watch?v=NWcShtqr8kc&list=PLvOO0btloRnuTUGN4XqO85eKPeFSZsEqK) [Slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/9_RNN_1.pdf)
+[Reference](https://www.tensorflow.org/tutorials/text/word_embeddings)
+
+[Youtube](https://www.youtube.com/watch?v=NWcShtqr8kc&list=PLvOO0btloRnuTUGN4XqO85eKPeFSZsEqK)
+
+[Slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/9_RNN_1.pdf)
 
 ## Map word to vector
 
