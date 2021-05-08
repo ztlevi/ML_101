@@ -1,6 +1,6 @@
 # Introduction
 
-Github repo: [https://github.com/ztlevi/Machine_Learning_Questions](https://github.com/ztlevi/Machine_Learning_Questions)
+Github repo: [https://github.com/ztlevi/ML_101](https://github.com/ztlevi/ML_101)
 
 My [Gitbook workspace](https://app.gitbook.com/@ztlevi).
 
