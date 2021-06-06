@@ -1,30 +1,10 @@
-## RNN
-
-[https://colah.github.io/posts/2015-08-Understanding-LSTMs/](https://colah.github.io/posts/2015-08-Understanding-LSTMs/)
-
-RNN is another paradigm of neural network where we have difference layers of cells, and each cell not only takes the cell from the previous layer as input, but also the previous cell within the same layer. This gives RNN the power to model sequence.
-
-![RNN](../.gitbook/assets/rnn.jpeg)
-
-A recurrent neural network can be thought of as multiple copies of the same network, each passing a message to a successor. Consider what happens if we unroll the loop:
-
-![An unrolled recurrent neural network.](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-unrolled.png)
-
-All recurrent neural networks have the form of a chain of repeating modules of neural network. In standard RNNs, this repeating module will have a very simple structure, such as a single tanh layer.
-
-![](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-SimpleRNN.png)
-
-- $$h_{t} = f(h_{t-1}, x_{t}; \theta)$$, where the current hidden state $$h_{t}$$ is a function $$f$$ of the previous hidden state and $$h_{t - 1}$$ the current input $$x_{t}$$. The are $$\theta$$ the parameters of the function $$f$$.
-
-## LSTM
-
 This seems great, but in practice RNN barely works due to **exploding/vanishing gradient**, which is cause by a series of multiplication of the same matrix. On the other side, it also have the problem of **long-term dependencies**. To solve this, we can use a variation of RNN, called long short-term memory \(LSTM\), which is capable of learning long-term dependencies.
 
 **sigmoid** - gate function \[0, 1\], **tanh** - regular information to \[-1, 1\]
 
 ![](../.gitbook/assets/LSTM3-gate.png)
 
-The sigmoid layer outputs numbers between zero and one, describing how much of each component should be let through. A value of zero means “let nothing through,” while a value of one means “let everything through!”
+The sigmoid layer outputs numbers between zero and one, describing how much of each component should be let through. A value of zero means "let nothing through," while a value of one means “let everything through!”
 
 The math behind LSTM can be pretty complicated, but intuitively LSTM introduce
 
@@ -53,7 +33,7 @@ LSTMs also have this chain like structure, but the repeating module has a differ
 
    ![](../.gitbook/assets/LSTM3-focus-i.png)
 
-2. The next step is to decide what new information we’re going to store in the cell state.
+2. The next step is to decide what new information we're going to store in the cell state.
 
    - **Input gate**: $$i_{t} = \sigma(W_i \cdot [h_{t-1}, x_{t}] + b_{i})$$, a sigmoid layer decides which values we’ll update.
    - A tanh layer creates a vector of new candidate values: $$\tilde{ C_{t} } = tanh(W_{c} \cdot [h_{t-1}, x_{t}] + b_{c})$$, that could be added to the state.
@@ -167,3 +147,14 @@ FIXME Remove redundant codes
   $$
   \sigma ( (?,32) \cdot (32,100) + (?, 100) \cdot (100, 100) + (1, 100))
   $$
+
+## Summary
+
+- LSTM uses a "conveyor belt" to get longer memory than SimpleRNN.
+- Each of the following blocks has a parameter matrix:
+  - Forget gate.
+  - Input gate.
+  - New values.
+  - Output gate.
+- Number of parameters:
+  - $$4 \times shape(h) \times [shape(h)+shape(x)]$$

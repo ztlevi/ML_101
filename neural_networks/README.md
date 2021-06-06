@@ -108,7 +108,9 @@ The bottleneck in a neural network is just a layer \(e.g. convolution layer\) wi
 
 ### [Resnet](resnet.md)
 
-### [RNN and LSTM](rnn_lstm.md)
+### [RNN](rnn.md)
+
+### [LSTM](lstm.md)
 
 ### [Mobilenet](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/Neural_Network/Mobilenet.md)
 
