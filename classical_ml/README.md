@@ -28,7 +28,7 @@ $$\theta = (X^{T}X)^{-1}X^{T}y$$ , which assume $$(X^{T}X)$$ is invertible. Intu
 - There are approximation methods can have faster inference time by partitioning the training data into regions \(e.g., [annoy](https://github.com/spotify/annoy)\)
 - When K equals 1 or other small number the model is prone to overfitting \(high variance\), while when K equals number of data points or other large number the model is prone to underfitting \(high bias\)
 
-![KNN](.gitbook/assets/knn.png)
+![KNN](../.gitbook/assets/knn.png)
 
 ### Naive Bayes
 
@@ -98,11 +98,11 @@ $$min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] +
 - SVMs are sensitive to feature scaling
 - If C is very large, SVM is very sensitive to outliers.But if C is reasonably small, or a not too large, then you stick with the decision boundary more robust with outliers.
 
-![svm](.gitbook/assets/svm.png)
+![svm](../.gitbook/assets/svm.png)
 
 ## Decision tree
 
-![Image result for Decision tree image](.gitbook/assets/B03905_05_01-compressor.png)
+![Image result for Decision tree image](../.gitbook/assets/B03905_05_01-compressor.png)
 
 - Non-parametric, supervised learning algorithms
 - Given the training data, a decision tree algorithm **divides the feature space into regions**. For inference, we first see which region does the test data point fall in, and take the mean label values \(regression\) or the majority label value \(classification\).
@@ -119,7 +119,7 @@ $$min_{\theta}C\sum_{i=1}^m[y^icost_1(\theta^Tx^i)+(1-y^i)cost_0(\theta^Tx^i)] +
 
 ## Random forests
 
-![Image result for Random forest](.gitbook/assets/Architecture-of-the-random-forest-model.png)
+![Image result for Random forest](../.gitbook/assets/Architecture-of-the-random-forest-model.png)
 
 An ensemble learning method for classification, regression and other tasks that operates by constructing a **multitude of decision trees** at training time and outputting the class that is the **mode** of the classes \(classification\) or **mean** prediction \(regression\) of the individual trees.
 
