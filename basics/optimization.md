@@ -6,19 +6,19 @@ Assume $$X = \{x_1, x_2,...,x_n\}$$ is a sample follow independent and identical
 
 ### Maximum Likelihood Estimation:
 
-$$\hat \theta_{MLE} = argmax logP(\theta ; X) = argmin -logP(\theta ; X)$$,
+$$\hat \theta_{MLE} = maximize P(\theta ; X) \approx maximize (logP(\theta ; X)) = minimize ( -logP(\theta ; X))$$,
 
 - Deep Learning uses MLE for we do not know the **real distribution of the dataset**
 
 ### Maximum A Posteriori
 
-$$\hat \theta_{MAP} = argmax P(\theta| X)$$
+$$\hat \theta_{MAP} = maximize P(\theta| X)$$
 
-$$\hat \theta_{MAP}= argmin -logP(X |\theta)-logP(\theta)+logP(X)$$,
+$$\hat \theta_{MAP}= minimize -logP(X |\theta)-logP(\theta)+logP(X)$$,
 
 For $$P(X)$$ is not related to $$\theta$$,
 
-$$\hat \theta_{MAP} =argmin -logP(X |\theta)-logP(\theta)$$
+$$\hat \theta_{MAP} =minimize -logP(X |\theta)-logP(\theta)$$
 
 - MAP usually used in Bayisan Machine Learning
 
