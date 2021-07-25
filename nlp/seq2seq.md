@@ -29,48 +29,48 @@ Answer: In the word-level, languages have different vocabulary.
 ## 2. One-Hot Encoding
 
 <figure>
-<img src="../.gitbook/assets/rnn-5.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../.gitbook/assets/rnn-5.png" alt="" style="width:30%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
 ## 3. Training Seq2Seq Model
 
 <figure>
-<img src="../.gitbook/assets/rnn-6.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../.gitbook/assets/rnn-6.png" alt="" style="width:30%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
 <figure>
-<img src="../.gitbook/assets/rnn-7.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../.gitbook/assets/rnn-7.png" alt="" style="width:30%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
 ## 4. Inference
 
 <figure>
-<img src="../.gitbook/assets/rnn-8.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../.gitbook/assets/rnn-8.png" alt="" style="width:30%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
 <figure>
-<img src="../.gitbook/assets/rnn-9.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../.gitbook/assets/rnn-9.png" alt="" style="width:30%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
 <figure>
-<img src="../.gitbook/assets/rnn-10.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../.gitbook/assets/rnn-10.png" alt="" style="width:30%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
 <figure>
-<img src="../.gitbook/assets/rnn-11.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../.gitbook/assets/rnn-11.png" alt="" style="width:30%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
 ## Summary
 
 <figure>
-<img src="../.gitbook/assets/rnn-12.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<img src="../.gitbook/assets/rnn-12.png" alt="" style="width:30%;display:block;margin-left:auto;margin-right:auto;"/>
 <figcaption style="text-align:center"></figcaption>
 </figure>
 
