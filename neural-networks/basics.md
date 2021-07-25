@@ -1,60 +1,11 @@
 # Neural Networks
 
-## GEMM
-
 ## Pooling
 
 1. Pooling layers control the number of features the CNN model is learning and it avoids over fitting.
 2. There are 2 different types of pooling layers - MAX pooling layer and AVG pooling layer. As the names suggest the MAX pooling layer picks maximum values from the convoluted feature maps and AVG pooling layer takes the average value of the features from the feature maps.
 3. MAX pooling focus on edge ,work better in practice
 4. Progressively reduce the spatial size of the representation to reduce the amount of parameters and computation in the network, and hence to also control overfitting.
-
-## Activation Function
-
-the activation function is usually an abstraction representing the rate of action potential firing in the cell. In its simplest form, this function is binary-that is, either the neuron is firing or not.
-
-**Important**: The most important meaning add activation function is by adding the activation funciton, we are adding non-linearity to the model.
-
-For neural networks
-
-* **Sigmoid Function**: $$f(x) = \frac{1}{1 + e^{-x}}$$
-
-  ![img](../.gitbook/assets/sigmoid.png)
-
-  * Sigmoid non-linearity squashes real numbers to range between \[0,1\]
-  * Sigmoids saturate\(when $$x$$ is small, gradient is large\) and kill gradients \(when $$x$$ is large, gradient is small\)
-  * Sigmoid outputs are not zero-centered.
-
-* **Tanh function**: $$f(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}$$
-
-  ![img](../.gitbook/assets/tanh.png)
-
-  * It squashes a real-valued number to the range \[-1, 1\]
-  * its activations saturate
-  * its output is zero-centered.
-
-* **ReLU function**: $$f(x)=max(0,x)$$ or $$f(x)=min(6, max(0,x))$$ for ReLU6
-
-  ![img](../.gitbook/assets/relu.png)
-
-  * It was found to greatly accelerate the convergence of stochastic gradient descent compared to the sigmoid/tanh functions.
-  * Compared to tanh/sigmoid neurons that involve expensive operations \(exponentials, etc.\), the ReLU can be implemented by simply thresholding a matrix of activations at zero.
-  * ReLU units can be fragile during training and can die.
-
-* **Leaky ReLU function**:
-
-  if $$x >= 0$$ , $$f(x) = x$$; else, $$f(x) = ax$$
-
-  * Reduce death during training for ReLU
-
-* Multi-class: softmax, see [derivative](https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/)
-
-  $$
-  p_{o,c} = \frac{e^{y_{k}}}{\sum_{c=1}^M e^{y_{c}}}
-  $$
-
-* Binary: sigmoid
-* Regression: linear
 
 ## Model compression
 
@@ -107,22 +58,6 @@ Initial layers capture low-level features such as angle and edges, while later l
 ### Bottleneck layer
 
 The bottleneck in a neural network is just a layer \(e.g. convolution layer\) with less neurons then the layer below or above it. Having such a layer encourages the network to compress feature representations to best fit in the available space, in order to get the best loss during training.
-
-### [Resnet](resnet.md)
-
-### [RNN](https://github.com/ztlevi/ML_101/tree/88befc3be6f5a5d0f092f4b2a9e2726e8f81e71b/neural_networks/rnn.md)
-
-### [LSTM](https://github.com/ztlevi/ML_101/tree/88befc3be6f5a5d0f092f4b2a9e2726e8f81e71b/neural_networks/lstm.md)
-
-### [Mobilenet](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/Neural_Network/Mobilenet.md)
-
-### [YOLO](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/Neural_Networks/YOLO.md)
-
-### [Single Shot MultiBox Detector\(SSD\)](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/Neural_Networks/SSD.md)
-
-### [GAN](https://github.com/ztlevi/ML_101/tree/88befc3be6f5a5d0f092f4b2a9e2726e8f81e71b/neural_networks/gan.md)
-
-### [FaceNet](https://github.com/ztlevi/ML_101/tree/88befc3be6f5a5d0f092f4b2a9e2726e8f81e71b/neural_networks/facenet.md)
 
 ## Reference
 

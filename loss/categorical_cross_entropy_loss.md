@@ -2,7 +2,7 @@
 
 Also called **Softmax Loss**. It is a **Softmax activation** plus a **Cross-Entropy loss**. If we use this loss, we will train a CNN to output a probability over the $$C$$ classes for each image. It is used for multi-class classification.
 
-![](../../.gitbook/assets/softmax_CE_pipeline.png)
+![](../.gitbook/assets/softmax_CE_pipeline.png)
 
 In the specific \(and usual\) case of Multi-Class classification the labels are one-hot, so only the positive class $$C_p$$ keeps its term in the loss. There is only one element of the Target vector $$t$$ which is not zero $$t_i=t_p$$. So discarding the elements of the summation which are zero due to target labels, we can write:
 
