@@ -40,10 +40,10 @@ To calculate the confidence interval, start by computing the mean and standard e
 Remember, you must calculate an upper and low score for the confidence interval using the [z-score](https://www.simplypsychology.org/z-score.html) for the chosen confidence level \(see table below\).
 
 | Confidence Level | Z-Score |
-| :--------------- | :------ |
-| 0.90             | 1.645   |
-| 0.95             | 1.96    |
-| 0.99             | 2.58    |
+| :--- | :--- |
+| 0.90 | 1.645 |
+| 0.95 | 1.96 |
+| 0.99 | 2.58 |
 
 > ## Confidence Interval Formula
 
@@ -51,19 +51,19 @@ Remember, you must calculate an upper and low score for the confidence interval 
 
 Where:
 
-- **X** is the mean
-- **Z** is the chosen Z-value \(1.96 for 95%\)
-- **s** is the standard error
-- **n** is the sample size
+* **X** is the mean
+* **Z** is the chosen Z-value \(1.96 for 95%\)
+* **s** is the standard error
+* **n** is the sample size
 
 For the lower interval score divide the standard error by the square root on n, and then multiply the sum of this calculation by the z-score \(1.96 for 95%\). Finally, subtract the value of this calculation from the sample mean.
 
 > ## An Example
 
-- **X** \(mean\) = 86
-- **Z** = 1.960 \(from the table above for 95%\)
-- **s** \(standard error\) = 6.2
-- **n** \(sample size\) = 46
+* **X** \(mean\) = 86
+* **Z** = 1.960 \(from the table above for 95%\)
+* **s** \(standard error\) = 6.2
+* **n** \(sample size\) = 46
 
 Lower Value: 86 - 1.960 × 6.2 √46 = **86 - 1.79** = 84.21
 
@@ -92,3 +92,4 @@ For example, one might report: 95% CI \[5.62, 8.31\].
 Confidence intervals can also be reported in a table
 
 ![apa style table](../.gitbook/assets/confidence-interval-6.jpg)
+

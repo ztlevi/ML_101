@@ -124,6 +124,7 @@ out = create_class_visualization(target_y, model)
 ```
 
 |  |  |  |
-| :-- | :-- | :-- |
+| :--- | :--- | :--- |
 | ![img](../.gitbook/assets/class_vis_tarantula_1.png) | ![img](../.gitbook/assets/class_vis_tarantula_25.png) | ![img](../.gitbook/assets/class_vis_tarantula_50.png) |
 | ![img](../.gitbook/assets/class_vis_tarantula_75.png) | ![img](../.gitbook/assets/class_vis_tarantula_100.png) |  |
+

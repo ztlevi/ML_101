@@ -59,6 +59,7 @@ print(binary_cross_entropy(X, Y))
 
 > Refer [here](https://www.ics.uci.edu/~pjsadows/notes.pdf) for a detailed loss derivation.
 
-- Caffe: [Sigmoid Cross-Entropy Loss Layer](http://caffe.berkeleyvision.org/tutorial/layers/sigmoidcrossentropyloss.html)
-- Pytorch: [BCEWithLogitsLoss](https://pytorch.org/docs/master/nn.html#bcewithlogitsloss)
-- TensorFlow: [sigmoid_cross_entropy](https://www.tensorflow.org/api_docs/python/tf/losses/sigmoid_cross_entropy).
+* Caffe: [Sigmoid Cross-Entropy Loss Layer](http://caffe.berkeleyvision.org/tutorial/layers/sigmoidcrossentropyloss.html)
+* Pytorch: [BCEWithLogitsLoss](https://pytorch.org/docs/master/nn.html#bcewithlogitsloss)
+* TensorFlow: [sigmoid\_cross\_entropy](https://www.tensorflow.org/api_docs/python/tf/losses/sigmoid_cross_entropy).
+

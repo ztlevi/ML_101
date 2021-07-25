@@ -4,37 +4,37 @@
 
 ![yolo v1 structure](../../.gitbook/assets/yolov1.png)
 
-- The YOLO design enables end-to-end training and real-time speeds while maintaining high average precision
-- Divides the input image into a $$S \times S$$ grid. If the center of an object falls into a grid cell, that grid cell is responsible for detecting that object.
-- Each bounding box consists of 5 predictions: $$x, y, w, h$$, and confidence. The $$(x, y)$$ coordinates represent the center of the box relative to the bounds of the grid cell. The width and height are predicted relative to the whole image. The confidence prediction represents the IOU between the predicted box and any ground truth box.
-- Each grid cell also predicts C conditional class probabilities
-- Models detection as a regression problem. It divides the image into an even grid and simultaneously predicts bounding boxes, confidence in those boxes, and class probabilities. These predictions are encoded as an $$S \times S \times (B \ast 5 + C)$$ tensor.
+* The YOLO design enables end-to-end training and real-time speeds while maintaining high average precision
+* Divides the input image into a $$S \times S$$ grid. If the center of an object falls into a grid cell, that grid cell is responsible for detecting that object.
+* Each bounding box consists of 5 predictions: $$x, y, w, h$$, and confidence. The $$(x, y)$$ coordinates represent the center of the box relative to the bounds of the grid cell. The width and height are predicted relative to the whole image. The confidence prediction represents the IOU between the predicted box and any ground truth box.
+* Each grid cell also predicts C conditional class probabilities
+* Models detection as a regression problem. It divides the image into an even grid and simultaneously predicts bounding boxes, confidence in those boxes, and class probabilities. These predictions are encoded as an $$S \times S \times (B \ast 5 + C)$$ tensor.
 
 ## Yolo 9000
 
-- **An odd number of locations in feature map**: so there is a single center cell. For Objects, especially large objects, tend to occupy the center of the image so it's good to have a single location right at the center to predict these objects instead of four locations that are all nearby.
-- The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, $$t_{x}, t_{y}, t_{w}, t_{h}$$, and to. If the cell is offset from the top left corner of the image by $$(cx, cy)$$ and the bounding box prior has width and height $$p_{w}, p_{h}$$, then the predictions correspond to:
+* **An odd number of locations in feature map**: so there is a single center cell. For Objects, especially large objects, tend to occupy the center of the image so it's good to have a single location right at the center to predict these objects instead of four locations that are all nearby.
+* The network predicts 5 bounding boxes at each cell in the output feature map. The network predicts 5 coordinates for each bounding box, $$t_{x}, t_{y}, t_{w}, t_{h}$$, and to. If the cell is offset from the top left corner of the image by $$(cx, cy)$$ and the bounding box prior has width and height $$p_{w}, p_{h}$$, then the predictions correspond to:
 
 ![output formula](../../.gitbook/assets/yolo_formula1.png)
 
-- **Fine-Grained Features**: It reshapes the $$26 \times 26 \times 512$$ layer to \$\$13 \times 13
+* **Fine-Grained Features**: It reshapes the $$26 \times 26 \times 512$$ layer to $$13 \times 13
 
-  \times 2048$$. Then it concatenates with the original$$13 \times 13 \times 1024$$output layer. Now we apply convolution filters on the new$$13 \times 13 \times 3072\$\$ layer to make predictions.
+  \times 2048$$. Then it concatenates with the original$$13 \times 13 \times 1024$$output layer. Now we apply convolution filters on the new$$13 \times 13 \times 3072$$ layer to make predictions.
 
 ## Yolo v3
 
 ### Predictions
 
-- **Objectness Prediction**: predicts an objectness score for each bounding box using **logistic regression**. This should be 1 if the bounding box prior overlaps a ground truth object by more than any other bounding box prior. If a bounding box prior is not assigned to a ground truth object it incurs no loss for coordinate or class predictions, only objectness.
-- **Class Prediction**: simply use independent logistic classifiers. During training we use binary cross entropy loss for the class predictions.
+* **Objectness Prediction**: predicts an objectness score for each bounding box using **logistic regression**. This should be 1 if the bounding box prior overlaps a ground truth object by more than any other bounding box prior. If a bounding box prior is not assigned to a ground truth object it incurs no loss for coordinate or class predictions, only objectness.
+* **Class Prediction**: simply use independent logistic classifiers. During training we use binary cross entropy loss for the class predictions.
 
 ### Feature Pyramid Networks \(FPN\)
 
 FPN composes of a **bottom-up** and a **top-down** pathway. The bottom-up pathway is the usual convolutional network for feature extraction. As we go up, the spatial resolution decreases. With more high-level structures detected, the **semantic** value for each layer increases.
 
-- YOLOv3 predicts boxes at **3 different scales**. Take the feature map from 2 layers previous and **upsample it by 2** and then add a few more convolutional layers to process this combined feature map, and eventually predict a similar tensor, although now **twice the size**.chose 9 clusters and 3 scales arbitrarily and then divide up the clusters **evenly across scales**.
-- Note in original FPN paper, upsampling is followed by feature maps addition, but in yolov3, it's concatenation and add a few more convolution layers.
-- Detections at different layers helps address the issue of detecting small objects, a frequent complaint with YOLO v2. The upsampled layers concatenated with the previous layers help preserve the fine grained features which help in detecting small objects. The 13 x 13 layer is responsible for detecting large objects, whereas the 52 x 52 layer detects the smaller objects, with the 26 x 26 layer detecting medium objects. Here is a comparative analysis of different objects picked in the same object by different layers.
+* YOLOv3 predicts boxes at **3 different scales**. Take the feature map from 2 layers previous and **upsample it by 2** and then add a few more convolutional layers to process this combined feature map, and eventually predict a similar tensor, although now **twice the size**.chose 9 clusters and 3 scales arbitrarily and then divide up the clusters **evenly across scales**.
+* Note in original FPN paper, upsampling is followed by feature maps addition, but in yolov3, it's concatenation and add a few more convolution layers.
+* Detections at different layers helps address the issue of detecting small objects, a frequent complaint with YOLO v2. The upsampled layers concatenated with the previous layers help preserve the fine grained features which help in detecting small objects. The 13 x 13 layer is responsible for detecting large objects, whereas the 52 x 52 layer detects the smaller objects, with the 26 x 26 layer detecting medium objects. Here is a comparative analysis of different objects picked in the same object by different layers.
 
 ### Anchor Boxes
 
@@ -130,17 +130,17 @@ A similar procedure is followed again, where the feature map from layer 91 is su
 
 ### Loss
 
-- the classification loss.
+* the classification loss.
 
   ![img](https://cdn-images-1.medium.com/max/800/1*lF6SCAVj5jMwLxs39SCogw.png)
 
-- the localization loss \(errors between the predicted boundary box and the ground truth\).
+* the localization loss \(errors between the predicted boundary box and the ground truth\).
 
   ![img](https://cdn-images-1.medium.com/max/800/1*BwhGMvffFfqtND9413oiwA.png)
 
   \(Why square root? Regression errors relative to their respective bounding box size should matter roughly equally. E.g. a 5px deviation on a 500px wide box should have less of an effect on the loss as a 5px deviation in a 20px wide box. The square root **downscales high values** while less affecting low values of width and height.\)
 
-- the confidence loss \(the objectness of the box\).
+* the confidence loss \(the objectness of the box\).
 
   ![img](https://cdn-images-1.medium.com/max/800/1*QT7mwEbyLJYIxTYtOWClFQ.png)
 
@@ -149,3 +149,4 @@ A similar procedure is followed again, where the feature map from layer 91 is su
   ![img](https://cdn-images-1.medium.com/max/800/1*Yc_OJIXOoV2WaGQ6PqhTXA.png)
 
   Most boxes do not contain any objects. This causes a class imbalance problem, i.e. we train the model to detect background more frequently than detecting objects. To remedy this, we weight this loss down by a factor $$\lambda noobj$$ \(default: 0.5\).
+

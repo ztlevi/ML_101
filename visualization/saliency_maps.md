@@ -16,8 +16,8 @@ A saliency map tells us the degree to which each pixel in the image affects the 
 
 There are two APIs exposed to visualize saliency.
 
-1. [visualize_saliency](https://raghakot.github.io/keras-vis/vis.visualization#visualize_saliency): This is the general purpose API for visualizing saliency.
-2. [visualize_saliency_with_losses](https://raghakot.github.io/keras-vis/vis.visualization#visualize_saliency_with_losses): This is intended for research use-cases where some custom weighted loss can be used.
+1. [visualize\_saliency](https://raghakot.github.io/keras-vis/vis.visualization#visualize_saliency): This is the general purpose API for visualizing saliency.
+2. [visualize\_saliency\_with\_losses](https://raghakot.github.io/keras-vis/vis.visualization#visualize_saliency_with_losses): This is intended for research use-cases where some custom weighted loss can be used.
 
 See [examples/](https://github.com/raghakot/keras-vis/tree/master/examples) for code examples.
 
@@ -73,3 +73,4 @@ def compute_saliency_maps(X, y, model):
 
 1. [https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb](https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb)
 2. [https://raghakot.github.io/keras-vis/visualizations/saliency/](https://raghakot.github.io/keras-vis/visualizations/saliency/)
+

@@ -21,3 +21,4 @@ Basically, the number of parameters in a given layer is the count of “learnabl
 6. Parameters in the Sixth `FC3 layer is((current layer c*previous layer p)+1*c) = 120*400+1*120= 48120`.
 7. Parameters in the Seventh `FC4 layer is: ((current layer c*previous layer p)+1*c) = 84*120+1* 84 = 10164`.
 8. The Eighth Softmax layer has `((current layer c*previous layer p)+1*c) parameters = 10*84+1*10 = 850`.
+

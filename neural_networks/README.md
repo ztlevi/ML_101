@@ -17,44 +17,44 @@ the activation function is usually an abstraction representing the rate of actio
 
 For neural networks
 
-- **Sigmoid Function**: $$f(x) = \frac{1}{1 + e^{-x}}$$
+* **Sigmoid Function**: $$f(x) = \frac{1}{1 + e^{-x}}$$
 
   ![img](../.gitbook/assets/sigmoid.png)
 
-  - Sigmoid non-linearity squashes real numbers to range between \[0,1\]
-  - Sigmoids saturate\(when $$x$$ is small, gradient is large\) and kill gradients \(when $$x$$ is large, gradient is small\)
-  - Sigmoid outputs are not zero-centered.
+  * Sigmoid non-linearity squashes real numbers to range between \[0,1\]
+  * Sigmoids saturate\(when $$x$$ is small, gradient is large\) and kill gradients \(when $$x$$ is large, gradient is small\)
+  * Sigmoid outputs are not zero-centered.
 
-- **Tanh function**: $$f(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}$$
+* **Tanh function**: $$f(x) = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}$$
 
   ![img](../.gitbook/assets/tanh.png)
 
-  - It squashes a real-valued number to the range \[-1, 1\]
-  - its activations saturate
-  - its output is zero-centered.
+  * It squashes a real-valued number to the range \[-1, 1\]
+  * its activations saturate
+  * its output is zero-centered.
 
-- **ReLU function**: $$f(x)=max(0,x)$$ or $$f(x)=min(6, max(0,x))$$ for ReLU6
+* **ReLU function**: $$f(x)=max(0,x)$$ or $$f(x)=min(6, max(0,x))$$ for ReLU6
 
   ![img](../.gitbook/assets/relu.png)
 
-  - It was found to greatly accelerate the convergence of stochastic gradient descent compared to the sigmoid/tanh functions.
-  - Compared to tanh/sigmoid neurons that involve expensive operations \(exponentials, etc.\), the ReLU can be implemented by simply thresholding a matrix of activations at zero.
-  - ReLU units can be fragile during training and can die.
+  * It was found to greatly accelerate the convergence of stochastic gradient descent compared to the sigmoid/tanh functions.
+  * Compared to tanh/sigmoid neurons that involve expensive operations \(exponentials, etc.\), the ReLU can be implemented by simply thresholding a matrix of activations at zero.
+  * ReLU units can be fragile during training and can die.
 
-- **Leaky ReLU function**:
+* **Leaky ReLU function**:
 
   if $$x >= 0$$ , $$f(x) = x$$; else, $$f(x) = ax$$
 
-  - Reduce death during training for ReLU
+  * Reduce death during training for ReLU
 
-- Multi-class: softmax, see [derivative](https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/)
+* Multi-class: softmax, see [derivative](https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/)
 
   $$
   p_{o,c} = \frac{e^{y_{k}}}{\sum_{c=1}^M e^{y_{c}}}
   $$
 
-- Binary: sigmoid
-- Regression: linear
+* Binary: sigmoid
+* Regression: linear
 
 ## Model compression
 
@@ -133,3 +133,4 @@ The bottleneck in a neural network is just a layer \(e.g. convolution layer\) wi
 5. [yolo 9000](https://arxiv.org/pdf/1612.08242.pdf)
 6. [yolo v3](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
 7. [real-time-object-detection-with-yolo-yolov2-](https://medium.com/@jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088)
+

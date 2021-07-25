@@ -7,3 +7,4 @@ Looking at the graph for SVM in Fig 4, we can see that for $$y*f(x) \geq 1$$, hi
 Hence, the points that are farther away from the decision margins have a greater loss value, thus penalising those points.
 
 _Conclusion_: This is just a basic understanding of what loss functions are and how hinge loss works. I will be posting other articles with greater understanding of ‘Hinge loss’ shortly
+

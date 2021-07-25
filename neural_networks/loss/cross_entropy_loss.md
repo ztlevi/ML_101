@@ -49,6 +49,7 @@ log_loss(targets, predictions) == cross_entropy(predictions, targets)
 
 The layers of Caffe, Pytorch and Tensorflow than use a Cross-Entropy loss without an embedded activation function are:
 
-- Caffe: [Multinomial Logistic Loss Layer](http://caffe.berkeleyvision.org/tutorial/layers/multinomiallogisticloss.html). Is limited to multi-class classification \(does not support multiple labels\).
-- Pytorch: [BCELoss](https://pytorch.org/docs/master/nn.html#bceloss). Is limited to binary classification \(between two classes\).
-- TensorFlow: [log_loss](https://www.tensorflow.org/api_docs/python/tf/losses/log_loss).
+* Caffe: [Multinomial Logistic Loss Layer](http://caffe.berkeleyvision.org/tutorial/layers/multinomiallogisticloss.html). Is limited to multi-class classification \(does not support multiple labels\).
+* Pytorch: [BCELoss](https://pytorch.org/docs/master/nn.html#bceloss). Is limited to binary classification \(between two classes\).
+* TensorFlow: [log\_loss](https://www.tensorflow.org/api_docs/python/tf/losses/log_loss).
+

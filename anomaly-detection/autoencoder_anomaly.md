@@ -154,7 +154,7 @@ And, indeed, our autoencoder seems to perform very well as it is able to minimiz
 
 **4. Calculate the Error and Find the Anomalies!**
 
-Now, we feed the data again as a whole to the autoencoder and check the error term on each sample. Recall that _seqs_ds_ is a pandas DataFrame that holds the actual string sequences. Line \#2 encodes each string, and line \#4 scales it. Then, I use the predict\(\) method to get the reconstructed inputs of the strings stored in seqs_ds. Finally, I get the error term for each data point by calculating the “distance” between the input data point \(or the actual data point\) and the output that was reconstructed by the autoencoder:
+Now, we feed the data again as a whole to the autoencoder and check the error term on each sample. Recall that _seqs\_ds_ is a pandas DataFrame that holds the actual string sequences. Line \#2 encodes each string, and line \#4 scales it. Then, I use the predict\(\) method to get the reconstructed inputs of the strings stored in seqs\_ds. Finally, I get the error term for each data point by calculating the “distance” between the input data point \(or the actual data point\) and the output that was reconstructed by the autoencoder:
 
 ```text
 mse = np.mean(np.power(actual_data - reconstructed_data, 2), axis=1)
@@ -183,7 +183,7 @@ Well, the first thing we need to do is decide what is our threshold, and that us
 
 ![](../.gitbook/assets/autoencoder_5.png)
 
-Next, I will add an MSE_Outlier column to the data set and set it to 1 when the error term crosses this threshold.
+Next, I will add an MSE\_Outlier column to the data set and set it to 1 when the error term crosses this threshold.
 
 ![](../.gitbook/assets/autoencoder_6.png)
 
@@ -206,3 +206,4 @@ Source code on git available [here](https://github.com/a-agmon/experiments/blob/
 ## Reference
 
 \[1\] [https://towardsdatascience.com/a-keras-based-autoencoder-for-anomaly-detection-in-sequences-75337eaed0e5](https://towardsdatascience.com/a-keras-based-autoencoder-for-anomaly-detection-in-sequences-75337eaed0e5)
+

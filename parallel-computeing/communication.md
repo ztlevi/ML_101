@@ -6,12 +6,13 @@
 
 ![shared memory](../.gitbook/assets/parallel_computing_shared_memory.png)
 
-![parallel_computing_message_passing](../.gitbook/assets/parallel_computing_message_passing.png)
+![parallel\_computing\_message\_passing](../.gitbook/assets/parallel_computing_message_passing.png)
 
 ## Client-Server Architecture
 
-![parallel_computing_client_server](../.gitbook/assets/parallel_computing_client_server.png)
+![parallel\_computing\_client\_server](../.gitbook/assets/parallel_computing_client_server.png)
 
 ## Peer-to-peer architecture
 
-![parallel_computing_peer_to_peer](../.gitbook/assets/parallel_computing_peer_to_peer.png)
+![parallel\_computing\_peer\_to\_peer](../.gitbook/assets/parallel_computing_peer_to_peer.png)
+

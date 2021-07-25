@@ -1,6 +1,6 @@
 # Introduction
 
-Github repo: [https://github.com/ztlevi/ML_101](https://github.com/ztlevi/ML_101)
+Github repo: [https://github.com/ztlevi/ML\_101](https://github.com/ztlevi/ML_101)
 
 My [Gitbook workspace](https://app.gitbook.com/@ztlevi).
 
@@ -42,3 +42,4 @@ pip3 install pipenv
 pipenv install
 pipenv shell
 ```
+

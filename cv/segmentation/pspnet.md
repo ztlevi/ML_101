@@ -14,7 +14,7 @@ Input image of any shape usually dimensions greater than \(256, 256\) feed to th
 
 ### b\) Feature Map
 
-Takes input image and constructs feature maps for image. Feature maps are extracted by feeding image using transfer learning or scratch network with dilated convolutions. As large size kernels extracts more useful information than small size kernel but computation cost is higher, dilated convolutions gathers large size area information with small size kernel for higher **dilation_rates** to **keep dimensions same** as **input Image**.Generally **residual blocks** with **dilations** are used to construct feature maps.No.of feature maps **N** is a hyperparameter and needs to be tuned for good result.
+Takes input image and constructs feature maps for image. Feature maps are extracted by feeding image using transfer learning or scratch network with dilated convolutions. As large size kernels extracts more useful information than small size kernel but computation cost is higher, dilated convolutions gathers large size area information with small size kernel for higher **dilation\_rates** to **keep dimensions same** as **input Image**.Generally **residual blocks** with **dilations** are used to construct feature maps.No.of feature maps **N** is a hyperparameter and needs to be tuned for good result.
 
 ### c\) Pyramid Pooling Module
 
@@ -25,7 +25,7 @@ After average pooling of **N** feature maps with **n** different sizes, feature 
 
 For instance, if N=512 feature maps and n=4 sizes like Global Average Pooling,$$(2*2),(4*4),(8*8)$$ then at each level 512 feature maps are reduced to 126 feature maps.
 
-$$N/n$$ feature maps at each level **upsampled** to have the **same dimensions of input Image.** For upsampling , bilinear_interpolation or convolution_transpose methods used instead simple upsampling.
+$$N/n$$ feature maps at each level **upsampled** to have the **same dimensions of input Image.** For upsampling , bilinear\_interpolation or convolution\_transpose methods used instead simple upsampling.
 
 Output of Pyramid Pooling Module is **concatenation** of base feature maps from **b** and upsampled average pooled feature maps from **c**.
 
@@ -39,7 +39,7 @@ Dataset we are applying semantic segmentation in PSPNet is on Kaggle’s [Citysc
 
 ### Dataset
 
-Dataset contains two folders Training images \(train\) folder and Validation images \(val\) folder.In each folder each image is of shape **\(512, 256, 3 \)** and **width=512, height=256, channels=3**. Where each image contains original image without segmentation and segmented image. Separate normal image into **train_imgs, valid_imgs** and segmented image into arrays **train_masks, valid_masks**.
+Dataset contains two folders Training images \(train\) folder and Validation images \(val\) folder.In each folder each image is of shape **\(512, 256, 3 \)** and **width=512, height=256, channels=3**. Where each image contains original image without segmentation and segmented image. Separate normal image into **train\_imgs, valid\_imgs** and segmented image into arrays **train\_masks, valid\_masks**.
 
 ```python
 train_folder="/kaggle/input/cityscapes-image-pairs/cityscapes_data/cityscapes_data/train/"
@@ -68,9 +68,9 @@ A simple PSPNet architecture with following parameters,
 
 **Module b** constructed with 3 layers of Residual blocks with Dilation Convolutions outputs **256 feature maps**.
 
-**Module C** defined with **pool_sizes GlobalAveragePooling, \(2**_**2\), \(4**_**4\), \(8\*8\)** and for **Upsampling, bilinear_interpolation** used. Each **256 pooled feature maps** are reduced to **64 feature maps** combining **512 feature maps total**.
+**Module C** defined with **pool\_sizes GlobalAveragePooling, \(2**_**2\), \(4**_**4\), \(8\*8\)** and for **Upsampling, bilinear\_interpolation** used. Each **256 pooled feature maps** are reduced to **64 feature maps** combining **512 feature maps total**.
 
-**Module D** is simply a convolution layer of 512 feature maps output **\(256,256,3\) dimensional feature maps** which are **flattened** into a single array of size \(256_256_3\).
+**Module D** is simply a convolution layer of 512 feature maps output **\(256,256,3\) dimensional feature maps** which are **flattened** into a single array of size \(256\_256\_3\).
 
 ```python
 def conv_block(X,filters,block):
@@ -149,3 +149,4 @@ def last_conv_module(input_layer):
 ### Reference
 
 [https://medium.com/analytics-vidhya/semantic-segmentation-in-pspnet-with-implementation-in-keras-4843d05fc025](https://medium.com/analytics-vidhya/semantic-segmentation-in-pspnet-with-implementation-in-keras-4843d05fc025)
+

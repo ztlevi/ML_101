@@ -10,10 +10,10 @@ The sigmoid layer outputs numbers between zero and one, describing how much of e
 
 The math behind LSTM can be pretty complicated, but intuitively LSTM introduce
 
-- input gate
-- output gate
-- forget gate
-- memory cell \(internal state\)
+* input gate
+* output gate
+* forget gate
+* memory cell \(internal state\)
 
 ![](../.gitbook/assets/LSTM3-C-line.png)
 
@@ -37,8 +37,8 @@ LSTMs also have this chain like structure, but the repeating module has a differ
 
 2. The next step is to decide what new information we're going to store in the cell state.
 
-   - **Input gate**: $$i_{t} = \sigma(W_i \cdot [h_{t-1}, x_{t}] + b_{i})$$, a sigmoid layer decides which values we’ll update.
-   - A tanh layer creates a vector of new candidate values: $$\tilde{ C_{t} } = tanh(W_{c} \cdot [h_{t-1}, x_{t}] + b_{c})$$, that could be added to the state.
+   * **Input gate**: $$i_{t} = \sigma(W_i \cdot [h_{t-1}, x_{t}] + b_{i})$$, a sigmoid layer decides which values we’ll update.
+   * A tanh layer creates a vector of new candidate values: $$\tilde{ C_{t} } = tanh(W_{c} \cdot [h_{t-1}, x_{t}] + b_{c})$$, that could be added to the state.
 
    ![](../.gitbook/assets/LSTM3-focus-C.png)
 
@@ -49,28 +49,28 @@ LSTMs also have this chain like structure, but the repeating module has a differ
    ![](../.gitbook/assets/LSTM3-focus-o.png)
 
 4. This output will be based on our cell state, but will be a **filtered version**.
-   - First, we run a **Output gate**: $$o_{t} = \sigma(W_o \cdot [h_{t-1}, x_{t}] + b_{o})$$, which decides what parts of the cell state we’re going to output, .
-   - Then, we put the cell state through tanhtanh \(to push the values to be between $$[-1, 1]$$ \) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to: $$h_{t} = tanh(C_{t}) * o_{t}$$
+   * First, we run a **Output gate**: $$o_{t} = \sigma(W_o \cdot [h_{t-1}, x_{t}] + b_{o})$$, which decides what parts of the cell state we’re going to output, .
+   * Then, we put the cell state through tanhtanh \(to push the values to be between $$[-1, 1]$$ \) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to: $$h_{t} = tanh(C_{t}) * o_{t}$$
 
 ### Why solve vanishing gradient?
 
 Details from [here](https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gradients.html)
 
-- The additive update function for the cell state gives a derivative thats much more ‘well behaved’
-- The **gating functions allow the network to decide how much the gradient vanishes**, and can take on different values at each time step. The values that they take on are learned functions of the current input and hidden state.
+* The additive update function for the cell state gives a derivative thats much more ‘well behaved’
+* The **gating functions allow the network to decide how much the gradient vanishes**, and can take on different values at each time step. The values that they take on are learned functions of the current input and hidden state.
 
 ## \(Optional\) Implementation
 
-- LSTM for IMDB review
+* LSTM for IMDB review
 
   ```python
   from keras.models import Sequential
   from keras.layers import LSTM, Embedding, Dense, Flatten
   ```
 
-vocabulary = 10000 embedding_dim = 32 word_num = 500 state_dim = 32
+vocabulary = 10000 embedding\_dim = 32 word\_num = 500 state\_dim = 32
 
-model = Sequential\(\) model.add\(Embedding\(vocabulary, embedding_dim, input_length=word_num\)\) model.add\(LSTM\(state_dim, return_sequences=False, dropout=0.2\)\) model.add\(Dense\(1, activation='sigmoid'\)\)
+model = Sequential\(\) model.add\(Embedding\(vocabulary, embedding\_dim, input\_length=word\_num\)\) model.add\(LSTM\(state\_dim, return\_sequences=False, dropout=0.2\)\) model.add\(Dense\(1, activation='sigmoid'\)\)
 
 model.summary\(\)
 
@@ -97,3 +97,4 @@ $$
 - Number of parameters:
 - $$4 \times shape(h) \times [shape(h)+shape(x)]$$
 ```
+

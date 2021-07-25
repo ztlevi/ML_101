@@ -6,16 +6,16 @@
 
 ![fast rcnn](../../.gitbook/assets/fastrcnn.png)
 
-- Instead of feeding the region proposals to the CNN, the author feeded the input image to the CNN to generate a convolutional feature map.
-- From the convolutional feature map, the author identified the region of proposals and warp them into squares and by using a RoI pooling layer the author reshaped them into a fixed size so that it can be fed into a fully connected layer.
-- From the RoI feature vector, the author used a softmax layer to predict the class of the proposed region and also the offset values for the bounding box.
+* Instead of feeding the region proposals to the CNN, the author feeded the input image to the CNN to generate a convolutional feature map.
+* From the convolutional feature map, the author identified the region of proposals and warp them into squares and by using a RoI pooling layer the author reshaped them into a fixed size so that it can be fed into a fully connected layer.
+* From the RoI feature vector, the author used a softmax layer to predict the class of the proposed region and also the offset values for the bounding box.
 
 ## Loss Function
 
 The model is optimized for a loss combining two tasks \(classification + localization\):
 
 | **Symbol** | **Explanation** |
-| :-- | :-- |
+| :--- | :--- |
 | $$u$$ | True class label, $$u \in 0, 1, ..., K$$; by convention, the catch-all background class has $$u = 0$$. |
 | $$p$$ | Discrete probability distribution \(per RoI\) over K + 1 classes: $$p = (p_0, ..., p_K)$$, computed by a softmax over the K + 1 outputs of a fully connected layer. |
 | $$v$$ | True bounding box $$v = (v_x, v_y, v_w, v_h)$$. |
@@ -133,3 +133,4 @@ class RCNN(nn.Module):
 ## Why faster than R-CNN?
 
 The reason “Fast R-CNN” is faster than R-CNN is because you don’t have to **feed 2000 region proposals to the convolutional neural network** every time. Instead, the convolution operation is done only once per image and a feature map is generated from it.
+

@@ -38,8 +38,8 @@ $$
 
 Let's take a look at the labels, for 7 ranks:
 
-- Cross-Entropy, the one hot encoded label for class 3 is denoted as $$[0,0,1,0,0,0,0]^T$$,
-- CROAL-Loss, it's $$[1,1,1,0,0,0 ]^T$$
+* Cross-Entropy, the one hot encoded label for class 3 is denoted as $$[0,0,1,0,0,0,0]^T$$,
+* CROAL-Loss, it's $$[1,1,1,0,0,0 ]^T$$
 
   ```python
   levels = [[1] * label + [0] * (self.num_classes - 1 - label) for label in batch_y]
@@ -84,3 +84,4 @@ def cost_fn(logits, levels, imp):
                       + F.log_softmax(logits, dim=2)[:, :, 0]*(1-levels))*imp, dim=1))
     return torch.mean(val)
 ```
+

@@ -8,18 +8,18 @@
 
 ## Map word to vector
 
-- First, represent words using one-hot vectors
-  - Suppose the dictionary contains $$v$$ unique words \(vocabulary = $$v$$\).
-  - Then the one-hot vectors $$e_1,e_2,e_3,...,e_v$$ are $$v$$-dimensional.
+* First, represent words using one-hot vectors
+  * Suppose the dictionary contains $$v$$ unique words \(vocabulary = $$v$$\).
+  * Then the one-hot vectors $$e_1,e_2,e_3,...,e_v$$ are $$v$$-dimensional.
 
 ![onehot-encoding](../.gitbook/assets/onehot-encoding-1.png)
 
-- Second, map the one-hot vectors to low dimensional vectors by
+* Second, map the one-hot vectors to low dimensional vectors by
 
 ![](../.gitbook/assets/word-embedding-1.png)word-embedding
 
-- $$P$$ is parameter matrix which can be learned from training data.
-- $$e_i$$ is the one-hot vector of the i-th word in dictionary.
+* $$P$$ is parameter matrix which can be learned from training data.
+* $$e_i$$ is the one-hot vector of the i-th word in dictionary.
 
 ## How to interpret the parameter matrix
 
@@ -56,3 +56,4 @@ oranges:  (apples, 45.3°), (lemons, 48.3°), (mangoes, 50.4°)
 ```
 
 This would tell an application that apples and oranges are in some way more similar \(45.3° apart\) than lemons and oranges \(48.3° apart\).
+
