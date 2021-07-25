@@ -74,7 +74,7 @@ Equivalently, we can think of this process as sliding a 3D filter matrix through
 
 Now we can see how one can make transitions between layers with different depth. Let’s say the input layer has $$D_{in}$$ channels, and we want the output layer has $$D_{out}$$ channels. What we need to do is to just apply $$D_{out}$$ filters to the input layer. Each filter has $$D_{in}$$ kernels. Each filter provides one output channel. After applying $$D_{out}$$ filters, we have $$D_{out}$$ channels, which can then be stacked together to form the output layer.
 
-![](../.gitbook/assets/conv_42%20%284%29%20%284%29.png)Standard 2D convolution. Mapping one layer with depth Din to another layer with depth Dout, by using Dout filters.
+![](../.gitbook/assets/conv_42%20%284%29%20%284%29%20%285%29.png)Standard 2D convolution. Mapping one layer with depth Din to another layer with depth Dout, by using Dout filters.
 
 ### 3. 3D Convolution
 
@@ -144,7 +144,7 @@ The transposed convolution is also known as deconvolution, or fractionally strid
 
 It is always possible to implement a transposed convolution with a direct convolution. For an example in the image below, we apply transposed convolution with a $$3 \times 3$$ kernel over a $$2 \times 2$$ input padded with a $$2 \times 2$$ border of zeros using unit strides. The up-sampled output is with size $$4 \times 4$$.
 
-![](../.gitbook/assets/1*KGrCz7aav02KoGuO6znO0w%20%283%29%20%283%29%20%284%29.gif)Up-sampling a 2 x 2 input to a 4 x 4 output. Image is adopted from this \[link\]\([https://github.com/vdumoulin/conv\_arithmetic\](https://github.com/vdumoulin/conv_arithmetic%29\).
+![](../.gitbook/assets/1*KGrCz7aav02KoGuO6znO0w%20%283%29%20%283%29%20%284%29%20%284%29.gif)Up-sampling a 2 x 2 input to a 4 x 4 output. Image is adopted from this \[link\]\([https://github.com/vdumoulin/conv\_arithmetic\](https://github.com/vdumoulin/conv_arithmetic%29\).
 
 Interestingly enough, one can map the same 2 x 2 input image to a different image size, by applying fancy padding & stride. Below, transposed convolution is applied over the same 2 x 2 input \(with 1 zero inserted between inputs\) padded with a 2 x 2 border of zeros using unit strides. Now the output is with size 5 x 5.
 
@@ -332,7 +332,7 @@ Grouped convolution was introduced in the AlexNet paper \([link](https://papers.
 
 Here we describe how the grouped convolutions work. First of all, conventional 2D convolutions follow the steps showing below. In this example, the input layer of size \(7 x 7 x 3\) is transformed into the output layer of size \(5 x 5 x 128\) by applying 128 filters \(each filter is of size 3 x 3 x 3\). Or in general case, the input layer of size \($$H_{in} \times W_{in} \times D_{in}$$\) is transformed into the output layer of size \($$H_{out} \times W_{out} \times D_{out}$$\) by applying $$D_{out}$$ kernels \(each is of size $$h \times w \times D_{in}$$\).
 
-![](../.gitbook/assets/conv_42%20%284%29%20%284%29%20%285%29.png)Standard 2D convolution.
+![](../.gitbook/assets/conv_42%20%284%29%20%284%29%20%285%29%20%285%29.png)Standard 2D convolution.
 
 In grouped convolution, the filters are separated into different groups. Each group is responsible for a conventional 2D convolutions with certain depth. The following examples can make this clearer.
 

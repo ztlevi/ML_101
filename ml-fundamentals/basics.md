@@ -47,7 +47,7 @@ Given a data science / machine learning project, what steps should we follow? He
 
 ## Weight Initialization
 
-`W = 0.01 * np.random.randn(D,H)`, where randn samples from a zero mean, unit standard deviation gaussian. One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that we can normalize the variance of each neuron's output to 1 by scaling its weight vector by the square root of its fan-in \(i.e. its number of inputs\). `w = np.random.randn(n) / sqrt(n)`, where n is the number of its inputs.
+`W = 0.01 * np.random.randn(D,H)`, where `randn`  generates a random list with size n. It samples from a zero mean, unit standard deviation gaussian. One problem with the above suggestion is that the distribution of the outputs from a randomly initialized neuron has a variance that grows with the number of inputs. It turns out that we can normalize the variance of each neuron's output to 1 by scaling its weight vector by the square root of its fan-in \(i.e. its number of inputs\). `w = np.random.randn(n) / sqrt(n)`, where n is the number of its inputs.
 
 In practice, the current recommendation is:
 
@@ -75,12 +75,19 @@ To solve the vanishing gradient\($$0.9^{k}$$\) and gradient explosion\($$1.1^{k}
 * Steps:
   1. Compute mini-batch mean: $${\mu}_{\mathcal{B}} \gets \frac{1}{m}\sum_{i=1}^M x_{i}$$
   2. Compute mini-batch variance: $${\sigma}_{\mathcal{B}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\mathcal{B}})^{2}$$
-  3. normalize features: $$\hat{x*i} \gets \frac{x*{i} - \mu*{\mathcal{B}} }{\sqrt{ { {\sigma}*{\mathcal{B}}^2 + \epsilon} } }$$
+  3. normalize features: $$\hat{x_i} \gets \frac{x_{i} - \mu_{\mathcal{B}} }{\sqrt{ { {\sigma}_{\mathcal{B}}^2 + \epsilon} } }$$
   4. Scale and shift: $$y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$$
-  5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
-* Pros: 1. Networks train faster 2. Allows higher learning rates 3. Makes weights easier to initialize 4. Makes more activation functions viable 5. Provides a bit of regularlization 6. Simplifies the creation of deeper networks
+* Pros: 
+  1. Networks train faster
+  2. Allows higher learning rates 
+  3. Make weights easier to initialize
+  4. Makes more activation functions viable
+  5. Provides a bit of regularization
+  6. Simplifies the creation of deeper networks
 * Cons
   1. Slower predictions due to the extra computations at each layer
+
+> **Note**: When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
 
 ### Common pitfall
 
