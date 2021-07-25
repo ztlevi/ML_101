@@ -1,4 +1,4 @@
-# Activation Function
+# Activation function
 
 the activation function is usually an abstraction representing the rate of action potential firing in the cell. In its simplest form, this function is binary-that is, either the neuron is firing or not.
 
@@ -44,3 +44,4 @@ For neural networks
 
 * Binary: sigmoid
 * Regression: linear
+

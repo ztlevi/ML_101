@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 
 ## ML Fundamentals
+
 * [Basics](ml-fundamentals/basics.md)
 * [Optimization](ml-fundamentals/optimization.md)
 * [How to prevent overfitting](ml-fundamentals/how_to_prevent_overfitting.md)
@@ -14,7 +15,8 @@
 * [Quantization](ml-fundamentals/quantization.md)
 
 ## Classical Machine Learning
-* [Basics](classical/classical-ml.md)
+
+* [Basics](classical-machine-learning/classical-ml.md)
 
 ## Neural Networks
 
@@ -25,14 +27,16 @@
 * [Mobilenet](neural-networks/mobilenet.md)
 
 ## Loss
+
 * [Hinge Loss](loss/hinge_loss.md)
 * [Cross-Entropy Loss](loss/cross_entropy_loss.md)
 * [Binary Cross-Entropy Loss](loss/binary_cross_entropy_loss.md)
 * [Categorical Cross-Entropy Loss](loss/categorical_cross_entropy_loss.md)
-* [Optional: Focal Loss](loss/focal_loss.md)
-* [Optional: CORAL Loss](loss/coral_loss.md)
+* [\(Optional\) Focal Loss](loss/focal_loss.md)
+* [\(Optional\) CORAL Loss](loss/coral_loss.md)
 
 ## Computer Vision
+
 * [Two Stage Object Detection](computer-vision/two-stage-detector/README.md)
   * [Metrics](computer-vision/two-stage-detector/metrics.md)
   * [ROI](computer-vision/two-stage-detector/roi.md)
@@ -61,17 +65,21 @@
 * [Seq2Seq](nlp/seq2seq.md)
 
 ## Parallel Computing
-* [Communication](parallel-computeing/communication.md)
-* [MapReduce](parallel-computeing/sync_mapreduce.md)
-* [Parameter Server](parallel-computeing/parameter_server.md)
-* [Decentralized And Ring All Reduce](parallel-computeing/decentralized_and_ring_allreduce.md)
-* [Federated Learning](parallel-computeing/federated_learning.md)
+
+* [Communication](parallel-computing/communication.md)
+* [MapReduce](parallel-computing/sync_mapreduce.md)
+* [Parameter Server](parallel-computing/parameter_server.md)
+* [Decentralized And Ring All Reduce](parallel-computing/decentralized_and_ring_allreduce.md)
+* [Federated Learning](parallel-computing/federated_learning.md)
 
 ## Anomaly Detection
+
 * [DBSCAN](anomaly-detection/dbscan.md)
 * [Autoencoder](anomaly-detection/autoencoder_anomaly.md)
 
 ## Visualization
+
 * [Saliency Maps](visualization/saliency_maps.md)
 * [Fooling images](visualization/fooling_images.md)
 * [Class Visualization](visualization/class_visualization.md)
+

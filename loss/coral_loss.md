@@ -1,4 +1,4 @@
-# Optional: CORAL Loss
+# \(Optional\) CORAL Loss
 
 [Reference](https://arxiv.org/pdf/1901.07884.pdf)
 

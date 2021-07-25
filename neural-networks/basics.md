@@ -1,4 +1,4 @@
-# Neural Networks
+# Basics
 
 ## Pooling
 

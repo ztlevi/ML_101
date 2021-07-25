@@ -25,7 +25,7 @@ One of the side-effects of batch normalization is that it adds some stochastic n
 
 The experimental results of the paper show that weight normalization combined with mean-only batch normalization achieves the best results on CIFAR-10, an image classification dataset. For detailed experimental results, please refer to the original paper.
 
-## 3. Layer Normalization
+## Layer Normalization
 
 [Layer normalization](https://arxiv.org/pdf/1607.06450.pdf) is a method developed by Geoffery Hinton. Compared to weight normalization, layer normalization is slightly harder to grasp intuitively.
 

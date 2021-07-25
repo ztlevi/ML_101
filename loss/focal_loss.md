@@ -1,4 +1,4 @@
-# Optional: Focal Loss
+# \(Optional\) Focal Loss
 
 ## Class Imbalance Problem of One-Stage Detector
 
