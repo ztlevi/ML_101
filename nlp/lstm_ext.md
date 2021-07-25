@@ -1,0 +1,80 @@
+# Make LSTM more effective
+
+## Standard RNN
+
+<figure>
+<img src="../.gitbook/assets/rnn1.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+## Stacked RNN & LSTM
+
+<figure>
+<img src="../.gitbook/assets/stacked_rnn_1.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+### Sample code for stacked LSTM
+
+```python
+from keras.models import Sequential
+from keras.layers import LSTM, Embedding, Dense
+
+vocabulary = 10000
+embedding_dim = 32
+word_num = 500
+state_dim = 32
+
+model = Sequential()
+model.add(Embedding(vocabulary, embedding_dim, input_length=word_num))
+model.add(LSTM(state_dim, return_sequences=True, dropout=0.2))
+model.add(LSTM(state_dim, return_sequences=True, dropout=0.2))
+model.add(LSTM(state_dim, return_sequences=False, dropout=0.2))
+model.add(Dense(1, activation='sigmoid'))
+```
+
+| Layer (type)            | Output Shape    | Param  |
+| ----------------------- | --------------- | ------ |
+| embedding_1 (Embedding) | (None, 500, 32) | 320000 |
+| lstm_1(LSTM)            | (None, 500, 32) | 8320   |
+| lstm_2(LSTM)            | (None, 500, 32) | 8320   |
+| lstm_3(LSTM)            | (None, 32)      | 8320   |
+| dense_1 (Dense)         | (None, 1)       | 33     |
+
+Total params: 344,993
+
+Trainable params: 344,993
+
+Non-trainable params: 0
+
+## Bidirectional RNN && LSTM
+
+<figure>
+<img src="../.gitbook/assets/bidirectional-rnn-1.png" alt="" style="width:60%;display:block;margin-left:auto;margin-right:auto;"/>
+<figcaption style="text-align:center"></figcaption>
+</figure>
+
+### Sample code for Bi-LSTM
+
+```python
+from keras.model import Sequential
+from keras.layers import LSTM, Embedding, Dense, Bidirectional
+
+vocabulary = 10000
+embedding_dim = 32
+word_num = 500
+state_dim = 32
+
+model = Sequential()
+model.add(Embedding(vocabulary, embedding_dim, input_length=word_num))
+model.add(Bidirectional(LSTM(state_dim, return_sequences=False, dropout=0.2)))
+model.add(Dense(1, activation='sigmoid'))
+```
+
+| Layer (type)                  | Output Shape    | Param  |
+| ----------------------------- | --------------- | ------ |
+| embedding_1 (Embedding)       | (None, 500, 32) | 320000 |
+| bidirectional_1 (Bidirection) | (None, 64)      | 16640  |
+| dense_1 (Dense)               | (None, 1)       | 65     |
+
+Total params: 336,705 Trainable params: 336,705 Non-trainable params: 0

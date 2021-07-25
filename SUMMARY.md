@@ -44,6 +44,7 @@
   - [Embedding](nlp/embedding.md)
   - [RNN](nlp/rnn.md)
   - [LSTM](nlp/lstm.md)
+  - [LSTM Ext.](nlp/lstm_ext.md)
 - [Parallel Computeing](parallel-computeing/README.md)
   - [Communication](parallel-computeing/communication.md)
   - [MapReduce](parallel-computeing/sync_mapreduce.md)

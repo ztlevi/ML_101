@@ -59,102 +59,40 @@ Details from [here](https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gra
 
 ### \(Optional\) Implementation
 
-FIXME Remove redundant codes
-
-- Part of the codes demonstrating LSTM
-
-  > **Note**: activation='tanh', recurrent_activation='hard_sigmoid'
+- LSTM for IMDB review
 
   ```python
-    self.kernel = self.add_weight(
-        shape=(input_dim, self.units * 4),
-        name="kernel",
-        initializer=self.kernel_initializer,
-        regularizer=self.kernel_regularizer,
-        constraint=self.kernel_constraint,
-    )
-    self.recurrent_kernel = self.add_weight(
-        shape=(self.units, self.units * 4),
-        name="recurrent_kernel",
-        initializer=self.recurrent_initializer,
-        regularizer=self.recurrent_regularizer,
-        constraint=self.recurrent_constraint,
-    )
-
-    self.kernel_i = self.kernel[:, : self.units]
-    self.kernel_f = self.kernel[:, self.units : self.units * 2]
-    self.kernel_c = self.kernel[:, self.units * 2 : self.units * 3]
-    self.kernel_o = self.kernel[:, self.units * 3 :]
-
-    self.recurrent_kernel_i = self.recurrent_kernel[:, : self.units]
-    self.recurrent_kernel_f = self.recurrent_kernel[:, self.units : self.units * 2]
-    self.recurrent_kernel_c = self.recurrent_kernel[:, self.units * 2 : self.units * 3]
-    self.recurrent_kernel_o = self.recurrent_kernel[:, self.units * 3 :]
-
-    x_i = K.dot(inputs_i, self.kernel_i)
-    x_f = K.dot(inputs_f, self.kernel_f)
-    x_c = K.dot(inputs_c, self.kernel_c)
-    x_o = K.dot(inputs_o, self.kernel_o)
-
-    i = self.recurrent_activation(x_i + K.dot(h_tm1_i, self.recurrent_kernel_i))
-    f = self.recurrent_activation(x_f + K.dot(h_tm1_f, self.recurrent_kernel_f))
-    c = f * c_tm1 + i * self.activation(x_c + K.dot(h_tm1_c, self.recurrent_kernel_c))
-    o = self.recurrent_activation(x_o + K.dot(h_tm1_o, self.recurrent_kernel_o))
-  ```
-
-- Take an example here:
-
-  ```python
-  # LSTM for sequence classification in the IMDB dataset
-  import numpy
-
-  from keras.datasets import imdb
-  from keras.layers import LSTM, Dense
-  from keras.layers.embeddings import Embedding
   from keras.models import Sequential
-  from keras.preprocessing import sequence
-
-  # fix random seed for reproducibility
-  numpy.random.seed(7)
-  # load the dataset but only keep the top n words, zero the rest
-  top_words = 5000
-  (X_train, y_train), (X_test, y_test) = imdb.load_data(num_words=top_words)
-  # truncate and pad input sequences
-  max_review_length = 500
-  X_train = sequence.pad_sequences(X_train, maxlen=max_review_length)
-  X_test = sequence.pad_sequences(X_test, maxlen=max_review_length)
-  # create the model
-  embedding_vecor_length = 32
-  model = Sequential()
-  model.add(Embedding(top_words, embedding_vecor_length, input_length=max_review_length))
-  model.add(LSTM(100))
-  model.add(Dense(1, activation="sigmoid"))
-  model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
-  print(model.summary())
-  model.fit(X_train, y_train, epochs=3, batch_size=64)
-  # Final evaluation of the model
-  scores = model.evaluate(X_test, y_test, verbose=0)
-  print("Accuracy: %.2f%%" % (scores[1] * 100))
+  from keras.layers import LSTM, Embedding, Dense, Flatten
   ```
 
-  - Shapes
-    - The output shape of the Embedding layer is \(?, 500, 32\).
-    - $$C_t$$: \(?, 100\)
-    - $$h_t$$: \(?, 100\)
+vocabulary = 10000 embedding_dim = 32 word_num = 500 state_dim = 32
 
-  The calculation for forget gate $$f_{t} = \sigma(W_f \cdot [h_{t-1}, x_{t}] + b_{f})$$ is composed of:
+model = Sequential() model.add(Embedding(vocabulary, embedding_dim, input_length=word_num)) model.add(LSTM(state_dim, return_sequences=False, dropout=0.2)) model.add(Dense(1, activation='sigmoid'))
 
-  $$
-  \sigma ( (?,32) \cdot (32,100) + (?, 100) \cdot (100, 100) + (1, 100))
-  $$
+model.summary()
+
+```
+
+- Shapes
+  - The output shape of the Embedding layer is \(?, 500, 32\).
+  - $$C_t$$: \(?, 100\)
+  - $$h_t$$: \(?, 100\)
+
+The calculation for forget gate $$f_{t} = \sigma(W_f \cdot [h_{t-1}, x_{t}] + b_{f})$$ is composed of:
+
+$$
+\sigma ( (?,32) \cdot (32,100) + (?, 100) \cdot (100, 100) + (1, 100))
+$$
 
 ## Summary
 
 - LSTM uses a "conveyor belt" to get longer memory than SimpleRNN.
 - Each of the following blocks has a parameter matrix:
-  - Forget gate.
-  - Input gate.
-  - New values.
-  - Output gate.
+- Forget gate.
+- Input gate.
+- New values.
+- Output gate.
 - Number of parameters:
-  - $$4 \times shape(h) \times [shape(h)+shape(x)]$$
+- $$4 \times shape(h) \times [shape(h)+shape(x)]$$
+```

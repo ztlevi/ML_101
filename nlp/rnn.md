@@ -6,13 +6,11 @@ RNN is another paradigm of neural network where we have difference layers of cel
 
 A recurrent neural network can be thought of as multiple copies of the same network, each passing a message to a successor. Consider what happens if we unroll the loop:
 
-![An unrolled recurrent neural network.](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-unrolled.png)
+![An unrolled recurrent neural network.](../.gitbook/assets/rnn1.png)
 
 All recurrent neural networks have the form of a chain of repeating modules of neural network. In standard RNNs, this repeating module will have a very simple structure, such as a single tanh layer.
 
-![](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-SimpleRNN.png)
-
-![rnn1](../.gitbook/assets/rnn1.png)
+![](../.gitbook/assets/rnn-2.png)
 
 - $$h_{t} = f(h_{t-1}, x_{t}; \theta)$$, where the current hidden state $$h_{t}$$ is a function $$f$$ of the previous hidden state and $$h_{t - 1}$$ the current input $$x_{t}$$. The are $$\theta$$ the parameters of the function $$f$$.
 
