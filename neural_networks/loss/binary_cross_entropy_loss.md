@@ -1,3 +1,5 @@
+# Binary Cross-Entropy Loss
+
 Also called **Sigmoid Cross-Entropy loss**. It is a **Sigmoid activation** plus a **Cross-Entropy loss**. Unlike **Softmax loss** it is independent for each vector component \(class\), meaning that the loss computed for every CNN output vector component is not affected by other component values. That’s why it is used for **multi-label classification**, were the insight of an element belonging to a certain class should not influence the decision for another class. It’s called **Binary Cross-Entropy Loss** because it sets up a binary classification problem between $$C'=2$$ classes for every class in $$C$$, as explained above. So when using this Loss, the formulation of **Cross Entroypy Loss** for binary problems is often used:
 
 $$

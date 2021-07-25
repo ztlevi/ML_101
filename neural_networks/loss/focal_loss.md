@@ -1,3 +1,5 @@
+# Optional: Focal Loss
+
 ## Class Imbalance Problem of One-Stage Detector
 
 - A much larger set of candidate object locations is regularly sampled across an image \(~100k locations\), which densely cover spatial positions, scales and aspect ratios.

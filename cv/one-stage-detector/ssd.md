@@ -1,3 +1,5 @@
+# Single Shot MultiBox Detector\(SSD\)
+
 - **Single Shot**: this means that the tasks of object localization and classification are done in a single forward pass of the network
 - **MultiBox**: this is the name of a technique for bounding box regression developed by Szegedy et al. \(we will briefly cover it shortly\)
 - **Detector**: The network is an object detector that also classifies those detected objects

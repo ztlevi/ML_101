@@ -1,6 +1,8 @@
+# Fooling images
+
 ## Fooling Images
 
-We can also use image gradients to generate "fooling images" as discussed in [^3]. Given an image and a target class, we can perform gradient ascent over the image to maximize the target class, stopping when the network classifies the image as the target class. Implement the following function to generate fooling images.
+We can also use image gradients to generate "fooling images" as discussed in [3]. Given an image and a target class, we can perform gradient ascent over the image to maximize the target class, stopping when the network classifies the image as the target class. Implement the following function to generate fooling images.
 
 ### Implementation
 
@@ -112,6 +114,6 @@ Iteration:  8  Target Class Score:  30.5871
 
 ## References:
 
-[^1]: https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb
-[^2]: http://www.evolvingai.org/fooling
-[^3]: https://arxiv.org/abs/1312.6199
+[1]: https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb
+[2]: http://www.evolvingai.org/fooling
+[3]: https://arxiv.org/abs/1312.6199

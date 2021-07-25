@@ -1,3 +1,5 @@
+# Linear Algebra
+
 ## The Rank of a Matrix
 
 You can think of an $$r \times c$$ matrix as a set of $$r$$ row [vectors](https://stattrek.com/help/glossary.aspx?Target=Vectors), each having $$c$$ elements; or you can think of it as a set of $$c$$ column vectors, each having $$r$$ elements.

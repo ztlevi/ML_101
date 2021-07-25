@@ -1,3 +1,5 @@
+# Basics
+
 ## Project Workflow
 
 Given a data science / machine learning project, what steps should we follow? Here's how I would tackle it:
@@ -73,20 +75,12 @@ To solve the vanishing gradient\($$0.9^{k}$$\) and gradient explosion\($$1.1^{k}
 - Input: Values of $$x$$ over a mini-batch: $$\mathcal{B}={x_{1...m}}$$; Parameters to be learned: $$\gamma , \beta$$
 - Output: $${y_i = BN_{\gamma , \beta} (x_i)}$$
 - Steps:
-
   1. Compute mini-batch mean: $${\mu}_{\mathcal{B}} \gets \frac{1}{m}\sum_{i=1}^M x_{i}$$
   2. Compute mini-batch variance: $${\sigma}_{\mathcal{B}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\mathcal{B}})^{2}$$
   3. normalize features: $$\hat{x*i} \gets \frac{x*{i} - \mu*{\mathcal{B}} }{\sqrt{ { {\sigma}*{\mathcal{B}}^2 + \epsilon} } }$$
   4. Scale and shift: $$y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$$
   5. When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
-
-- Pros:
-  1. Networks train faster
-  2. Allows higher learning rates
-  3. Makes weights easier to initialize
-  4. Makes more activation functions viable
-  5. Provides a bit of regularlization
-  6. Simplifies the creation of deeper networks
+- Pros: 1. Networks train faster 2. Allows higher learning rates 3. Makes weights easier to initialize 4. Makes more activation functions viable 5. Provides a bit of regularlization 6. Simplifies the creation of deeper networks
 - Cons
   1. Slower predictions due to the extra computations at each layer
 

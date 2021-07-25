@@ -1,3 +1,5 @@
+# Neural Networks
+
 ## GEMM
 
 ## Pooling
@@ -108,9 +110,9 @@ The bottleneck in a neural network is just a layer \(e.g. convolution layer\) wi
 
 ### [Resnet](resnet.md)
 
-### [RNN](rnn.md)
+### [RNN](https://github.com/ztlevi/ML_101/tree/88befc3be6f5a5d0f092f4b2a9e2726e8f81e71b/neural_networks/rnn.md)
 
-### [LSTM](lstm.md)
+### [LSTM](https://github.com/ztlevi/ML_101/tree/88befc3be6f5a5d0f092f4b2a9e2726e8f81e71b/neural_networks/lstm.md)
 
 ### [Mobilenet](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/Neural_Network/Mobilenet.md)
 
@@ -118,9 +120,9 @@ The bottleneck in a neural network is just a layer \(e.g. convolution layer\) wi
 
 ### [Single Shot MultiBox Detector\(SSD\)](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/Neural_Networks/SSD.md)
 
-### [GAN](gan.md)
+### [GAN](https://github.com/ztlevi/ML_101/tree/88befc3be6f5a5d0f092f4b2a9e2726e8f81e71b/neural_networks/gan.md)
 
-### [FaceNet](facenet.md)
+### [FaceNet](https://github.com/ztlevi/ML_101/tree/88befc3be6f5a5d0f092f4b2a9e2726e8f81e71b/neural_networks/facenet.md)
 
 ## Reference
 

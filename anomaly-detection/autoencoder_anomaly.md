@@ -1,3 +1,5 @@
+# Autoencoder
+
 ## Use Keras to develop a robust NN architecture that can be used to efficiently recognize anomalies in sequences
 
 Suppose that you have a very long list of string sequences, such as a list of amino acid structures \(‘PHE-SER-CYS’, ‘GLN-ARG-SER’,…\), product serial numbers \(‘AB121E’, ‘AB323’, ‘DN176’…\), or users UIDs, and you are required to create a validation process of some kind that will detect anomalies in this sequence. An anomaly might be a string that follows a slightly different or unusual format than the others \(whether it was created by mistake or on purpose\) or just one that is extremely rare. To make things even more interesting, suppose that you don't know what is the correct format or structure that sequences suppose to follow.

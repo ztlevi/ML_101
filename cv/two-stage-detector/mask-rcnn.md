@@ -1,4 +1,4 @@
-## Mask R-CNN
+# Mask RCNN
 
 Mask R-CNN \([He et al., 2017](https://arxiv.org/pdf/1703.06870.pdf)\) extends Faster R-CNN to pixel-level image segmentation. The key point is to decouple the classification and the pixel-level mask prediction tasks. Based on the framework of [Faster R-CNN](mask-rcnn.md#faster-r-cnn), it added a third branch for predicting an object mask in parallel with the existing branches for classification and localization. The mask branch is a small fully-connected network applied to each RoI, predicting a segmentation mask in a pixel-to-pixel manner.
 
@@ -6,11 +6,11 @@ Mask R-CNN \([He et al., 2017](https://arxiv.org/pdf/1703.06870.pdf)\) extends F
 
 Because pixel-level segmentation requires much more fine-grained alignment than bounding boxes, mask R-CNN improves the RoI pooling layer \(named "RoIAlign layer"\) so that RoI can be better and more precisely mapped to the regions of the original image.
 
-### RoIAlign
+## RoIAlign
 
 The RoIAlign layer is designed to fix the location misalignment caused by quantization in the RoI pooling. RoIAlign removes the hash quantization, for example, by using x/16 instead of \[x/16\], so that the extracted features can be properly aligned with the input pixels. [Bilinear interpolation](https://en.wikipedia.org/wiki/Bilinear_interpolation) is used for computing the floating-point location values in the input.
 
-### Loss Function
+## Loss Function
 
 The multi-task loss function of Mask R-CNN combines the loss of classification, localization and segmentation mask: $$\mathcal{L} = \mathcal{L}_\text{cls} + \mathcal{L}_\text{box} + \mathcal{L}_\text{mask}$$, where $$\mathcal{L}_\text{cls}$$ and $$\mathcal{L}_\text{box}$$ are same as in Faster R-CNN.
 

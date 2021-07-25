@@ -1,3 +1,5 @@
+# LSTM
+
 This seems great, but in practice RNN barely works due to **exploding/vanishing gradient**, which is cause by a series of multiplication of the same matrix. On the other side, it also have the problem of **long-term dependencies**. To solve this, we can use a variation of RNN, called long short-term memory \(LSTM\), which is capable of learning long-term dependencies.
 
 **sigmoid** - gate function \[0, 1\], **tanh** - regular information to \[-1, 1\]
@@ -25,7 +27,7 @@ LSTMs also have this chain like structure, but the repeating module has a differ
 
 ![A LSTM neural network.](https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/LSTM3-chain.png)
 
-### Step-by-Step LSTM Walk Through
+## Step-by-Step LSTM Walk Through
 
 ![](../.gitbook/assets/LSTM3-focus-f.png)
 
@@ -50,14 +52,14 @@ LSTMs also have this chain like structure, but the repeating module has a differ
    - First, we run a **Output gate**: $$o_{t} = \sigma(W_o \cdot [h_{t-1}, x_{t}] + b_{o})$$, which decides what parts of the cell state we’re going to output, .
    - Then, we put the cell state through tanhtanh \(to push the values to be between $$[-1, 1]$$ \) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to: $$h_{t} = tanh(C_{t}) * o_{t}$$
 
-#### Why solve vanishing gradient?
+### Why solve vanishing gradient?
 
 Details from [here](https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gradients.html)
 
 - The additive update function for the cell state gives a derivative thats much more ‘well behaved’
 - The **gating functions allow the network to decide how much the gradient vanishes**, and can take on different values at each time step. The values that they take on are learned functions of the current input and hidden state.
 
-### \(Optional\) Implementation
+## \(Optional\) Implementation
 
 - LSTM for IMDB review
 
@@ -68,12 +70,11 @@ Details from [here](https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gra
 
 vocabulary = 10000 embedding_dim = 32 word_num = 500 state_dim = 32
 
-model = Sequential() model.add(Embedding(vocabulary, embedding_dim, input_length=word_num)) model.add(LSTM(state_dim, return_sequences=False, dropout=0.2)) model.add(Dense(1, activation='sigmoid'))
+model = Sequential\(\) model.add\(Embedding\(vocabulary, embedding_dim, input_length=word_num\)\) model.add\(LSTM\(state_dim, return_sequences=False, dropout=0.2\)\) model.add\(Dense\(1, activation='sigmoid'\)\)
 
-model.summary()
+model.summary\(\)
 
-```
-
+```text
 - Shapes
   - The output shape of the Embedding layer is \(?, 500, 32\).
   - $$C_t$$: \(?, 100\)

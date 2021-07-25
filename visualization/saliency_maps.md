@@ -1,3 +1,5 @@
+# Saliency Maps
+
 ## Saliency Maps
 
 The idea behind saliency is pretty simple in hindsight. We compute the gradient of output category with respect to input image.
@@ -69,5 +71,5 @@ def compute_saliency_maps(X, y, model):
 
 ## Reference:
 
-1. https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb
-2. https://raghakot.github.io/keras-vis/visualizations/saliency/
+1. [https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb](https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb)
+2. [https://raghakot.github.io/keras-vis/visualizations/saliency/](https://raghakot.github.io/keras-vis/visualizations/saliency/)

@@ -1,3 +1,5 @@
+# Categorical Cross-Entropy Loss
+
 Also called **Softmax Loss**. It is a **Softmax activation** plus a **Cross-Entropy loss**. If we use this loss, we will train a CNN to output a probability over the $$C$$ classes for each image. It is used for multi-class classification.
 
 ![](../../.gitbook/assets/softmax_CE_pipeline.png)

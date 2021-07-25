@@ -1,3 +1,5 @@
+# Optional: CORAL Loss
+
 [Reference](https://arxiv.org/pdf/1901.07884.pdf)
 
 Consistant Rank Ligist for Ordinal Regression

@@ -1,3 +1,5 @@
+# Decentralized And Ring All Reduce
+
 ## Parallel Gradient Descent in Decentralized Network
 
 [slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/14_Parallel_3.pdf)

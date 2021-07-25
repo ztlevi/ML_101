@@ -1,25 +1,24 @@
+# PSPNet
+
 For Image scene semantic segmentation PSPNet performs better than other semantic segmentation nets like FCN,U-Net,Deeplab.
 
 In this article,we’ll discuss about PSPNet and implementation in Keras.
 
-## Pyramid Scene Parsing Network (PSPNet)
+### Pyramid Scene Parsing Network \(PSPNet\)
 
-<figure>
-<img src="https://miro.medium.com/max/2869/1*emYC4xYASMLb5bSHNLZHOg.png" alt="" style="width:100%;display:block;margin-left:auto;margin-right:auto;"/>
-<figcaption style="text-align:center"></figcaption>
-</figure>
+![](https://miro.medium.com/max/2869/1*emYC4xYASMLb5bSHNLZHOg.png)
 
-## a) Input Image
+### a\) Input Image
 
-Input image of any shape usually dimensions greater than (256, 256) feed to the network.
+Input image of any shape usually dimensions greater than \(256, 256\) feed to the network.
 
-## b) Feature Map
+### b\) Feature Map
 
 Takes input image and constructs feature maps for image. Feature maps are extracted by feeding image using transfer learning or scratch network with dilated convolutions. As large size kernels extracts more useful information than small size kernel but computation cost is higher, dilated convolutions gathers large size area information with small size kernel for higher **dilation_rates** to **keep dimensions same** as **input Image**.Generally **residual blocks** with **dilations** are used to construct feature maps.No.of feature maps **N** is a hyperparameter and needs to be tuned for good result.
 
-## c) Pyramid Pooling Module
+### c\) Pyramid Pooling Module
 
-An Image contains objects of sizes ranging from small area to large area in different regions.Fully Convolution Network(FCN),U-Net and other networks constructs feature maps by upsampling and doing segmentation at different levels for segmentation of all objects in all regions.But in PSPNet to correctly segment all size objects, feature maps are pooled average pooled at different pool size.
+An Image contains objects of sizes ranging from small area to large area in different regions.Fully Convolution Network\(FCN\),U-Net and other networks constructs feature maps by upsampling and doing segmentation at different levels for segmentation of all objects in all regions.But in PSPNet to correctly segment all size objects, feature maps are pooled average pooled at different pool size.
 
 Sub-region average pooling is done at different scales like **Global Average Pooling\*\***,$$(2*2),(3*3),(4*4),(6*6),(8*8)$$..  
 After average pooling of **N** feature maps with **n** different sizes, feature maps at each level reduced to $$N/n$$ feature maps by performing $$1*1$$ convolutions.
@@ -30,17 +29,17 @@ $$N/n$$ feature maps at each level **upsampled** to have the **same dimensions o
 
 Output of Pyramid Pooling Module is **concatenation** of base feature maps from **b** and upsampled average pooled feature maps from **c**.
 
-## d) Final Prediction
+### d\) Final Prediction
 
 $$2*N$$ feature maps are feed to convolution layer and final prediction of classes are generated on how output layer is constructed say different channels for different objects or single channel.
 
-# Implementation in Keras/Tensorflow
+## Implementation in Keras/Tensorflow
 
 Dataset we are applying semantic segmentation in PSPNet is on Kaggle’s [Cityscapes Image Pairs](https://www.kaggle.com/dansbecker/cityscapes-image-pairs) dataset of size 106 Mb.
 
-## Dataset
+### Dataset
 
-Dataset contains two folders Training images (train) folder and Validation images (val) folder.In each folder each image is of shape **(512, 256, 3 )** and **width=512, height=256, channels=3**. Where each image contains original image without segmentation and segmented image. Separate normal image into **train_imgs, valid_imgs** and segmented image into arrays **train_masks, valid_masks**.
+Dataset contains two folders Training images \(train\) folder and Validation images \(val\) folder.In each folder each image is of shape **\(512, 256, 3 \)** and **width=512, height=256, channels=3**. Where each image contains original image without segmentation and segmented image. Separate normal image into **train_imgs, valid_imgs** and segmented image into arrays **train_masks, valid_masks**.
 
 ```python
 train_folder="/kaggle/input/cityscapes-image-pairs/cityscapes_data/cityscapes_data/train/"
@@ -63,15 +62,15 @@ train_imgs,train_masks=get_images_masks(train_folder)
 valid_imgs,valid_masks=get_images_masks(valid_folder)
 ```
 
-## Network Architecture
+### Network Architecture
 
 A simple PSPNet architecture with following parameters,
 
 **Module b** constructed with 3 layers of Residual blocks with Dilation Convolutions outputs **256 feature maps**.
 
-**Module C** defined with **pool_sizes GlobalAveragePooling, (2*2), (4*4), (8\*8)** and for **Upsampling, bilinear_interpolation** used. Each **256 pooled feature maps** are reduced to **64 feature maps** combining **512 feature maps total**.
+**Module C** defined with **pool_sizes GlobalAveragePooling, \(2**_**2\), \(4**_**4\), \(8\*8\)** and for **Upsampling, bilinear_interpolation** used. Each **256 pooled feature maps** are reduced to **64 feature maps** combining **512 feature maps total**.
 
-**Module D** is simply a convolution layer of 512 feature maps output **(256,256,3) dimensional feature maps** which are **flattened** into a single array of size (256*256*3).
+**Module D** is simply a convolution layer of 512 feature maps output **\(256,256,3\) dimensional feature maps** which are **flattened** into a single array of size \(256_256_3\).
 
 ```python
 def conv_block(X,filters,block):
@@ -147,6 +146,6 @@ def last_conv_module(input_layer):
     return X
 ```
 
-## Reference
+### Reference
 
-https://medium.com/analytics-vidhya/semantic-segmentation-in-pspnet-with-implementation-in-keras-4843d05fc025
+[https://medium.com/analytics-vidhya/semantic-segmentation-in-pspnet-with-implementation-in-keras-4843d05fc025](https://medium.com/analytics-vidhya/semantic-segmentation-in-pspnet-with-implementation-in-keras-4843d05fc025)

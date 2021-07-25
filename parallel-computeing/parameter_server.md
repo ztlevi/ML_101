@@ -1,3 +1,5 @@
+# Parameter Server
+
 ## Parameter Server Architecture
 
 ![parallel_computing_client_server](../.gitbook/assets/parallel_computing_client_server.png)

@@ -1,3 +1,5 @@
+# DBSCAN
+
 ## Outlier Detection for a 2D Feature Space in Python \(DBSCAN\)
 
 ### How to detect outliers using plotting and clustering techniques to analyze the dependency of two features

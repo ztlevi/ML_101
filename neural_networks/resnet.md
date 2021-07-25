@@ -1,3 +1,5 @@
+# Resnet
+
 Increasing network depth does not work by simply stacking layers together. Deep networks are hard to train because of the notorious vanishing gradient problem-as the gradient is back-propagated to earlier layers, repeated multiplication may make the gradient infinitively small. As a result, as the network goes deeper, its performance gets saturated or even starts degrading rapidly.
 
 The authors argues that stacking layers shouldn't degrade the network performance, because we could simply stack identity mappings \(layer that doesn't do anything\) upon the current network, and the resulting architecture would perform the same. This indicates that the deeper model should not produce a training error higher than its shallower counterparts.

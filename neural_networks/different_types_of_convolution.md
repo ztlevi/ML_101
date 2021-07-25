@@ -1,3 +1,5 @@
+# Different Types of Convolution
+
 This post is copied from [Kunlun Bai's post](https://towardsdatascience.com/a-comprehensive-introduction-to-different-types-of-convolutions-in-deep-learning-669281e58215).
 
 ## Different Types of Convolution
@@ -72,7 +74,7 @@ Equivalently, we can think of this process as sliding a 3D filter matrix through
 
 Now we can see how one can make transitions between layers with different depth. Let’s say the input layer has $$D_{in}$$ channels, and we want the output layer has $$D_{out}$$ channels. What we need to do is to just apply $$D_{out}$$ filters to the input layer. Each filter has $$D_{in}$$ kernels. Each filter provides one output channel. After applying $$D_{out}$$ filters, we have $$D_{out}$$ channels, which can then be stacked together to form the output layer.
 
-![](../.gitbook/assets/conv_10.png)Standard 2D convolution. Mapping one layer with depth Din to another layer with depth Dout, by using Dout filters.
+![](../.gitbook/assets/conv_42%20%284%29.png)Standard 2D convolution. Mapping one layer with depth Din to another layer with depth Dout, by using Dout filters.
 
 ### 3. 3D Convolution
 
@@ -142,11 +144,11 @@ The transposed convolution is also known as deconvolution, or fractionally strid
 
 It is always possible to implement a transposed convolution with a direct convolution. For an example in the image below, we apply transposed convolution with a $$3 \times 3$$ kernel over a $$2 \times 2$$ input padded with a $$2 \times 2$$ border of zeros using unit strides. The up-sampled output is with size $$4 \times 4$$.
 
-![](../.gitbook/assets/conv_16.gif)Up-sampling a 2 x 2 input to a 4 x 4 output. Image is adopted from this \[link\]\(https://github.com/vdumoulin/conv\_arithmetic\).
+![](../.gitbook/assets/1*KGrCz7aav02KoGuO6znO0w.gif)Up-sampling a 2 x 2 input to a 4 x 4 output. Image is adopted from this \[link\]\([https://github.com/vdumoulin/conv\_arithmetic\](https://github.com/vdumoulin/conv_arithmetic\)\).
 
 Interestingly enough, one can map the same 2 x 2 input image to a different image size, by applying fancy padding & stride. Below, transposed convolution is applied over the same 2 x 2 input \(with 1 zero inserted between inputs\) padded with a 2 x 2 border of zeros using unit strides. Now the output is with size 5 x 5.
 
-![](../.gitbook/assets/conv_17.gif)Up-sampling a 2 x 2 input to a 5 x 5 output. Image is adopted from this \[link\]\(https://github.com/vdumoulin/conv\_arithmetic\).
+![](../.gitbook/assets/conv_17.gif)Up-sampling a 2 x 2 input to a 5 x 5 output. Image is adopted from this \[link\]\([https://github.com/vdumoulin/conv\_arithmetic\](https://github.com/vdumoulin/conv_arithmetic\)\).
 
 Viewing transposed convolution in the examples above could help us build up some intuitions. But to generalize its application, it is beneficial to look at how it is implemented through matrix multiplication in computer. From there, we can also see why “transposed convolution” is an appropriate name.
 
@@ -168,7 +170,7 @@ The general arithmetic for transposed convolution can be found from Relationship
 
 One unpleasant behavior that people observe when using transposed convolution is the so-called checkerboard artifacts.
 
-![](../.gitbook/assets/conv_20.png)A few examples of checkerboard artifacts. Images are adopted from this \[paper\]\(https://distill.pub/2016/deconv-checkerboard/\).
+![](../.gitbook/assets/conv_20.png)A few examples of checkerboard artifacts. Images are adopted from this \[paper\]\([https://distill.pub/2016/deconv-checkerboard/\](https://distill.pub/2016/deconv-checkerboard/\)\).
 
 The [paper](https://distill.pub/2016/deconv-checkerboard) “Deconvolution and Checkerboard Artifacts” has an excellent description about this behavior. Please check out this article for more details. Here, I just summarize a few key points.
 
@@ -178,11 +180,11 @@ In the image below, the layer on the top is the input layer, and the layer on th
 
 In the example \(a\), the stride is 1 and the filer size is 2. As outlined in red, the first pixel on the input maps to the first and second pixels on the output. As outlined in green, the second pixel on the input maps to the second and the third pixels on the output. The second pixel on the output receives information from both the first and the second pixels on the input. Overall, the pixels in the middle portion of the output receive same amount of information from the input. Here exist a region where kernels overlapped. As the filter size is increased to 3 in the example \(b\), the center portion that receives most information shrinks. But this may not be a big deal, since the overlap is still even. The pixels in the center portion of the output receive same amount of information from the input.
 
-![](../.gitbook/assets/conv_21.png)The image is adopted and modified from the paper \(\[link\]\(https://distill.pub/2016/deconv-checkerboard/\)\).
+![](../.gitbook/assets/conv_21.png)The image is adopted and modified from the paper \(\[link\]\([https://distill.pub/2016/deconv-checkerboard/\)\](https://distill.pub/2016/deconv-checkerboard/%29\)\).
 
 Now for the example below, we change stride = 2. In the example \(a\) where filter size = 2, all pixels on the output receive same amount of information from the input. They all receive information from a single pixel on the input. There is no overlap of transposed convolution here.
 
-![](../.gitbook/assets/conv_22.png)The image is adopted and modified from the paper \(\[link\]\(https://distill.pub/2016/deconv-checkerboard/\)\).
+![](../.gitbook/assets/conv_22.png)The image is adopted and modified from the paper \(\[link\]\([https://distill.pub/2016/deconv-checkerboard/\)\](https://distill.pub/2016/deconv-checkerboard/%29\)\).
 
 If we change the filter size to 4 in the example \(b\), the evenly overlapped region shrinks. But still, one can use the center portion of the output as the valid output, where each pixel receives the same amount of information from the input.
 
@@ -316,7 +318,7 @@ Is there any drawback of using depthwise separable convolutions? Sure, there are
 
 The flattened convolution was introduced in the [paper](https://arxiv.org/abs/1412.5474) “[Flattened convolutional neural networks for feedforward acceleration](https://arxiv.org/abs/1412.5474)”. Intuitively, the idea is to apply filter separation. Instead of applying one standard convolution filter to map the input layer to an output layer, we separate this standard filter into 3 1D filters. Such idea is similar as that in the spatial separable convolution described above, where a spatial filter is approximated by two rank-1 filters.
 
-![](../.gitbook/assets/conv_40.png)The image is adopted from the \[paper\]\(https://arxiv.org/abs/1412.5474\).
+![](../.gitbook/assets/conv_40.png)The image is adopted from the \[paper\]\([https://arxiv.org/abs/1412.5474\](https://arxiv.org/abs/1412.5474\)\).
 
 One should notice that if the standard convolution filter is a rank-1 filter, such filter can always be separated into cross-products of three 1D filters. But this is a strong condition and the intrinsic rank of the standard filter is higher than one in practice. As pointed out in the [paper](https://arxiv.org/abs/1412.5474) “As the difficulty of classification problem increases, the more number of leading components is required to solve the problem... Learned filters in deep networks have distributed eigenvalues and applying the separation directly to the filters results in significant information loss.”
 
@@ -326,7 +328,7 @@ To alleviate such problem, the [paper](https://arxiv.org/abs/1412.5474) restrict
 
 Grouped convolution was introduced in the AlexNet paper \([link](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)\) in 2012. The main reason of implementing it was to allow the network training over two GPUs with limited memory \(1.5 GB memory per GPU\). The AlexNet below shows two separate convolution paths at most of the layers. It’s doing model-parallelization across two GPUs \(of course one can do multi-GPUs parallelization if more GPUs are available\).
 
-![](../.gitbook/assets/conv_41.png)This image is adopted from the AlexNet \[paper\]\(https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf\).
+![](../.gitbook/assets/conv_41.png)This image is adopted from the AlexNet \[paper\]\([https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf\](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf\)\).
 
 Here we describe how the grouped convolutions work. First of all, conventional 2D convolutions follow the steps showing below. In this example, the input layer of size \(7 x 7 x 3\) is transformed into the output layer of size \(5 x 5 x 128\) by applying 128 filters \(each filter is of size 3 x 3 x 3\). Or in general case, the input layer of size \($$H_{in} \times W_{in} \times D_{in}$$\) is transformed into the output layer of size \($$H_{out} \times W_{out} \times D_{out}$$\) by applying $$D_{out}$$ kernels \(each is of size $$h \times w \times D_{in}$$\).
 
@@ -350,7 +352,7 @@ There are a few advantages of doing grouped convolution.
 
 The grouped convolutions become important for training very deep neural nets, as in the ResNeXt shown below
 
-![](../.gitbook/assets/conv_44.png)The image is adopted from the ResNeXt \[paper\]\(https://arxiv.org/abs/1611.05431\).
+![](../.gitbook/assets/conv_44.png)The image is adopted from the ResNeXt \[paper\]\([https://arxiv.org/abs/1611.05431\](https://arxiv.org/abs/1611.05431\)\).
 
 **The second advantage** is the model is more efficient, i.e. the model parameters decrease as number of filter group increases. In the previous examples, filters have h x w x $$D_{in}$$ x $$D_{out}$$ parameters in a nominal 2D convolution. Filters in a grouped convolution with 2 filter groups has \($$h \times w \times D_{in}/2 \times D_{out}/2) \times 2$$ parameters. The number of parameters is reduced by half.
 
@@ -358,15 +360,15 @@ The grouped convolutions become important for training very deep neural nets, as
 
 The reason links to the sparse filter relationship. The image below is the correlation across filters of adjacent layers. The relationship is sparse.
 
-![](../.gitbook/assets/conv_45.png)The correlation matrix between filters of adjacent layers in a Network-in-Network model trained on CIFAR10. Pairs of highly correlated filters are brighter, while lower correlated filters are darker. The image is adopted from this \[article\]\(https://blog.yani.io/filter-group-tutorial/\).
+![](../.gitbook/assets/conv_45.png)The correlation matrix between filters of adjacent layers in a Network-in-Network model trained on CIFAR10. Pairs of highly correlated filters are brighter, while lower correlated filters are darker. The image is adopted from this \[article\]\([https://blog.yani.io/filter-group-tutorial/\](https://blog.yani.io/filter-group-tutorial/\)\).
 
 How about the correlation map for grouped convolution?
 
-![](../.gitbook/assets/conv_46.png)The correlations between filters of adjacent layers in a Network-in-Network model trained on CIFAR10, when trained with 1, 2, 4, 8 and 16 filter groups. The image is adopted from this \[article\]\(https://blog.yani.io/filter-group-tutorial/\).
+![](../.gitbook/assets/conv_46.png)The correlations between filters of adjacent layers in a Network-in-Network model trained on CIFAR10, when trained with 1, 2, 4, 8 and 16 filter groups. The image is adopted from this \[article\]\([https://blog.yani.io/filter-group-tutorial/\](https://blog.yani.io/filter-group-tutorial/\)\).
 
 The image above is the correlation across filters of adjacent layers, when the model is trained with 1, 2, 4, 8, and 16 filter groups. The article proposed one reasoning \([link](https://blog.yani.io/filter-group-tutorial/)\): “The effect of filter groups is to learn with a block-diagonal structured sparsity on the channel dimension... the filters with high correlation are learned in a more structured way in the networks with filter groups. In effect, filter relationships that don’t have to be learned are on longer parameterized. In reducing the number of parameters in the network in this salient way, it is not as easy to over-fit, and hence a regularization-like effect allows the optimizer to learn more accurate, more efficient deep networks.”
 
-![](../.gitbook/assets/conv_47.png)AlexNet conv1 filter separation: as noted by the authors, filter groups appear to structure learned filters into two distinct groups, black-and-white and color filters. The image is adopted from the AlexNet \[paper\]\(https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf\).
+![](../.gitbook/assets/conv_47.png)AlexNet conv1 filter separation: as noted by the authors, filter groups appear to structure learned filters into two distinct groups, black-and-white and color filters. The image is adopted from the AlexNet \[paper\]\([https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf\](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf\)\).
 
 In addition, each filter group learns a unique representation of the data. As noticed by the authors of the AlexNet, filter groups appear to structure learned filters into two distinct groups, black-white filter and color filters.
 
