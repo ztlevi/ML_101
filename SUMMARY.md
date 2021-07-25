@@ -17,6 +17,7 @@
 ## Classical Machine Learning
 
 * [Basics](classical-machine-learning/classical-ml.md)
+* [Unsupervised Learning](classical-machine-learning/unsupervised-learning.md)
 
 ## Neural Networks
 
