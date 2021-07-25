@@ -45,6 +45,8 @@
   - [RNN](nlp/rnn.md)
   - [LSTM](nlp/lstm.md)
   - [LSTM Ext.](nlp/lstm_ext.md)
+  - [RNN for text prediction](nlp/rnn_for_text_prediction.md)
+  - [Seq2Seq](nlp/seq2seq.md)
 - [Parallel Computeing](parallel-computeing/README.md)
   - [Communication](parallel-computeing/communication.md)
   - [MapReduce](parallel-computeing/sync_mapreduce.md)

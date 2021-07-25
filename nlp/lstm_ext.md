@@ -78,3 +78,10 @@ model.add(Dense(1, activation='sigmoid'))
 | dense_1 (Dense)               | (None, 1)       | 65     |
 
 Total params: 336,705 Trainable params: 336,705 Non-trainable params: 0
+
+## Summary
+
+- SimpleRNN and LSTM are two kinds of RNNs; always use LSTM instead of SimpleRNN.
+- Use Bi-RNN instead of RNN whenever possible.
+- Stacked RNN may be better than a single RNN layer (if n is big).
+- Pretrain the embedding layer (if n is small).
