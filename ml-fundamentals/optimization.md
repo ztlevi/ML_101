@@ -54,7 +54,7 @@ $$
 dX = W^T \cdot dD
 $$
 
-## Backpropagation
+## Back propagation
 
 [https://ml-cheatsheet.readthedocs.io/en/latest/backpropagation.html](https://ml-cheatsheet.readthedocs.io/en/latest/backpropagation.html)
 
