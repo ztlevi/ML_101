@@ -37,6 +37,21 @@ model.add(Dense(1, activation='sigmoid'))
 model.summary()
 ```
 
+| Layer (type)             | Output Shape        | Param  |
+| ------------------------ | ------------------- | ------ |
+| embedding_2 (Embedding)  | (None, 500, 32)     | 320000 |
+| simple_rnn_2 (SimpleRNN) | **(None, 500, 32)** | 2080   |
+| flatten_2 (Flatten)      | (None, 16000)       | 0      |
+| dense_2 (Dense)          | (None, 1)           | 16001  |
+
+Total params: 338,081
+
+Trainable params: 338,081
+
+Non-trainable params: 0
+
+> Note: without `return_sequence=True`, `simple_rnn_2 (SimpleRNN)` output shape will be (None, 32)
+
 ### Summary
 
 - RNN for text, speech and time series data
