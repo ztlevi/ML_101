@@ -16,6 +16,27 @@ All recurrent neural networks have the form of a chain of repeating modules of n
 
 - $$h_{t} = f(h_{t-1}, x_{t}; \theta)$$, where the current hidden state $$h_{t}$$ is a function $$f$$ of the previous hidden state and $$h_{t - 1}$$ the current input $$x_{t}$$. The are $$\theta$$ the parameters of the function $$f$$.
 
+### Simple RNN for IMDB review
+
+```python
+from keras.models import Sequential
+from keras.layers import SimpleRNN, Embedding, Dense
+
+vocabulary = 10000
+embedding_dim = 32
+word_num = 500
+state_dim = 32
+
+model = Sequential()
+model.add(Embedding(vocabulary, embedding_dim, input_length=word_num))
+# return_sequences=True will return all the states h1, ..., ht
+model.add(SimpleRNN(state_dim, return_sequences=True))
+model.add(Flatten())
+model.add(Dense(1, activation='sigmoid'))
+
+model.summary()
+```
+
 ### Summary
 
 - RNN for text, speech and time series data
