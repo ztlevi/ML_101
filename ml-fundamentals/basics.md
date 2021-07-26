@@ -114,9 +114,9 @@ A Loss Functions tells us "how good" our model is at making predictions for a gi
 
 Smooth L1 loss that is less sensitive to outliers than the L2 loss used in R-CNN and SPPne.
 
-### cross-entropy
+### Cross Entropy
 
-If M&gt;2 \(i.e. multiclass classification\), we calculate a separate loss for each class label per observation and sum the result. Usually an activation function \(Sigmoid / Softmax\) is applied to the scores before the CE Loss computation.
+If M&gt;2 \(i.e. multi-class classification\), we calculate a separate loss for each class label per observation and sum the result. Usually an activation function \(Sigmoid / Softmax\) is applied to the scores before the CE Loss computation.
 
 $$
 -\sum_{c=1}^M y_{o,c}log(p_{o,c})
@@ -129,17 +129,17 @@ $$
 > 3. y - binary indicator \(0 or 1\) if class label c is the correct classification for observation o
 > 4. p - predicted probability observation o is of class c
 
-### Why CE?
+### Why Cross Entropy?
 
 * During back-propagation training, you want to drive output node values to either 1.0 or 0.0 depending on the target values.
 * If you use MSE, the weight adjustment factor \(the gradient\) contains a term of \(output\) _\(1 – output\). As the computed output gets closer and closer to either 0.0 or 1.0 the value of \(output\)_ \(1 – output\) gets smaller and smaller.
 * For example, if output = 0.6 then \(output\) _\(1 – output\) = 0.24 but if output is 0.95 then \(output\)_ \(1 – output\) = 0.0475.
 * As the adjustment factor gets smaller and smaller, the change in weights gets smaller and smaller and training can stall out, so to speak.
-* But if you use cross-entropy error, the \(output\) \* \(1 – output\) term goes away \(the math is very cool\). So, the weight changes don’t get smaller and smaller and so training isn’t s likely to stall out.
+* But if you use cross-entropy error, the \(output\) \* \(1 – output\) term goes away \(the math is very cool\). So, the weight changes don’t get smaller and smaller, and so training isn’t s likely to stall out.
 
 from [this blog](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-use-cross-entropy-error-instead-of-classification-error-or-mean-squared-error-for-neural-network-classifier-training/)
 
-## Non maximal supression
+## Non-maximal suppression
 
 ### Codes
 
@@ -150,7 +150,7 @@ from [this blog](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-
 
 ## Image interpolation
 
-* Nearest Neighbour
+* Nearest Neighbor
 * Bilinear
 * Bicubic
 
@@ -166,7 +166,7 @@ from [this blog](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-
 
 ### Proportionate Stratified Random Sampling
 
-The sample size of each stratum in this technique is proportionate to the population size of the stratum when viewed against the entire population. This means that the each stratum has the same sampling fraction.
+The sample size of each stratum in this technique is proportionate to the population size of the stratum when viewed against the entire population. This means that each stratum has the same sampling fraction.
 
 For example, you have 3 strata with 100, 200 and 300 population sizes respectively. And the researcher chose a sampling fraction of ½. Then, the researcher must randomly sample 50, 100 and 150 subjects from each stratum respectively.
 
@@ -182,13 +182,13 @@ The important thing to remember in this technique is to use the same sampling fr
 
 The only difference between proportionate and disproportionate stratified random sampling is their sampling fractions. With disproportionate sampling, the different strata have different sampling fractions.
 
-The precision of this design is highly dependent on the sampling fraction allocation of the researcher. If the researcher commits mistakes in allotting sampling fractions, a stratum may either be overrepresented or underrepresented which will result in skewed results.
+The precision of this design is highly dependent on the sampling fraction allocation of the researcher. If the researcher commits mistakes in allotting sampling fractions, a stratum may either be overrepresented or underrepresented, which will result in skewed results.
 
 ## Kalman Filter
 
 * Kalman filter helps us to obtain more reliable estimates from a sequence of observed measurements.
 * We make a prediction of a state, based on some previous values and model to get $$X_k'$$ and $$P_k$$
-* We obtain the measurement of that state, from sensor.
+* We obtain the measurement of that state, from the sensor.
 * We update our prediction, based on our errors
 * Repeat.
 

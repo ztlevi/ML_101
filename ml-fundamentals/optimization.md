@@ -36,7 +36,7 @@ $$
 J(\theta_0, \theta_1,...,\theta_n) = \frac{1}{2m}\sum_{i=1}^{m}(h_{\theta}(x^i) - y^i)^2
 $$
 
-Then we need to calculate the partial deriative of the cost function with respect to the each $$\theta$$, from 0 to n.
+Then we need to calculate the partial derivative of the cost function with respect to each $$\theta$$, from 0 to n.
 
 Then we can simultaneously update the $$\theta_j = \theta_j - \alpha\frac{}{\theta_j}J(\theta_0, \theta_1,...,\theta_n)$$
 
@@ -58,17 +58,17 @@ $$
 
 [https://ml-cheatsheet.readthedocs.io/en/latest/backpropagation.html](https://ml-cheatsheet.readthedocs.io/en/latest/backpropagation.html)
 
-A neural network propagates the signal of the input data forward through its parameters towards the moment of decision, and then backpropagates information about the error through the network so that it can alter the parameters one step at a time.
+A neural network propagates the signal of the input data forward through its parameters towards the moment of decision, and then back propagates information about the error through the network so that it can alter the parameters one step at a time.
 
 ### Chain Rule
 
-As seen above, foward propagation can be viewed as a long series of nested equations. If you think of feed forward this way, then backpropagation is merely an application the Chain rule to find the Derivatives of cost with respect to any variable in the nested equation. Given a forward propagation function:
+As seen above, forward propagation can be viewed as a long series of nested equations. If you think of feed forward this way, then back propagation is merely an application the Chain rule to find the Derivatives of cost with respect to any variable in the nested equation. Given a forward propagation function:
 
 $$
 f(x) = A(B(C(x)))
 $$
 
-A, B, and C are activation functions at different layers. Using the chain rule we easily calculate the derivative of $$f(x)$$ with respect to $$x$$:
+A, B, and C are activation functions at different layers. Using the chain rule, we easily calculate the derivative of $$f(x)$$ with respect to $$x$$:
 
 $$
 f'(x) = f'(A) \cdot A'(B) \cdot B'(C) \cdot C'(x)
@@ -130,7 +130,7 @@ for i in range(nb_epochs):
 
 Stochastic gradient descent \(SGD\) in contrast performs a parameter update for each training example $$x^i$$ and label $$y^i$$. Note that we shuffle the training data at every epoch.
 
-SGD performs frequent updates with a high variance that cause the objective function to fluctuate heavily as in Image 1.
+SGD performs frequent updates with a high variance that cause the objective function to fluctuate heavily, as in Image 1.
 
 ![img](../.gitbook/assets/sgd_fluctuation.png)
 
@@ -159,7 +159,7 @@ for i in range(nb_epochs):
 
 ## SGD momentum
 
-Momentum is a mehod that helps accelerate SGD in the relevant direction and dampends oscillations seen in the image below.
+Momentum is a method that helps accelerate SGD in the relevant direction and dampends oscillations seen in the image below.
 
 ![](../.gitbook/assets/sgd_momentum.png)
 
@@ -171,11 +171,11 @@ $$
 \theta=\theta - m_t
 $$
 
-Essentially, when using momentum, we push a ball down a hill. The ballaccumulates momentum as it rolls downhill, becoming faster and faster onthe way \(until it reaches its terminal velocity if there is air resistance, i.e. $$\gamma<1$$\). The same thing happens to our parameter updates: The momentumterm increases for dimensions whose gradients point in the same directionsand reduces updates for dimensions whose gradients change directions. Asa result, we gain **faster convergence** and **reduced oscillation**.
+Essentially, when using momentum, we push a ball down a hill. The ball accumulates momentum as it rolls downhill, becoming faster and faster on the way \(until it reaches its terminal velocity if there is air resistance, i.e. $$\gamma<1$$\). The same thing happens to our parameter updates: The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. As a result, we gain **faster convergence** and **reduced oscillation**.
 
 ## ADAM
 
-Adaptive Moment Estimation \(ADAM\) is a method that **computes adaptive learning rate** for each parameter. In addition to storing an exponentially decaying averagae of past squared gradients $$v_t$$ like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients $$m_t$$, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
+Adaptive Moment Estimation \(ADAM\) is a method that **computes adaptive learning rate** for each parameter. In addition to storing an exponentially decaying average of past squared gradients $$v_t$$ like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients $$m_t$$, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
 
 1. $$m_t$$ and $$v_t$$ are estimates of the first moment \(the mean\) and the second moment \(the uncentered variance\) of the gradients respectively.
 
