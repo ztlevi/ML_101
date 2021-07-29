@@ -10,7 +10,7 @@ Assume $$X = \{x_1, x_2,...,x_n\}$$ is a sample follow independent and identical
 
 $$\hat \theta_{MLE} = maximize P(\theta ; X) \approx maximize (logP(\theta ; X)) = minimize ( -logP(\theta ; X))$$,
 
-* Deep Learning uses MLE for we do not know the **real distribution of the dataset**
+* Deep Learning uses MLE. We do not know the **real distribution of the dataset**
 
 ### Maximum A Posteriori
 
@@ -38,7 +38,7 @@ $$
 
 Then we need to calculate the partial derivative of the cost function with respect to each $$\theta$$, from 0 to n.
 
-Then we can simultaneously update the $$\theta_j = \theta_j - \alpha\frac{}{\theta_j}J(\theta_0, \theta_1,...,\theta_n)$$
+Then we can simultaneously update the $$\theta_j = \theta_j - \alpha\frac{\partial J(\theta_0, \theta_1,...,\theta_n)}{\partial \theta_j}$$
 
 ### derivative of a matrix-matrix product
 
