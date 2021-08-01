@@ -7,7 +7,7 @@
 ![img](../.gitbook/assets/1*xwtSpR_zg7j7zusa4IDHNQ.png)
 
 * Bias is the difference between the average prediction of our model and the correct value which we are trying to predict.
-* Variance is the variability of model prediction for a given data point or a value which tells us spread of our data. Model with high variance pays a lot of attention to training data and does not generalize on the data which it hasn’t seen before.
+* Variance is the variability of model prediction for a given data point, or a value which tells us the spread of our data. Model with high variance pays a lot of attention to training data and does not generalize on the data which it hasn’t seen before.
 
 ### Trade-Off
 
@@ -18,7 +18,7 @@
 
 ![tradeoff](../.gitbook/assets/bias-variance-total-error.jpg)
 
-Predictive models have a tradeoff between **bias** \(how well the model fits the data\) and **variance** \(how much the model changes based on changes in the inputs\).
+Predictive models have a trade-off between **bias** \(how well the model fits the data\) and **variance** \(how much the model changes based on changes in the inputs\).
 
 _Simpler models_ are stable \(low variance\) but they don't get close to the truth \(high bias\).
 
@@ -63,7 +63,7 @@ Some algorithms have built-in feature selection.
 
 For those that don't, you can manually improve their generalizability by removing irrelevant input features.
 
-An interesting way to do so is to tell a story about how each feature fits into the model. This is like the data scientist's spin on software engineer's [rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging) technique, where they debug their code by explaining it, line-by-line, to a rubber duck.
+An interesting way to do so is to tell a story about how each feature fits into the model. This is like the data scientist's spin on the software engineer's [rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging) technique, where they debug their code by explaining it, line-by-line, to a rubber duck.
 
 If anything doesn't make sense, or if it's hard to justify certain features, this is a good way to identify them.
 
@@ -93,7 +93,7 @@ $$
 L(x,y) = \sum_{i=1}^n(y_i - h_{\theta}(x_i))^2 + \lambda \sum_{i=1}^n |\theta_i|
 $$
 
-In L1 regularization we penalize the absolute value of the weights.
+In L1 regularization, we penalize the absolute value of the weights.
 
 #### L2 Regularization or Ridge Regularization
 
@@ -107,11 +107,11 @@ In L2 regularization, regularization term is the sum of square of all feature we
 
 * **Computational Efficiency**: \(L2 &gt; L1\) L2 have analytical solution while L1 is computational inefficient on non-sparse cases
 * **Sparsity**: \(L1 &gt; L2\) refers to that only very few entries in a matrix \(or vector\) is non-zero. L1-norm has the property of producing many coefficients with zero values or very small values with few large coefficients.
-* **Built-in feature selection for L1**: L1-norm tends to produces sparse coefficients, so that L1 can penalize the coefficients toward 0.
+* **Built-in feature selection for L1**: L1-norm tends to produce sparse coefficients, so that L1 can penalize the coefficients toward 0.
 
-  ![enter image description here](../.gitbook/assets/cmWO0.png)
+![enter image description here](../.gitbook/assets/cmWO0.png)
 
-  ![enter image description here](../.gitbook/assets/Mkclz.png)
+![enter image description here](../.gitbook/assets/Mkclz.png)
 
 From the figure, we can find out that for L1, the gradient is either 1 or -1, except for when $$w_{1}=0$$, however, for the same $$\lambda$$, it is possible that the weight for L2 norm will never reach zero for the gradient of the weight is also very small, which may result in a smaller penalty for the weight.
 
@@ -121,14 +121,14 @@ From the figure, we can find out that for L1, the gradient is either 1 or -1, ex
 
 * Plot λ vs.
   * $$J_{ train }$$
-    * When λ is small you get a small value \(regularization basically goes to 0\)
+    * When λ is small, you get a small value \(regularization basically goes to 0\)
     * When λ is large you get a large vale corresponding to high bias
   * $$J_{ cv }$$
-    * When λ is small we see high variance
+    * When λ is small, we see high variance
       * Too small a value means we over fit the data
     * When λ is large we end up underfitting, so this is bias
       * So cross validation error is high
-* Such a plot can help show you you're picking a good value for λ
+* Such a plot can help show, you're picking a good value for λ
 
 #### DropOut \(Regularization technique\)
 
