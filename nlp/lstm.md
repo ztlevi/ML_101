@@ -80,10 +80,10 @@ model.add(Dense(1, activation='sigmoid')
 model.summary()
 ```
 
-- Shapes
-  - The output shape of the Embedding layer is \(?, 500, 32\).
-  - $$C_t$$: \(?, 100\)
-  - $$h_t$$: \(?, 100\)
+* Shapes
+  * The output shape of the Embedding layer is \(?, 500, 32\).
+  * $$C_t$$: \(?, 100\)
+  * $$h_t$$: \(?, 100\)
 
 The calculation for forget gate $$f_{t} = \sigma(W_f \cdot [h_{t-1}, x_{t}] + b_{f})$$ is composed of:
 
@@ -93,11 +93,12 @@ $$
 
 ## Summary
 
-- LSTM uses a "conveyor belt" to get longer memory than SimpleRNN.
-- Each of the following blocks has a parameter matrix:
-- Forget gate.
-- Input gate.
-- New values.
-- Output gate.
-- Number of parameters:
-- $$4 \times shape(h) \times [shape(h)+shape(x)]$$
+* LSTM uses a "conveyor belt" to get longer memory than SimpleRNN.
+* Each of the following blocks has a parameter matrix:
+* Forget gate.
+* Input gate.
+* New values.
+* Output gate.
+* Number of parameters:
+* $$4 \times shape(h) \times [shape(h)+shape(x)]$$
+

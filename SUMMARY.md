@@ -64,6 +64,7 @@
 * [LSTM Ext.](nlp/lstm_ext.md)
 * [RNN for text prediction](nlp/rnn_for_text_prediction.md)
 * [Seq2Seq](nlp/seq2seq.md)
+* [Attention](nlp/attention.md)
 
 ## Parallel Computing
 
