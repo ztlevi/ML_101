@@ -13,7 +13,7 @@ The final state is incapable of remembering a long sequence
 * With attention, the decoder knows where to focus.
 * Downside: much more computation.
 
-### SimpleRNN + Attention
+### Simple RNN + Attention
 
 ![](../.gitbook/assets/screen-shot-2021-08-02-at-9.58.24-pm%20%282%29.png)
 
