@@ -63,18 +63,23 @@ Details from [here](https://weberna.github.io/blog/2017/11/15/LSTM-Vanishing-Gra
 
 * LSTM for IMDB review
 
-  ```python
-  from keras.models import Sequential
-  from keras.layers import LSTM, Embedding, Dense, Flatten
-  ```
+```python
+from keras.models import Sequential
+from keras.layers import LSTM, Embedding, Dense, Flatten
 
-vocabulary = 10000 embedding\_dim = 32 word\_num = 500 state\_dim = 32
+vocabulary = 10000
+embedding_dim = 32
+word_num = 500
+state_dim = 32
 
-model = Sequential\(\) model.add\(Embedding\(vocabulary, embedding\_dim, input\_length=word\_num\)\) model.add\(LSTM\(state\_dim, return\_sequences=False, dropout=0.2\)\) model.add\(Dense\(1, activation='sigmoid'\)\)
+model = Sequential()
+model.add(Embedding(vocabulary, embedding_dim, input_length=word_num)
+model.add(LSTM(state_dim, return_sequences=False, dropout=0.2)
+model.add(Dense(1, activation='sigmoid')
 
-model.summary\(\)
+model.summary()
+```
 
-```text
 - Shapes
   - The output shape of the Embedding layer is \(?, 500, 32\).
   - $$C_t$$: \(?, 100\)
@@ -96,5 +101,3 @@ $$
 - Output gate.
 - Number of parameters:
 - $$4 \times shape(h) \times [shape(h)+shape(x)]$$
-```
-
