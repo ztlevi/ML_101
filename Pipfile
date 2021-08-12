@@ -8,13 +8,12 @@ pdbpp = "*"
 black = "*"
 
 [packages]
-torch = "*"
-torchvision = "*"
 numpy = "*"
 pandas = "*"
 matplotlib = "*"
 jupyter = "*"
 tqdm = "*"
+pdbpp = "*"
 
 [requires]
 python_version = "3.8"

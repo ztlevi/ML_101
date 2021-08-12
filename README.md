@@ -14,5 +14,7 @@ All codes are available over [here](https://github.com/ztlevi/ML_101/tree/master
 pip3 install pipenv
 pipenv install
 pipenv shell
+# You will need to define the OS torch using, so prefer pip to install
+pip3 install torch torchvision
 ```
 
