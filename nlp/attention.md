@@ -23,7 +23,7 @@ There are two options to calculate weight: $$\alpha_i = align(h_i, s_0)$$
 
 ![](../.gitbook/assets/screen-shot-2021-08-02-at-10.00.41-pm%20%282%29%20%282%29.png)
 
-Then normalize $$\tilde\alpha_1, ..., \tilde\alpha_m$$ \(so taht they sum to 1\):
+Then normalize $$\tilde\alpha_1, ..., \tilde\alpha_m$$ \(so that they sum to 1\):
 
 * $$[\tilde\alpha_1,...,\tilde\alpha_m] = Softmax([\tilde\alpha_1, ..., \tilde\alpha_m])$$
 

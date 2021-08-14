@@ -31,7 +31,7 @@ Partition the data among worker nodes. \(A node has a subset of data.\)
 
 * Broadcast: Server broadcast the up-to-date parameters $$w_t$$ o workers.
 * Map: Workers do computation locally.
-  * Map $$(x_i,y_i,w_t)$$ to $$g_i=(x_i^T w_t-yi)xi$$.
+  * Map $$(x_i,y_i,w_t)$$ to $$g_i=(x_i^T w_t-yi)x_i$$.
   * Obtain $$n$$ vectors: $$g_1, g_2,g_3,...,g_n$$
 * Reduce: Compute the sum: $$g=\sum_{i=1}^{n}g_i$$
 * Every worker sums all the $${g_i}$$ stored in its local memory to get a vector.
