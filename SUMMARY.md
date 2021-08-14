@@ -66,6 +66,7 @@
 * [Seq2Seq](nlp/seq2seq.md)
 * [Attention](nlp/attention.md)
 * [Self Attention](nlp/self-attention.md)
+* [Untitled](nlp/untitled.md)
 
 ## Parallel Computing
 

@@ -28,3 +28,7 @@ Calculate Weights: $$\alpha_i=align(h_i, h_2)$$
 
 ![self attention focus](../.gitbook/assets/screen-shot-2021-08-14-at-5.20.08-pm.png)
 
+## Reference
+
+* Cheng, Dong, & Lapata. Long Short-Term Memory-Networks for Machine Reading. In EMNLP, 2016.
+
