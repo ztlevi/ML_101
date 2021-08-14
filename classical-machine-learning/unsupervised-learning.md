@@ -8,7 +8,7 @@ t-Distributed Stochastic Neighbor Embedding \(t-SNE\) is a technique for dimensi
 
 ​[https://github.com/ztlevi/t-sne-python/blob/master/tsne.py](https://github.com/ztlevi/t-sne-python/blob/master/tsne.py)
 
-### Principal Component Analysis
+### Principal Component Analysis \(PCA\)
 
 Statistical procedure that uses an **orthogonal transformation** to convert a set of observations of possibly **correlated variables** \(entities each of which takes on various numerical values\) into a set of values of **linearly uncorrelated variables** called **principal components**.
 

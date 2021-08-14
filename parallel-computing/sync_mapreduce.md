@@ -9,7 +9,7 @@
 * Apache Hadoop is an open-source implementation of MapReduce.
 * Apache Spark is an improved open-source MapReduce.
 
-### Broadcase
+### Broadcast
 
 ![mapreduce-1](../.gitbook/assets/mapreduce-1.png)
 

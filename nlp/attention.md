@@ -4,7 +4,7 @@
 
 The final state is incapable of remembering a long sequence
 
-![](../.gitbook/assets/screen-shot-2021-08-02-at-9.39.28-pm.png)
+![](../.gitbook/assets/screen-shot-2021-08-02-at-9.39.28-pm%20%281%29.png)
 
 ### Seq2Seq Model with Attention
 
@@ -15,13 +15,13 @@ The final state is incapable of remembering a long sequence
 
 ### Simple RNN + Attention
 
-![](../.gitbook/assets/screen-shot-2021-08-02-at-9.58.24-pm%20%282%29.png)
+![](../.gitbook/assets/screen-shot-2021-08-02-at-9.58.24-pm%20%282%29%20%282%29.png)
 
 There are two options to calculate weight: $$\alpha_i = align(h_i, s_0)$$
 
 #### Option1: \(Used in original paper\)
 
-![](../.gitbook/assets/screen-shot-2021-08-02-at-10.00.41-pm%20%282%29.png)
+![](../.gitbook/assets/screen-shot-2021-08-02-at-10.00.41-pm%20%282%29%20%282%29.png)
 
 Then normalize $$\tilde\alpha_1, ..., \tilde\alpha_m$$ \(so taht they sum to 1\):
 
@@ -45,7 +45,7 @@ Simple RNN + Attention: $$ s_1 = tanh(A' \cdot   \begin{bmatrix} x'_1 \\ s_0 \\ 
 
 Context vector: $$c_0 = \alpha_1 h_1 + ... + \alpha_m h_m$$
 
-![](../.gitbook/assets/screen-shot-2021-08-02-at-10.37.47-pm%20%281%29.png)
+![](../.gitbook/assets/screen-shot-2021-08-02-at-10.37.47-pm%20%282%29%20%281%29.png)
 
 For next state $$s_2$$, do not use the previously calculated $$\alpha_i$$
 

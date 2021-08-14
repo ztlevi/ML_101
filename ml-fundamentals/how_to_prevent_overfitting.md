@@ -154,7 +154,7 @@ These methods both work because they effectively let you train several models at
 
 DropConnect is a generalization of DropOut because it produces even more possible models, since there are almost always more connections than units. However, you can get similar outcomes on an individual trial. For example, the DropConnect network on the right has effectively dropped Unit \#2 since all of the incoming connections have been removed.
 
-### [Batch Norm](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/General.html#batch-normalization)
+### [Batch Norm](https://ztlevi.gitbook.io/ml-101/ml-fundamentals/basics#batch-normalization)
 
 ### Ensembling
 
@@ -162,13 +162,13 @@ Ensembles are machine learning methods for combining predictions from multiple s
 
 _Bagging_ attempts to reduce the chance overfitting complex models.
 
-* It trains a large number of "strong" learners in parallel.
+* It trains a large number of "strong" learners **in parallel**.
 * A strong learner is a model that's relatively unconstrained.
 * Bagging then combines all the strong learners together in order to "smooth out" their predictions.
 
 _Boosting_ attempts to improve the predictive flexibility of simple models.
 
-* It trains a large number of "weak" learners in sequence.
+* It trains a large number of "weak" learners **in sequence**.
 * A weak learner is a constrained model \(i.e. you could limit the max depth of each decision tree\).
 * Each one in the sequence focuses on learning from the mistakes of the one before it.
 * Boosting then combines all the weak learners into a single strong learner.
