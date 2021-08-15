@@ -66,7 +66,8 @@
 * [Seq2Seq](nlp/seq2seq.md)
 * [Attention](nlp/attention.md)
 * [Self Attention](nlp/self-attention.md)
-* [Untitled](nlp/untitled.md)
+* [Attention without RNN](nlp/untitled.md)
+* [Transformer](nlp/transformer.md)
 
 ## Parallel Computing
 

@@ -55,7 +55,7 @@ For next state $$s_2$$, do not use the previously calculated $$\alpha_i$$
 * Key: $$k_{:i}=W_K h_i$$       \(To be matched\)
 * Value: $$v_{:i}=W_Vh_i$$    \(To be weighted averaged\)
 * Weights:$$\alpha_{ij} = align(h_i, s_j)$$
-  * Compute $$k_{:i}=W_K h_i $$and $$q{:j}=W_Q s_j$$
+  * Compute $$k_{:i}=W_K h_i $$and $$q_{:j}=W_Q s_j$$
   * Compute weights: $$\alpha_{:j}=Softmax(K^T q_{:j}) \in R^m$$
 
 ![](../.gitbook/assets/screen-shot-2021-08-14-at-6.04.16-pm.png)
