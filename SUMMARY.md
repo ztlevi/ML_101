@@ -68,6 +68,7 @@
 * [Self Attention](nlp/self-attention.md)
 * [Attention without RNN](nlp/untitled.md)
 * [Transformer](nlp/transformer.md)
+* [BERT](nlp/bert.md)
 
 ## Parallel Computing
 
