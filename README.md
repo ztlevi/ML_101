@@ -17,10 +17,4 @@ pyenv install 3.7.11
 pyenv local 3.7.11
 poetry env use 3.7
 poetry install
-
-pipenv install
-pipenv shell
-# You will need to define the OS torch using, so prefer pip to install
-pip3 install torch torchvision
 ```
-
