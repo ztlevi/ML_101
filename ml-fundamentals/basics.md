@@ -21,7 +21,12 @@ Given a data science / machine learning project, what steps should we follow? He
 
 ![](../.gitbook/assets/workflow.png)
 
-## [IID: independent and identically distributed](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/IID/IID.ipynb)
+## [IID: independent and identically distributed](https://github.com/ztlevi/ML_101/blob/master/codes/IID/IID.ipynb)
+
+This assumption has two parts:
+
+1. Independent
+2. Identically distributed
 
 [Youtube](https://www.youtube.com/watch?v=lhzndcgCXeo)
 
