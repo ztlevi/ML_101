@@ -10,7 +10,7 @@
 * [Linear Algebra](ml-fundamentals/linear_algebra.md)
 * [Clustering](ml-fundamentals/clustering.md)
 * [Calculate Parameters in CNN](ml-fundamentals/calculate_parameters_in_cnn.md)
-* [Weight norm and layer norm](ml-fundamentals/weight_norm_and_layer_norm.md)
+* [Normalization](ml-fundamentals/weight_norm_and_layer_norm.md)
 * [Confidence Interval](ml-fundamentals/confidence_interval.md)
 * [Quantization](ml-fundamentals/quantization.md)
 

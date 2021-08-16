@@ -1,4 +1,43 @@
-# Weight norm and layer norm
+# Normalization
+
+## Normalization
+
+Normalization: refers to normalizing the data dimensions so that they are of approximately the same scale. One is to divide each dimension by its standard deviation, once it has been zero-centered: `(X /= np.std(X, axis = 0))`. Another form of this preprocessing normalizes each dimension so that the min and max along the dimension is -1 and 1 respectively.
+
+```python
+(x - x.min()) / (x.max() - x.min()) # values from 0 to 1
+2*(x - x.min()) / (x.max() - x.min()) - 1 # values from -1 to 1
+(x - x.mean()) / x.std() # values from ? to ?, but mean at 0
+```
+
+### Batch Normalization
+
+When data flow through a deep network, the weights and parameters adjust those values, some times make the data too big or too small, known as **internal covariate shift**.
+
+To solve the vanishing gradient\($$0.9^{k}$$\) and gradient explosion\($$1.1^{k}$$\), batch normalization is introduced.
+
+* Input: Values of $$x$$ over a mini-batch: $$\mathcal{B}={x_{1...m}}$$; Parameters to be learned: $$\gamma , \beta$$
+* Output: $${y_i = BN_{\gamma , \beta} (x_i)}$$
+* Steps:
+  1. Compute mini-batch mean: $${\mu}_{\mathcal{B}} \gets \frac{1}{m}\sum_{i=1}^M x_{i}$$
+  2. Compute mini-batch variance: $${\sigma}_{\mathcal{B}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\mathcal{B}})^{2}$$
+  3. normalize features: $$\hat{x_i} \gets \frac{x_{i} - \mu_{\mathcal{B}} }{\sqrt{ { {\sigma}_{\mathcal{B}}^2 + \epsilon} } }$$
+  4. Scale and shift: $$y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$$
+* Pros: 
+  1. Networks train faster
+  2. Allows higher learning rates 
+  3. Make weights easier to initialize
+  4. Makes more activation functions viable
+  5. Provides a bit of regularization
+  6. Simplifies the creation of deeper networks
+* Cons
+  1. Slower predictions due to the extra computations at each layer
+
+> **Note**: When test the model, we calculate a moving average and variance estimate of the training population. These estimates are averages of all batch means and variances calculated during training.
+
+### Common pitfall
+
+An important point to make about the preprocessing is that any preprocessing statistics \(e.g. the data mean\) must only be computed on the training data, and then applied to the validation / test data. E.g. computing the mean and subtracting it from every image across the entire dataset and then splitting the data into train/val/test splits would be a mistake. **Instead, the mean must be computed only over the training data and then subtracted equally from all splits \(train/val/test\).**
 
 ## Weight Normalization
 
