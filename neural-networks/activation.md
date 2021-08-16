@@ -37,11 +37,9 @@ For neural networks
   * Reduce death during training for ReLU
 
 * Multi-class: softmax, see [derivative](https://eli.thegreenplace.net/2016/the-softmax-function-and-its-derivative/)
-
-  $$
-  p_{o,c} = \frac{e^{y_{k}}}{\sum_{c=1}^M e^{y_{c}}}
-  $$
-
+  * $$
+    p_{o,c} = \frac{e^{y_{k}}}{\sum_{c=1}^M e^{y_{c}}}
+    $$
 * Binary: sigmoid
 * Regression: linear
 

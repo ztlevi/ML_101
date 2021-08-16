@@ -1,15 +1,17 @@
 # Clustering
 
-## Kmeans
+### Overview of clustering methods
 
-![clustering](../.gitbook/assets/clustering.png)
+[scikit-learn](http://scikit-learn.org/stable/modules/clustering.html) implements many clustering algorithms. Below is a comparison adopted from its page.
+
+![scikit clustering methods](../.gitbook/assets/clustering.png)
 
 * Clustering is a unsupervised learning algorithm that groups data in such a way that data points in the same group are more similar to each other than to those from other groups
 * Similarity is usually defined using a distance measure \(e.g, Euclidean, Cosine, Jaccard, etc.\)
 * The goal is usually to discover the underlying structure within the data \(usually high dimensional\)
 * The most common clustering algorithm is K-means, where we define K \(the number of clusters\) and the algorithm iteratively finds the cluster each data point belongs to
 
-[scikit-learn](http://scikit-learn.org/stable/modules/clustering.html) implements many clustering algorithms. Below is a comparison adopted from its page.
+## Kmeans
 
 ### Algorithm
 

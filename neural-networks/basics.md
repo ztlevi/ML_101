@@ -19,11 +19,11 @@ If we prune too much at once, the network might be damaged so much it won't be a
 
 So in practice this is an iterative process - often called 'Iterative Pruning': Prune / Train / Repeat.
 
-![Pruning steps](http://jacobgil.github.io/assets/pruning_steps.png)
+![](http://jacobgil.github.io/assets/pruning_steps.png)
 
 ## Two \(Multi Task Learning\) MTL methods for Deep Learning
 
-So far, we have focused on theoretical motivations for MTL. To make the ideas of MTL more concrete, we will now look at the two most commonly used ways to perform multi-task learning in deep neural networks. In the context of Deep Learning, multi-task learning is typically done with either _hard_ or _soft parameter sharing_ of hidden layers.
+So far, we have focused on theoretical motivations for MTL. To make the ideas of MTL more concrete, we will now look at the two most commonly used ways to perform multi-task learning in deep neural networks. In the context of Deep Learning, multi-task learning is typically done with either **hard or soft parameter sharing** of hidden layers.
 
 ### Hard parameter sharing
 
@@ -37,7 +37,7 @@ Hard parameter sharing greatly reduces the risk of overfitting. In fact, [\[7\]]
 
 In soft parameter sharing on the other hand, each task has its own model with its own parameters. The distance between the parameters of the model is then regularized in order to encourage the parameters to be similar. [\[8\]](http://ruder.io/multi-task/index.html#fn8) for instance use the ℓ2ℓ2 norm for regularization, while [\[9\]](http://ruder.io/multi-task/index.html#fn9) use the trace norm.
 
-![](../.gitbook/assets/soft_parameter_sharing.png)Figure 2: Soft parameter sharing for multi-task learning in deep neural networks
+![Figure 2: Soft parameter sharing for multi-task learning in deep neural networks](../.gitbook/assets/soft_parameter_sharing.png)
 
 The constraints used for soft parameter sharing in deep neural networks have been greatly inspired by regularization techniques for MTL that have been developed for other models, which we will soon discuss.
 

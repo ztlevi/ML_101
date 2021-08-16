@@ -1,6 +1,6 @@
 # Unsupervised Learning
 
-### [K-means](https://github.com/ztlevi/Machine_Learning_Questions/tree/26cb30cb7a3ec95f737534585c8ae80567d03d7b/docs/General/Clustering.html$Kmeans)
+### [kmeans](https://ztlevi.gitbook.io/ml-101/ml-fundamentals/clustering#kmeans)
 
 ### t-SNE
 
