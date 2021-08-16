@@ -10,7 +10,7 @@ The core idea of ResNet is introducing a so-called shortcut.
 
 * When the input and output are of the same dimensions, we use "identity shortcut connection" that skips one or more layers, as shown in the following figure:
 
-  ![](../.gitbook/assets/resnet_shortcut.png)
+![](../.gitbook/assets/resnet_shortcut.png)
 
 * When the dimensions increase, we consider two options: \(A\) The shortcut still performs identity mapping, with extra zero entries padded for increasing dimensions. \(B\) The projection shortcut is used to match dimensions.
 
