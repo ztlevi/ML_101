@@ -45,10 +45,11 @@ This assumption has two parts:
   ![img](../.gitbook/assets/cm_recall.png)
 
 * F1 Score:
+  * It is also called the F Score or the F Measure. Put another way, the F1 score conveys the balance between the precision and the recall.
 
-  $$
-  F_1 score = \frac{2 * precision * recall}{precision + recall}
-  $$
+    $$
+    F_1 score = \frac{2 * precision * recall}{precision + recall}
+    $$
 
 ## Weight Initialization
 

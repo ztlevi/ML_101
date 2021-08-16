@@ -20,7 +20,7 @@ Takes input image and constructs feature maps for image. Feature maps are extrac
 
 An Image contains objects of sizes ranging from small area to large area in different regions.Fully Convolution Network\(FCN\),U-Net and other networks constructs feature maps by upsampling and doing segmentation at different levels for segmentation of all objects in all regions.But in PSPNet to correctly segment all size objects, feature maps are pooled average pooled at different pool size.
 
-Sub-region average pooling is done at different scales like **Global Average Pooling\*\***,$$(2*2),(3*3),(4*4),(6*6),(8*8)$$..  
+Sub-region average pooling is done at different scales like **Global Average Pooling**,$$(2*2),(3*3),(4*4),(6*6),(8*8)$$.  
 After average pooling of **N** feature maps with **n** different sizes, feature maps at each level reduced to $$N/n$$ feature maps by performing $$1*1$$ convolutions.
 
 For instance, if N=512 feature maps and n=4 sizes like Global Average Pooling,$$(2*2),(4*4),(8*8)$$ then at each level 512 feature maps are reduced to 126 feature maps.

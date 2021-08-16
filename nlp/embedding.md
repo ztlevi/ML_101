@@ -16,7 +16,7 @@
 
 * Second, map the one-hot vectors to low dimensional vectors by
 
-![](../.gitbook/assets/word-embedding-1.png)word-embedding
+![word embedding](../.gitbook/assets/word-embedding-1.png)
 
 * $$P$$ is parameter matrix which can be learned from training data.
 * $$e_i$$ is the one-hot vector of the i-th word in dictionary.

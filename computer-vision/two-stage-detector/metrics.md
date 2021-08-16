@@ -102,6 +102,14 @@ $$AR^{large}$$: AR for large objects: $$area > 96^2$$
 
 6.All metrics are computed allowing for at most 100 top-scoring detections per image \(across all categories\). The evaluation metrics for detection with bounding boxes and segmentation masks are identical in all respects except for the IoU computation \(which is performed over boxes or masks, respectively\).
 
+## mAP
+
+mAP \(mean average precision\) is the average of AP. In some context, **we compute the AP for each class and average them**. But in some context, they mean the same thing. For example, under the COCO context, there is no difference between AP and mAP. Here is the direct quote from COCO:
+
+> AP is averaged over all categories. Traditionally, this is called “mean average precision” \(mAP\). We make no distinction between AP and mAP \(and likewise AR and mAR\) and assume the difference is clear from context.
+
+In ImageNet, the AUC method is used. So even all of them follow the same principle in measurement AP, the exact calculation may vary according to the datasets. Fortunately, development kits are available in calculating this metric.
+
 ## Reference
 
 * [mAP \(mean Average Precision\) for Object Detection](https://medium.com/@jonathan_hui/map-mean-average-precision-for-object-detection-45c121a31173)

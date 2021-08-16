@@ -42,5 +42,6 @@ How does federated learning differ from traditional distributed learning?
 
 ## References
 
-\[1\] McMahan and others: Communication-efficient learning of deep networks from decentralized data. In AISTATS, 2017. . \[2\] Konevcny, McMahan, and Ramage: Federated optimization: distributed optimization beyond the datacenter. arXiv:1511.03575, 2015
+* \[1\] McMahan and others: Communication-efficient learning of deep networks from decentralized data. In AISTATS, 2017. . 
+* \[2\] Konevcny, McMahan, and Ramage: Federated optimization: distributed optimization beyond the datacenter. arXiv:1511.03575, 2015
 

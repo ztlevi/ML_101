@@ -1,6 +1,6 @@
 # Hinge Loss
 
-From our SVM model, we know that hinge $$loss = [0, 1- y*f(x)]$$.
+From our SVM model, we know that hinge $$loss = max(0, 1- y*f(x))$$.
 
 Looking at the graph for SVM in Fig 4, we can see that for $$y*f(x) \geq 1$$, hinge loss is ‘**0**’. However, when $$y*f(x) < 1$$, then hinge loss increases massively. As $$y*f(x)$$ increases with every misclassified point \(very wrong points in Fig 5\), the upper bound of hinge loss $${1- y*f(x)}$$ also increases exponentially.
 

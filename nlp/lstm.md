@@ -31,26 +31,27 @@ LSTMs also have this chain like structure, but the repeating module has a differ
 
 ![](../.gitbook/assets/LSTM3-focus-f.png)
 
-1. At first, we apply **Forget gate**: $$f_{t} = \sigma(W_f \cdot [h_{t-1}, x_{t}] + b_{f})$$, caculate what information we should forget for previous information
+At first, we apply **Forget gate**: $$f_{t} = \sigma(W_f \cdot [h_{t-1}, x_{t}] + b_{f})$$, caculate what information we should forget for previous information
 
-   ![](../.gitbook/assets/LSTM3-focus-i.png)
+![](../.gitbook/assets/LSTM3-focus-i.png)
 
-2. The next step is to decide what new information we're going to store in the cell state.
+The next step is to decide what new information we're going to store in the cell state.
 
-   * **Input gate**: $$i_{t} = \sigma(W_i \cdot [h_{t-1}, x_{t}] + b_{i})$$, a sigmoid layer decides which values we’ll update.
-   * A tanh layer creates a vector of new candidate values: $$\tilde{ C_{t} } = tanh(W_{c} \cdot [h_{t-1}, x_{t}] + b_{c})$$, that could be added to the state.
+* **Input gate**: $$i_{t} = \sigma(W_i \cdot [h_{t-1}, x_{t}] + b_{i})$$, a sigmoid layer decides which values we’ll update.
+* A tanh layer creates a vector of new candidate values: $$\tilde{ C_{t} } = tanh(W_{c} \cdot [h_{t-1}, x_{t}] + b_{c})$$, that could be added to the state.
 
-   ![](../.gitbook/assets/LSTM3-focus-C.png)
+![](../.gitbook/assets/LSTM3-focus-C.png)
 
-3. Then we update **Memory cell C**: $$C_{t} = f_{t} * C_{t - 1} + i_{t} * \tilde{ C_{t} }$$,
+Then we update **Memory cell C**: $$C_{t} = f_{t} * C_{t - 1} + i_{t} * \tilde{ C_{t} }$$,
 
-   We multiply the old state by $$f_t$$, forgetting the things we decided to forget earlier. Then we add $$i_t * \tilde{C_t}$$. This is the new candidate values, scaled by how much we decided to update each state value.
+We multiply the old state by $$f_t$$, forgetting the things we decided to forget earlier. Then we add $$i_t * \tilde{C_t}$$. This is the new candidate values, scaled by how much we decided to update each state value.
 
-   ![](../.gitbook/assets/LSTM3-focus-o.png)
+![](../.gitbook/assets/LSTM3-focus-o.png)
 
-4. This output will be based on our cell state, but will be a **filtered version**.
-   * First, we run a **Output gate**: $$o_{t} = \sigma(W_o \cdot [h_{t-1}, x_{t}] + b_{o})$$, which decides what parts of the cell state we’re going to output, .
-   * Then, we put the cell state through tanhtanh \(to push the values to be between $$[-1, 1]$$ \) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to: $$h_{t} = tanh(C_{t}) * o_{t}$$
+This output will be based on our cell state, but will be a **filtered version**.
+
+* First, we run a **Output gate**: $$o_{t} = \sigma(W_o \cdot [h_{t-1}, x_{t}] + b_{o})$$, which decides what parts of the cell state we’re going to output, .
+* Then, we put the cell state through tanh \(to push the values to be between $$[-1, 1]$$ \) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to: $$h_{t} = tanh(C_{t}) * o_{t}$$
 
 ### Why solve vanishing gradient?
 

@@ -2,13 +2,9 @@
 
 ## Parallel Gradient Descent in Decentralized Network
 
-[slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/14_Parallel_3.pdf)
-
-[youtube](https://www.youtube.com/watch?v=rj-hjS5L8Bw)
-
 ### Decentralized Network
 
-Characters: peer-to-peer architecture \(no central server\), messagepassing communication, a node communicate with its neighbors.
+Characters: peer-to-peer architecture \(no central server\), message passing communication, a node communicate with its neighbors.
 
 ### Decentralized Gradient Descent
 
@@ -40,9 +36,9 @@ The server gets the result of reduce \(e.g., sum, mean, count.\)
   * E.g., all-reduce via all-to-all communication. See figure 2
   * E.g., ring all-reduce.
 
-![](../.gitbook/assets/reduce_2.png)Figure 1
+![](../.gitbook/assets/reduce_2.png)
 
-![](../.gitbook/assets/reduce_3.png)Figure 2
+![](../.gitbook/assets/reduce_3.png)
 
 ### Ring All-Reduce
 
@@ -76,13 +72,13 @@ Then Continue update all gpus with gradient $$g$$.
 
 ![allreduce\_7](../.gitbook/assets/allreduce_7.png)
 
-![allreduce\_8](../.gitbook/assets/allreduce_8.png)
+![first step](../.gitbook/assets/allreduce_8.png)
 
-![allreduce\_9](../.gitbook/assets/allreduce_9.png)
+![second step](../.gitbook/assets/allreduce_9.png)
 
-![allreduce\_10](../.gitbook/assets/allreduce_10.png)
+![third step](../.gitbook/assets/allreduce_10.png)
 
-![allreduce\_11](../.gitbook/assets/allreduce_11.png)
+![fourth step](../.gitbook/assets/allreduce_11.png)
 
 Then continue update all gpus' gradients with these red blocks.
 
@@ -99,9 +95,14 @@ Then continue update all gpus' gradients with these red blocks.
 
 #### Benchmark
 
-![](../.gitbook/assets/horovod_benchmark.png)A comparison of the images processed per second of the Horovod over plain 25GbE TCP and the Horovod with 25GbE RDMA-capable networking when running a distributed training job over different numbers of NVIDIA Pascal GPUs for Inception V3, ResNet-101 and VGG-16.
+![](../.gitbook/assets/horovod_benchmark.png)
+
+> A comparison of the images processed per second of the Horovod over plain 25GbE TCP and the Horovod with 25GbE RDMA-capable networking when running a distributed training job over different numbers of NVIDIA Pascal GPUs for Inception V3, ResNet-101 and VGG-16.
 
 Since both MPI and NCCL support [remote direct memory access](https://en.wikipedia.org/wiki/Remote_direct_memory_access) \(RDMA\) capable networking \(e.g., via [InfiniBand](https://en.wikipedia.org/wiki/InfiniBand) or [RDMA over Converged Ethernet](https://en.wikipedia.org/wiki/RDMA_over_Converged_Ethernet)\), we ran additional sets of benchmarking tests using RDMA network cards to determine if they helped us enhance efficiency compared to TCP networking.
 
-### Footnote
+## Reference
+
+* [slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/14_Parallel_3.pdf)
+* [youtube](https://www.youtube.com/watch?v=rj-hjS5L8Bw)
 
