@@ -154,7 +154,7 @@ These methods both work because they effectively let you train several models at
 
 DropConnect is a generalization of DropOut because it produces even more possible models, since there are almost always more connections than units. However, you can get similar outcomes on an individual trial. For example, the DropConnect network on the right has effectively dropped Unit \#2 since all of the incoming connections have been removed.
 
-### [Batch Norm](https://ztlevi.gitbook.io/ml-101/ml-fundamentals/basics#batch-normalization)
+### [Batch Normalization](https://ztlevi.gitbook.io/ml-101/ml-fundamentals/basics#batch-normalization)
 
 ### Ensembling
 
