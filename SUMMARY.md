@@ -29,6 +29,7 @@
 
 ## Loss
 
+* [L1 and L2 Loss](loss/l1-and-l2-loss.md)
 * [Hinge Loss](loss/hinge_loss.md)
 * [Cross-Entropy Loss](loss/cross_entropy_loss.md)
 * [Binary Cross-Entropy Loss](loss/binary_cross_entropy_loss.md)

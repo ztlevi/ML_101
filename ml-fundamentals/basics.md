@@ -59,52 +59,6 @@ In practice, the current recommendation is:
 * to use ReLU units: use the `w = np.random.randn(n) * sqrt(2.0/n)`
 * To use Tanh units: use the `w = np.random.randn(n) * sqrt(1.0/n)`
 
-## Cost function
-
-A Loss Functions tells us "how good" our model is at making predictions for a given set of parameters. The cost function has its own curve and its own gradients. The slope of this curve tells us how to update our parameters to make the model more accurate.
-
-### L1 Loss vs L2 Loss
-
-* **Robustness**: L1 &gt; L2
-
-  Intuitively speaking, since a L2-norm squares the error \(increasing by a lot if error &gt; 1\), the model will see a much larger error than the L1-norm, so the model is much more sensitive to outliers.
-
-* **Stability**: L2 &gt; L1
-
-  In the case of a more “outlier” point, both norms still have big change, but again the L1-norm has more changes in general.
-
-* **Solution uniqueness**: Minimizing the L2 loss corresponds to calculating **the arithmetic mean**, which is unambiguous, while minimizing the L1 loss corresponds to calculating **the median**, which is ambiguous if an even number of elements are included in the median calculation, So L2 has unique solution while L1 has multiple solution
-* Smooth l1 loss
-
-![img](../.gitbook/assets/smooth_l1_loss.png)
-
-Smooth L1 loss that is less sensitive to outliers than the L2 loss used in R-CNN and SPPne.
-
-### Cross Entropy
-
-If M&gt;2 \(i.e. multi-class classification\), we calculate a separate loss for each class label per observation and sum the result. Usually an activation function \(Sigmoid / Softmax\) is applied to the scores before the CE Loss computation.
-
-$$
--\sum_{c=1}^M y_{o,c}log(p_{o,c})
-$$
-
-> Note:
->
-> 1. M - number of classes \(dog, cat, fish\)
-> 2. log - the natural log
-> 3. y - binary indicator \(0 or 1\) if class label c is the correct classification for observation o
-> 4. p - predicted probability observation o is of class c
-
-### Why Cross Entropy?
-
-* During back-propagation training, you want to drive output node values to either 1.0 or 0.0 depending on the target values.
-* If you use MSE, the weight adjustment factor \(the gradient\) contains a term of \(output\) _\(1 – output\). As the computed output gets closer and closer to either 0.0 or 1.0 the value of \(output\)_ \(1 – output\) gets smaller and smaller.
-* For example, if output = 0.6 then \(output\) _\(1 – output\) = 0.24 but if output is 0.95 then \(output\)_ \(1 – output\) = 0.0475.
-* As the adjustment factor gets smaller and smaller, the change in weights gets smaller and smaller and training can stall out, so to speak.
-* But if you use cross-entropy error, the \(output\) \* \(1 – output\) term goes away \(the math is very cool\). So, the weight changes don’t get smaller and smaller, and so training isn’t s likely to stall out.
-
-from [this blog](https://jamesmccaffrey.wordpress.com/2013/11/05/why-you-should-use-cross-entropy-error-instead-of-classification-error-or-mean-squared-error-for-neural-network-classifier-training/)
-
 ## Non-maximal suppression
 
 ### Codes

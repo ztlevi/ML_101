@@ -1,7 +1,5 @@
 # Confidence Interval
 
-\[Reference\]\([https://www.simplypsychology.org/confidence-interval.html\#:~:text=The%20confidence%20interval%20\(CI\)%20is,an%20upper%20and%20lower%20interval](https://www.simplypsychology.org/confidence-interval.html#:~:text=The%20confidence%20interval%20%28CI%29%20is,an%20upper%20and%20lower%20interval)\)
-
 > The confidence interval \(CI\) is a range of values that’s likely to include a population value with a certain degree of confidence. It is often expressed a % whereby a population means lies between an upper and lower interval.
 
 ![img](../.gitbook/assets/confidence-interval-1.jpg)
@@ -65,9 +63,9 @@ For the lower interval score divide the standard error by the square root on n, 
 * **s** \(standard error\) = 6.2
 * **n** \(sample size\) = 46
 
-Lower Value: 86 - 1.960 × 6.2 √46 = **86 - 1.79** = 84.21
+Lower Value: $$86 - 1.960 × \frac{6.2}{\sqrt{46}} = 86 - 1.79 = 84.21$$
 
-Upper Value: 86 + 1.960 × 6.2 √46 = **86 + 1.79** = 87.79
+Upper Value: $$86 + 1.960 × \frac{6.2}{\sqrt{46}} = 86 + 1.79 = 87.79$$
 
 So the population mean is likely to be between 84.21 and 87.79
 
@@ -92,4 +90,8 @@ For example, one might report: 95% CI \[5.62, 8.31\].
 Confidence intervals can also be reported in a table
 
 ![apa style table](../.gitbook/assets/confidence-interval-6.jpg)
+
+## Reference
+
+* [https://www.simplypsychology.org/confidence-interval.html\#:~:text=The%20confidence%20interval%20\(CI\)%20is,an%20upper%20and%20lower%20interval](https://www.simplypsychology.org/confidence-interval.html#:~:text=The%20confidence%20interval%20%28CI%29%20is,an%20upper%20and%20lower%20interval)
 

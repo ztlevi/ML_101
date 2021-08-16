@@ -10,7 +10,7 @@ $$
 CE = -\sum_{i}^{C}t_{i} log (s_{i})
 $$
 
-Where $$t_i$$ and $$s_i$$ are the ground truth and the CNN score for each $$class_i$$ in $$C$$. As **usually an activation function \(Sigmoid / Softmax\) is applied to the scores before the CE Loss computation**, we write $$f(si)$$ to refer to the activations.
+Where $$t_i$$ and $$s_i$$ are the ground truth and the CNN score for each $$class_i$$ in $$C$$. As **usually an activation function \(Sigmoid / Softmax\) is applied to the scores before the CE Loss computation**, we write $$f(s_i)$$ to refer to the activations.
 
 In a **binary classification problem**, where $$C'=2$$, the Cross Entropy Loss can be defined also as [\[discussion\]](https://datascience.stackexchange.com/questions/9302/the-cross-entropy-error-function-in-neural-networks):
 

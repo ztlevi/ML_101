@@ -14,7 +14,7 @@
 * "The **\_** sat on the mat"
 * What is the masked word?
 
-![](../.gitbook/assets/screen-shot-2021-08-15-at-11.46.38-am%20%281%29.png)
+![](../.gitbook/assets/screen-shot-2021-08-15-at-11.46.38-am%20%282%29%20%281%29.png)
 
 ### Predict the masked word
 

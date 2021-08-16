@@ -44,7 +44,7 @@ $$\theta = (X^{T}X)^{-1}X^{T}y$$ , which assume $$(X^{T}X)$$ is invertible. Intu
 
 ## SVM
 
-Try to find a **optimal hyperplane** to separate two classes of data.
+Try to find an **optimal hyperplane** to separate two classes of data.
 
 Cost function:
 
