@@ -4,6 +4,8 @@
 
 * The **generator** creates samples that are intended to come from the same distribution as the training data; The **discriminator** examines samples to determine whether they are real or fake.
 * The discriminator learns using traditional supervised learning techniques, dividing inputs into two classes \(real or fake\). The generator is trained to fool the discriminator.
+* Gradient Ascent on Discriminator
+* Gradient Descent on Generator 
 
 ![image-20190721162310253](../.gitbook/assets/image-20190721162310253.png)
 
