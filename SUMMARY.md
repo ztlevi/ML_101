@@ -64,6 +64,7 @@
 * [LSTM](nlp/lstm.md)
 * [LSTM Ext.](nlp/lstm_ext.md)
 * [RNN for text prediction](nlp/rnn_for_text_prediction.md)
+* [BLEU](nlp/bleu.md)
 * [Seq2Seq](nlp/seq2seq.md)
 * [Attention](nlp/attention.md)
 * [Self Attention](nlp/self-attention.md)
