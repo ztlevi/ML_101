@@ -12,9 +12,9 @@ All codes are available over [here](https://github.com/ztlevi/ML_101/tree/master
 
 ```bash
 pyenv install 3.7.11
-pyenv virtualenv 3.7.11 ml-101
 pyenv local ml-101
 poetry env use ml-101
+poetry shell
 poetry install
 ```
 
