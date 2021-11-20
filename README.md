@@ -12,6 +12,7 @@ All codes are available over [here](https://github.com/ztlevi/ML_101/tree/master
 
 ```bash
 pyenv install 3.7.11
+pyenv local 3.7.11
 poetry env use 3.7.11
 poetry shell
 poetry install
