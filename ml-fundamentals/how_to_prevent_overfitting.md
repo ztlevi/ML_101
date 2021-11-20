@@ -142,6 +142,12 @@ Cons:
 
 * Dropout roughly doubles the number of iterations required to converge. However, training time for each epoch is less.
 
+```python
+m = nn.Dropout(p=0.2) # Drop 20% input unit.
+input = torch.randn(20, 16)
+output = m(input)
+```
+
 #### DropConnect
 
 DropConnect works similarly, except that we disable individual weights \(i.e., set them to zero\), instead of nodes, so a node can remain partially active. Schematically, it looks like this:
