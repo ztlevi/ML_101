@@ -1,10 +1,14 @@
 import torch
 
-float_tensor = torch.tensor([-1.0, 0.0, 1.0, 2.0])
-q_made_per_tensor = torch.quantize_per_tensor(float_tensor, 0.1, 10, torch.quint8)
+float_tensor = torch.tensor([5.0, 12.0, 13.0, 14.0, 15.0, 16.3, 20.2])
+q_made_per_tensor = torch.quantize_per_tensor(
+    float_tensor, scale=2, zero_point=0, dtype=torch.quint8
+)
 
 # Dequantize
 dequantized_tensor = q_made_per_tensor.dequantize()
+print("float_tensor: ", float_tensor)
+print("dequantized_tensor: ", dequantized_tensor)
 
 # Quantized Tensor supports slicing like usual Tensors do
 s = q_made_per_tensor[2]  # a quantized Tensor of with same scale and zero_point
