@@ -1,6 +1,6 @@
 # Class Visualization
 
-By starting with a random noise image and performing gradient ascent on a target class, we can generate an image that the network will recognize as the target class. This idea was first presented in \[[2](https://arxiv.org/pdf/1312.6034.pdf)\] ; \[[3](https://arxiv.org/abs/1506.06579)\] extended this idea by suggesting several regularization techniques that can improve the quality of the generated image.
+By starting with a random noise image and performing gradient ascent on a target class, we can generate an image that the network will recognize as the target class. This idea was first presented in \[[2](https://arxiv.org/pdf/1312.6034.pdf)] ; \[[3](https://arxiv.org/abs/1506.06579)] extended this idea by suggesting several regularization techniques that can improve the quality of the generated image.
 
 Concretely, let $$I$$ be an image and let $$y$$ be a target class. Let $$s_y(I)$$ be the score that a convolutional network assigns to the image $$I$$ for class $$y$$; note that these are raw unnormalized scores, not class probabilities. We wish to generate an image $$I^*$$ that achieves a high score for the class $$y$$ by solving the problem
 
@@ -8,13 +8,13 @@ $$
 I^* = argmax_I(s_y(I) - R(I))
 $$
 
-where $$R$$ is a \(possibly implicit\) regularizer \(note the sign of $$R(I)$$ in the argmax: we want to minimize this regularization term\). We can solve this optimization problem using gradient ascent, computing gradients with respect to the generated image. We will use \(explicit\) L2 regularization of the form
+where $$R$$ is a (possibly implicit) regularizer (note the sign of $$R(I)$$ in the argmax: we want to minimize this regularization term). We can solve this optimization problem using gradient ascent, computing gradients with respect to the generated image. We will use (explicit) L2 regularization of the form
 
 $$
 R(I) = \lambda \parallel I \parallel _2^2
 $$
 
-and implicit regularization as suggested by \[[3](https://arxiv.org/abs/1506.06579)\] by periodically blurring the generated image. We can solve this problem using gradient ascent on the generated image.
+and implicit regularization as suggested by \[[3](https://arxiv.org/abs/1506.06579)] by periodically blurring the generated image. We can solve this problem using gradient ascent on the generated image.
 
 In the cell below, complete the implementation of the `create_class_visualization` function.
 
@@ -123,8 +123,7 @@ target_y = 76 # Tarantula
 out = create_class_visualization(target_y, model)
 ```
 
-|  |  |  |
-| :--- | :--- | :--- |
-| ![img](../.gitbook/assets/class_vis_tarantula_1.png) | ![img](../.gitbook/assets/class_vis_tarantula_25.png) | ![img](../.gitbook/assets/class_vis_tarantula_50.png) |
-| ![img](../.gitbook/assets/class_vis_tarantula_75.png) | ![img](../.gitbook/assets/class_vis_tarantula_100.png) |  |
-
+|                                                                |                                                                 |                                                                |
+| -------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
+| ![img](<../.gitbook/assets/class\_vis\_tarantula\_1 (1).png>)  | ![img](<../.gitbook/assets/class\_vis\_tarantula\_25 (1).png>)  | ![img](<../.gitbook/assets/class\_vis\_tarantula\_50 (1).png>) |
+| ![img](<../.gitbook/assets/class\_vis\_tarantula\_75 (1).png>) | ![img](<../.gitbook/assets/class\_vis\_tarantula\_100 (1).png>) |                                                                |

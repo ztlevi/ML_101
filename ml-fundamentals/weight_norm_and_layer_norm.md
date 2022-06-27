@@ -14,7 +14,7 @@ Normalization: refers to normalizing the data dimensions so that they are of app
 
 When data flow through a deep network, the weights and parameters adjust those values, some times make the data too big or too small, known as **internal covariate shift**.
 
-To solve the vanishing gradient\($$0.9^{k}$$\) and gradient explosion\($$1.1^{k}$$\), batch normalization is introduced.
+To solve the vanishing gradient($$0.9^{k}$$) and gradient explosion($$1.1^{k}$$), batch normalization is introduced.
 
 * Input: Values of $$x$$ over a mini-batch: $$\mathcal{B}={x_{1...m}}$$; Parameters to be learned: $$\gamma , \beta$$
 * Output: $${y_i = BN_{\gamma , \beta} (x_i)}$$
@@ -23,9 +23,9 @@ To solve the vanishing gradient\($$0.9^{k}$$\) and gradient explosion\($$1.1^{k}
   2. Compute mini-batch variance: $${\sigma}_{\mathcal{B}}^{2} \gets \frac{1}{m}\sum_{i=1}^M (x_{i} - \mu_{\mathcal{B}})^{2}$$
   3. normalize features: $$\hat{x_i} \gets \frac{x_{i} - \mu_{\mathcal{B}} }{\sqrt{ { {\sigma}_{\mathcal{B}}^2 + \epsilon} } }$$
   4. Scale and shift: $$y_{i} \gets \gamma \hat{x_{i}} + \beta = BN_{\gamma, \beta}(x_{i})$$
-* Pros: 
+* Pros:
   1. Networks train faster
-  2. Allows higher learning rates 
+  2. Allows higher learning rates
   3. Make weights easier to initialize
   4. Makes more activation functions viable
   5. Provides a bit of regularization
@@ -37,7 +37,7 @@ To solve the vanishing gradient\($$0.9^{k}$$\) and gradient explosion\($$1.1^{k}
 
 ### Common pitfall
 
-An important point to make about the preprocessing is that any preprocessing statistics \(e.g. the data mean\) must only be computed on the training data, and then applied to the validation / test data. E.g. computing the mean and subtracting it from every image across the entire dataset and then splitting the data into train/val/test splits would be a mistake. **Instead, the mean must be computed only over the training data and then subtracted equally from all splits \(train/val/test\).**
+An important point to make about the preprocessing is that any preprocessing statistics (e.g. the data mean) must only be computed on the training data, and then applied to the validation / test data. E.g. computing the mean and subtracting it from every image across the entire dataset and then splitting the data into train/val/test splits would be a mistake. **Instead, the mean must be computed only over the training data and then subtracted equally from all splits (train/val/test).**
 
 ## Weight Normalization
 
@@ -76,17 +76,17 @@ The equations of batch normalization and layer normalization are deceptively sim
 
 Batch normalization:
 
-![](../.gitbook/assets/layer_norm_1.png)
+![](<../.gitbook/assets/layer\_norm\_1 (1).png>)
 
 Layer normalization:
 
-![](../.gitbook/assets/layer_norm_2.png)
+![](<../.gitbook/assets/layer\_norm\_2 (1).png>)
 
-where $$x_{ij}$$ is the i,j-th element of the input, the first dimension represents the batch and the second represents the feature \(I have modified the notation from the original papers to make the contrast clearer\).
+where $$x_{ij}$$ is the i,j-th element of the input, the first dimension represents the batch and the second represents the feature (I have modified the notation from the original papers to make the contrast clearer).
 
 The difference becomes a bit clearer when we visualize it:
 
-![](../.gitbook/assets/layer_norm_3.png)
+![](<../.gitbook/assets/layer\_norm\_3 (1).png>)
 
 In batch normalization, the statistics are computed across the batch and are the same for each example in the batch. In contrast, in layer normalization, the statistics are computed across each feature and are **independent of other examples**.
 
@@ -97,4 +97,3 @@ This means that layer normalization is not a simple reparameterization of the ne
 The independence between inputs means that each input has a different normalization operation, allowing arbitrary mini-batch sizes to be used.
 
 The experimental results show that layer normalization performs well for recurrent neural networks.
-

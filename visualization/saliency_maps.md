@@ -10,14 +10,14 @@ $$
 
 This should tell us how the output value changes with respect to a small change in inputs. We can use these gradients to highlight input regions that cause the most change in the output. Intuitively this should highlight salient image regions that most contribute towards the output.
 
-A saliency map tells us the degree to which each pixel in the image affects the classification score for that image. To compute it, we compute the gradient of the unnormalized score corresponding to the correct class \(which is a scalar\) with respect to the pixels of the image. If the image has shape \(H, W, 3\) then this gradient will also have shape \(H, W, 3\); for each pixel in the image, this gradient tells us the amount by which the classification score will change if the pixel changes by a small amount. To compute the saliency map, we take the absolute value of this gradient, then take the maximum value over the 3 input channels; the final saliency map thus has shape \(H, W\) and all entries are nonnegative.
+A saliency map tells us the degree to which each pixel in the image affects the classification score for that image. To compute it, we compute the gradient of the unnormalized score corresponding to the correct class (which is a scalar) with respect to the pixels of the image. If the image has shape (H, W, 3) then this gradient will also have shape (H, W, 3); for each pixel in the image, this gradient tells us the amount by which the classification score will change if the pixel changes by a small amount. To compute the saliency map, we take the absolute value of this gradient, then take the maximum value over the 3 input channels; the final saliency map thus has shape (H, W) and all entries are nonnegative.
 
 ### Usage
 
 There are two APIs exposed to visualize saliency.
 
-1. [visualize\_saliency](https://raghakot.github.io/keras-vis/vis.visualization#visualize_saliency): This is the general purpose API for visualizing saliency.
-2. [visualize\_saliency\_with\_losses](https://raghakot.github.io/keras-vis/vis.visualization#visualize_saliency_with_losses): This is intended for research use-cases where some custom weighted loss can be used.
+1. [visualize\_saliency](https://raghakot.github.io/keras-vis/vis.visualization#visualize\_saliency): This is the general purpose API for visualizing saliency.
+2. [visualize\_saliency\_with\_losses](https://raghakot.github.io/keras-vis/vis.visualization#visualize\_saliency\_with\_losses): This is intended for research use-cases where some custom weighted loss can be used.
 
 See [examples/](https://github.com/raghakot/keras-vis/tree/master/examples) for code examples.
 
@@ -67,10 +67,9 @@ def compute_saliency_maps(X, y, model):
 
 ### Example
 
-![](../.gitbook/assets/saliency_maps.png)
+![](<../.gitbook/assets/saliency\_maps (1).png>)
 
 ## Reference:
 
 1. [https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb](https://github.com/MahanFathi/CS231/blob/master/assignment3/NetworkVisualization-TensorFlow.ipynb)
 2. [https://raghakot.github.io/keras-vis/visualizations/saliency/](https://raghakot.github.io/keras-vis/visualizations/saliency/)
-

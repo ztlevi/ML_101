@@ -4,7 +4,7 @@
 
 The final state is incapable of remembering a long sequence
 
-![](../.gitbook/assets/screen-shot-2021-08-02-at-9.39.28-pm%20%281%29%20%281%29.png)
+![](<../.gitbook/assets/screen-shot-2021-08-02-at-9.39.28-pm (1) (1) (1).png>)
 
 ## Seq2Seq Model with Attention
 
@@ -15,15 +15,15 @@ The final state is incapable of remembering a long sequence
 
 ## Simple RNN + Attention
 
-![](../.gitbook/assets/screen-shot-2021-08-02-at-9.58.24-pm%20%282%29%20%282%29%20%282%29.png)
+![](<../.gitbook/assets/screen-shot-2021-08-02-at-9.58.24-pm (2) (2) (1) (1).png>)
 
 There are two options to calculate weight: $$\alpha_i = align(h_i, s_0)$$
 
-### Option1: \(Used in original paper\)
+### Option1: (Used in original paper)
 
-![](../.gitbook/assets/screen-shot-2021-08-02-at-10.00.41-pm%20%282%29%20%282%29%20%282%29.png)
+![](<../.gitbook/assets/screen-shot-2021-08-02-at-10.00.41-pm (2) (2) (1) (1).png>)
 
-Then normalize $$\tilde\alpha_1, ..., \tilde\alpha_m$$ \(so that they sum to 1\):
+Then normalize $$\tilde\alpha_1, ..., \tilde\alpha_m$$ (so that they sum to 1):
 
 * $$[\tilde\alpha_1,...,\tilde\alpha_m] = Softmax([\tilde\alpha_1, ..., \tilde\alpha_m])$$
 
@@ -39,23 +39,23 @@ Then normalize $$\tilde\alpha_1, ..., \tilde\alpha_m$$ \(so that they sum to 1\)
 
 ### Calculate the next state
 
-Simple RNN: $$ s_1 = tanh(A' \cdot   \begin{bmatrix} x'_1 \\ s_0 \end{bmatrix} + b)$$
+Simple RNN: $$s_1 = tanh(A' \cdot \begin{bmatrix} x'_1 \\ s_0 \end{bmatrix} + b)$$
 
-Simple RNN + Attention: $$ s_1 = tanh(A' \cdot   \begin{bmatrix} x'_1 \\ s_0 \\ c_0 \end{bmatrix} + b)$$
+Simple RNN + Attention: $$s_1 = tanh(A' \cdot \begin{bmatrix} x'_1 \\ s_0 \\ c_0 \end{bmatrix} + b)$$
 
 Context vector: $$c_0 = \alpha_1 h_1 + ... + \alpha_m h_m$$
 
-![](../.gitbook/assets/screen-shot-2021-08-02-at-10.37.47-pm%20%282%29%20%282%29%20%281%29.png)
+![](<../.gitbook/assets/screen-shot-2021-08-02-at-10.37.47-pm (2) (2) (2).png>)
 
 For next state $$s_2$$, do not use the previously calculated $$\alpha_i$$
 
 ### Compute parameters For $$j^{th}$$state
 
-* Query: $$q_{:j}=W_Q s_j$$   \(To match others\)
-* Key: $$k_{:i}=W_K h_i$$       \(To be matched\)
-* Value: $$v_{:i}=W_Vh_i$$    \(To be weighted averaged\)
+* Query: $$q_{:j}=W_Q s_j$$ (To match others)
+* Key: $$k_{:i}=W_K h_i$$ (To be matched)
+* Value: $$v_{:i}=W_Vh_i$$ (To be weighted averaged)
 * Weights:$$\alpha_{ij} = align(h_i, s_j)$$
-  * Compute $$k_{:i}=W_K h_i $$and $$q_{:j}=W_Q s_j$$
+  * Compute $$k_{:i}=W_K h_i$$and $$q_{:j}=W_Q s_j$$
   * Compute weights: $$\alpha_{:j}=Softmax(K^T q_{:j}) \in R^m$$
 
 ![](../.gitbook/assets/screen-shot-2021-08-14-at-6.04.16-pm.png)
@@ -67,9 +67,9 @@ For next state $$s_2$$, do not use the previously calculated $$\alpha_i$$
 ## Time complexity
 
 * Question: How many weights $$\alpha_i$$ have been computed?
-  * To compute one vector $$c_j$$, we compute $$m$$ weights: $$\alpha_1, ... , \alpha_m$$.
+  *   To compute one vector $$c_j$$, we compute $$m$$ weights: $$\alpha_1, ... , \alpha_m$$.
 
-    • The decoder has $$t$$ states, so there are totally $$ m \cdot t$$ weights.
+      • The decoder has $$t$$ states, so there are totally $$m \cdot t$$ weights.
 
 ## Weights Visualization
 
@@ -88,8 +88,7 @@ For next state $$s_2$$, do not use the previously calculated $$\alpha_i$$
 
 ## References:
 
-1. [youtube video](https://www.youtube.com/watch?v=XhWdv7ghmQQ&list=PLvOO0btloRnuTUGN4XqO85eKPeFSZsEqK&index=8)
-2. Bahdanau, Cho, & Bengio. Neural machine translation by jointly learning to align and translate.
+1. [youtube video](https://www.youtube.com/watch?v=XhWdv7ghmQQ\&list=PLvOO0btloRnuTUGN4XqO85eKPeFSZsEqK\&index=8)
+2.  Bahdanau, Cho, & Bengio. Neural machine translation by jointly learning to align and translate.
 
-   In ICLR, 2015.
-
+    In ICLR, 2015.

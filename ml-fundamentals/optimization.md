@@ -2,7 +2,7 @@
 
 ## MLE and MAP
 
-A good video [here](https://www.youtube.com/watch?v=yH_xwGnW-ig) explains the topic.
+A good video [here](https://www.youtube.com/watch?v=yH\_xwGnW-ig) explains the topic.
 
 Assume $$X = \{x_1, x_2,...,x_n\}$$ is a sample follow independent and identical distribution
 
@@ -86,7 +86,7 @@ This simple technique extends to any variable within a function and allows us to
 
 Let's use the chain rule to calculate the derivative of cost with respect to any weight in the network. The chain rule will help us identify how much each weight contributes to our overall error and the direction to update each weight to reduce our error. Here are the equations we need to make a prediction and calculate total error, or cost:
 
-![\_images/backprop\_ff\_equations.png](https://ml-cheatsheet.readthedocs.io/en/latest/_images/backprop_ff_equations.png)
+![\_images/backprop\_ff\_equations.png](https://ml-cheatsheet.readthedocs.io/en/latest/\_images/backprop\_ff\_equations.png)
 
 Given a network consisting of a single neuron, total cost could be calculated as:
 
@@ -102,9 +102,9 @@ $$
 
 ### Example
 
-![img](../.gitbook/assets/simple_nn_diagram_zo_zh_defined.png)
+![img](<../.gitbook/assets/simple\_nn\_diagram\_zo\_zh\_defined (1).png>)
 
-![img](../.gitbook/assets/backprop_visually.png)
+![img](<../.gitbook/assets/backprop\_visually (1).png>)
 
 > NOTE:
 >
@@ -128,11 +128,11 @@ for i in range(nb_epochs):
 
 ## Stochastic gradient descent
 
-Stochastic gradient descent \(SGD\) in contrast performs a parameter update for each training example $$x^i$$ and label $$y^i$$. Note that we shuffle the training data at every epoch.
+Stochastic gradient descent (SGD) in contrast performs a parameter update for each training example $$x^i$$ and label $$y^i$$. Note that we shuffle the training data at every epoch.
 
 SGD performs frequent updates with a high variance that cause the objective function to fluctuate heavily, as in Image 1.
 
-![img](../.gitbook/assets/sgd_fluctuation.png)
+![img](<../.gitbook/assets/sgd\_fluctuation (1).png>)
 
 ```python
 for i in range(nb_epochs):
@@ -161,7 +161,7 @@ for i in range(nb_epochs):
 
 Momentum is a method that helps accelerate SGD in the relevant direction and dampends oscillations seen in the image below.
 
-![](../.gitbook/assets/sgd_momentum.png)
+![](<../.gitbook/assets/sgd\_momentum (1).png>)
 
 $$
 m_t = \gamma m_{t-1}+\eta\nabla_{\theta}J(\theta)
@@ -171,13 +171,13 @@ $$
 \theta=\theta - m_t
 $$
 
-Essentially, when using momentum, we push a ball down a hill. The ball accumulates momentum as it rolls downhill, becoming faster and faster on the way \(until it reaches its terminal velocity if there is air resistance, i.e. $$\gamma<1$$\). The same thing happens to our parameter updates: The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. As a result, we gain **faster convergence** and **reduced oscillation**.
+Essentially, when using momentum, we push a ball down a hill. The ball accumulates momentum as it rolls downhill, becoming faster and faster on the way (until it reaches its terminal velocity if there is air resistance, i.e. $$\gamma<1$$). The same thing happens to our parameter updates: The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. As a result, we gain **faster convergence** and **reduced oscillation**.
 
 ## ADAM
 
-Adaptive Moment Estimation \(ADAM\) is a method that **computes adaptive learning rate** for each parameter. In addition to storing an exponentially decaying average of past squared gradients $$v_t$$ like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients $$m_t$$, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
+Adaptive Moment Estimation (ADAM) is a method that **computes adaptive learning rate** for each parameter. In addition to storing an exponentially decaying average of past squared gradients $$v_t$$ like Adadelta and RMSprop, Adam also keeps an exponentially decaying average of past gradients $$m_t$$, similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface.
 
-1. $$m_t$$ and $$v_t$$ are estimates of the first moment \(the mean\) and the second moment \(the uncentered variance\) of the gradients respectively.
+1. $$m_t$$ and $$v_t$$ are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively.
 
 $$
 m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t
@@ -202,4 +202,3 @@ $$
 $$
 
 The authors propose default values of 0.9 for $$\beta_1$$, 0.999 for $$\beta_2$$, and $$10^{-8}$$ for $$\epsilon$$.
-

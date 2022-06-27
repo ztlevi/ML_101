@@ -1,6 +1,6 @@
 # MapReduce
 
-[Slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/14_Parallel_1.pdf) [Youtube](https://www.youtube.com/watch?v=gVcnOe6_c6Q&list=PLvOO0btloRns6egXueiRju4DXQjNRJQd5)
+[Slides](https://github.com/wangshusen/DeepLearning/blob/master/Slides/14\_Parallel\_1.pdf) [Youtube](https://www.youtube.com/watch?v=gVcnOe6\_c6Q\&list=PLvOO0btloRns6egXueiRju4DXQjNRJQd5)
 
 ## MapReduce
 
@@ -11,21 +11,21 @@
 
 ### Broadcast
 
-![mapreduce-1](../.gitbook/assets/mapreduce-1.png)
+![mapreduce-1](<../.gitbook/assets/mapreduce-1 (1).png>)
 
 ### Map
 
-![mapreduce-2](../.gitbook/assets/mapreduce-2.png)
+![mapreduce-2](<../.gitbook/assets/mapreduce-2 (1).png>)
 
 ### Reduce
 
-![mapreduce-3](../.gitbook/assets/mapreduce-3.png)
+![mapreduce-3](<../.gitbook/assets/mapreduce-3 (1).png>)
 
 ## Data Parallelism
 
-Partition the data among worker nodes. \(A node has a subset of data.\)
+Partition the data among worker nodes. (A node has a subset of data.)
 
-![data\_parallelism\_1](../.gitbook/assets/data_parallelism_1.png)
+![data\_parallelism\_1](<../.gitbook/assets/data\_parallelism\_1 (1).png>)
 
 ## Parallel Gradient Descent Using MapReduce
 
@@ -35,26 +35,26 @@ Partition the data among worker nodes. \(A node has a subset of data.\)
   * Obtain $$n$$ vectors: $$g_1, g_2,g_3,...,g_n$$
 * Reduce: Compute the sum: $$g=\sum_{i=1}^{n}g_i$$
 * Every worker sums all the $${g_i}$$ stored in its local memory to get a vector.
-* Then, the server sums the resulting m vectors. \(There are m workers.\)
+* Then, the server sums the resulting m vectors. (There are m workers.)
 * Server updates the parameters: $$w_{t+1}=t_t-\alpha \cdot g$$
 
-![Parallel\_Gradient\_Descent\_Using\_MapReduce\_1](../.gitbook/assets/Parallel_Gradient_Descent_Using_MapReduce_1.png)
+![Parallel\_Gradient\_Descent\_Using\_MapReduce\_1](<../.gitbook/assets/Parallel\_Gradient\_Descent\_Using\_MapReduce\_1 (1).png>)
 
 ## Speedup Ratio
 
-![speedup\_ratio\_1](../.gitbook/assets/speedup_ratio_1.png)
+![speedup\_ratio\_1](<../.gitbook/assets/speedup\_ratio\_1 (1).png>)
 
 ## Communication Cost
 
 * Communication complexity: How many words are transmitted between server and workers.
   * Proportional to number of parameters.
   * Grow with number of worker nodes.
-* Latency: How much time it takes for a packet of data to get from one point to another. \(Determined by the compute network.\)
+* Latency: How much time it takes for a packet of data to get from one point to another. (Determined by the compute network.)
 * Communication time: $$\frac{comlexity}{bancwith}+latency$$
 
 ## Bulk Synchronous
 
-![Bulk\_Synchronous\_1](../.gitbook/assets/Bulk_Synchronous_1.png)
+![Bulk\_Synchronous\_1](<../.gitbook/assets/Bulk\_Synchronous\_1 (1).png>)
 
 ## Synchronization Cost
 
@@ -67,4 +67,3 @@ Question: What if a node fails and then restart?
   * It is a consequence of synchronization.
 
 ## Footnote
-

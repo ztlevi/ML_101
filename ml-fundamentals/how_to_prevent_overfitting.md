@@ -4,25 +4,25 @@
 
 ### Bias and Variance
 
-![img](../.gitbook/assets/1*xwtSpR_zg7j7zusa4IDHNQ.png)
+![img](<../.gitbook/assets/1xwtSpR\_zg7j7zusa4IDHNQ (1).png>)
 
 * Bias is the difference between the average prediction of our model and the correct value which we are trying to predict.
 * Variance is the variability of model prediction for a given data point, or a value which tells us the spread of our data. Model with high variance pays a lot of attention to training data and does not generalize on the data which it hasn’t seen before.
 
 ### Trade-Off
 
-![img](../.gitbook/assets/degree_of_polynomial_d.png)
+![img](<../.gitbook/assets/degree\_of\_polynomial\_d (1).png>)
 
-* if d is too small --&gt; this probably corresponds to a high bias problem
-* if d is too large --&gt; this probably corresponds to a high variance problem
+* if d is too small --> this probably corresponds to a high bias problem
+* if d is too large --> this probably corresponds to a high variance problem
 
-![tradeoff](../.gitbook/assets/bias-variance-total-error.jpg)
+![tradeoff](<../.gitbook/assets/bias-variance-total-error (1).jpg>)
 
-Predictive models have a trade-off between **bias** \(how well the model fits the data\) and **variance** \(how much the model changes based on changes in the inputs\).
+Predictive models have a trade-off between **bias** (how well the model fits the data) and **variance** (how much the model changes based on changes in the inputs).
 
-_Simpler models_ are stable \(low variance\) but they don't get close to the truth \(high bias\).
+_Simpler models_ are stable (low variance) but they don't get close to the truth (high bias).
 
-More _complex models_ are more prone to being overfit \(high variance\) but they are expressive enough to get close to the truth \(low bias\).
+More _complex models_ are more prone to being overfit (high variance) but they are expressive enough to get close to the truth (low bias).
 
 The best model for a given problem usually lies somewhere in the middle.
 
@@ -41,7 +41,7 @@ Cross-validation is a powerful preventative measure against overfitting.
 
 The idea is clever: Use your initial training data to generate multiple mini train-test splits. Use these splits to tune your model.
 
-In standard k-fold cross-validation, we partition the data into k subsets, called folds. Then, we iteratively train the algorithm on k-1 folds while using the remaining fold as the test set \(called the "holdout fold"\).
+In standard k-fold cross-validation, we partition the data into k subsets, called folds. Then, we iteratively train the algorithm on k-1 folds while using the remaining fold as the test set (called the "holdout fold").
 
 ![K-Fold Cross-Validation](https://elitedatascience.com/wp-content/uploads/2017/06/Cross-Validation-Diagram.jpg)
 
@@ -63,7 +63,7 @@ Some algorithms have built-in feature selection.
 
 For those that don't, you can manually improve their generalizability by removing irrelevant input features.
 
-An interesting way to do so is to tell a story about how each feature fits into the model. This is like the data scientist's spin on the software engineer's [rubber duck debugging](https://en.wikipedia.org/wiki/Rubber_duck_debugging) technique, where they debug their code by explaining it, line-by-line, to a rubber duck.
+An interesting way to do so is to tell a story about how each feature fits into the model. This is like the data scientist's spin on the software engineer's [rubber duck debugging](https://en.wikipedia.org/wiki/Rubber\_duck\_debugging) technique, where they debug their code by explaining it, line-by-line, to a rubber duck.
 
 If anything doesn't make sense, or if it's hard to justify certain features, this is a good way to identify them.
 
@@ -79,13 +79,13 @@ Early stopping refers stopping the training process before the learner passes th
 
 ![Early stopping graphic](https://elitedatascience.com/wp-content/uploads/2017/09/early-stopping-graphic.jpg)
 
-Today, this technique is mostly used in deep learning while other techniques \(e.g. regularization\) are preferred for classical machine learning.
+Today, this technique is mostly used in deep learning while other techniques (e.g. regularization) are preferred for classical machine learning.
 
 ### Regularization
 
 Regularization refers to a broad range of techniques for artificially forcing your model to be simpler.
 
-Shrinkage can be thought of as "a penalty of complexity." Why? If we set some parameters of the model to exactly zero, then the model is effectively shrunk to have lower-dimensionality and less complex. Analogously, if we use a shrinkage mechanism to **zero out some of the parameters** or **smooth the parameters** \(the difference of parameters will not be very large\), then we are decreasing complexity by reducing dimensions or making it more continuous.
+Shrinkage can be thought of as "a penalty of complexity." Why? If we set some parameters of the model to exactly zero, then the model is effectively shrunk to have lower-dimensionality and less complex. Analogously, if we use a shrinkage mechanism to **zero out some of the parameters** or **smooth the parameters** (the difference of parameters will not be very large), then we are decreasing complexity by reducing dimensions or making it more continuous.
 
 #### L1 Regularization or Lasso or L1 norm
 
@@ -105,23 +105,23 @@ In L2 regularization, regularization term is the sum of square of all feature we
 
 #### Comparison Between L1 And L2 Regulariztion
 
-* **Computational Efficiency**: \(L2 &gt; L1\) L2 have analytical solution while L1 is computational inefficient on non-sparse cases
-* **Sparsity**: \(L1 &gt; L2\) refers to that only very few entries in a matrix \(or vector\) is non-zero. L1-norm has the property of producing many coefficients with zero values or very small values with few large coefficients.
+* **Computational Efficiency**: (L2 > L1) L2 have analytical solution while L1 is computational inefficient on non-sparse cases
+* **Sparsity**: (L1 > L2) refers to that only very few entries in a matrix (or vector) is non-zero. L1-norm has the property of producing many coefficients with zero values or very small values with few large coefficients.
 * **Built-in feature selection for L1**: L1-norm tends to produce sparse coefficients, so that L1 can penalize the coefficients toward 0.
 
-![enter image description here](../.gitbook/assets/cmWO0.png)
+![enter image description here](<../.gitbook/assets/cmWO0 (1).png>)
 
-![enter image description here](../.gitbook/assets/Mkclz.png)
+![enter image description here](<../.gitbook/assets/Mkclz (1).png>)
 
 From the figure, we can find out that for L1, the gradient is either 1 or -1, except for when $$w_{1}=0$$, however, for the same $$\lambda$$, it is possible that the weight for L2 norm will never reach zero for the gradient of the weight is also very small, which may result in a smaller penalty for the weight.
 
 #### Choosing λ
 
-![img](../.gitbook/assets/regularization_lambda.jpg)
+![img](<../.gitbook/assets/regularization\_lambda (1).jpg>)
 
 * Plot λ vs.
   * $$J_{ train }$$
-    * When λ is small, you get a small value \(regularization basically goes to 0\)
+    * When λ is small, you get a small value (regularization basically goes to 0)
     * When λ is large you get a large vale corresponding to high bias
   * $$J_{ cv }$$
     * When λ is small, we see high variance
@@ -130,11 +130,11 @@ From the figure, we can find out that for L1, the gradient is either 1 or -1, ex
       * So cross validation error is high
 * Such a plot can help show, you're picking a good value for λ
 
-#### DropOut \(Regularization technique\)
+#### DropOut (Regularization technique)
 
 To apply DropOut, we randomly select a subset of the units and clamp their output to zero, regardless of the input; this effectively removes those units from the model. A different subset of units is randomly selected every time we present a training example.
 
-Below are two possible network configurations. On the first presentation \(left\), the 1st and 3rd units are disabled, but the 2nd and 3rd units have been randomly selected on a subsequent presentation. At test time, we use the complete network but rescale the weights to compensate for the fact that all of them can now become active \(e.g., if you drop half of the nodes, the weights should also be halved\).
+Below are two possible network configurations. On the first presentation (left), the 1st and 3rd units are disabled, but the 2nd and 3rd units have been randomly selected on a subsequent presentation. At test time, we use the complete network but rescale the weights to compensate for the fact that all of them can now become active (e.g., if you drop half of the nodes, the weights should also be halved).
 
 [![DropOut examples](https://i.stack.imgur.com/CewjH.png)](https://i.stack.imgur.com/CewjH.png)
 
@@ -150,15 +150,15 @@ output = m(input)
 
 #### DropConnect
 
-DropConnect works similarly, except that we disable individual weights \(i.e., set them to zero\), instead of nodes, so a node can remain partially active. Schematically, it looks like this:
+DropConnect works similarly, except that we disable individual weights (i.e., set them to zero), instead of nodes, so a node can remain partially active. Schematically, it looks like this:
 
 [![DropConnect](https://i.stack.imgur.com/D1QC7.png)](https://i.stack.imgur.com/D1QC7.png)
 
 #### Comparison
 
-These methods both work because they effectively let you train several models at the same time, then average across them for testing. For example, the yellow layer has four nodes, and thus 16 possible DropOut states \(all enabled, \#1 disabled, \#1 and \#2 disabled, etc\).
+These methods both work because they effectively let you train several models at the same time, then average across them for testing. For example, the yellow layer has four nodes, and thus 16 possible DropOut states (all enabled, #1 disabled, #1 and #2 disabled, etc).
 
-DropConnect is a generalization of DropOut because it produces even more possible models, since there are almost always more connections than units. However, you can get similar outcomes on an individual trial. For example, the DropConnect network on the right has effectively dropped Unit \#2 since all of the incoming connections have been removed.
+DropConnect is a generalization of DropOut because it produces even more possible models, since there are almost always more connections than units. However, you can get similar outcomes on an individual trial. For example, the DropConnect network on the right has effectively dropped Unit #2 since all of the incoming connections have been removed.
 
 ### [Batch Normalization](https://ztlevi.gitbook.io/ml-101/ml-fundamentals/basics#batch-normalization)
 
@@ -175,11 +175,10 @@ _Bagging_ attempts to reduce the chance overfitting complex models.
 _Boosting_ attempts to improve the predictive flexibility of simple models.
 
 * It trains a large number of "weak" learners **in sequence**.
-* A weak learner is a constrained model \(i.e. you could limit the max depth of each decision tree\).
+* A weak learner is a constrained model (i.e. you could limit the max depth of each decision tree).
 * Each one in the sequence focuses on learning from the mistakes of the one before it.
 * Boosting then combines all the weak learners into a single strong learner.
 
 While bagging and boosting are both ensemble methods, they approach the problem from opposite directions.
 
 Bagging uses complex base models and tries to "smooth out" their predictions, while boosting uses simple base models and tries to "boost" their aggregate complexity.
-

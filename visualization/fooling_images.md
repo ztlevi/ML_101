@@ -98,7 +98,7 @@ plt.gcf().tight_layout()
 
 Output:
 
-```text
+```
 Iteration:  0  Target Class Score:  7.48085
 Iteration:  1  Target Class Score:  10.2266
 Iteration:  2  Target Class Score:  13.1471
@@ -110,7 +110,6 @@ Iteration:  7  Target Class Score:  27.9393
 Iteration:  8  Target Class Score:  30.5871
 ```
 
-![](../.gitbook/assets/fool_image.png)
+![](<../.gitbook/assets/fool\_image (1).png>)
 
 ## References:
-

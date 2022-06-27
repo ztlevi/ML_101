@@ -2,11 +2,11 @@
 
 ## Use Keras to develop a robust NN architecture that can be used to efficiently recognize anomalies in sequences
 
-Suppose that you have a very long list of string sequences, such as a list of amino acid structures \(‘PHE-SER-CYS’, ‘GLN-ARG-SER’,…\), product serial numbers \(‘AB121E’, ‘AB323’, ‘DN176’…\), or users UIDs, and you are required to create a validation process of some kind that will detect anomalies in this sequence. An anomaly might be a string that follows a slightly different or unusual format than the others \(whether it was created by mistake or on purpose\) or just one that is extremely rare. To make things even more interesting, suppose that you don't know what is the correct format or structure that sequences suppose to follow.
+Suppose that you have a very long list of string sequences, such as a list of amino acid structures (‘PHE-SER-CYS’, ‘GLN-ARG-SER’,…), product serial numbers (‘AB121E’, ‘AB323’, ‘DN176’…), or users UIDs, and you are required to create a validation process of some kind that will detect anomalies in this sequence. An anomaly might be a string that follows a slightly different or unusual format than the others (whether it was created by mistake or on purpose) or just one that is extremely rare. To make things even more interesting, suppose that you don't know what is the correct format or structure that sequences suppose to follow.
 
-This is a relatively common problem \(though with an uncommon twist\) that many data scientists usually approach using one of the popular unsupervised ML algorithms, such as DBScan, Isolation Forest, etc. Many of these algorithms typically do a good job in finding anomalies or outliers by singling out data points that are relatively far from the others or from areas in which most data points lie. Although autoencoders are also well-known for their anomaly detection capabilities, they work quite differently and are less common when it comes to problems of this sort.
+This is a relatively common problem (though with an uncommon twist) that many data scientists usually approach using one of the popular unsupervised ML algorithms, such as DBScan, Isolation Forest, etc. Many of these algorithms typically do a good job in finding anomalies or outliers by singling out data points that are relatively far from the others or from areas in which most data points lie. Although autoencoders are also well-known for their anomaly detection capabilities, they work quite differently and are less common when it comes to problems of this sort.
 
-I will leave the explanations of what is exactly an autoencoder to the many insightful and well-written posts, and articles that are freely available online. Very very briefly \(and please just read on if this doesn't make sense to you\), just like other kinds of ML algorithms, autoencoders learn by creating different representations of data and by measuring how well these representations do in generating an expected outcome; and just like other kinds of neural network, autoencoders learn by creating different _layers_ of such representations that allow them to learn more complex and sophisticated representations of data \(which on my view is exactly what makes them superior for a task like ours\). Autoencoders are a special form of a neural network, however, because the output that they attempt to generate is a _reconstruction of the input they receive_. An autoencoder starts with input data \(i.e., a set of numbers\) and then transforms it in different ways using a set of mathematical operations until it learns the parameters that it ought to use in order to reconstruct the same data \(or get very close to it\). In this learning process, an autoencoder essentially learns the format rules of the input data. And, that's exactly what makes it perform well as an anomaly detection mechanism in settings like ours.
+I will leave the explanations of what is exactly an autoencoder to the many insightful and well-written posts, and articles that are freely available online. Very very briefly (and please just read on if this doesn't make sense to you), just like other kinds of ML algorithms, autoencoders learn by creating different representations of data and by measuring how well these representations do in generating an expected outcome; and just like other kinds of neural network, autoencoders learn by creating different _layers_ of such representations that allow them to learn more complex and sophisticated representations of data (which on my view is exactly what makes them superior for a task like ours). Autoencoders are a special form of a neural network, however, because the output that they attempt to generate is a _reconstruction of the input they receive_. An autoencoder starts with input data (i.e., a set of numbers) and then transforms it in different ways using a set of mathematical operations until it learns the parameters that it ought to use in order to reconstruct the same data (or get very close to it). In this learning process, an autoencoder essentially learns the format rules of the input data. And, that's exactly what makes it perform well as an anomaly detection mechanism in settings like ours.
 
 Using autoencoders to detect anomalies usually involves two main steps:
 
@@ -27,7 +27,7 @@ These are the steps that I'm going to follow:
 5. Find the anomalies by finding the data points with the highest error term.
 6. **Generate a long sequence of strings.**
 
-We're gonna start by writing a function that creates strings of the following format: CEBF0ZPQ \(\[4 letters A-F\]\[1 digit 0–2\]\[3 letters QWOPZXML\]\), and generate 25K sequences of this format.
+We're gonna start by writing a function that creates strings of the following format: CEBF0ZPQ (\[4 letters A-F]\[1 digit 0–2]\[3 letters QWOPZXML]), and generate 25K sequences of this format.
 
 ```python
 first_letters =  'ABCDEF'
@@ -95,7 +95,7 @@ np.random.shuffle(encoded_seqs)
 
 Now we have an array of the following shape as every string sequence has 8 characters, each of which is encoded as a number which we will treat as a column.
 
-```text
+```
 encoded_seqs.shape#(25005,8)
 ```
 
@@ -114,7 +114,7 @@ X_test = scaled_seqs[20000:]
 
 **3. Design, fit and tune the autoencoder.**
 
-As mentioned earlier, there is more than one way to design an autoencoder. It is usually based on small hidden layers wrapped with larger layers \(this is what creates the encoding-decoding effect\). I have made a few tuning sessions in order to determine the best params to use here as different kinds of data usually lend themselves to very different best-performance parameters.
+As mentioned earlier, there is more than one way to design an autoencoder. It is usually based on small hidden layers wrapped with larger layers (this is what creates the encoding-decoding effect). I have made a few tuning sessions in order to determine the best params to use here as different kinds of data usually lend themselves to very different best-performance parameters.
 
 ```python
 from keras.models import Model, load_model
@@ -148,15 +148,15 @@ history = autoencoder.fit(X_train, X_train,
                     callbacks=[checkpointer, tensorboard]).history
 ```
 
-And, indeed, our autoencoder seems to perform very well as it is able to minimize the error term \(or loss function\) quite impressively.
+And, indeed, our autoencoder seems to perform very well as it is able to minimize the error term (or loss function) quite impressively.
 
-![](../.gitbook/assets/autoencoder_3.png)
+![](<../.gitbook/assets/autoencoder\_3 (1).png>)
 
 **4. Calculate the Error and Find the Anomalies!**
 
-Now, we feed the data again as a whole to the autoencoder and check the error term on each sample. Recall that _seqs\_ds_ is a pandas DataFrame that holds the actual string sequences. Line \#2 encodes each string, and line \#4 scales it. Then, I use the predict\(\) method to get the reconstructed inputs of the strings stored in seqs\_ds. Finally, I get the error term for each data point by calculating the “distance” between the input data point \(or the actual data point\) and the output that was reconstructed by the autoencoder:
+Now, we feed the data again as a whole to the autoencoder and check the error term on each sample. Recall that _seqs\_ds_ is a pandas DataFrame that holds the actual string sequences. Line #2 encodes each string, and line #4 scales it. Then, I use the predict() method to get the reconstructed inputs of the strings stored in seqs\_ds. Finally, I get the error term for each data point by calculating the “distance” between the input data point (or the actual data point) and the output that was reconstructed by the autoencoder:
 
-```text
+```
 mse = np.mean(np.power(actual_data - reconstructed_data, 2), axis=1)
 ```
 
@@ -175,35 +175,34 @@ seqs_ds['MSE'] = mse
 
 After we store the error term in the data frame, we can see how well each input data was constructed by our autoencoder.
 
-![](../.gitbook/assets/autoencoder_4.png)
+![](<../.gitbook/assets/autoencoder\_4 (1).png>)
 
 **How do we find the anomalies?**
 
-Well, the first thing we need to do is decide what is our threshold, and that usually depends on our data and domain knowledge. Some will say that an anomaly is a data point that has an error term that is higher than 95% of our data, for example. That would be an appropriate threshold if we expect that 5% of our data will be anomalous. However, recall that we injected 5 anomalies to a list of 25,000 perfectly formatted sequences, which means that only 0.02% of our data is anomalous, so we want to set our threshold as higher than 99.98% of our data \(or the 0.9998 percentile\). So first let's find this threshold:
+Well, the first thing we need to do is decide what is our threshold, and that usually depends on our data and domain knowledge. Some will say that an anomaly is a data point that has an error term that is higher than 95% of our data, for example. That would be an appropriate threshold if we expect that 5% of our data will be anomalous. However, recall that we injected 5 anomalies to a list of 25,000 perfectly formatted sequences, which means that only 0.02% of our data is anomalous, so we want to set our threshold as higher than 99.98% of our data (or the 0.9998 percentile). So first let's find this threshold:
 
-![](../.gitbook/assets/autoencoder_5.png)
+![](<../.gitbook/assets/autoencoder\_5 (1).png>)
 
 Next, I will add an MSE\_Outlier column to the data set and set it to 1 when the error term crosses this threshold.
 
-![](../.gitbook/assets/autoencoder_6.png)
+![](<../.gitbook/assets/autoencoder\_6 (1).png>)
 
 And now all we have to do is check how many outliers do we have and whether these outliers are the ones we injected and mixed in the data
 
-```text
+```
 ['XYDC2DCA', 'TXSX1ABC','RNIU4XRE','AABDXUEI','SDRAC5RF']
 ```
 
 So let's see how many outliers we have and whether they are the ones we injected.
 
-![](../.gitbook/assets/autoencoder_7.png)
+![](<../.gitbook/assets/autoencoder\_7 (1).png>)
 
 And…. Voila! We found 6 outliers while 5 of which are the “real” outliers.
 
 Looks like magic ha?
 
-Source code on git available [here](https://github.com/a-agmon/experiments/blob/master/Sequence_Anomaly_Detection-NN.ipynb)
+Source code on git available [here](https://github.com/a-agmon/experiments/blob/master/Sequence\_Anomaly\_Detection-NN.ipynb)
 
 ## Reference
 
-\[1\] [https://towardsdatascience.com/a-keras-based-autoencoder-for-anomaly-detection-in-sequences-75337eaed0e5](https://towardsdatascience.com/a-keras-based-autoencoder-for-anomaly-detection-in-sequences-75337eaed0e5)
-
+\[1] [https://towardsdatascience.com/a-keras-based-autoencoder-for-anomaly-detection-in-sequences-75337eaed0e5](https://towardsdatascience.com/a-keras-based-autoencoder-for-anomaly-detection-in-sequences-75337eaed0e5)

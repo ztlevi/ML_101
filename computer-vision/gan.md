@@ -3,11 +3,11 @@
 ## Introduction
 
 * The **generator** creates samples that are intended to come from the same distribution as the training data; The **discriminator** examines samples to determine whether they are real or fake.
-* The discriminator learns using traditional supervised learning techniques, dividing inputs into two classes \(real or fake\). The generator is trained to fool the discriminator.
+* The discriminator learns using traditional supervised learning techniques, dividing inputs into two classes (real or fake). The generator is trained to fool the discriminator.
 * Gradient Ascent on Discriminator
-* Gradient Descent on Generator 
+* Gradient Descent on Generator
 
-![image-20190721162310253](../.gitbook/assets/image-20190721162310253.png)
+![image-20190721162310253](<../.gitbook/assets/image-20190721162310253 (1).png>)
 
 * $$z$$ Input noise
 * training examples $$x$$ are randomly sampled from the training set and used as input for the first player, the discriminator, represented by the function $$D$$.
@@ -19,11 +19,11 @@ The training process consists of simultaneous SGD. On each step, two minibatches
 
 * Adam is most used in GAN
 
-![](../.gitbook/assets/gan_training.jpg)
+![](<../.gitbook/assets/gan\_training (1).jpg>)
 
 ## KL divergence
 
-In mathematical statistics, the Kullback–Leibler divergence \(also called relative entropy\) is a measure of how one probability distribution is different from a second, reference probability distribution.
+In mathematical statistics, the Kullback–Leibler divergence (also called relative entropy) is a measure of how one probability distribution is different from a second, reference probability distribution.
 
 For discrete probability distributions $$P$$ and $$Q$$ defined on the same probability space, the Kullback–Leibler divergence between $$P$$ and $$Q$$ is defined to be
 
@@ -35,7 +35,7 @@ $$
 
 ### Discriminator loss
 
-This method quantifies how well the discriminator is able to distinguish real images from fakes. It compares the discriminator's predictions on real images to an array of 1s, and the discriminator's predictions on fake \(generated\) images to an array of 0s.
+This method quantifies how well the discriminator is able to distinguish real images from fakes. It compares the discriminator's predictions on real images to an array of 1s, and the discriminator's predictions on fake (generated) images to an array of 0s.
 
 Goal: Minimize $$- log(D(x)) - log(1-D(G(z)))$$
 
@@ -63,7 +63,7 @@ $$
 
 ### Generator loss
 
-The generator's loss quantifies how well it was able to trick the discriminator. Intuitively, if the generator is performing well, the discriminator will classify the fake images as real \(or 1\). Here, we will compare the discriminators decisions on the generated images to an array of 1s. $$y_z = 1$$
+The generator's loss quantifies how well it was able to trick the discriminator. Intuitively, if the generator is performing well, the discriminator will classify the fake images as real (or 1). Here, we will compare the discriminators decisions on the generated images to an array of 1s. $$y_z = 1$$
 
 ```python
 def generator_loss(fake_output):
@@ -78,37 +78,33 @@ $$
 
 We might like to be able to do maximum likelihood learning with GANs, which would mean **minimizing the KL divergence between the data and the model**
 
-![image-20190721170005167](../.gitbook/assets/image-20190721170005167.png)
+![image-20190721170005167](<../.gitbook/assets/image-20190721170005167 (1).png>)
 
-* The KL divergence is not symmetric; minimizing $$D_{KL}(p_{data} || p_{model})$$ is different from minimizing $$D_{KL}(p_{model} || p_{data})$$
+*   The KL divergence is not symmetric; minimizing $$D_{KL}(p_{data} || p_{model})$$ is different from minimizing $$D_{KL}(p_{model} || p_{data})$$
 
-  ![image-20190721170045108](../.gitbook/assets/image-20190721170045108.png)
-
+    <img src="../.gitbook/assets/image-20190721170045108 (1).png" alt="image-20190721170045108" data-size="original">
 * GANs often choose to generate from very few modes; fewer than the limitation imposed by the model capacity. The reverse KL prefers to generate from as many modes of the data distribution as the model is able to; it does not prefer fewer modes in general. This suggests that **the mode collapse is driven by a factor other than the choice of divergence**.
 
 ## Pix2Pix
 
 ### Objective
 
-* Conditional GAN loss:
+*   Conditional GAN loss:
 
-  ![image-20190721170740583](../.gitbook/assets/image-20190721170740583.png)
+    <img src="../.gitbook/assets/image-20190721170740583 (1).png" alt="image-20190721170740583" data-size="original">
+*   We also explore this option, using L1 distance rather than L2 as L1 encourages less blurring:
 
-* We also explore this option, using L1 distance rather than L2 as L1 encourages less blurring:
+    <img src="../.gitbook/assets/image-20190721170913618 (1).png" alt="image-20190721170913618" data-size="original">
+*   The final objective is:
 
-  ![image-20190721170913618](../.gitbook/assets/image-20190721170913618.png)
-
-* The final objective is:
-
-  ![image-20190721170940203](../.gitbook/assets/image-20190721170940203.png)
-
+    <img src="../.gitbook/assets/image-20190721170940203 (1).png" alt="image-20190721170940203" data-size="original">
 * Using **Heuristic instead of minimax**
 
 ### Structure
 
 * Borrow structure of DCGAN:
 
-![image-20190721171310633](../.gitbook/assets/image-20190721171310633.png)
+![image-20190721171310633](<../.gitbook/assets/image-20190721171310633 (1).png>)
 
 * Both generator and discriminator use modules of the form convolution-BatchNorm-ReLu;
 * **Encoder-decoder Network**:In such a network, the input is passed through a series of layers that progressively downsample, until a bottleneck layer, at which point the process is reversed. Such a network requires that **all information flow pass through all the layers**, including the bottleneck.
@@ -123,6 +119,5 @@ Patch GAN only penalizes structure at the scale of patches. This discriminator t
 
 ### Evaluation metrics
 
-* Run “real vs. fake” perceptual studies on Amazon Mechanical Turk \(AMT\);
+* Run “real vs. fake” perceptual studies on Amazon Mechanical Turk (AMT);
 * Adopt the popular FCN-8s architecture for semantic segmentation;
-

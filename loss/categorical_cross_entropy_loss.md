@@ -2,9 +2,9 @@
 
 Also called **Softmax Loss**. It is a **Softmax activation** plus a **Cross-Entropy loss**. If we use this loss, we will train a CNN to output a probability over the $$C$$ classes for each image. It is used for multi-class classification.
 
-![](../.gitbook/assets/softmax_CE_pipeline.png)
+![](<../.gitbook/assets/softmax\_CE\_pipeline (1).png>)
 
-In the specific \(and usual\) case of Multi-Class classification the labels are one-hot, so only the positive class $$C_p$$ keeps its term in the loss. There is only one element of the Target vector $$t$$ which is not zero $$t_i=t_p$$. So discarding the elements of the summation which are zero due to target labels, we can write:
+In the specific (and usual) case of Multi-Class classification the labels are one-hot, so only the positive class $$C_p$$ keeps its term in the loss. There is only one element of the Target vector $$t$$ which is not zero $$t_i=t_p$$. So discarding the elements of the summation which are zero due to target labels, we can write:
 
 $$
 CE = -log\left ( \frac{e^{s_{p}}}{\sum_{j}^{C} e^{s_{j}}} \right )
@@ -22,7 +22,7 @@ $$
 \frac{\partial}{\partial s_{p}} \left ( -log\left ( \frac{e^{s_{p}}}{\sum_{j}^{C} e^{s_{j}}} \right ) \right ) = \left ( \frac{e^{s_{p}}}{\sum_{j}^{C}e^{s_{j}}} - 1 \right )
 $$
 
-And the derivative respect to the other \(negative\) classes is:
+And the derivative respect to the other (negative) classes is:
 
 $$
 \frac{\partial}{\partial s_{n}} \left (-log\left ( \frac{e^{s_{p}}}{\sum_{j}^{C} e^{s_{j}}} \right ) \right ) = \left ( \frac{e^{s_{n}}}{\sum_{j}^{C}e^{s_{j}}}\right )
@@ -32,7 +32,7 @@ Where snsn is the score of any negative class in $$C$$ different from CpCp.
 
 * Caffe: [SoftmaxWithLoss Layer](http://caffe.berkeleyvision.org/tutorial/layers/softmaxwithloss.html). Is limited to multi-class classification.
 * Pytorch: [CrossEntropyLoss](https://pytorch.org/docs/master/nn.html#crossentropyloss). Is limited to multi-class classification.
-* TensorFlow: [softmax\_cross\_entropy](https://www.tensorflow.org/api_docs/python/tf/losses/softmax_cross_entropy). Is limited to multi-class classification.
+* TensorFlow: [softmax\_cross\_entropy](https://www.tensorflow.org/api\_docs/python/tf/losses/softmax\_cross\_entropy). Is limited to multi-class classification.
 
 > In [this Facebook work](https://research.fb.com/publications/exploring-the-limits-of-weakly-supervised-pretraining/) they claim that, despite being counter-intuitive, **Categorical Cross-Entropy loss**, or **Softmax loss** worked better than **Binary Cross-Entropy loss** in their multi-label classification problem.
 
@@ -66,7 +66,7 @@ As Caffe Softmax with Loss layer nor Multinomial Logistic Loss Layer accept mult
 
 ## Forward pass: Loss computation
 
-For full code, take a look at [here](https://github.com/ztlevi/Machine_Learning_Questions/blob/master/codes/softmax_loss/softmax_loss.py).
+For full code, take a look at [here](https://github.com/ztlevi/Machine\_Learning\_Questions/blob/master/codes/softmax\_loss/softmax\_loss.py).
 
 ```python
     def forward(ctx, x, target):
@@ -112,4 +112,3 @@ For full code, take a look at [here](https://github.com/ztlevi/Machine_Learning_
 ```
 
 > The Caffe Python layer of this Softmax loss supporting a multi-label setup with real numbers labels is available [here](https://gist.github.com/gombru/53f02ae717cb1dd2525be090f2d41055)
-

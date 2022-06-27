@@ -4,7 +4,7 @@
 
 ## Network Architecture
 
-![fast rcnn](../../.gitbook/assets/fastrcnn.png)
+![fast rcnn](<../../.gitbook/assets/fastrcnn (1).png>)
 
 * Instead of feeding the region proposals to the CNN, the author feeded the input image to the CNN to generate a convolutional feature map.
 * From the convolutional feature map, the author identified the region of proposals and warp them into squares and by using a RoI pooling layer the author reshaped them into a fixed size so that it can be fed into a fully connected layer.
@@ -12,22 +12,20 @@
 
 ## Loss Function
 
-The model is optimized for a loss combining two tasks \(classification + localization\):
+The model is optimized for a loss combining two tasks (classification + localization):
 
-| **Symbol** | **Explanation** |
-| :--- | :--- |
-| $$u$$ | True class label, $$u \in 0, 1, ..., K$$; by convention, the catch-all background class has $$u = 0$$. |
-| $$p$$ | Discrete probability distribution \(per RoI\) over K + 1 classes: $$p = (p_0, ..., p_K)$$, computed by a softmax over the K + 1 outputs of a fully connected layer. |
-| $$v$$ | True bounding box $$v = (v_x, v_y, v_w, v_h)$$. |
-| $$t^u$$ | Predicted bounding box correction, $$t^u = (t^u_x, t^u_y, t^u_w, t^u_h)$$. See [here](https://lilianweng.github.io/lil-log/2017/12/31/object-recognition-for-dummies-part-3.html#bounding-box-regression). |
+|            |                                                                                                                                                                                                            |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Symbol** | **Explanation**                                                                                                                                                                                            |
+| $$u$$      | True class label, $$u \in 0, 1, ..., K$$; by convention, the catch-all background class has $$u = 0$$.                                                                                                     |
+| $$p$$      | Discrete probability distribution (per RoI) over K + 1 classes: $$p = (p_0, ..., p_K)$$, computed by a softmax over the K + 1 outputs of a fully connected layer.                                          |
+| $$v$$      | True bounding box $$v = (v_x, v_y, v_w, v_h)$$.                                                                                                                                                            |
+| $$t^u$$    | Predicted bounding box correction, $$t^u = (t^u_x, t^u_y, t^u_w, t^u_h)$$. See [here](https://lilianweng.github.io/lil-log/2017/12/31/object-recognition-for-dummies-part-3.html#bounding-box-regression). |
 
 The loss function sums up the cost of classification and bounding box prediction: $$\mathcal{L} = \mathcal{L}_\text{cls} + \mathcal{L}_\text{box}$$. For "background" RoI, $$\mathcal{L}_\text{box}$$ is ignored by the indicator function $$\mathbb{1} [u \geq 1]$$, defined as:
 
 $$
-\mathbb{1} [u >= 1] = \begin{cases}
-    1  & \text{if } u \geq 1\\
-    0  & \text{otherwise}
-\end{cases}
+\mathbb{1} [u >= 1] = \begin{cases} 1 & \text{if } u \geq 1\\ 0 & \text{otherwise} \end{cases}
 $$
 
 The overall loss function is:
@@ -47,13 +45,10 @@ $$
 The bounding box loss $$\mathcal{L}_{box}$$ should measure the difference between $$t^u_i$$ and $$v_i$$ using a **robust** loss function. The [smooth L1 loss](https://github.com/rbgirshick/py-faster-rcnn/files/764206/SmoothL1Loss.1.pdf) is adopted here and it is claimed to be less sensitive to outliers.
 
 $$
-L_1^\text{smooth}(x) = \begin{cases}
-    0.5 x^2             & \text{if } \vert x \vert < 1\\
-    \vert x \vert - 0.5 & \text{otherwise}
-\end{cases}
+L_1^\text{smooth}(x) = \begin{cases} 0.5 x^2 & \text{if } \vert x \vert < 1\\ \vert x \vert - 0.5 & \text{otherwise} \end{cases}
 $$
 
-![](../../.gitbook/assets/l1-smooth.png)
+![](<../../.gitbook/assets/l1-smooth (1).png>)
 
 ## Implenmentation
 
@@ -133,4 +128,3 @@ class RCNN(nn.Module):
 ## Why faster than R-CNN?
 
 The reason “Fast R-CNN” is faster than R-CNN is because you don’t have to **feed 2000 region proposals to the convolutional neural network** every time. Instead, the convolution operation is done only once per image and a feature map is generated from it.
-
