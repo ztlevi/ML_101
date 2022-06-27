@@ -1,8 +1,14 @@
 # Model Parallelism: GPipe
 
+### Introduction
+
 Data parallelism can be effective despite the bubble problem but suffers from an additional problem — communication overhead. As models grow and hardware becomes faster, the requirement to sync the entire model between devices becomes a bottleneck in the training process, considerably slowing it down. The accompanying image exemplifies how in large neural networks, communication overhead constitutes a large majority of the training time. The phenomenon of communication overhead encourages to create very large mini-batches but these are often the wrong choice for training a network and can present inferior results in production.
 
 ![PipeDream: Fast and Efficient Pipeline Parallel DNN Training](https://miro.medium.com/max/1400/0\*O7AACDkYAwzOZPkI.png)
+
+A **dumb idea** in model parallelism is to partition the model into K partitions and running in K GPUs. As it's shown below, due to the dependencies of partitions' backward and forward, there is only one worker active at one time.
+
+![](../.gitbook/assets/image.png)
 
 ## How GPipe works <a href="#e53b" id="e53b"></a>
 
