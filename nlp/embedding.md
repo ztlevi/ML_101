@@ -29,7 +29,7 @@
 
 ## Visualization
 
-This document introduces the concept of embeddings, gives a simple example of how to train an embedding in TensorFlow, and explains how to view embeddings with the TensorBoard Embedding Projector ([live example](http://projector.tensorflow.org/)). The first two parts target newcomers to machine learning or TensorFlow, and the Embedding Projector how-to is for users at all levels.
+This document introduces the concept of embeddings, gives a simple example of how to train an embedding in TensorFlow, and explains how to view embeddings with the TensorBoard Embedding Projector ([live example](https://projector.tensorflow.org/)). The first two parts target newcomers to machine learning or TensorFlow, and the Embedding Projector how-to is for users at all levels.
 
 An alternative tutorial on these concepts is available in the [Embeddings section of Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course/embeddings/video-lecture).
 
